@@ -6,12 +6,13 @@
  */
 import OpenAI from 'openai';
 
+const OPENAI_TIMEOUT = 180000; // 3 分钟
+
 const openai = new OpenAI({
   apiKey: process.env.DASHSCOPE_API_KEY || '',
   baseURL: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+  timeout: OPENAI_TIMEOUT,
 });
-
-const OPENAI_TIMEOUT = 180000; // 3 分钟
 
 // ============================================================
 // 类型定义
@@ -123,7 +124,6 @@ export async function generateModulePlan(homeworkText: string): Promise<AIModule
     temperature: 0.2,
     max_tokens: 3000,
     response_format: { type: 'json_object' },
-    timeout: OPENAI_TIMEOUT,
   });
 
   console.log(`[ModuleAI] API 响应耗时: ${Date.now() - t0}ms`);
