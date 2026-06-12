@@ -1,0 +1,19 @@
+{
+  "name": "vocabulario-espanol",
+  "version": "1.0.0",
+  "private": true,
+  "description": "词汇视听学习平台 - 西班牙语版",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build && cd ../server && npm run build",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "start": "cd server && npm start",
+    "deploy": "npm run build && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

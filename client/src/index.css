@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply overscroll-none;
+    min-height: 100dvh;
+  }
+
+  input, textarea, select {
+    @apply outline-none;
+    font-size: 16px; /* prevent iOS zoom */
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white rounded-btn px-6 py-3 font-medium
+           active:bg-primary-dark transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed
+           shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary border border-primary rounded-btn px-6 py-3 font-medium
+           active:bg-primary-50 transition-colors duration-150;
+  }
+
+  .btn-ghost {
+    @apply text-text-secondary rounded-btn px-4 py-2 font-medium
+           active:bg-bg-dark transition-colors duration-150;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white rounded-btn px-4 py-2 font-medium
+           active:opacity-80 transition-opacity;
+  }
+
+  .input-field {
+    @apply w-full bg-white border border-gray-200 rounded-input px-4 py-3
+           text-text-primary placeholder:text-text-muted
+           focus:border-primary focus:ring-2 focus:ring-primary-100
+           transition-all duration-150;
+  }
+
+  .card {
+    @apply bg-bg-card rounded-card shadow-card p-4;
+  }
+
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100
+           flex justify-around items-center py-2 px-4
+           safe-area-inset-bottom;
+  }
+
+  .page-container {
+    @apply max-w-lg mx-auto px-4 pb-24 pt-4;
+    min-height: 100dvh;
+  }
+
+  .page-header {
+    @apply sticky top-0 z-10 bg-bg pt-4 pb-3 mb-4;
+  }
+}
+
+/* Flash card flip animation */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.card-flip {
+  @apply relative w-full;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-flip.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  @apply absolute inset-0 rounded-card shadow-elevated backface-hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Safe area padding for mobile */
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, select, textarea {
+  @apply transition-colors duration-150;
+}
+
+/* TTS play button pulse animation */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(79, 70, 229, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+.pulse-playing {
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}

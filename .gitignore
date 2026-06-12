@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+*.db
+server/data/
+uploads/
+*.log
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
+
+# IDE
+.idea/
+*.swp
+*.swo
