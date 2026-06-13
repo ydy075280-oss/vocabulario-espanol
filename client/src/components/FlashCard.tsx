@@ -23,29 +23,29 @@ interface Props {
 
 export default function FlashCard({ card, onScore, showScore = true }: Props) {
   const [flipped, setFlipped] = useState(false);
-  const { speakOrPlay, speaking, rate, setRate } = useTTS();
+  const { speakOrPlay, speaking, ttsLoading, rate, setRate } = useTTS();
 
   const posLabel: Record<string, string> = {
     sustantivo: '名词',
     verbo: '动词',
     adjetivo: '形容词',
     adverbio: '副词',
-    preposición: '介词',
-    conjunción: '连词',
+    preposicion: '介词',
+    conjuncion: '连词',
     pronombre: '代词',
-    artículo: '冠词',
-    interjección: '感叹词',
+    articulo: '冠词',
+    interjeccion: '感叹词',
   };
 
   const genderLabel: Record<string, string> = {
     masculino: '阳',
     femenino: '阴',
-    común: '阴阳同形',
+    comun: '阴阳同形',
   };
 
   const handleFlip = () => {
     if (!flipped) {
-      speakOrPlay(card.word);
+      speakOrPlay(card.word, card.audio_url);
     }
     setFlipped(!flipped);
   };
@@ -60,27 +60,29 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
       >
         <div className={`card-flip ${flipped ? 'flipped' : ''}`} style={{ minHeight: '340px' }}>
           {/* Front */}
-          <div className="card-face bg-white flex flex-col items-center justify-center p-8">
+          <div className="card-face bg-canvas flex flex-col items-center justify-center p-8 border border-hairline-soft">
             {card.part_of_speech && (
-              <span className="text-sm text-text-muted mb-2">
+              <span className="text-eyebrow uppercase text-typo-muted mb-3"
+                    style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
                 {posLabel[card.part_of_speech] || card.part_of_speech}
                 {card.gender && (
-                  <span className="ml-1 text-xs bg-bg-dark px-1.5 py-0.5 rounded">
+                  <span className="ml-1 inline-block bg-surface rounded-pill px-2 py-0.5">
                     {genderLabel[card.gender] || card.gender}
                   </span>
                 )}
               </span>
             )}
-            <h2 className="text-3xl font-bold text-text-primary text-center mb-1">
+            <h2 className="text-display-md text-ink text-center mb-2"
+                style={{ fontFamily: "'Roobert PRO', 'Inter', sans-serif" }}>
               {card.word}
             </h2>
             {card.definite_article && (
-              <span className="text-sm text-primary font-medium">
+              <span className="text-sm text-typo-secondary font-medium">
                 {card.definite_article}
               </span>
             )}
             {card.original_form !== card.word && (
-              <span className="text-xs text-text-muted mt-1">
+              <span className="text-xs text-typo-muted mt-1">
                 原形: {card.original_form}
               </span>
             )}
@@ -88,69 +90,93 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                speakOrPlay(card.word);
+                speakOrPlay(card.word, card.audio_url);
               }}
-              className={`mt-6 w-14 h-14 rounded-full flex items-center justify-center transition-all ${
+              disabled={ttsLoading}
+              className={`mt-6 w-14 h-14 rounded-pill flex items-center justify-center transition-all duration-200 border ${
                 speaking
-                  ? 'bg-primary text-white pulse-playing'
-                  : 'bg-primary-50 text-primary hover:bg-primary-100'
+                  ? 'bg-accent-muted border-accent/30 text-accent pulse-playing'
+                  : ttsLoading
+                  ? 'bg-surface border-hairline text-typo-disabled'
+                  : 'bg-surface border-hairline-soft text-typo-secondary hover:bg-surface-hover hover:border-hairline'
               }`}
               title="播放发音 (TTS)"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.5v7a4.47 4.47 0 002.5-3.5zM14 3.23v2.06a7.007 7.007 0 010 13.42v2.06A9.01 9.01 0 0021 12a9 9 0 00-7-8.77z" />
-              </svg>
+              {ttsLoading ? (
+                <span className="w-5 h-5 border-2 border-hairline border-t-accent rounded-full animate-spin" />
+              ) : (
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.5v7a4.47 4.47 0 002.5-3.5zM14 3.23v2.06a7.007 7.007 0 010 13.42v2.06A9.01 9.01 0 0021 12a9 9 0 00-7-8.77z" />
+                </svg>
+              )}
             </button>
 
-            <p className="text-xs text-text-muted mt-4">点击翻转查看释义</p>
+            <p className="text-xs text-typo-muted mt-4">点击翻转查看释义</p>
           </div>
 
           {/* Back */}
-          <div className="card-face card-back bg-white p-6 flex flex-col">
+          <div className="card-face card-back bg-canvas p-6 flex flex-col border border-hairline-soft">
             <div className="text-center mb-4">
-              <h3 className="text-2xl font-bold text-primary">{card.chinese_meaning || '暂未释义'}</h3>
+              <h3 className="text-2xl font-medium text-ink"
+                  style={{ fontFamily: "'Roobert PRO', 'Inter', sans-serif" }}>
+                {card.chinese_meaning || '暂未释义'}
+              </h3>
               {card.word !== card.original_form && card.original_form && (
-                <p className="text-sm text-text-muted mt-1">原形: {card.original_form}</p>
+                <p className="text-sm text-typo-muted mt-1">原形: {card.original_form}</p>
               )}
             </div>
 
             {/* Conjugation table for verbs */}
             {card.part_of_speech === 'verbo' && card.conjugation && Object.keys(card.conjugation).length > 0 && (
-              <div className="mb-4 p-3 bg-bg-dark rounded-lg text-xs">
-                <p className="font-medium text-text-secondary mb-2">动词变位</p>
+              <div className="mb-4 p-3 bg-surface rounded-card border border-hairline-soft text-xs">
+                <p className="font-medium text-typo-secondary mb-2 text-eyebrow uppercase"
+                   style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
+                  动词变位
+                </p>
                 <div className="grid grid-cols-2 gap-1">
                   {Object.entries(card.conjugation).map(([person, form]) => (
                     <div key={person} className="flex justify-between px-2 py-0.5">
-                      <span className="text-text-muted">{person}:</span>
-                      <span className="font-medium text-text-primary">{String(form)}</span>
+                      <span className="text-typo-muted">{person}:</span>
+                      <span className="font-medium text-ink">{String(form)}</span>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* 造句段落 - 每条独立播放按钮 */}
+            {/* 造句段落 */}
             {card.sentences && card.sentences.length > 0 && (
-              <div className="flex-1 overflow-y-auto p-4 bg-primary-50 rounded-lg">
-                <p className="text-xs font-medium text-text-muted mb-2">造句</p>
+              <div className="flex-1 overflow-y-auto p-4 bg-surface rounded-card border border-hairline-soft">
+                <p className="text-eyebrow uppercase text-typo-muted mb-2"
+                   style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
+                  造句
+                </p>
                 {card.sentences.map((s, idx) => (
                   <div key={s.id || idx} className="mb-3 last:mb-0">
-                    <p className="text-sm text-text-primary leading-relaxed">
+                    <p className="text-sm text-ink leading-relaxed">
                       {s.sentence_es}
                     </p>
-                    <p className="text-xs text-text-muted mt-0.5 leading-relaxed">
+                    <p className="text-xs text-typo-muted mt-0.5 leading-relaxed">
                       {s.sentence_zh}
                     </p>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        speakOrPlay(s.sentence_es);
+                        speakOrPlay(s.sentence_es, s.audio_url);
                       }}
-                      className="mt-1 flex items-center gap-1 px-2 py-1 rounded-full text-xs bg-white text-primary border border-primary-200 hover:bg-primary hover:text-white transition-colors"
+                      disabled={ttsLoading}
+                      className="mt-1.5 flex items-center gap-1 px-3 py-1 rounded-pill text-xs
+                                 border border-hairline text-typo-secondary
+                                 hover:text-ink hover:border-hairline-strong transition-all duration-200
+                                 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.5v7a4.47 4.47 0 002.5-3.5zM14 3.23v2.06a7.007 7.007 0 010 13.42v2.06A9.01 9.01 0 0021 12a9 9 0 00-7-8.77z" />
-                      </svg>
+                      {ttsLoading ? (
+                        <span className="w-3 h-3 border-2 border-hairline border-t-accent rounded-full animate-spin" />
+                      ) : (
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.5v7a4.47 4.47 0 002.5-3.5zM14 3.23v2.06a7.007 7.007 0 010 13.42v2.06A9.01 9.01 0 0021 12a9 9 0 00-7-8.77z" />
+                        </svg>
+                      )}
                       TTS
                     </button>
                   </div>
@@ -158,22 +184,25 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
               </div>
             )}
 
-            <p className="text-xs text-text-muted text-center mt-4">点击翻转回正面</p>
+            <p className="text-xs text-typo-muted text-center mt-4">点击翻转回正面</p>
           </div>
         </div>
       </div>
 
       {/* Rate control */}
       <div className="flex items-center justify-center gap-2 mt-4 mb-2">
-        <span className="text-xs text-text-muted">语速:</span>
+        <span className="text-eyebrow uppercase text-typo-muted"
+              style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
+          语速
+        </span>
         {([0.5, 0.75, 1, 1.25, 1.5] as const).map((r) => (
           <button
             key={r}
             onClick={() => setRate(r)}
-            className={`px-2 py-0.5 text-xs rounded-full transition-colors ${
+            className={`px-2 py-0.5 text-xs rounded-pill font-medium transition-all duration-200 ${
               rate === r
-                ? 'bg-primary text-white'
-                : 'bg-bg-dark text-text-secondary hover:bg-gray-200'
+                ? 'bg-brand text-white'
+                : 'text-typo-secondary hover:text-ink hover:bg-surface'
             }`}
           >
             {r}x
@@ -184,18 +213,20 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
       {/* Score buttons */}
       {showScore && flipped && onScore && (
         <div className="grid grid-cols-4 gap-2 mt-4">
-          <button onClick={() => { onScore(0); setFlipped(false); }} className="py-3 rounded-btn bg-red-50 text-danger text-sm font-medium active:bg-red-100">
-            忘记了
-          </button>
-          <button onClick={() => { onScore(1); setFlipped(false); }} className="py-3 rounded-btn bg-orange-50 text-orange-600 text-sm font-medium active:bg-orange-100">
-            有印象
-          </button>
-          <button onClick={() => { onScore(3); setFlipped(false); }} className="py-3 rounded-btn bg-green-50 text-success text-sm font-medium active:bg-green-100">
-            记住了
-          </button>
-          <button onClick={() => { onScore(4); setFlipped(false); }} className="py-3 rounded-btn bg-primary-50 text-primary text-sm font-medium active:bg-primary-100">
-            太简单
-          </button>
+          {[
+            { score: 0, label: '忘记了', cls: 'bg-danger-muted text-danger border-danger/10' },
+            { score: 1, label: '有印象', cls: 'bg-warning-muted text-warning border-warning/10' },
+            { score: 3, label: '记住了', cls: 'bg-success-muted text-success border-success/10' },
+            { score: 4, label: '太简单', cls: 'bg-accent-muted text-accent border-accent/10' },
+          ].map(({ score, label, cls }) => (
+            <button
+              key={score}
+              onClick={() => { onScore(score); setFlipped(false); }}
+              className={`py-3 rounded-pill text-sm font-medium border transition-all duration-200 active:scale-[0.97] ${cls}`}
+            >
+              {label}
+            </button>
+          ))}
         </div>
       )}
     </div>

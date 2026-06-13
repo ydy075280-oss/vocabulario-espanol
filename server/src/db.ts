@@ -23,6 +23,8 @@ function migrateColumns(): void {
     { table: 'big_modules', col: 'content_type_label', def: "TEXT DEFAULT '词汇与造句'" },
     { table: 'big_modules', col: 'language', def: "TEXT DEFAULT ''" },
     { table: 'module_tasks', col: 'task_data', def: "TEXT DEFAULT '{}'" },
+    { table: 'users', col: 'tts_speed', def: "REAL DEFAULT 1.0" },
+    { table: 'big_modules', col: 'linked_wordbook_id', def: 'TEXT' },
   ];
   for (const m of migrations) {
     try {
@@ -140,6 +142,7 @@ export function initDatabase(): void {
       status TEXT NOT NULL DEFAULT 'active',
       total_days INTEGER DEFAULT 0,
       completed_days INTEGER DEFAULT 0,
+      linked_wordbook_id TEXT,
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );

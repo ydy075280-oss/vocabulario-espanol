@@ -47,6 +47,17 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Global error handler — 捕获所有未处理的异常，输出详细堆栈
+app.use((err: any, _req: any, res: any, _next: any) => {
+  console.error('🔥 [Server] Unhandled Error:', err.message);
+  console.error('🔥 [Server] Stack:', err.stack);
+  console.error('🔥 [Server] URL:', _req?.originalUrl || 'unknown');
+  res.status(err.status || 500).json({
+    error: err.message || '服务器内部错误',
+    ...(process.env.NODE_ENV === 'dev' && { stack: err.stack }),
+  });
+});
+
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   const clientBuild = path.join(__dirname, '..', '..', 'client', 'dist');

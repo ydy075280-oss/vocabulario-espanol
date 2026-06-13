@@ -2,71 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Fonts
+   ============================================================ */
+/* Roobert PRO — Miro's custom font. Falls back to Inter */
+@font-face {
+  font-family: 'Roobert PRO';
+  src: local('Roobert PRO');
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   Miro Design System — Base
+   ============================================================ */
 @layer base {
   * {
     -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    @apply overscroll-none;
+    @apply bg-canvas text-ink antialiased;
+    overscroll-behavior: none;
     min-height: 100dvh;
+    font-family: 'Roobert PRO', 'Inter', 'Noto Sans SC', sans-serif;
   }
 
   input, textarea, select {
     @apply outline-none;
     font-size: 16px; /* prevent iOS zoom */
+    color: #1c1c1e;
+  }
+
+  ::selection {
+    background: rgba(255, 208, 47, 0.30);
+    color: #1c1c1e;
   }
 }
 
+/* ============================================================
+   Component Classes — Miro Design System
+   ============================================================ */
 @layer components {
+  /* --- Primary button — black pill (Miro's dominant CTA) --- */
   .btn-primary {
-    @apply bg-primary text-white rounded-btn px-6 py-3 font-medium
-           active:bg-primary-dark transition-colors duration-150
-           disabled:opacity-50 disabled:cursor-not-allowed
-           shadow-sm hover:shadow-md;
+    @apply bg-brand text-white rounded-pill px-6 py-3 font-medium text-sm
+           transition-all duration-200
+           hover:opacity-90
+           active:scale-[0.97]
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100;
   }
 
-  .btn-secondary {
-    @apply bg-white text-primary border border-primary rounded-btn px-6 py-3 font-medium
-           active:bg-primary-50 transition-colors duration-150;
+  /* --- Secondary outline pill --- */
+  .btn-outline {
+    @apply bg-transparent text-ink rounded-pill px-6 py-3 font-medium text-sm
+           border border-hairline-strong
+           transition-all duration-200
+           hover:border-ink/30 hover:bg-surface
+           active:scale-[0.97]
+           disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100;
   }
 
+  /* --- Ghost button --- */
   .btn-ghost {
-    @apply text-text-secondary rounded-btn px-4 py-2 font-medium
-           active:bg-bg-dark transition-colors duration-150;
+    @apply bg-transparent text-typo-muted rounded-pill px-4 py-2 font-medium text-sm
+           transition-all duration-200
+           hover:text-ink hover:bg-surface
+           active:scale-[0.97];
   }
 
+  /* --- Danger button --- */
   .btn-danger {
-    @apply bg-danger text-white rounded-btn px-4 py-2 font-medium
-           active:opacity-80 transition-opacity;
+    @apply bg-danger text-white rounded-pill px-4 py-2 font-medium text-sm
+           transition-all duration-200
+           hover:opacity-90
+           active:scale-[0.97];
   }
 
+  /* --- Input field — Miro search-pill style --- */
   .input-field {
-    @apply w-full bg-white border border-gray-200 rounded-input px-4 py-3
-           text-text-primary placeholder:text-text-muted
-           focus:border-primary focus:ring-2 focus:ring-primary-100
-           transition-all duration-150;
+    @apply w-full bg-canvas text-ink rounded-input px-4 py-3 text-sm
+           placeholder:text-typo-disabled
+           border border-hairline
+           focus:border-miro-blue focus:ring-2 focus:ring-miro-blue/20
+           transition-all duration-200;
+    height: 44px;
   }
 
+  /* --- Card — white surface with hairline border --- */
   .card {
-    @apply bg-bg-card rounded-card shadow-card p-4;
+    @apply bg-canvas rounded-card p-5
+           border border-hairline-soft;
+    box-shadow: rgba(5, 0, 56, 0.06) 0px 2px 8px -2px;
   }
 
-  .bottom-nav {
-    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100
-           flex justify-around items-center py-2 px-4
-           safe-area-inset-bottom;
+  /* --- Card hover variant --- */
+  .card-hover {
+    @apply card transition-all duration-200
+           hover:shadow-md hover:border-hairline
+           cursor-pointer;
   }
 
+  /* --- Page wrapper — responsive: narrow on mobile, wider on desktop --- */
   .page-container {
-    @apply max-w-lg mx-auto px-4 pb-24 pt-4;
+    @apply max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto px-4 md:px-6 pb-24 pt-4 md:pb-10;
     min-height: 100dvh;
   }
 
+  /* --- Sticky page header --- */
   .page-header {
-    @apply sticky top-0 z-10 bg-bg pt-4 pb-3 mb-4;
+    @apply sticky top-0 z-10 bg-canvas pt-4 pb-3 mb-4;
+  }
+
+  /* --- Bottom navigation — Miro style (white bg, hairline border) --- */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-canvas z-50
+           border-t border-hairline-soft
+           safe-area-inset-bottom;
+    box-shadow: rgba(5, 0, 56, 0.04) 0px -2px 8px -2px;
+  }
+
+  /* --- Divider --- */
+  .divider {
+    @apply border-t border-hairline-soft;
+  }
+
+  /* --- Badge / Tag pill --- */
+  .badge {
+    @apply inline-flex items-center rounded-pill px-2.5 py-0.5
+           text-[11px] font-semibold tracking-wide;
+  }
+
+  /* --- Toast notification --- */
+  .toast {
+    @apply bg-canvas rounded-card px-5 py-4
+           border border-hairline
+           text-ink text-sm;
+    box-shadow: rgba(5, 0, 56, 0.12) 0px 8px 24px -4px;
   }
 }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
 
 /* Flash card flip animation */
 .perspective-1000 {
@@ -74,7 +153,8 @@
 }
 
 .card-flip {
-  @apply relative w-full;
+  position: relative;
+  width: 100%;
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -84,7 +164,8 @@
 }
 
 .card-face {
-  @apply absolute inset-0 rounded-card shadow-elevated backface-hidden;
+  @apply absolute inset-0 rounded-card backface-hidden;
+  border: 1px solid #eef0f3;
 }
 
 .card-back {
@@ -101,26 +182,43 @@
   padding-bottom: env(safe-area-inset-bottom, 8px);
 }
 
-/* Scrollbar */
+/* Scrollbar — light canvas */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22);
 }
 
-/* Smooth transitions for all interactive elements */
-a, button, input, select, textarea {
-  @apply transition-colors duration-150;
-}
-
-/* TTS play button pulse animation */
+/* TTS play button pulse */
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
-  70% { box-shadow: 0 0 0 12px rgba(79, 70, 229, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(66, 98, 255, 0.30); }
+  70%  { box-shadow: 0 0 0 12px rgba(66, 98, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(66, 98, 255, 0); }
 }
 
 .pulse-playing {
   animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Smooth transitions */
+a, button {
+  @apply transition-all duration-200;
+}
+
+/* Slide up animation for modals/notifications */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out;
 }

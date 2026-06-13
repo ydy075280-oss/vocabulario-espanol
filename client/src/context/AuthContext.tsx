@@ -6,6 +6,7 @@ interface User {
   email: string;
   nickname: string;
   avatar_url: string;
+  tts_speed: number;
 }
 
 interface AuthContextType {
@@ -14,7 +15,7 @@ interface AuthContextType {
   login: (email: string, password: string, rememberMe?: boolean) => Promise<void>;
   register: (email: string, password: string, nickname?: string) => Promise<void>;
   logout: () => Promise<void>;
-  updateProfile: (data: { nickname?: string; avatar_url?: string }) => Promise<void>;
+  updateProfile: (data: { nickname?: string; avatar_url?: string; tts_speed?: number }) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -59,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   };
 
-  const updateProfile = async (profile: { nickname?: string; avatar_url?: string }) => {
+  const updateProfile = async (profile: { nickname?: string; avatar_url?: string; tts_speed?: number }) => {
     const { data } = await authAPI.updateProfile(profile);
     setUser(prev => prev ? { ...prev, ...data.user } : null);
   };

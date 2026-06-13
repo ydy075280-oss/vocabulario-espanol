@@ -434,6 +434,38 @@ router.post('/:id/tasks/:taskId/sentences', authMiddleware, async (req: AuthRequ
 });
 
 // ============================================================
+// POST /api/modules/:id/tasks/:taskId/writing - 保存用户写作
+// ============================================================
+router.post('/:id/tasks/:taskId/writing', authMiddleware, async (req: AuthRequest, res: Response) => {
+  try {
+    const { content, title } = req.body;
+
+    const task = db.prepare(
+      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
+    ).get(req.params.taskId, req.params.id) as any;
+
+    if (!task) {
+      res.status(404).json({ error: '任务不存在' });
+      return;
+    }
+
+    let taskData: any = {};
+    try { taskData = JSON.parse(task.task_data || '{}'); } catch { /* ignore */ }
+
+    if (content !== undefined) taskData.userWriting = content;
+    if (title !== undefined) taskData.userWritingTitle = title;
+
+    db.prepare(`
+      UPDATE module_tasks SET task_data = ?, updated_at = datetime('now') WHERE id = ?
+    `).run(JSON.stringify(taskData), req.params.taskId);
+
+    res.json({ message: '写作已保存', userWriting: taskData.userWriting });
+  } catch (err: any) {
+    res.status(500).json({ error: '保存写作失败: ' + err.message });
+  }
+});
+
+// ============================================================
 // PUT /api/modules/:id/tasks/:taskId/keywords - 更新任务关键词（增删改）
 // ============================================================
 router.put('/:id/tasks/:taskId/keywords', authMiddleware, (req: AuthRequest, res: Response) => {
@@ -537,6 +569,156 @@ router.delete('/:id/tasks/:taskId', authMiddleware, (req: AuthRequest, res: Resp
     res.json({ message: '任务已删除', remainingDays: remaining.cnt });
   } catch (err: any) {
     res.status(500).json({ error: '删除任务失败: ' + err.message });
+  }
+});
+
+// ============================================================
+// POST /api/modules/:id/export-wordbook - 导出模块词汇为单词本
+// ============================================================
+router.post('/:id/export-wordbook', authMiddleware, (req: AuthRequest, res: Response) => {
+  try {
+    const module = db.prepare(
+      'SELECT * FROM big_modules WHERE id = ? AND user_id = ?'
+    ).get(req.params.id, req.userId!) as any;
+
+    if (!module) {
+      res.status(404).json({ error: '大模块不存在' });
+      return;
+    }
+
+    // 检查是否已导出过
+    if (module.linked_wordbook_id) {
+      const existing = db.prepare(
+        'SELECT id, name, card_count FROM wordbooks WHERE id = ? AND user_id = ?'
+      ).get(module.linked_wordbook_id, req.userId!) as any;
+
+      if (existing) {
+        res.status(200).json({
+          message: `该模块已导出过单词本「${existing.name}」（${existing.card_count} 个词汇）`,
+          wordbook: {
+            id: existing.id,
+            name: existing.name,
+            cardCount: existing.card_count,
+          },
+          alreadyExported: true,
+        });
+        return;
+      }
+      // 单词本已被删除，清除关联后重新导出
+      db.prepare(
+        'UPDATE big_modules SET linked_wordbook_id = NULL WHERE id = ?'
+      ).run(req.params.id);
+    }
+
+    // 获取所有任务的 keyWords
+    const tasks = db.prepare(
+      'SELECT task_data FROM module_tasks WHERE module_id = ?'
+    ).all(req.params.id) as any[];
+
+    // 收集所有关键词
+    const allKeywords: Array<{
+      word: string; translation: string; partOfSpeech: string;
+      exampleSentence: string; exampleTranslation: string;
+    }> = [];
+
+    for (const t of tasks) {
+      let td: any = {};
+      try { td = JSON.parse(t.task_data || '{}'); } catch { /* ignore */ }
+      if (td.keyWords) {
+        for (const kw of td.keyWords) {
+          if (kw.word?.trim()) {
+            allKeywords.push({
+              word: kw.word.trim(),
+              translation: kw.translation || '',
+              partOfSpeech: kw.partOfSpeech || '',
+              exampleSentence: kw.exampleSentence || '',
+              exampleTranslation: kw.exampleTranslation || '',
+            });
+          }
+        }
+      }
+    }
+
+    if (allKeywords.length === 0) {
+      res.status(400).json({ error: '该模块没有可导出的词汇，请先添加单词' });
+      return;
+    }
+
+    // 按 word_normalized 去重（保留最早出现的）
+    const normalize = (w: string) =>
+      w.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+    const uniqueMap = new Map<string, typeof allKeywords[0]>();
+    for (const kw of allKeywords) {
+      const key = normalize(kw.word);
+      if (!uniqueMap.has(key)) {
+        uniqueMap.set(key, kw);
+      }
+    }
+
+    const uniqueKeywords = Array.from(uniqueMap.values());
+
+    // 创建单词本
+    const wordbookId = uuidv4();
+    const wordbookName = `${module.title} - 词汇本`;
+
+    db.prepare(`
+      INSERT INTO wordbooks (id, user_id, name, source_type, source_name, card_count)
+      VALUES (?, ?, ?, 'module', ?, 0)
+    `).run(wordbookId, req.userId!, wordbookName, module.title);
+
+    // 批量创建单词卡片
+    const insertCard = db.prepare(`
+      INSERT INTO word_cards (
+        id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+        gender, definite_article, chinese_meaning, original_form, conjugation_json
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    const insertSentence = db.prepare(`
+      INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh) VALUES (?, ?, ?, ?)
+    `);
+
+    const batchInsert = db.transaction(() => {
+      for (const kw of uniqueKeywords) {
+        const cardId = uuidv4();
+        const normalized = normalize(kw.word);
+
+        insertCard.run(
+          cardId, wordbookId, req.userId!, kw.word, normalized,
+          kw.partOfSpeech, '', '', kw.translation, kw.word, '{}'
+        );
+
+        if (kw.exampleSentence) {
+          insertSentence.run(uuidv4(), cardId, kw.exampleSentence, kw.exampleTranslation);
+        }
+      }
+    });
+
+    batchInsert();
+
+    // 更新单词本卡片计数
+    db.prepare(`
+      UPDATE wordbooks SET card_count = (
+        SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?
+      ), updated_at = datetime('now') WHERE id = ?
+    `).run(wordbookId, wordbookId);
+
+    // 关联到模块，防止重复导出
+    db.prepare(`
+      UPDATE big_modules SET linked_wordbook_id = ?, updated_at = datetime('now') WHERE id = ?
+    `).run(wordbookId, req.params.id);
+
+    res.status(201).json({
+      message: `已创建单词本 "${wordbookName}"，收录 ${uniqueKeywords.length} 个词汇（原始 ${allKeywords.length} 个，去重后保留）`,
+      wordbook: {
+        id: wordbookId,
+        name: wordbookName,
+        cardCount: uniqueKeywords.length,
+      },
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: '导出单词本失败: ' + err.message });
   }
 });
 

@@ -47,6 +47,35 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
   }
 });
 
+// GET /api/wordbooks/tags - 获取用户所有历史标签（供自动补全）
+router.get('/tags', authMiddleware, (req: AuthRequest, res: Response) => {
+  try {
+    const teacherRows = db.prepare(`
+      SELECT DISTINCT teacher_tag
+      FROM wordbooks
+      WHERE user_id = ? AND teacher_tag != ''
+      ORDER BY updated_at DESC
+    `).all(req.userId!) as { teacher_tag: string }[];
+
+    const courseRows = db.prepare(`
+      SELECT DISTINCT course_tag
+      FROM wordbooks
+      WHERE user_id = ? AND course_tag != ''
+      ORDER BY updated_at DESC
+    `).all(req.userId!) as { course_tag: string }[];
+
+    const teacherTags = teacherRows.map(r => r.teacher_tag);
+    const courseTags = courseRows.map(r => r.course_tag);
+
+    // 合并去重，按最近使用排序（teacher_tags 在前）
+    const allTags = [...new Set([...teacherTags, ...courseTags])];
+
+    res.json({ teacherTags, courseTags, allTags });
+  } catch (err: any) {
+    res.status(500).json({ error: '获取标签失败' });
+  }
+});
+
 // GET /api/wordbooks/:id - Get wordbook with cards
 router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
   try {

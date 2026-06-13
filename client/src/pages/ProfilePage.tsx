@@ -1,17 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { learnAPI } from '../api';
 
 interface Stats {
-  totalCards: number;
-  masteredCards: number;
-  learningCards: number;
-  dueNow: number;
-  todayStudied: number;
-  accuracy: number;
-  todayMinutes: number;
+  totalCards: number; masteredCards: number; learningCards: number;
+  dueNow: number; todayStudied: number; accuracy: number; todayMinutes: number;
 }
+
+const SPEED_OPTIONS = [
+  { value: 0.5,  label: '0.5x', desc: '很慢' },
+  { value: 0.75, label: '0.75x', desc: '较慢' },
+  { value: 1.0,  label: '1.0x', desc: '正常' },
+  { value: 1.25, label: '1.25x', desc: '较快' },
+  { value: 1.5,  label: '1.5x', desc: '快速' },
+] as const;
 
 export default function ProfilePage() {
   const { user, logout, updateProfile } = useAuth();
@@ -19,118 +22,108 @@ export default function ProfilePage() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [editing, setEditing] = useState(false);
   const [nickname, setNickname] = useState(user?.nickname || '');
+  const [savingSpeed, setSavingSpeed] = useState(false);
 
-  useEffect(() => {
-    learnAPI.stats().then(({ data }) => setStats(data)).catch(() => {});
-  }, []);
+  useEffect(() => { learnAPI.stats().then(({ data }) => setStats(data)).catch(() => {}); }, []);
 
   const handleLogout = async () => {
-    if (confirm('确定退出登录？')) {
-      await logout();
-      navigate('/auth');
-    }
+    if (confirm('确定退出登录？')) { await logout(); navigate('/auth'); }
   };
 
   const handleSaveNickname = async () => {
-    try {
-      await updateProfile({ nickname });
-      setEditing(false);
-    } catch { /* ignore */ }
+    try { await updateProfile({ nickname }); setEditing(false); } catch {}
   };
+
+  const handleSpeedChange = useCallback(async (speed: number) => {
+    if (savingSpeed || speed === (user?.tts_speed ?? 1.0)) return;
+    setSavingSpeed(true);
+    try {
+      await updateProfile({ tts_speed: speed });
+    } catch { /* ignore */ }
+    finally { setSavingSpeed(false); }
+  }, [savingSpeed, user?.tts_speed, updateProfile]);
 
   return (
     <div className="page-container">
-      {/* Profile Header */}
-      <div className="card text-center mb-6">
-        <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
-          <span className="text-3xl font-bold text-white">
+      <div className="card text-center mb-6 p-6">
+        <div className="w-20 h-20 rounded-pill bg-surface border border-hairline-soft flex items-center justify-center mx-auto mb-3">
+          <span className="text-2xl text-ink" style={{ fontFamily: "'Geist Mono', monospace" }}>
             {(user?.nickname || 'U').charAt(0).toUpperCase()}
           </span>
         </div>
-
         {editing ? (
           <div className="flex items-center gap-2 justify-center mb-1">
-            <input
-              type="text"
-              value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
-              className="input-field text-center max-w-[200px]"
-              autoFocus
-            />
-            <button onClick={handleSaveNickname} className="text-sm text-primary font-medium">
-              保存
-            </button>
-            <button onClick={() => setEditing(false)} className="text-sm text-text-muted">
-              取消
-            </button>
+            <input type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} className="input-field text-center max-w-[200px]" autoFocus />
+            <button onClick={handleSaveNickname} className="text-sm text-ink font-medium">保存</button>
+            <button onClick={() => setEditing(false)} className="text-sm text-typo-muted">取消</button>
           </div>
         ) : (
-          <h2
-            className="text-lg font-bold text-text-primary cursor-pointer hover:text-primary transition-colors"
-            onClick={() => setEditing(true)}
-          >
+          <h2 className="text-lg text-ink cursor-pointer hover:opacity-80 transition-opacity" onClick={() => setEditing(true)}
+              style={{ fontFamily: "'Roobert PRO', 'Inter', sans-serif", fontWeight: 500 }}>
             {user?.nickname || '未设置昵称'}
           </h2>
         )}
-        <p className="text-sm text-text-muted mt-1">{user?.email}</p>
+        <p className="text-sm text-typo-muted mt-1">{user?.email}</p>
       </div>
 
-      {/* Stats */}
       {stats && (
         <div className="card mb-6">
-          <h3 className="text-sm font-semibold text-text-secondary mb-3">学习统计</h3>
-          <div className="grid grid-cols-2 gap-3">
-            <StatItem label="总单词数" value={stats.totalCards} />
-            <StatItem label="已掌握" value={stats.masteredCards} color="text-success" />
-            <StatItem label="学习中" value={stats.learningCards} color="text-warning" />
-            <StatItem label="待复习" value={stats.dueNow} color="text-danger" />
-            <StatItem label="今日学习" value={stats.todayStudied} />
-            <StatItem label="今日时长" value={`${stats.todayMinutes}分钟`} />
-            <StatItem label="正确率" value={`${stats.accuracy}%`} color="text-success" />
-            <StatItem label="复习进度" value={`${stats.masteredCards}/${stats.totalCards}`} />
+          <h3 className="text-eyebrow uppercase text-typo-muted mb-4" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>学习统计</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <StatItem label="TOTAL" value={stats.totalCards} />
+            <StatItem label="MASTERED" value={stats.masteredCards} color="text-success" />
+            <StatItem label="LEARNING" value={stats.learningCards} color="text-warning" />
+            <StatItem label="DUE" value={stats.dueNow} color="text-danger" />
+            <StatItem label="TODAY" value={stats.todayStudied} />
+            <StatItem label="MINUTES" value={`${stats.todayMinutes}min`} />
+            <StatItem label="ACCURACY" value={`${stats.accuracy}%`} color="text-success" />
+            <StatItem label="PROGRESS" value={`${stats.masteredCards}/${stats.totalCards}`} />
           </div>
         </div>
       )}
 
-      {/* Quick links */}
-      <div className="card mb-6 divide-y divide-gray-50">
-        <button onClick={() => navigate('/wordbooks')} className="w-full flex items-center justify-between py-4 text-text-primary">
-          <span className="text-sm font-medium">我的单词本</span>
-          <svg className="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-        <button onClick={() => navigate('/learn')} className="w-full flex items-center justify-between py-4 text-text-primary">
-          <span className="text-sm font-medium">开始复习</span>
-          <svg className="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-        <button onClick={() => navigate('/create')} className="w-full flex items-center justify-between py-4 text-text-primary">
-          <span className="text-sm font-medium">创作中心</span>
-          <svg className="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+      <div className="card mb-6">
+        <h3 className="text-eyebrow uppercase text-typo-muted mb-4" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>朗诵语速</h3>
+        <p className="text-xs text-typo-muted mb-4">设置单词和句子的默认朗读语速，学习卡片页面可临时覆盖</p>
+        <div className="flex items-center gap-2 flex-wrap">
+          {SPEED_OPTIONS.map((opt) => {
+            const isActive = (user?.tts_speed ?? 1.0) === opt.value;
+            return (
+              <button
+                key={opt.value}
+                onClick={() => handleSpeedChange(opt.value)}
+                disabled={savingSpeed}
+                className={`
+                  flex-1 min-w-[64px] py-2.5 rounded-card text-sm font-medium border transition-all duration-200
+                  ${isActive
+                    ? 'bg-accent text-white border-accent'
+                    : 'bg-surface border-hairline-soft text-typo-secondary hover:text-ink hover:border-hairline'
+                  }
+                  ${savingSpeed ? 'opacity-50 cursor-not-allowed' : ''}
+                `}
+              >
+                <div style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>{opt.label}</div>
+                <div className="text-[10px] opacity-60 mt-0.5">{opt.desc}</div>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Logout */}
-      <button onClick={handleLogout} className="w-full py-3 text-danger text-sm font-medium rounded-btn bg-red-50 active:bg-red-100 transition-colors">
+      <button onClick={handleLogout} className="w-full py-3 text-danger text-sm rounded-pill bg-danger-muted border border-danger/10 hover:opacity-80 transition-all duration-200">
         退出登录
       </button>
 
-      <p className="text-center text-xs text-text-muted mt-6 mb-4">
-        Vocabulario v1.0 · 西班牙语词汇学习平台
-      </p>
+      <p className="text-center text-xs text-typo-muted mt-6 mb-4">西语词汇学习平台 v1.0</p>
     </div>
   );
 }
 
 function StatItem({ label, value, color }: { label: string; value: string | number; color?: string }) {
   return (
-    <div className="bg-bg-dark rounded-lg p-3 text-center">
-      <p className={`text-lg font-bold ${color || 'text-text-primary'}`}>{value}</p>
-      <p className="text-[10px] text-text-muted">{label}</p>
+    <div className="bg-surface rounded-card p-3 text-center border border-hairline-soft">
+      <p className={`text-lg font-medium ${color || 'text-ink'}`} style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>{value}</p>
+      <p className="text-[10px] text-typo-muted mt-1 uppercase tracking-wider" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>{label}</p>
     </div>
   );
 }

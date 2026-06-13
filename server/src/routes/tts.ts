@@ -1,11 +1,27 @@
 import { Router, Response } from 'express';
 import path from 'path';
+import crypto from 'crypto';
+import fs from 'fs';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
 import { textToSpeech } from '../services/qwenClient';
 
 const router = Router();
 
+/** 根据 text+voice+speed 生成唯一 MD5 文件名，支持去重缓存 */
+function fileNameFromText(text: string, voice: string, speed: number): string {
+  const hash = crypto.createHash('md5').update(`${text}|${voice}|${speed}`).digest('hex');
+  return `tts_${hash}.mp3`;
+}
+
+/** 确保输出目录存在 */
+function ensureDir(dir: string) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
 // POST /api/tts/generate — 根据用户造句生成西班牙语读音
+// 后端去重：基于 text+voice+speed 的 MD5 文件名，已存在则直接返回不再调用大模型
 router.post('/generate', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { text, voice, speed } = req.body;
@@ -15,18 +31,24 @@ router.post('/generate', authMiddleware, async (req: AuthRequest, res: Response)
       return;
     }
 
+    const v = voice || 'Cherry';
+    const sp = speed || 1.0;
     const outputDir = path.join(__dirname, '..', '..', 'uploads', 'tts');
-    const fileName = `tts_${Date.now()}.mp3`;
+    const fileName = fileNameFromText(text.trim(), v, sp);
     const outputPath = path.join(outputDir, fileName);
 
-    await textToSpeech(
-      {
-        text: text.trim(),
-        voice: voice || 'Cherry',
-        speed: speed || 1.0,
-      },
-      outputPath
-    );
+    // 文件已存在则直接返回，跳过 TTS 调用
+    if (!fs.existsSync(outputPath)) {
+      ensureDir(outputDir);
+      await textToSpeech(
+        {
+          text: text.trim(),
+          voice: v,
+          speed: sp,
+        },
+        outputPath
+      );
+    }
 
     res.json({
       audioUrl: `/uploads/tts/${fileName}`,
@@ -48,25 +70,33 @@ router.post('/generate-batch', authMiddleware, async (req: AuthRequest, res: Res
       return;
     }
 
+    const v = voice || 'Cherry';
+    const sp = speed || 0.9;
     const outputDir = path.join(__dirname, '..', '..', 'uploads', 'tts');
+    ensureDir(outputDir);
+
     const results: { index: number; text: string; audioUrl: string }[] = [];
 
     for (let i = 0; i < sentences.length; i++) {
-      const fileName = `tts_${Date.now()}_${i}.mp3`;
+      const sentenceText = sentences[i].trim();
+      const fileName = fileNameFromText(sentenceText, v, sp);
       const outputPath = path.join(outputDir, fileName);
 
-      await textToSpeech(
-        {
-          text: sentences[i].trim(),
-          voice: voice || 'Cherry',
-          speed: speed || 0.9,
-        },
-        outputPath
-      );
+      // 文件已存在则跳过 TTS 调用
+      if (!fs.existsSync(outputPath)) {
+        await textToSpeech(
+          {
+            text: sentenceText,
+            voice: v,
+            speed: sp,
+          },
+          outputPath
+        );
+      }
 
       results.push({
         index: i,
-        text: sentences[i].trim(),
+        text: sentenceText,
         audioUrl: `/uploads/tts/${fileName}`,
       });
     }

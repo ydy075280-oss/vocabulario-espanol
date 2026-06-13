@@ -1,105 +1,36 @@
 import { useCallback, useRef, useState } from 'react';
-import axios from 'axios';
+import api from '../api';  // 使用配置好 auth interceptor 的 api 实例（自动携带 token）
+import { useAuth } from '../context/AuthContext';
 
-type SpanishAccent = 'es-ES' | 'es-MX';
 type PlayRate = 0.5 | 0.75 | 1 | 1.25 | 1.5;
 
-/**
- * 检测设备是否有西班牙语语音可用
- * 需要在 voices 加载完成后调用
- */
-function hasSpanishVoice(): boolean {
-  if (!('speechSynthesis' in window)) return false;
-  const voices = window.speechSynthesis.getVoices();
-  return voices.some((v) => v.lang.startsWith('es'));
+const VOICE = 'Cherry';
+
+/** 生成缓存 key：text|voice|speed */
+function cacheKey(text: string, speed: number): string {
+  return `${text.trim()}|${VOICE}|${speed}`;
 }
 
 /**
- * 获取 voices 列表（处理 Chrome 异步加载问题）
+ * TTS Hook — 直接调用后端大模型 API (qwen3-tts-flash) 发声
+ * 单词卡片、例句、创作文本 全部通过后端 API 生成语音
+ *
+ * 内置两层缓存：
+ *   - 前端 Map：同一文本+语速只请求一次 API（同页面/会话复用）
+ *   - 后端去重：基于 text+voice+speed 的 MD5 文件名，文件存在则直接返回
  */
-function getVoicesAsync(): Promise<SpeechSynthesisVoice[]> {
-  return new Promise((resolve) => {
-    if (!('speechSynthesis' in window)) {
-      resolve([]);
-      return;
-    }
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length > 0) {
-      resolve(voices);
-      return;
-    }
-    // Chrome 需要等 voiceschanged 事件
-    const handler = () => {
-      window.speechSynthesis.removeEventListener('voiceschanged', handler);
-      resolve(window.speechSynthesis.getVoices());
-    };
-    window.speechSynthesis.addEventListener('voiceschanged', handler);
-  });
-}
-
-/**
- * 检测是否有西班牙语语音（异步版本，处理 Chrome 加载延迟）
- */
-async function hasSpanishVoiceAsync(): Promise<boolean> {
-  const voices = await getVoicesAsync();
-  return voices.some((v) => v.lang.startsWith('es'));
-}
-
 export function useTTS() {
+  const { user } = useAuth();
+  const userSpeed = user?.tts_speed ?? 1.0;
   const [speaking, setSpeaking] = useState(false);
-  const [rate, setRate] = useState<PlayRate>(1);
-  const [accent, setAccent] = useState<SpanishAccent>('es-ES');
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const [ttsLoading, setTtsLoading] = useState(false);
+  const [rate, setRate] = useState<PlayRate>((userSpeed as PlayRate) || 1);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
-  // 缓存西班牙语语音检测结果，避免重复检测
-  const spanishVoiceAvailableRef = useRef<boolean | null>(null);
+  // 前端 TTS 缓存：key → audioUrl，同一文本+语速只请求一次
+  const ttsCacheRef = useRef<Map<string, string>>(new Map());
 
-  const speak = useCallback(
-    (text: string, wordRate?: PlayRate) => {
-      if (!('speechSynthesis' in window)) {
-        console.warn('Web Speech API not supported');
-        return;
-      }
-
-      window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      const selectedAccent = accent;
-      const selectedRate = wordRate || rate;
-
-      utterance.lang = selectedAccent;
-      utterance.rate = selectedRate;
-      utterance.pitch = 1;
-      utterance.volume = 1;
-
-      // Find best Spanish voice
-      const voices = window.speechSynthesis.getVoices();
-      const spanishVoice = voices.find(
-        (v) =>
-          v.lang.startsWith('es') &&
-          v.lang.includes(selectedAccent.split('-')[1]) &&
-          v.name.includes('Google')
-      ) ||
-      voices.find((v) => v.lang.startsWith('es') && v.name.includes('Google')) ||
-      voices.find((v) => v.lang.startsWith('es')) ||
-      voices[0];
-
-      if (spanishVoice) utterance.voice = spanishVoice;
-
-      utterance.onstart = () => setSpeaking(true);
-      utterance.onend = () => setSpeaking(false);
-      utterance.onerror = () => setSpeaking(false);
-
-      utteranceRef.current = utterance;
-      window.speechSynthesis.speak(utterance);
-    },
-    [accent, rate]
-  );
-
-  /** 播放视频原声音频文件 */
+  /** 播放音频 URL */
   const playAudioUrl = useCallback((audioUrl: string) => {
-    // 停止 TTS
-    window.speechSynthesis?.cancel();
     // 停止当前音频
     if (audioElRef.current) {
       audioElRef.current.pause();
@@ -114,59 +45,78 @@ export function useTTS() {
   }, []);
 
   /**
-   * 智能朗读：优先使用设备 Web Speech API（需有西班牙语语音），否则降级调用后端 API
-   * @param text 要朗读的文本
-   * @param wordRate 语速
-   * @returns 使用的方案：'web-speech' | 'api' | 'none'
+   * 核心方法：调用后端大模型 TTS API 生成并播放语音
+   * 返回 true/false 表示是否成功播放
    */
-  const speakWithFallback = useCallback(
-    async (text: string, wordRate?: PlayRate): Promise<'web-speech' | 'api' | 'none'> => {
-      // 1. 检测是否有西班牙语语音可用
-      if (spanishVoiceAvailableRef.current === null) {
-        spanishVoiceAvailableRef.current = await hasSpanishVoiceAsync();
+  const callTTSApi = useCallback(
+    async (text: string, wordRate?: PlayRate): Promise<boolean> => {
+      if (!text?.trim()) return false;
+
+      const speed = wordRate || rate;
+
+      // 1) 先查前端缓存
+      const key = cacheKey(text, speed);
+      const cached = ttsCacheRef.current.get(key);
+      if (cached) {
+        playAudioUrl(cached);
+        return true;
       }
 
-      if (spanishVoiceAvailableRef.current) {
-        // 有西班牙语语音 → 用 Web Speech API
-        speak(text, wordRate);
-        return 'web-speech';
-      }
-
-      // 2. 没有西班牙语语音 → 降级调用后端 API
+      setTtsLoading(true);
       try {
-        const { data } = await axios.post('/api/tts/generate', {
+        const { data } = await api.post('/tts/generate', {
           text: text.trim(),
-          voice: 'Cherry',
-          speed: wordRate || rate,
+          voice: VOICE,
+          speed,
         });
         if (data.audioUrl) {
+          // 2) 写入前端缓存
+          ttsCacheRef.current.set(key, data.audioUrl);
           playAudioUrl(data.audioUrl);
-          return 'api';
+          return true;
         }
       } catch (err) {
-        console.error('TTS API 降级调用失败:', err);
+        console.error('TTS API 调用失败:', err);
+      } finally {
+        setTtsLoading(false);
       }
-
-      return 'none';
+      return false;
     },
-    [speak, rate, playAudioUrl]
+    [rate, playAudioUrl]
   );
 
-  /** 智能播放：优先使用原声音频 URL，回退到 TTS（含西班牙语检测 + API 降级） */
+  /** 朗读单词/短文本（默认语速） */
+  const speak = useCallback(
+    (text: string, wordRate?: PlayRate) => {
+      callTTSApi(text, wordRate);
+    },
+    [callTTSApi]
+  );
+
+  /** 朗读句子（语速 0.75） */
+  const speakSentence = useCallback(
+    (text: string) => {
+      callTTSApi(text, 0.75);
+    },
+    [callTTSApi]
+  );
+
+  /** 智能播放：有 audioUrl 则直接播放 → 查前端缓存 → 调用 API（后端也会去重） */
   const speakOrPlay = useCallback(
     async (text: string, audioUrl?: string, wordRate?: PlayRate) => {
       if (audioUrl) {
         playAudioUrl(audioUrl);
         return;
       }
-      // 没有缓存音频 → 用 speakWithFallback（自动判断 Web Speech API 还是 API）
-      await speakWithFallback(text, wordRate);
+      await callTTSApi(text, wordRate);
     },
-    [speakWithFallback, playAudioUrl]
+    [callTTSApi, playAudioUrl]
   );
 
+  /** 同 speakOrPlay（别名，兼容旧调用） */
+  const speakWithFallback = speakOrPlay;
+
   const stop = useCallback(() => {
-    window.speechSynthesis.cancel();
     if (audioElRef.current) {
       audioElRef.current.pause();
       audioElRef.current = null;
@@ -174,12 +124,16 @@ export function useTTS() {
     setSpeaking(false);
   }, []);
 
-  const speakSentence = useCallback(
-    (text: string, audioUrl?: string) => {
-      speakOrPlay(text, audioUrl, 0.75);
-    },
-    [speakOrPlay]
-  );
-
-  return { speak, speakSentence, speakOrPlay, speakWithFallback, stop, speaking, rate, setRate, accent, setAccent, playAudioUrl, hasSpanishVoice };
+  return {
+    speak,
+    speakSentence,
+    speakOrPlay,
+    speakWithFallback,
+    stop,
+    speaking,
+    ttsLoading,
+    rate,
+    setRate,
+    playAudioUrl,
+  };
 }

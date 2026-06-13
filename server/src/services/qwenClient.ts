@@ -1,6 +1,8 @@
 import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
+import pdfParse from 'pdf-parse';
+import mammoth from 'mammoth';
 
 // ============================================================
 // 统一配置
@@ -339,6 +341,182 @@ ${rawTranscript}
   } catch {
     throw new Error('ASR 文本解析失败，LLM 返回: ' + parseContent.slice(0, 300));
   }
+}
+
+// ============================================================
+// 📄 通用文本提取 → LLM 拆分为单词/造句
+// 模型：qwen-plus-latest
+// 用途：PDF / Word 提取文本后统一调用此函数拆分
+// ============================================================
+const WORD_EXTRACTION_SYSTEM_PROMPT = `你是一位专业的西班牙语教师。请从提供的文本内容中提取西班牙语单词和造句。
+
+规则：
+1. 识别文本中所有值得学习的西班牙语单词/短语
+2. 为每个单词提供：词性、阴阳性（名词）、定冠词（名词）、中文释义、原形
+3. 为每个单词构造一句自然例句
+4. 如果文本中包含完整造句，也一并提取
+
+返回 JSON 格式：
+{
+  "words": [
+    {
+      "word": "单词（保留重音符号）",
+      "partOfSpeech": "词性（sustantivo/verbo/adjetivo/adverbio/preposición/conjunción/interjección）",
+      "gender": "阴阳性（masculino/femenino/común，非名词为空字符串）",
+      "definiteArticle": "定冠词（el/la/los/las，非名词为空字符串）",
+      "chineseMeaning": "中文释义",
+      "originalForm": "原形（动词用不定式，名词用单数）",
+      "example": "一句包含该单词的自然西班牙语句子",
+      "exampleZh": "例句的中文翻译"
+    }
+  ],
+  "sentences": [
+    {
+      "es": "完整的西班牙语句子（原文中的造句，可适当修正语法）",
+      "zh": "该句的中文翻译"
+    }
+  ]
+}
+
+注意：
+- words 最多提取 20 个核心学习单词（优先提取高频、实词）
+- sentences 包含文本中所有完整的西班牙语句子
+- 只返回纯 JSON，不要 markdown 代码块包裹，不要额外解释`;
+
+async function extractWordsFromRawText(rawText: string): Promise<ImageExtractionResult> {
+  console.log(`[TextExtract] 开始解析文本, 长度: ${rawText.length} 字符`);
+
+  const response = await openai.chat.completions.create({
+    model: 'qwen-plus-latest',
+    messages: [
+      { role: 'system', content: WORD_EXTRACTION_SYSTEM_PROMPT },
+      { role: 'user', content: `请分析以下西班牙语课件内容，提取单词和造句：\n\n${rawText.slice(0, 8000)}` },
+    ],
+    temperature: 0.1,
+    response_format: { type: 'json_object' },
+  });
+
+  const content = response.choices[0]?.message?.content || '{}';
+
+  // 清理可能的 markdown 包裹
+  const jsonStr = content
+    .replace(/```json\s*/g, '')
+    .replace(/```\s*/g, '')
+    .trim();
+
+  try {
+    const parsed = JSON.parse(jsonStr);
+    const words = (parsed.words || []) as ExtractedWord[];
+    const sentences = (parsed.sentences || []) as ExtractedSentence[];
+    console.log(`[TextExtract] 拆分结果: ${words.length} 个单词 + ${sentences.length} 条造句`);
+    return { words, sentences };
+  } catch {
+    throw new Error('文本提取解析失败，LLM 返回: ' + content.slice(0, 300));
+  }
+}
+
+// ============================================================
+// 📄 PDF 文本提取
+// 使用 pdf-parse 提取文本层文字，再交给 LLM 拆分
+// ============================================================
+export async function extractWordsFromPDF(
+  pdfFilePath: string
+): Promise<ImageExtractionResult> {
+  const apiKey = process.env.DASHSCOPE_API_KEY;
+  if (!apiKey || apiKey === 'sk-your-api-key-here') {
+    throw new Error('百炼 API Key 未配置，请在 server/.env 中设置 DASHSCOPE_API_KEY');
+  }
+
+  if (!fs.existsSync(pdfFilePath)) {
+    throw new Error(`PDF 文件不存在: ${pdfFilePath}`);
+  }
+
+  const pdfBuffer = fs.readFileSync(pdfFilePath);
+  const fileSizeMB = pdfBuffer.length / (1024 * 1024);
+  console.log(`[PDF] 开始提取: ${path.basename(pdfFilePath)}, 大小: ${fileSizeMB.toFixed(1)}MB`);
+
+  if (fileSizeMB > 50) {
+    throw new Error(`PDF 文件过大 (${fileSizeMB.toFixed(1)}MB)，请使用不超过 50MB 的文件`);
+  }
+
+  let textContent: string;
+
+  try {
+    const pdfData = await pdfParse(pdfBuffer, {
+      // 限制最大页数，避免超大文件
+      max: 50,
+    });
+    textContent = pdfData.text || '';
+    console.log(`[PDF] 页数: ${pdfData.numpages}, 提取文本: ${textContent.length} 字符`);
+  } catch (pdfErr: any) {
+    console.error(`[PDF] pdf-parse 提取失败: ${pdfErr.message}`);
+    throw new Error('PDF 文本提取失败（可能是扫描版图片 PDF，暂不支持图片型 PDF）: ' + pdfErr.message);
+  }
+
+  if (!textContent.trim()) {
+    throw new Error('PDF 中未提取到文字内容（可能是扫描版图片 PDF，仅支持文字型 PDF）');
+  }
+
+  // 文本过长时截断
+  const maxChars = 8000;
+  if (textContent.length > maxChars) {
+    console.log(`[PDF] 文本过长，截取前 ${maxChars} 字符`);
+    textContent = textContent.slice(0, maxChars);
+  }
+
+  return extractWordsFromRawText(textContent);
+}
+
+// ============================================================
+// 📝 Word (.docx) 文本提取
+// 使用 mammoth 提取文档文字，再交给 LLM 拆分
+// ============================================================
+export async function extractWordsFromDocx(
+  docxFilePath: string
+): Promise<ImageExtractionResult> {
+  const apiKey = process.env.DASHSCOPE_API_KEY;
+  if (!apiKey || apiKey === 'sk-your-api-key-here') {
+    throw new Error('百炼 API Key 未配置，请在 server/.env 中设置 DASHSCOPE_API_KEY');
+  }
+
+  if (!fs.existsSync(docxFilePath)) {
+    throw new Error(`Word 文件不存在: ${docxFilePath}`);
+  }
+
+  const docxBuffer = fs.readFileSync(docxFilePath);
+  const fileSizeMB = docxBuffer.length / (1024 * 1024);
+  console.log(`[Docx] 开始提取: ${path.basename(docxFilePath)}, 大小: ${fileSizeMB.toFixed(1)}MB`);
+
+  if (fileSizeMB > 20) {
+    throw new Error(`Word 文件过大 (${fileSizeMB.toFixed(1)}MB)，请使用不超过 20MB 的文件`);
+  }
+
+  let textContent: string;
+
+  try {
+    const result = await mammoth.extractRawText({ buffer: docxBuffer });
+    textContent = result.value || '';
+    console.log(`[Docx] 提取文本: ${textContent.length} 字符`);
+    if (result.messages.length > 0) {
+      console.log(`[Docx] mammoth 警告:`, result.messages);
+    }
+  } catch (docxErr: any) {
+    console.error(`[Docx] mammoth 提取失败: ${docxErr.message}`);
+    throw new Error('Word 文档解析失败: ' + docxErr.message);
+  }
+
+  if (!textContent.trim()) {
+    throw new Error('Word 文档中未提取到文字内容');
+  }
+
+  // 文本过长时截断
+  const maxChars = 8000;
+  if (textContent.length > maxChars) {
+    console.log(`[Docx] 文本过长，截取前 ${maxChars} 字符`);
+    textContent = textContent.slice(0, maxChars);
+  }
+
+  return extractWordsFromRawText(textContent);
 }
 
 // ============================================================

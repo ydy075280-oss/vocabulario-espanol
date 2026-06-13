@@ -41,7 +41,7 @@ router.post('/register', (req: Request, res: Response) => {
     const displayName = nickname || email.split('@')[0];
 
     db.prepare(
-      'INSERT INTO users (id, email, password_hash, nickname) VALUES (?, ?, ?, ?)'
+      'INSERT INTO users (id, email, password_hash, nickname, tts_speed) VALUES (?, ?, ?, ?, 1.0)'
     ).run(id, email, passwordHash, displayName);
 
     // Generate tokens
@@ -49,7 +49,7 @@ router.post('/register', (req: Request, res: Response) => {
     const refreshToken = generateRefreshToken(id);
 
     res.status(201).json({
-      user: { id, email, nickname: displayName, avatar_url: '' },
+      user: { id, email, nickname: displayName, avatar_url: '', tts_speed: 1.0 },
       accessToken,
       refreshToken,
     });
@@ -69,7 +69,7 @@ router.post('/login', (req: Request, res: Response) => {
     }
 
     const user = db.prepare(
-      'SELECT id, email, password_hash, nickname, avatar_url FROM users WHERE email = ?'
+      'SELECT id, email, password_hash, nickname, avatar_url, tts_speed FROM users WHERE email = ?'
     ).get(email) as any;
 
     if (!user || !bcrypt.compareSync(password, user.password_hash)) {
@@ -86,6 +86,7 @@ router.post('/login', (req: Request, res: Response) => {
         email: user.email,
         nickname: user.nickname,
         avatar_url: user.avatar_url || '',
+        tts_speed: user.tts_speed ?? 1.0,
       },
       accessToken,
       refreshToken,
@@ -129,7 +130,7 @@ router.post('/refresh', (req: Request, res: Response) => {
     db.prepare('DELETE FROM refresh_tokens WHERE id = ?').run(stored.id);
 
     const user = db.prepare(
-      'SELECT id, email, nickname, avatar_url FROM users WHERE id = ?'
+      'SELECT id, email, nickname, avatar_url, tts_speed FROM users WHERE id = ?'
     ).get(decoded.userId) as any;
 
     if (!user) {
@@ -146,6 +147,7 @@ router.post('/refresh', (req: Request, res: Response) => {
         email: user.email,
         nickname: user.nickname,
         avatar_url: user.avatar_url || '',
+        tts_speed: user.tts_speed ?? 1.0,
       },
       accessToken,
       refreshToken: newRefreshToken,
@@ -174,7 +176,7 @@ router.post('/logout', authMiddleware, (req: AuthRequest, res: Response) => {
 router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
   try {
     const user = db.prepare(
-      'SELECT id, email, nickname, avatar_url, created_at FROM users WHERE id = ?'
+      'SELECT id, email, nickname, avatar_url, tts_speed, created_at FROM users WHERE id = ?'
     ).get(req.userId!) as any;
 
     if (!user) {
@@ -208,6 +210,7 @@ router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
         email: user.email,
         nickname: user.nickname,
         avatar_url: user.avatar_url || '',
+        tts_speed: user.tts_speed ?? 1.0,
         created_at: user.created_at,
       },
       stats: {
@@ -226,7 +229,7 @@ router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
 // PUT /api/auth/profile
 router.put('/profile', authMiddleware, (req: AuthRequest, res: Response) => {
   try {
-    const { nickname, avatar_url } = req.body;
+    const { nickname, avatar_url, tts_speed } = req.body;
     const updates: string[] = [];
     const values: any[] = [];
 
@@ -237,6 +240,10 @@ router.put('/profile', authMiddleware, (req: AuthRequest, res: Response) => {
     if (avatar_url !== undefined) {
       updates.push('avatar_url = ?');
       values.push(avatar_url);
+    }
+    if (tts_speed !== undefined) {
+      updates.push('tts_speed = ?');
+      values.push(tts_speed);
     }
 
     if (updates.length === 0) {
@@ -252,10 +259,10 @@ router.put('/profile', authMiddleware, (req: AuthRequest, res: Response) => {
     ).run(...values);
 
     const user = db.prepare(
-      'SELECT id, email, nickname, avatar_url FROM users WHERE id = ?'
+      'SELECT id, email, nickname, avatar_url, tts_speed FROM users WHERE id = ?'
     ).get(req.userId!) as any;
 
-    res.json({ user });
+    res.json({ user: { ...user, tts_speed: user.tts_speed ?? 1.0 } });
   } catch (err: any) {
     res.status(500).json({ error: '更新失败: ' + err.message });
   }

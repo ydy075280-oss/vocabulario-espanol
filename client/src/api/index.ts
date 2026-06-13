@@ -32,7 +32,12 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    // 排除登录/注册/刷新接口自身的 401（如密码错误），不触发 token 刷新
+    const isAuthEndpoint = originalRequest.url?.includes('/auth/login')
+      || originalRequest.url?.includes('/auth/register')
+      || originalRequest.url?.includes('/auth/refresh');
+
+    if (error.response?.status === 401 && !originalRequest._retry && !isAuthEndpoint) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -86,7 +91,7 @@ export const authAPI = {
     return api.post('/auth/logout', { refreshToken });
   },
   me: () => api.get('/auth/me'),
-  updateProfile: (data: { nickname?: string; avatar_url?: string }) =>
+  updateProfile: (data: { nickname?: string; avatar_url?: string; tts_speed?: number }) =>
     api.put('/auth/profile', data),
 };
 
@@ -112,6 +117,7 @@ export const wordbookAPI = {
   update: (id: string, data: { name?: string; teacherTag?: string; courseTag?: string }) =>
     api.put(`/wordbooks/${id}`, data),
   delete: (id: string) => api.delete(`/wordbooks/${id}`),
+  tags: () => api.get('/wordbooks/tags') as Promise<{ data: { teacherTags: string[]; courseTags: string[]; allTags: string[] } }>,
 };
 
 // ------ Cards API ------
@@ -183,10 +189,15 @@ export const moduleAPI = {
     title?: string; content?: string; taskType?: string;
     dayNumber?: number; keyWords?: any[]; writingPrompt?: string; referenceVocabulary?: string[];
   }) => api.post(`/modules/${moduleId}/tasks`, data),
+  // 保存用户写作
+  saveWriting: (moduleId: string, taskId: string, content: string, title?: string) =>
+    api.post(`/modules/${moduleId}/tasks/${taskId}/writing`, { content, title }),
   // 删除某一天任务
   deleteTask: (moduleId: string, taskId: string) =>
     api.delete(`/modules/${moduleId}/tasks/${taskId}`),
   delete: (id: string) => api.delete(`/modules/${id}`),
+  // 导出模块词汇为单词本
+  exportWordbook: (id: string) => api.post(`/modules/${id}/export-wordbook`),
 };
 
 export default api;
