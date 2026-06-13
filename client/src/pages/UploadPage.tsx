@@ -76,6 +76,7 @@ export default function UploadPage() {
     if (valid.length !== selected.length) setError('部分文件格式不支持');
     else setError('');
     setFiles(valid); setUploadedData(null);
+    e.target.value = '';
     if (valid.length > 0 && !wordbookName) {
       setWordbookName(valid[0].name.replace(/\.[^/.]+$/, ''));
     }
@@ -137,7 +138,7 @@ export default function UploadPage() {
         <div className="mb-4">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-eyebrow uppercase text-typo-muted" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>{files.length} 个文件</h3>
-            <button onClick={() => { setFiles([]); setUploadedData(null); }} className="text-xs text-typo-muted hover:text-ink transition-colors">清空</button>
+            <button onClick={() => { setFiles([]); setUploadedData(null); if (fileInputRef.current) fileInputRef.current.value = ''; }} className="text-xs text-typo-muted hover:text-ink transition-colors">清空</button>
           </div>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {files.map((f, i) => (
@@ -252,7 +253,7 @@ export default function UploadPage() {
         {uploading ? (extracting ? '提取中...' : '上传中...') : `上传并提取 (${files.length}个文件)`}
       </button>
       {finalWordbookId && !uploading && (
-        <button onClick={() => navigate('/learn/' + finalWordbookId)} className="btn-outline w-full py-3.5 mt-3">立即开始学习</button>
+        <button onClick={() => navigate('/wordbooks/' + finalWordbookId)} className="btn-outline w-full py-3.5 mt-3">查看词本</button>
       )}
     </div>
   );

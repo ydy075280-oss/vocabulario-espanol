@@ -1,13 +1,10 @@
 # ============================================================
 # Vocabulario - 西语学习平台 Docker 镜像（多阶段构建）
+# 使用 PostgreSQL 数据库（通过 DATABASE_URL 连接）
 # ============================================================
 
 # ---- 阶段 1: 构建 ----
 FROM node:20-slim AS builder
-
-RUN apt-get update && apt-get install -y \
-    python3 make g++ \
-    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -45,8 +42,8 @@ COPY --from=builder /app/package*.json ./
 # 仅安装 server 的生产依赖
 RUN cd server && npm ci --omit=dev
 
-# 创建运行时目录
-RUN mkdir -p /app/server/data /app/server/uploads
+# 创建运行时上传目录（TTS 音频等暂存文件）
+RUN mkdir -p /app/server/uploads
 
 EXPOSE 3001
 

@@ -12,10 +12,6 @@ import createRoutes from './routes/create';
 import ttsRoutes from './routes/tts';
 import moduleRoutes from './routes/modules';
 
-// Initialize database
-initDatabase();
-console.log('📦 Database initialized');
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -67,9 +63,18 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📚 API available at http://localhost:${PORT}/api`);
-});
+// Initialize database then start server
+initDatabase()
+  .then(() => {
+    console.log('📦 Database initialized');
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`📚 API available at http://localhost:${PORT}/api`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Failed to initialize database:', err);
+    process.exit(1);
+  });
 
 export default app;

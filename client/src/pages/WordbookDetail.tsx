@@ -166,7 +166,7 @@ export default function WordbookDetail() {
         {filtered.map((card) => {
           const badge = getStatusBadge(card.status);
           return (
-            <div key={card.id} className="card-hover flex items-center gap-3 group">
+            <div key={card.id} className="card-hover flex items-center gap-3 group cursor-pointer" onClick={() => navigate(`/learn/${id}?start=${card.id}`)}>
               <button
                 onClick={() => speak(card.word)}
                 className="p-2 text-typo-secondary hover:text-ink hover:bg-surface rounded-input transition-colors shrink-0"

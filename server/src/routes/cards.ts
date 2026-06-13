@@ -1,47 +1,51 @@
 import { Router, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
-import db from '../db';
+import { query, queryOne, queryAll, transaction, exec } from '../db';
 
 const router = Router();
 
 // GET /api/cards?wordbookId=&status=&search=
-router.get('/', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { wordbookId, status, search, limit } = req.query;
-    let sql = 'SELECT * FROM word_cards WHERE user_id = ?';
+    let sql = 'SELECT * FROM word_cards WHERE user_id = $1';
     const params: any[] = [req.userId!];
+    let paramIndex = 2;
 
     if (wordbookId) {
-      sql += ' AND wordbook_id = ?';
+      sql += ` AND wordbook_id = $${paramIndex++}`;
       params.push(wordbookId);
     }
     if (status) {
-      sql += ' AND status = ?';
+      sql += ` AND status = $${paramIndex++}`;
       params.push(status);
     }
     if (search) {
-      sql += ' AND (word LIKE ? OR word_normalized LIKE ? OR chinese_meaning LIKE ?)';
+      sql += ` AND (word ILIKE $${paramIndex} OR word_normalized ILIKE $${paramIndex + 1} OR chinese_meaning ILIKE $${paramIndex + 2})`;
       const s = `%${search}%`;
       params.push(s, s, s);
+      paramIndex += 3;
     }
 
     sql += ' ORDER BY created_at DESC';
 
     if (limit) {
-      sql += ' LIMIT ?';
+      sql += ` LIMIT $${paramIndex++}`;
       params.push(Number(limit));
     }
 
-    const cards = db.prepare(sql).all(...params);
+    const cards = await queryAll(sql, params);
 
-    const cardsWithSentences = cards.map((card: any) => {
-      const sentences = db.prepare(
-        'SELECT * FROM example_sentences WHERE card_id = ? ORDER BY sort_order'
-      ).all(card.id);
-
-      return { ...card, sentences };
-    });
+    const cardsWithSentences = await Promise.all(
+      cards.map(async (card: any) => {
+        const sentences = await queryAll(
+          'SELECT * FROM example_sentences WHERE card_id = $1 ORDER BY sort_order',
+          [card.id]
+        );
+        return { ...card, sentences };
+      })
+    );
 
     res.json({ cards: cardsWithSentences });
   } catch (err: any) {
@@ -50,7 +54,7 @@ router.get('/', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // POST /api/cards - Create a new card
-router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const {
       wordbookId, word, partOfSpeech, gender, definiteArticle,
@@ -64,9 +68,10 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
     }
 
     // Verify wordbook belongs to user
-    const wordbook = db.prepare(
-      'SELECT id FROM wordbooks WHERE id = ? AND user_id = ?'
-    ).get(wordbookId, req.userId!);
+    const wordbook = await queryOne(
+      'SELECT id FROM wordbooks WHERE id = $1 AND user_id = $2',
+      [wordbookId, req.userId!]
+    );
 
     if (!wordbook) {
       res.status(404).json({ error: '单词本不存在' });
@@ -79,34 +84,34 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase();
 
-    db.prepare(`
-      INSERT INTO word_cards (
+    await exec(
+      `INSERT INTO word_cards (
         id, wordbook_id, user_id, word, word_normalized, part_of_speech,
         gender, definite_article, chinese_meaning, original_form,
         conjugation_json
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).run(
-      cardId, wordbookId, req.userId!, word, normalized,
-      partOfSpeech || '', gender || '', definiteArticle || '',
-      chineseMeaning || '', originalForm || word,
-      JSON.stringify(conjugation || {})
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+      [
+        cardId, wordbookId, req.userId!, word, normalized,
+        partOfSpeech || '', gender || '', definiteArticle || '',
+        chineseMeaning || '', originalForm || word,
+        JSON.stringify(conjugation || {})
+      ]
     );
 
     if (exampleSentence) {
-      db.prepare(`
-        INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh)
-        VALUES (?, ?, ?, ?)
-      `).run(uuidv4(), cardId, exampleSentence, exampleTranslation || '');
+      await exec(
+        'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh) VALUES ($1, $2, $3, $4)',
+        [uuidv4(), cardId, exampleSentence, exampleTranslation || '']
+      );
     }
 
     // Update card_count
-    db.prepare(`
-      UPDATE wordbooks SET card_count = (
-        SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?
-      ), updated_at = datetime('now') WHERE id = ?
-    `).run(wordbookId, wordbookId);
+    await exec(
+      'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+      [wordbookId]
+    );
 
-    const card = db.prepare('SELECT * FROM word_cards WHERE id = ?').get(cardId);
+    const card = await queryOne('SELECT * FROM word_cards WHERE id = $1', [cardId]);
     res.status(201).json({ card });
   } catch (err: any) {
     res.status(500).json({ error: '创建卡片失败' });
@@ -114,20 +119,22 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // GET /api/cards/:id
-router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const card = db.prepare(
-      'SELECT * FROM word_cards WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const card = await queryOne<any>(
+      'SELECT * FROM word_cards WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
     if (!card) {
       res.status(404).json({ error: '卡片不存在' });
       return;
     }
 
-    const sentences = db.prepare(
-      'SELECT * FROM example_sentences WHERE card_id = ? ORDER BY sort_order'
-    ).all(card.id);
+    const sentences = await queryAll(
+      'SELECT * FROM example_sentences WHERE card_id = $1 ORDER BY sort_order',
+      [card.id]
+    );
 
     let conjugation = {};
     try { conjugation = JSON.parse(card.conjugation_json || '{}'); } catch { /* ignore */ }
@@ -139,11 +146,12 @@ router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // PUT /api/cards/:id
-router.put('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.put('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const existing = db.prepare(
-      'SELECT * FROM word_cards WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!);
+    const existing = await queryOne(
+      'SELECT * FROM word_cards WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
     if (!existing) {
       res.status(404).json({ error: '卡片不存在' });
@@ -158,43 +166,44 @@ router.put('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 
     const updates: string[] = [];
     const values: any[] = [];
+    let paramIndex = 1;
 
     if (word !== undefined) {
-      updates.push('word = ?');
+      updates.push(`word = $${paramIndex++}`);
       values.push(word);
       const normalized = word
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase();
-      updates.push('word_normalized = ?');
+      updates.push(`word_normalized = $${paramIndex++}`);
       values.push(normalized);
     }
-    if (partOfSpeech !== undefined) { updates.push('part_of_speech = ?'); values.push(partOfSpeech); }
-    if (gender !== undefined) { updates.push('gender = ?'); values.push(gender); }
-    if (definiteArticle !== undefined) { updates.push('definite_article = ?'); values.push(definiteArticle); }
-    if (chineseMeaning !== undefined) { updates.push('chinese_meaning = ?'); values.push(chineseMeaning); }
-    if (originalForm !== undefined) { updates.push('original_form = ?'); values.push(originalForm); }
-    if (conjugation !== undefined) { updates.push('conjugation_json = ?'); values.push(JSON.stringify(conjugation)); }
-    if (imageUrl !== undefined) { updates.push('image_url = ?'); values.push(imageUrl); }
+    if (partOfSpeech !== undefined) { updates.push(`part_of_speech = $${paramIndex++}`); values.push(partOfSpeech); }
+    if (gender !== undefined) { updates.push(`gender = $${paramIndex++}`); values.push(gender); }
+    if (definiteArticle !== undefined) { updates.push(`definite_article = $${paramIndex++}`); values.push(definiteArticle); }
+    if (chineseMeaning !== undefined) { updates.push(`chinese_meaning = $${paramIndex++}`); values.push(chineseMeaning); }
+    if (originalForm !== undefined) { updates.push(`original_form = $${paramIndex++}`); values.push(originalForm); }
+    if (conjugation !== undefined) { updates.push(`conjugation_json = $${paramIndex++}`); values.push(JSON.stringify(conjugation)); }
+    if (imageUrl !== undefined) { updates.push(`image_url = $${paramIndex++}`); values.push(imageUrl); }
 
     if (updates.length > 0) {
-      updates.push("updated_at = datetime('now')");
+      updates.push('updated_at = NOW()');
       values.push(req.params.id);
-      db.prepare(`UPDATE word_cards SET ${updates.join(', ')} WHERE id = ?`).run(...values);
+      await exec(`UPDATE word_cards SET ${updates.join(', ')} WHERE id = $${paramIndex}`, values);
     }
 
     // Update example sentence
     if (exampleSentence !== undefined) {
-      db.prepare('DELETE FROM example_sentences WHERE card_id = ?').run(req.params.id);
+      await exec('DELETE FROM example_sentences WHERE card_id = $1', [req.params.id]);
       if (exampleSentence) {
-        db.prepare(`
-          INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh)
-          VALUES (?, ?, ?, ?)
-        `).run(uuidv4(), req.params.id, exampleSentence, exampleTranslation || '');
+        await exec(
+          'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh) VALUES ($1, $2, $3, $4)',
+          [uuidv4(), req.params.id, exampleSentence, exampleTranslation || '']
+        );
       }
     }
 
-    const card = db.prepare('SELECT * FROM word_cards WHERE id = ?').get(req.params.id);
+    const card = await queryOne('SELECT * FROM word_cards WHERE id = $1', [req.params.id]);
     res.json({ card });
   } catch (err: any) {
     res.status(500).json({ error: '更新卡片失败: ' + err.message });
@@ -202,26 +211,26 @@ router.put('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // DELETE /api/cards/:id
-router.delete('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.delete('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const card = db.prepare(
-      'SELECT * FROM word_cards WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!);
+    const card = await queryOne<any>(
+      'SELECT * FROM word_cards WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
     if (!card) {
       res.status(404).json({ error: '卡片不存在' });
       return;
     }
 
-    const wordbookId = (card as any).wordbook_id;
-    db.prepare('DELETE FROM word_cards WHERE id = ?').run(req.params.id);
+    const wordbookId = card.wordbook_id;
+    await exec('DELETE FROM word_cards WHERE id = $1', [req.params.id]);
 
     // Update card_count
-    db.prepare(`
-      UPDATE wordbooks SET card_count = (
-        SELECT COALESCE(COUNT(*), 0) FROM word_cards WHERE wordbook_id = ?
-      ), updated_at = datetime('now') WHERE id = ?
-    `).run(wordbookId, wordbookId);
+    await exec(
+      'UPDATE wordbooks SET card_count = (SELECT COALESCE(COUNT(*), 0) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+      [wordbookId]
+    );
 
     res.json({ message: '卡片已删除' });
   } catch (err: any) {
@@ -230,7 +239,7 @@ router.delete('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // POST /api/cards/batch - Batch create cards from extracted words
-router.post('/batch', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/batch', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { wordbookId, words } = req.body;
 
@@ -239,31 +248,19 @@ router.post('/batch', authMiddleware, (req: AuthRequest, res: Response) => {
       return;
     }
 
-    const wordbook = db.prepare(
-      'SELECT id FROM wordbooks WHERE id = ? AND user_id = ?'
-    ).get(wordbookId, req.userId!);
+    const wordbook = await queryOne(
+      'SELECT id FROM wordbooks WHERE id = $1 AND user_id = $2',
+      [wordbookId, req.userId!]
+    );
 
     if (!wordbook) {
       res.status(404).json({ error: '单词本不存在' });
       return;
     }
 
-    const insertCard = db.prepare(`
-      INSERT INTO word_cards (
-        id, wordbook_id, user_id, word, word_normalized, part_of_speech,
-        gender, definite_article, chinese_meaning, original_form,
-        conjugation_json
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    const insertSentence = db.prepare(`
-      INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh)
-      VALUES (?, ?, ?, ?)
-    `);
-
     const cardIds: string[] = [];
 
-    const batchInsert = db.transaction(() => {
+    await transaction(async (client) => {
       for (const w of words) {
         const cardId = uuidv4();
         const normalized = (w.word || '')
@@ -271,29 +268,36 @@ router.post('/batch', authMiddleware, (req: AuthRequest, res: Response) => {
           .replace(/[\u0300-\u036f]/g, '')
           .toLowerCase();
 
-        insertCard.run(
-          cardId, wordbookId, req.userId!, w.word || '', normalized,
-          w.partOfSpeech || '', w.gender || '', w.definiteArticle || '',
-          w.chineseMeaning || '', w.originalForm || w.word || '',
-          JSON.stringify(w.conjugation || {})
+        await client.query(
+          `INSERT INTO word_cards (
+            id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+            gender, definite_article, chinese_meaning, original_form,
+            conjugation_json
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+          [
+            cardId, wordbookId, req.userId!, w.word || '', normalized,
+            w.partOfSpeech || '', w.gender || '', w.definiteArticle || '',
+            w.chineseMeaning || '', w.originalForm || w.word || '',
+            JSON.stringify(w.conjugation || {})
+          ]
         );
 
         if (w.exampleSentence) {
-          insertSentence.run(uuidv4(), cardId, w.exampleSentence, w.exampleTranslation || '');
+          await client.query(
+            'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh) VALUES ($1, $2, $3, $4)',
+            [uuidv4(), cardId, w.exampleSentence, w.exampleTranslation || '']
+          );
         }
 
         cardIds.push(cardId);
       }
     });
 
-    batchInsert();
-
     // Update card_count
-    db.prepare(`
-      UPDATE wordbooks SET card_count = (
-        SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?
-      ), updated_at = datetime('now') WHERE id = ?
-    `).run(wordbookId, wordbookId);
+    await exec(
+      'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+      [wordbookId]
+    );
 
     res.status(201).json({ message: `成功创建 ${cardIds.length} 张卡片`, cardIds });
   } catch (err: any) {

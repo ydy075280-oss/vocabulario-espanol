@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
-import db from '../db';
+import { query, queryOne, queryAll, exec } from '../db';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
 
 const router = Router();
@@ -10,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'vocabulario-secret-key-dev';
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'vocabulario-refresh-secret-dev';
 
 // POST /api/auth/register
-router.post('/register', (req: Request, res: Response) => {
+router.post('/register', async (req: Request, res: Response) => {
   try {
     const { email, password, nickname } = req.body;
 
@@ -30,7 +30,7 @@ router.post('/register', (req: Request, res: Response) => {
       return;
     }
 
-    const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(email);
+    const existing = await queryOne('SELECT id FROM users WHERE email = $1', [email]);
     if (existing) {
       res.status(409).json({ error: '该邮箱已被注册' });
       return;
@@ -40,13 +40,14 @@ router.post('/register', (req: Request, res: Response) => {
     const passwordHash = bcrypt.hashSync(password, 10);
     const displayName = nickname || email.split('@')[0];
 
-    db.prepare(
-      'INSERT INTO users (id, email, password_hash, nickname, tts_speed) VALUES (?, ?, ?, ?, 1.0)'
-    ).run(id, email, passwordHash, displayName);
+    await exec(
+      'INSERT INTO users (id, email, password_hash, nickname, tts_speed) VALUES ($1, $2, $3, $4, 1.0)',
+      [id, email, passwordHash, displayName]
+    );
 
     // Generate tokens
     const accessToken = jwt.sign({ userId: id }, JWT_SECRET, { expiresIn: '2h' });
-    const refreshToken = generateRefreshToken(id);
+    const refreshToken = await generateRefreshToken(id);
 
     res.status(201).json({
       user: { id, email, nickname: displayName, avatar_url: '', tts_speed: 1.0 },
@@ -59,7 +60,7 @@ router.post('/register', (req: Request, res: Response) => {
 });
 
 // POST /api/auth/login
-router.post('/login', (req: Request, res: Response) => {
+router.post('/login', async (req: Request, res: Response) => {
   try {
     const { email, password, rememberMe } = req.body;
 
@@ -68,9 +69,10 @@ router.post('/login', (req: Request, res: Response) => {
       return;
     }
 
-    const user = db.prepare(
-      'SELECT id, email, password_hash, nickname, avatar_url, tts_speed FROM users WHERE email = ?'
-    ).get(email) as any;
+    const user = await queryOne<any>(
+      'SELECT id, email, password_hash, nickname, avatar_url, tts_speed FROM users WHERE email = $1',
+      [email]
+    );
 
     if (!user || !bcrypt.compareSync(password, user.password_hash)) {
       res.status(401).json({ error: '邮箱或密码错误' });
@@ -78,7 +80,7 @@ router.post('/login', (req: Request, res: Response) => {
     }
 
     const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '2h' });
-    const refreshToken = generateRefreshToken(user.id, rememberMe);
+    const refreshToken = await generateRefreshToken(user.id, rememberMe);
 
     res.json({
       user: {
@@ -97,7 +99,7 @@ router.post('/login', (req: Request, res: Response) => {
 });
 
 // POST /api/auth/refresh
-router.post('/refresh', (req: Request, res: Response) => {
+router.post('/refresh', async (req: Request, res: Response) => {
   try {
     const { refreshToken } = req.body;
     if (!refreshToken) {
@@ -111,9 +113,10 @@ router.post('/refresh', (req: Request, res: Response) => {
     };
 
     // Verify token exists in DB
-    const stored = db.prepare(
-      'SELECT id, expires_at FROM refresh_tokens WHERE token = ? AND user_id = ?'
-    ).get(refreshToken, decoded.userId) as any;
+    const stored = await queryOne<any>(
+      'SELECT id, expires_at FROM refresh_tokens WHERE token = $1 AND user_id = $2',
+      [refreshToken, decoded.userId]
+    );
 
     if (!stored) {
       res.status(401).json({ error: 'Refresh Token 无效' });
@@ -121,17 +124,18 @@ router.post('/refresh', (req: Request, res: Response) => {
     }
 
     if (new Date(stored.expires_at) < new Date()) {
-      db.prepare('DELETE FROM refresh_tokens WHERE id = ?').run(stored.id);
+      await exec('DELETE FROM refresh_tokens WHERE id = $1', [stored.id]);
       res.status(401).json({ error: 'Refresh Token 已过期，请重新登录' });
       return;
     }
 
     // Delete old, issue new
-    db.prepare('DELETE FROM refresh_tokens WHERE id = ?').run(stored.id);
+    await exec('DELETE FROM refresh_tokens WHERE id = $1', [stored.id]);
 
-    const user = db.prepare(
-      'SELECT id, email, nickname, avatar_url, tts_speed FROM users WHERE id = ?'
-    ).get(decoded.userId) as any;
+    const user = await queryOne<any>(
+      'SELECT id, email, nickname, avatar_url, tts_speed FROM users WHERE id = $1',
+      [decoded.userId]
+    );
 
     if (!user) {
       res.status(401).json({ error: '用户不存在' });
@@ -139,7 +143,7 @@ router.post('/refresh', (req: Request, res: Response) => {
     }
 
     const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '2h' });
-    const newRefreshToken = generateRefreshToken(user.id, true);
+    const newRefreshToken = await generateRefreshToken(user.id, true);
 
     res.json({
       user: {
@@ -158,14 +162,13 @@ router.post('/refresh', (req: Request, res: Response) => {
 });
 
 // POST /api/auth/logout
-router.post('/logout', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/logout', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { refreshToken } = req.body;
     if (refreshToken) {
-      db.prepare('DELETE FROM refresh_tokens WHERE token = ?').run(refreshToken);
+      await exec('DELETE FROM refresh_tokens WHERE token = $1', [refreshToken]);
     }
-    // Delete all tokens for this user
-    db.prepare('DELETE FROM refresh_tokens WHERE user_id = ?').run(req.userId!);
+    await exec('DELETE FROM refresh_tokens WHERE user_id = $1', [req.userId!]);
     res.json({ message: '已退出登录' });
   } catch (err: any) {
     res.status(500).json({ error: '退出失败: ' + err.message });
@@ -173,11 +176,12 @@ router.post('/logout', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // GET /api/auth/me
-router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/me', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const user = db.prepare(
-      'SELECT id, email, nickname, avatar_url, tts_speed, created_at FROM users WHERE id = ?'
-    ).get(req.userId!) as any;
+    const user = await queryOne<any>(
+      'SELECT id, email, nickname, avatar_url, tts_speed, created_at FROM users WHERE id = $1',
+      [req.userId!]
+    );
 
     if (!user) {
       res.status(404).json({ error: '用户不存在' });
@@ -185,24 +189,28 @@ router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
     }
 
     // Get stats
-    const totalCards = db.prepare(
-      'SELECT COUNT(*) as count FROM word_cards WHERE user_id = ?'
-    ).get(req.userId!) as any;
+    const totalCards = await queryOne<any>(
+      'SELECT COUNT(*) as count FROM word_cards WHERE user_id = $1',
+      [req.userId!]
+    );
 
-    const masteredCards = db.prepare(
-      'SELECT COUNT(*) as count FROM word_cards WHERE user_id = ? AND status = ?'
-    ).get(req.userId!, 'mastered') as any;
+    const masteredCards = await queryOne<any>(
+      'SELECT COUNT(*) as count FROM word_cards WHERE user_id = $1 AND status = $2',
+      [req.userId!, 'mastered']
+    );
 
-    const totalCreations = db.prepare(
-      'SELECT COUNT(*) as count FROM creations WHERE user_id = ?'
-    ).get(req.userId!) as any;
+    const totalCreations = await queryOne<any>(
+      'SELECT COUNT(*) as count FROM creations WHERE user_id = $1',
+      [req.userId!]
+    );
 
     // Calculate streak
-    const streak = calculateStreak(req.userId!);
+    const streak = await calculateStreak(req.userId!);
 
-    const totalTime = db.prepare(
-      'SELECT COALESCE(SUM(time_spent), 0) as total FROM study_records WHERE user_id = ?'
-    ).get(req.userId!) as any;
+    const totalTime = await queryOne<any>(
+      'SELECT COALESCE(SUM(time_spent), 0) as total FROM study_records WHERE user_id = $1',
+      [req.userId!]
+    );
 
     res.json({
       user: {
@@ -214,11 +222,11 @@ router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
         created_at: user.created_at,
       },
       stats: {
-        totalCards: totalCards.count || 0,
-        masteredCards: masteredCards.count || 0,
-        totalCreations: totalCreations.count || 0,
+        totalCards: parseInt(totalCards?.count) || 0,
+        masteredCards: parseInt(masteredCards?.count) || 0,
+        totalCreations: parseInt(totalCreations?.count) || 0,
         streak: streak,
-        totalMinutes: Math.round((totalTime.total || 0) / 60),
+        totalMinutes: Math.round((parseInt(totalTime?.total) || 0) / 60),
       },
     });
   } catch (err: any) {
@@ -227,22 +235,23 @@ router.get('/me', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // PUT /api/auth/profile
-router.put('/profile', authMiddleware, (req: AuthRequest, res: Response) => {
+router.put('/profile', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { nickname, avatar_url, tts_speed } = req.body;
     const updates: string[] = [];
     const values: any[] = [];
+    let paramIndex = 1;
 
     if (nickname !== undefined) {
-      updates.push('nickname = ?');
+      updates.push(`nickname = $${paramIndex++}`);
       values.push(nickname);
     }
     if (avatar_url !== undefined) {
-      updates.push('avatar_url = ?');
+      updates.push(`avatar_url = $${paramIndex++}`);
       values.push(avatar_url);
     }
     if (tts_speed !== undefined) {
-      updates.push('tts_speed = ?');
+      updates.push(`tts_speed = $${paramIndex++}`);
       values.push(tts_speed);
     }
 
@@ -251,16 +260,18 @@ router.put('/profile', authMiddleware, (req: AuthRequest, res: Response) => {
       return;
     }
 
-    updates.push("updated_at = datetime('now')");
+    updates.push('updated_at = NOW()');
     values.push(req.userId!);
 
-    db.prepare(
-      `UPDATE users SET ${updates.join(', ')} WHERE id = ?`
-    ).run(...values);
+    await exec(
+      `UPDATE users SET ${updates.join(', ')} WHERE id = $${paramIndex}`,
+      values
+    );
 
-    const user = db.prepare(
-      'SELECT id, email, nickname, avatar_url, tts_speed FROM users WHERE id = ?'
-    ).get(req.userId!) as any;
+    const user = await queryOne<any>(
+      'SELECT id, email, nickname, avatar_url, tts_speed FROM users WHERE id = $1',
+      [req.userId!]
+    );
 
     res.json({ user: { ...user, tts_speed: user.tts_speed ?? 1.0 } });
   } catch (err: any) {
@@ -269,9 +280,9 @@ router.put('/profile', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // Helper functions
-function generateRefreshToken(userId: string, rememberMe = false): string {
+async function generateRefreshToken(userId: string, rememberMe = false): Promise<string> {
   const tokenId = uuidv4();
-  const expiresIn = rememberMe ? 7 : 1; // 7 days or 1 day
+  const expiresIn = rememberMe ? 7 : 1;
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() + expiresIn);
 
@@ -279,21 +290,23 @@ function generateRefreshToken(userId: string, rememberMe = false): string {
     expiresIn: `${expiresIn}d`,
   });
 
-  db.prepare(
-    'INSERT INTO refresh_tokens (id, user_id, token, expires_at) VALUES (?, ?, ?, ?)'
-  ).run(tokenId, userId, token, expiresAt.toISOString());
+  await exec(
+    'INSERT INTO refresh_tokens (id, user_id, token, expires_at) VALUES ($1, $2, $3, $4)',
+    [tokenId, userId, token, expiresAt.toISOString()]
+  );
 
   return token;
 }
 
-function calculateStreak(userId: string): number {
-  const records = db.prepare(`
-    SELECT DISTINCT date(studied_at) as study_date
-    FROM study_records
-    WHERE user_id = ?
-    ORDER BY study_date DESC
-    LIMIT 100
-  `).all(userId) as any[];
+async function calculateStreak(userId: string): Promise<number> {
+  const records = await queryAll<any>(
+    `SELECT DISTINCT studied_at::date as study_date
+     FROM study_records
+     WHERE user_id = $1
+     ORDER BY study_date DESC
+     LIMIT 100`,
+    [userId]
+  );
 
   if (records.length === 0) return 0;
 
@@ -309,13 +322,11 @@ function calculateStreak(userId: string): number {
     if (records[i].study_date === expectedStr) {
       streak++;
     } else if (i === 0) {
-      // Today hasn't been recorded yet, check if yesterday matches
       const yesterday = new Date(today);
       yesterday.setDate(yesterday.getDate() - 1);
       const yesterdayStr = yesterday.toISOString().split('T')[0];
       if (records[i].study_date === yesterdayStr) {
         streak = 1;
-        // Continue checking from yesterday
         for (let j = 1; j < records.length; j++) {
           const exp = new Date(yesterday);
           exp.setDate(exp.getDate() - j);

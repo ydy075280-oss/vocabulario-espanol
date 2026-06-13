@@ -7,7 +7,7 @@ import { Router, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
-import db from '../db';
+import { query, queryOne, queryAll, transaction, exec } from '../db';
 import { generateModulePlan } from '../services/moduleAI';
 import { textToSpeech } from '../services/qwenClient';
 
@@ -47,51 +47,52 @@ router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     const moduleId = uuidv4();
 
     // 保存模块（含内容类型 + 语种）
-    db.prepare(`
-      INSERT INTO big_modules (id, user_id, title, description, homework_text, ai_plan_json, content_type, content_type_label, language, status, total_days)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', ?)
-    `).run(
-      moduleId,
-      req.userId!,
-      aiPlan.title,
-      aiPlan.description,
-      homeworkText,
-      JSON.stringify(aiPlan),
-      aiPlan.contentType,
-      aiPlan.contentTypeLabel,
-      aiPlan.language || '',
-      aiPlan.dailyTasks.length
+    await exec(
+      `INSERT INTO big_modules (id, user_id, title, description, homework_text, ai_plan_json, content_type, content_type_label, language, status, total_days)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'active', $10)`,
+      [
+        moduleId,
+        req.userId!,
+        aiPlan.title,
+        aiPlan.description,
+        homeworkText,
+        JSON.stringify(aiPlan),
+        aiPlan.contentType,
+        aiPlan.contentTypeLabel,
+        aiPlan.language || '',
+        aiPlan.dailyTasks.length
+      ]
     );
 
     // 保存每日任务（含 task_data）
-    const insertTask = db.prepare(`
-      INSERT INTO module_tasks (id, module_id, day_number, title, content, task_type, task_data, sort_order)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
     for (const task of aiPlan.dailyTasks) {
       const taskData = buildTaskData(task);
-      insertTask.run(
-        uuidv4(),
-        moduleId,
-        task.dayNumber,
-        task.title,
-        task.content,
-        task.taskType,
-        JSON.stringify(taskData),
-        task.dayNumber
+      await exec(
+        `INSERT INTO module_tasks (id, module_id, day_number, title, content, task_type, task_data, sort_order)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+        [
+          uuidv4(),
+          moduleId,
+          task.dayNumber,
+          task.title,
+          task.content,
+          task.taskType,
+          JSON.stringify(taskData),
+          task.dayNumber
+        ]
       );
     }
 
-    const module = db.prepare('SELECT * FROM big_modules WHERE id = ?').get(moduleId) as any;
-    const tasks = db.prepare(
-      'SELECT * FROM module_tasks WHERE module_id = ? ORDER BY sort_order'
-    ).all(moduleId);
+    const mod = await queryOne<any>('SELECT * FROM big_modules WHERE id = $1', [moduleId]);
+    const tasks = await queryAll(
+      'SELECT * FROM module_tasks WHERE module_id = $1 ORDER BY sort_order',
+      [moduleId]
+    );
 
     res.status(201).json({
       message: `AI 识别语种：${aiPlan.language || '未知'}｜已生成 "${aiPlan.title}"（${aiPlan.contentTypeLabel}）的 ${aiPlan.dailyTasks.length} 天学习计划`,
       module: {
-        ...module,
+        ...mod,
         tasks: (tasks as any[]).map((t: any) => {
           let taskData: any = {};
           try { taskData = JSON.parse(t.task_data || '{}'); } catch { /* ignore */ }
@@ -108,36 +109,41 @@ router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
 // ============================================================
 // GET /api/modules - 获取大模块列表
 // ============================================================
-router.get('/', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const modules = db.prepare(`
-      SELECT * FROM big_modules
-      WHERE user_id = ?
-      ORDER BY updated_at DESC
-    `).all(req.userId!);
+    const modules = await queryAll<any>(
+      `SELECT * FROM big_modules
+       WHERE user_id = $1
+       ORDER BY updated_at DESC`,
+      [req.userId!]
+    );
 
-    const result = (modules as any[]).map((m: any) => {
-      const tasks = db.prepare(
-        'SELECT completed FROM module_tasks WHERE module_id = ?'
-      ).all(m.id) as any[];
-      const totalTasks = tasks.length;
-      const completedTasks = tasks.filter((t: any) => t.completed).length;
+    const result = await Promise.all(
+      modules.map(async (m: any) => {
+        const tasks = await queryAll<any>(
+          'SELECT completed FROM module_tasks WHERE module_id = $1',
+          [m.id]
+        );
+        const totalTasks = tasks.length;
+        const completedTasks = tasks.filter((t: any) => t.completed).length;
 
-      if (totalTasks > 0 && completedTasks === totalTasks && m.status === 'active') {
-        db.prepare(
-          "UPDATE big_modules SET status = 'completed', completed_days = ?, updated_at = datetime('now') WHERE id = ?"
-        ).run(m.total_days, m.id);
-        m.status = 'completed';
-        m.completed_days = m.total_days;
-      }
+        if (totalTasks > 0 && completedTasks === totalTasks && m.status === 'active') {
+          await exec(
+            "UPDATE big_modules SET status = 'completed', completed_days = $1, updated_at = NOW() WHERE id = $2",
+            [m.total_days, m.id]
+          );
+          m.status = 'completed';
+          m.completed_days = m.total_days;
+        }
 
-      return {
-        ...m,
-        totalTasks,
-        completedTasks,
-        progress: totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0,
-      };
-    });
+        return {
+          ...m,
+          totalTasks,
+          completedTasks,
+          progress: totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0,
+        };
+      })
+    );
 
     res.json({ modules: result });
   } catch (err: any) {
@@ -148,27 +154,29 @@ router.get('/', authMiddleware, (req: AuthRequest, res: Response) => {
 // ============================================================
 // GET /api/modules/:id - 获取大模块详情
 // ============================================================
-router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const module = db.prepare(
-      'SELECT * FROM big_modules WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const mod = await queryOne<any>(
+      'SELECT * FROM big_modules WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
-    if (!module) {
+    if (!mod) {
       res.status(404).json({ error: '大模块不存在' });
       return;
     }
 
-    const tasks = db.prepare(
-      'SELECT * FROM module_tasks WHERE module_id = ? ORDER BY sort_order'
-    ).all(req.params.id);
+    const tasks = await queryAll(
+      'SELECT * FROM module_tasks WHERE module_id = $1 ORDER BY sort_order',
+      [req.params.id]
+    );
 
     let aiPlan: any = {};
-    try { aiPlan = JSON.parse(module.ai_plan_json || '{}'); } catch { /* ignore */ }
+    try { aiPlan = JSON.parse(mod.ai_plan_json || '{}'); } catch { /* ignore */ }
 
     res.json({
       module: {
-        ...module,
+        ...mod,
         tasks: (tasks as any[]).map((t: any) => {
           let taskData: any = {};
           try { taskData = JSON.parse(t.task_data || '{}'); } catch { /* ignore */ }
@@ -185,28 +193,30 @@ router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 // ============================================================
 // PUT /api/modules/:id - 更新模块信息（标题、描述）
 // ============================================================
-router.put('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.put('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const module = db.prepare(
-      'SELECT * FROM big_modules WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const mod = await queryOne<any>(
+      'SELECT * FROM big_modules WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
-    if (!module) {
+    if (!mod) {
       res.status(404).json({ error: '大模块不存在' });
       return;
     }
 
     const { title, description } = req.body;
 
-    db.prepare(`
-      UPDATE big_modules
-      SET title = COALESCE(?, title),
-          description = COALESCE(?, description),
-          updated_at = datetime('now')
-      WHERE id = ?
-    `).run(title || null, description || null, req.params.id);
+    await exec(
+      `UPDATE big_modules
+       SET title = COALESCE($1, title),
+           description = COALESCE($2, description),
+           updated_at = NOW()
+       WHERE id = $3`,
+      [title || null, description || null, req.params.id]
+    );
 
-    const updated = db.prepare('SELECT * FROM big_modules WHERE id = ?').get(req.params.id);
+    const updated = await queryOne('SELECT * FROM big_modules WHERE id = $1', [req.params.id]);
     res.json({ module: updated, message: '模块信息已更新' });
   } catch (err: any) {
     res.status(500).json({ error: '更新模块失败' });
@@ -216,11 +226,12 @@ router.put('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 // ============================================================
 // PUT /api/modules/:id/tasks/:taskId - 编辑单个任务
 // ============================================================
-router.put('/:id/tasks/:taskId', authMiddleware, (req: AuthRequest, res: Response) => {
+router.put('/:id/tasks/:taskId', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) {
       res.status(404).json({ error: '任务不存在' });
@@ -229,16 +240,17 @@ router.put('/:id/tasks/:taskId', authMiddleware, (req: AuthRequest, res: Respons
 
     const { title, content, taskType } = req.body;
 
-    db.prepare(`
-      UPDATE module_tasks
-      SET title = COALESCE(?, title),
-          content = COALESCE(?, content),
-          task_type = COALESCE(?, task_type),
-          updated_at = datetime('now')
-      WHERE id = ?
-    `).run(title || null, content || null, taskType || null, req.params.taskId);
+    await exec(
+      `UPDATE module_tasks
+       SET title = COALESCE($1, title),
+           content = COALESCE($2, content),
+           task_type = COALESCE($3, task_type),
+           updated_at = NOW()
+       WHERE id = $4`,
+      [title || null, content || null, taskType || null, req.params.taskId]
+    );
 
-    const updated = db.prepare('SELECT * FROM module_tasks WHERE id = ?').get(req.params.taskId) as any;
+    const updated = await queryOne<any>('SELECT * FROM module_tasks WHERE id = $1', [req.params.taskId]);
     let taskData: any = {};
     try { taskData = JSON.parse(updated.task_data || '{}'); } catch { /* ignore */ }
     res.json({ task: { ...updated, taskData }, message: '任务已更新' });
@@ -250,11 +262,12 @@ router.put('/:id/tasks/:taskId', authMiddleware, (req: AuthRequest, res: Respons
 // ============================================================
 // POST /api/modules/:id/tasks/:taskId/toggle - 切换任务完成状态
 // ============================================================
-router.post('/:id/tasks/:taskId/toggle', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/:id/tasks/:taskId/toggle', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) {
       res.status(404).json({ error: '任务不存在' });
@@ -264,27 +277,30 @@ router.post('/:id/tasks/:taskId/toggle', authMiddleware, (req: AuthRequest, res:
     const newCompleted = task.completed ? 0 : 1;
     const completedAt = newCompleted ? new Date().toISOString() : null;
 
-    db.prepare(`
-      UPDATE module_tasks
-      SET completed = ?, completed_at = ?, updated_at = datetime('now')
-      WHERE id = ?
-    `).run(newCompleted, completedAt, req.params.taskId);
+    await exec(
+      `UPDATE module_tasks
+       SET completed = $1, completed_at = $2, updated_at = NOW()
+       WHERE id = $3`,
+      [newCompleted, completedAt, req.params.taskId]
+    );
 
-    const tasks = db.prepare(
-      'SELECT completed FROM module_tasks WHERE module_id = ?'
-    ).all(req.params.id) as any[];
+    const tasks = await queryAll<any>(
+      'SELECT completed FROM module_tasks WHERE module_id = $1',
+      [req.params.id]
+    );
     const totalTasks = tasks.length;
     const completedTasks = tasks.filter((t: any) => t.completed).length;
 
-    db.prepare(`
-      UPDATE big_modules
-      SET completed_days = ?,
-          status = CASE WHEN ? >= total_days THEN 'completed' ELSE status END,
-          updated_at = datetime('now')
-      WHERE id = ?
-    `).run(completedTasks, completedTasks, req.params.id);
+    await exec(
+      `UPDATE big_modules
+       SET completed_days = $1,
+           status = CASE WHEN $2 >= total_days THEN 'completed' ELSE status END,
+           updated_at = NOW()
+       WHERE id = $3`,
+      [completedTasks, completedTasks, req.params.id]
+    );
 
-    const updated = db.prepare('SELECT * FROM module_tasks WHERE id = ?').get(req.params.taskId);
+    const updated = await queryOne('SELECT * FROM module_tasks WHERE id = $1', [req.params.taskId]);
     res.json({
       task: updated,
       progress: { completedTasks, totalTasks },
@@ -299,9 +315,10 @@ router.post('/:id/tasks/:taskId/toggle', authMiddleware, (req: AuthRequest, res:
 // ============================================================
 router.post('/:id/tasks/:taskId/tts', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) {
       res.status(404).json({ error: '任务不存在' });
@@ -355,9 +372,10 @@ router.post('/:id/tasks/:taskId/tts', authMiddleware, async (req: AuthRequest, r
 
     // 保存 TTS URL 回 task_data
     taskData.ttsAudioUrls = ttsAudioUrls;
-    db.prepare(`
-      UPDATE module_tasks SET task_data = ?, updated_at = datetime('now') WHERE id = ?
-    `).run(JSON.stringify(taskData), req.params.taskId);
+    await exec(
+      'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
+      [JSON.stringify(taskData), req.params.taskId]
+    );
 
     res.json({ results, message: `成功生成 ${results.filter(r => r.audioUrl).length}/${results.length} 段语音` });
   } catch (err: any) {
@@ -369,7 +387,7 @@ router.post('/:id/tasks/:taskId/tts', authMiddleware, async (req: AuthRequest, r
 // POST /api/modules/:id/tasks/:taskId/tts-user - 用户造句文本 TTS
 // ============================================================
 router.post('/:id/tasks/:taskId/tts-user', authMiddleware, async (req: AuthRequest, res: Response) => {
-  req.setTimeout(60000); // TTS 最长 60s
+  req.setTimeout(60000);
   try {
     const { text, keywordIndex } = req.body;
     console.log(`[TTS-User] 收到请求: taskId=${req.params.taskId}, text="${text?.slice(0, 50)}...", len=${text?.length}`);
@@ -392,7 +410,6 @@ router.post('/:id/tasks/:taskId/tts-user', authMiddleware, async (req: AuthReque
     );
 
     console.log(`[TTS-User] ✅ 生成成功，耗时 ${Date.now() - t0}ms, 文件: ${fileName}`);
-
     const audioUrl = `/uploads/tts/${fileName}`;
     res.json({ audioUrl });
   } catch (err: any) {
@@ -407,11 +424,12 @@ router.post('/:id/tasks/:taskId/tts-user', authMiddleware, async (req: AuthReque
 // ============================================================
 router.post('/:id/tasks/:taskId/sentences', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const { userSentences } = req.body; // { "keywordWord": ["sentence1", "sentence2"], ... }
+    const { userSentences } = req.body;
 
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) {
       res.status(404).json({ error: '任务不存在' });
@@ -423,9 +441,10 @@ router.post('/:id/tasks/:taskId/sentences', authMiddleware, async (req: AuthRequ
 
     taskData.userSentences = { ...(taskData.userSentences || {}), ...userSentences };
 
-    db.prepare(`
-      UPDATE module_tasks SET task_data = ?, updated_at = datetime('now') WHERE id = ?
-    `).run(JSON.stringify(taskData), req.params.taskId);
+    await exec(
+      'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
+      [JSON.stringify(taskData), req.params.taskId]
+    );
 
     res.json({ message: '造句已保存', userSentences: taskData.userSentences });
   } catch (err: any) {
@@ -440,9 +459,10 @@ router.post('/:id/tasks/:taskId/writing', authMiddleware, async (req: AuthReques
   try {
     const { content, title } = req.body;
 
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) {
       res.status(404).json({ error: '任务不存在' });
@@ -455,9 +475,10 @@ router.post('/:id/tasks/:taskId/writing', authMiddleware, async (req: AuthReques
     if (content !== undefined) taskData.userWriting = content;
     if (title !== undefined) taskData.userWritingTitle = title;
 
-    db.prepare(`
-      UPDATE module_tasks SET task_data = ?, updated_at = datetime('now') WHERE id = ?
-    `).run(JSON.stringify(taskData), req.params.taskId);
+    await exec(
+      'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
+      [JSON.stringify(taskData), req.params.taskId]
+    );
 
     res.json({ message: '写作已保存', userWriting: taskData.userWriting });
   } catch (err: any) {
@@ -468,15 +489,16 @@ router.post('/:id/tasks/:taskId/writing', authMiddleware, async (req: AuthReques
 // ============================================================
 // PUT /api/modules/:id/tasks/:taskId/keywords - 更新任务关键词（增删改）
 // ============================================================
-router.put('/:id/tasks/:taskId/keywords', authMiddleware, (req: AuthRequest, res: Response) => {
+router.put('/:id/tasks/:taskId/keywords', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) { res.status(404).json({ error: '任务不存在' }); return; }
 
-    const { keyWords } = req.body; // 完整的关键词数组
+    const { keyWords } = req.body;
     if (!Array.isArray(keyWords)) {
       res.status(400).json({ error: 'keyWords 必须是数组' });
       return;
@@ -486,11 +508,12 @@ router.put('/:id/tasks/:taskId/keywords', authMiddleware, (req: AuthRequest, res
     try { taskData = JSON.parse(task.task_data || '{}'); } catch { /* ignore */ }
     taskData.keyWords = keyWords;
 
-    db.prepare(
-      'UPDATE module_tasks SET task_data = ?, updated_at = datetime(\'now\') WHERE id = ?'
-    ).run(JSON.stringify(taskData), req.params.taskId);
+    await exec(
+      "UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2",
+      [JSON.stringify(taskData), req.params.taskId]
+    );
 
-    const updated = db.prepare('SELECT * FROM module_tasks WHERE id = ?').get(req.params.taskId) as any;
+    const updated = await queryOne<any>('SELECT * FROM module_tasks WHERE id = $1', [req.params.taskId]);
     res.json({ task: { ...updated, taskData }, message: '关键词已更新' });
   } catch (err: any) {
     res.status(500).json({ error: '更新关键词失败: ' + err.message });
@@ -500,16 +523,17 @@ router.put('/:id/tasks/:taskId/keywords', authMiddleware, (req: AuthRequest, res
 // ============================================================
 // POST /api/modules/:id/tasks - 手动添加新的一天任务
 // ============================================================
-router.post('/:id/tasks', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/:id/tasks', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const module = db.prepare(
-      'SELECT * FROM big_modules WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const mod = await queryOne<any>(
+      'SELECT * FROM big_modules WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
-    if (!module) { res.status(404).json({ error: '大模块不存在' }); return; }
+    if (!mod) { res.status(404).json({ error: '大模块不存在' }); return; }
 
     const { title, content, taskType, dayNumber, keyWords, writingPrompt, referenceVocabulary } = req.body;
-    const day = dayNumber || (module.total_days + 1);
+    const day = dayNumber || (mod.total_days + 1);
 
     const taskId = uuidv4();
     const taskData = {
@@ -519,25 +543,27 @@ router.post('/:id/tasks', authMiddleware, (req: AuthRequest, res: Response) => {
       ttsAudioUrls: {},
     };
 
-    db.prepare(`
-      INSERT INTO module_tasks (id, module_id, day_number, title, content, task_type, task_data, sort_order)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `).run(
-      taskId, req.params.id, day,
-      title || `第 ${day} 天`,
-      content || '',
-      taskType || 'vocabulary',
-      JSON.stringify(taskData),
-      day
+    await exec(
+      `INSERT INTO module_tasks (id, module_id, day_number, title, content, task_type, task_data, sort_order)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+      [
+        taskId, req.params.id, day,
+        title || `第 ${day} 天`,
+        content || '',
+        taskType || 'vocabulary',
+        JSON.stringify(taskData),
+        day
+      ]
     );
 
     // 更新模块总天数
-    const newTotalDays = Math.max(module.total_days, day);
-    db.prepare(
-      "UPDATE big_modules SET total_days = ?, updated_at = datetime('now') WHERE id = ?"
-    ).run(newTotalDays, req.params.id);
+    const newTotalDays = Math.max(mod.total_days, day);
+    await exec(
+      "UPDATE big_modules SET total_days = $1, updated_at = NOW() WHERE id = $2",
+      [newTotalDays, req.params.id]
+    );
 
-    const task = db.prepare('SELECT * FROM module_tasks WHERE id = ?').get(taskId) as any;
+    const task = await queryOne<any>('SELECT * FROM module_tasks WHERE id = $1', [taskId]);
     res.status(201).json({ task: { ...task, taskData }, message: `已添加第 ${day} 天任务` });
   } catch (err: any) {
     res.status(500).json({ error: '添加任务失败: ' + err.message });
@@ -547,26 +573,29 @@ router.post('/:id/tasks', authMiddleware, (req: AuthRequest, res: Response) => {
 // ============================================================
 // DELETE /api/modules/:id/tasks/:taskId - 删除某一天任务
 // ============================================================
-router.delete('/:id/tasks/:taskId', authMiddleware, (req: AuthRequest, res: Response) => {
+router.delete('/:id/tasks/:taskId', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const task = db.prepare(
-      'SELECT * FROM module_tasks WHERE id = ? AND module_id = ?'
-    ).get(req.params.taskId, req.params.id) as any;
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
 
     if (!task) { res.status(404).json({ error: '任务不存在' }); return; }
 
-    db.prepare('DELETE FROM module_tasks WHERE id = ?').run(req.params.taskId);
+    await exec('DELETE FROM module_tasks WHERE id = $1', [req.params.taskId]);
 
     // 重新计算模块总天数
-    const remaining = db.prepare(
-      'SELECT COUNT(*) as cnt FROM module_tasks WHERE module_id = ?'
-    ).get(req.params.id) as any;
+    const remaining = await queryOne<any>(
+      'SELECT COUNT(*) as cnt FROM module_tasks WHERE module_id = $1',
+      [req.params.id]
+    );
 
-    db.prepare(
-      "UPDATE big_modules SET total_days = ?, updated_at = datetime('now') WHERE id = ?"
-    ).run(remaining.cnt, req.params.id);
+    await exec(
+      "UPDATE big_modules SET total_days = $1, updated_at = NOW() WHERE id = $2",
+      [remaining.cnt, req.params.id]
+    );
 
-    res.json({ message: '任务已删除', remainingDays: remaining.cnt });
+    res.json({ message: '任务已删除', remainingDays: parseInt(remaining.cnt) });
   } catch (err: any) {
     res.status(500).json({ error: '删除任务失败: ' + err.message });
   }
@@ -575,22 +604,24 @@ router.delete('/:id/tasks/:taskId', authMiddleware, (req: AuthRequest, res: Resp
 // ============================================================
 // POST /api/modules/:id/export-wordbook - 导出模块词汇为单词本
 // ============================================================
-router.post('/:id/export-wordbook', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/:id/export-wordbook', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const module = db.prepare(
-      'SELECT * FROM big_modules WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const mod = await queryOne<any>(
+      'SELECT * FROM big_modules WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
-    if (!module) {
+    if (!mod) {
       res.status(404).json({ error: '大模块不存在' });
       return;
     }
 
     // 检查是否已导出过
-    if (module.linked_wordbook_id) {
-      const existing = db.prepare(
-        'SELECT id, name, card_count FROM wordbooks WHERE id = ? AND user_id = ?'
-      ).get(module.linked_wordbook_id, req.userId!) as any;
+    if (mod.linked_wordbook_id) {
+      const existing = await queryOne<any>(
+        'SELECT id, name, card_count FROM wordbooks WHERE id = $1 AND user_id = $2',
+        [mod.linked_wordbook_id, req.userId!]
+      );
 
       if (existing) {
         res.status(200).json({
@@ -605,15 +636,14 @@ router.post('/:id/export-wordbook', authMiddleware, (req: AuthRequest, res: Resp
         return;
       }
       // 单词本已被删除，清除关联后重新导出
-      db.prepare(
-        'UPDATE big_modules SET linked_wordbook_id = NULL WHERE id = ?'
-      ).run(req.params.id);
+      await exec('UPDATE big_modules SET linked_wordbook_id = NULL WHERE id = $1', [req.params.id]);
     }
 
     // 获取所有任务的 keyWords
-    const tasks = db.prepare(
-      'SELECT task_data FROM module_tasks WHERE module_id = ?'
-    ).all(req.params.id) as any[];
+    const tasks = await queryAll<any>(
+      'SELECT task_data FROM module_tasks WHERE module_id = $1',
+      [req.params.id]
+    );
 
     // 收集所有关键词
     const allKeywords: Array<{
@@ -644,7 +674,7 @@ router.post('/:id/export-wordbook', authMiddleware, (req: AuthRequest, res: Resp
       return;
     }
 
-    // 按 word_normalized 去重（保留最早出现的）
+    // 按 word_normalized 去重
     const normalize = (w: string) =>
       w.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
@@ -660,54 +690,51 @@ router.post('/:id/export-wordbook', authMiddleware, (req: AuthRequest, res: Resp
 
     // 创建单词本
     const wordbookId = uuidv4();
-    const wordbookName = `${module.title} - 词汇本`;
+    const wordbookName = `${mod.title} - 词汇本`;
 
-    db.prepare(`
-      INSERT INTO wordbooks (id, user_id, name, source_type, source_name, card_count)
-      VALUES (?, ?, ?, 'module', ?, 0)
-    `).run(wordbookId, req.userId!, wordbookName, module.title);
+    await exec(
+      `INSERT INTO wordbooks (id, user_id, name, source_type, source_name, card_count)
+       VALUES ($1, $2, $3, 'module', $4, 0)`,
+      [wordbookId, req.userId!, wordbookName, mod.title]
+    );
 
     // 批量创建单词卡片
-    const insertCard = db.prepare(`
-      INSERT INTO word_cards (
-        id, wordbook_id, user_id, word, word_normalized, part_of_speech,
-        gender, definite_article, chinese_meaning, original_form, conjugation_json
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    const insertSentence = db.prepare(`
-      INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh) VALUES (?, ?, ?, ?)
-    `);
-
-    const batchInsert = db.transaction(() => {
+    await transaction(async (client) => {
       for (const kw of uniqueKeywords) {
         const cardId = uuidv4();
         const normalized = normalize(kw.word);
 
-        insertCard.run(
-          cardId, wordbookId, req.userId!, kw.word, normalized,
-          kw.partOfSpeech, '', '', kw.translation, kw.word, '{}'
+        await client.query(
+          `INSERT INTO word_cards (
+            id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+            gender, definite_article, chinese_meaning, original_form, conjugation_json
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+          [
+            cardId, wordbookId, req.userId!, kw.word, normalized,
+            kw.partOfSpeech, '', '', kw.translation, kw.word, '{}'
+          ]
         );
 
         if (kw.exampleSentence) {
-          insertSentence.run(uuidv4(), cardId, kw.exampleSentence, kw.exampleTranslation);
+          await client.query(
+            'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh) VALUES ($1, $2, $3, $4)',
+            [uuidv4(), cardId, kw.exampleSentence, kw.exampleTranslation]
+          );
         }
       }
     });
 
-    batchInsert();
-
     // 更新单词本卡片计数
-    db.prepare(`
-      UPDATE wordbooks SET card_count = (
-        SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?
-      ), updated_at = datetime('now') WHERE id = ?
-    `).run(wordbookId, wordbookId);
+    await exec(
+      'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+      [wordbookId]
+    );
 
-    // 关联到模块，防止重复导出
-    db.prepare(`
-      UPDATE big_modules SET linked_wordbook_id = ?, updated_at = datetime('now') WHERE id = ?
-    `).run(wordbookId, req.params.id);
+    // 关联到模块
+    await exec(
+      'UPDATE big_modules SET linked_wordbook_id = $1, updated_at = NOW() WHERE id = $2',
+      [wordbookId, req.params.id]
+    );
 
     res.status(201).json({
       message: `已创建单词本 "${wordbookName}"，收录 ${uniqueKeywords.length} 个词汇（原始 ${allKeywords.length} 个，去重后保留）`,
@@ -725,18 +752,19 @@ router.post('/:id/export-wordbook', authMiddleware, (req: AuthRequest, res: Resp
 // ============================================================
 // DELETE /api/modules/:id - 删除大模块
 // ============================================================
-router.delete('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.delete('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const module = db.prepare(
-      'SELECT * FROM big_modules WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const mod = await queryOne<any>(
+      'SELECT * FROM big_modules WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
-    if (!module) {
+    if (!mod) {
       res.status(404).json({ error: '大模块不存在' });
       return;
     }
 
-    db.prepare('DELETE FROM big_modules WHERE id = ?').run(req.params.id);
+    await exec('DELETE FROM big_modules WHERE id = $1', [req.params.id]);
     res.json({ message: '大模块已删除' });
   } catch (err: any) {
     res.status(500).json({ error: '删除失败' });

@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { learnAPI } from '../api';
 import FlashCard from '../components/FlashCard';
 
@@ -21,6 +21,9 @@ interface CardData {
 export default function LearnPage() {
   const { wordbookId } = useParams<{ wordbookId: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const startCardId = searchParams.get('start') || '';
+  const startSetRef = useRef(false);
   const [cards, setCards] = useState<CardData[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -53,6 +56,16 @@ export default function LearnPage() {
     } catch { /* ignore */ }
     finally { setLoading(false); }
   };
+
+  // 从词本列表点击进入时，跳转到指定卡片
+  useEffect(() => {
+    if (!startCardId || startSetRef.current || cards.length === 0) return;
+    const idx = cards.findIndex((c) => c.id === startCardId);
+    if (idx >= 0) {
+      startSetRef.current = true;
+      setCurrentIndex(idx);
+    }
+  }, [cards, startCardId]);
 
   const handleScore = useCallback(
     async (score: number) => {

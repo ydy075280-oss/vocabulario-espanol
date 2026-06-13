@@ -1,19 +1,20 @@
 import { Router, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
-import db from '../db';
+import { query, queryOne, queryAll, exec } from '../db';
 import { analyzeRequirement as aiAnalyze } from '../services/qwenClient';
 
 const router = Router();
 
 // GET /api/create - List user's creations
-router.get('/', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const creations = db.prepare(`
-      SELECT * FROM creations
-      WHERE user_id = ?
-      ORDER BY created_at DESC
-    `).all(req.userId!);
+    const creations = await queryAll(
+      `SELECT * FROM creations
+       WHERE user_id = $1
+       ORDER BY created_at DESC`,
+      [req.userId!]
+    );
 
     res.json({ creations });
   } catch (err: any) {
@@ -31,9 +32,7 @@ router.post('/analyze', authMiddleware, async (req: AuthRequest, res: Response) 
       return;
     }
 
-    // 📝 调用 deepseek-v4-pro 真实 AI 分析
     const keywords = await aiAnalyze(requirement);
-
     res.json({ keywords });
   } catch (err: any) {
     res.status(500).json({ error: 'AI 分析失败: ' + err.message });
@@ -41,7 +40,7 @@ router.post('/analyze', authMiddleware, async (req: AuthRequest, res: Response) 
 });
 
 // POST /api/create - Save creation (user text + generate audio placeholder)
-router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
+router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const {
       teacherRequirement, keywords, userTextEs, userTextZh,
@@ -58,27 +57,21 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
 
     // Create linked wordbook
     const wordbookId = uuidv4();
-    db.prepare(`
-      INSERT INTO wordbooks (id, user_id, name, source_type, teacher_tag, course_tag)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `).run(
-      wordbookId,
-      req.userId!,
-      wordbookName || '创创作 - ' + new Date().toLocaleDateString('zh-CN'),
-      'create',
-      teacherTag || '',
-      courseTag || ''
+    await exec(
+      `INSERT INTO wordbooks (id, user_id, name, source_type, teacher_tag, course_tag)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [
+        wordbookId,
+        req.userId!,
+        wordbookName || '创创作 - ' + new Date().toLocaleDateString('zh-CN'),
+        'create',
+        teacherTag || '',
+        courseTag || ''
+      ]
     );
 
     // Create word cards from keywords
     if (keywords && Array.isArray(keywords) && keywords.length > 0) {
-      const insertCard = db.prepare(`
-        INSERT INTO word_cards (
-          id, wordbook_id, user_id, word, word_normalized, part_of_speech,
-          gender, definite_article, chinese_meaning, original_form
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
       for (const kw of keywords) {
         const cardId = uuidv4();
         const normalized = (kw.word || '')
@@ -86,46 +79,53 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
           .replace(/[\u0300-\u036f]/g, '')
           .toLowerCase();
 
-        insertCard.run(
-          cardId, wordbookId, req.userId!,
-          kw.word, normalized,
-          kw.partOfSpeech || '',
-          kw.gender || '',
-          kw.definiteArticle || '',
-          kw.chineseMeaning || '',
-          kw.originalForm || kw.word
+        await exec(
+          `INSERT INTO word_cards (
+            id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+            gender, definite_article, chinese_meaning, original_form
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+          [
+            cardId, wordbookId, req.userId!,
+            kw.word, normalized,
+            kw.partOfSpeech || '',
+            kw.gender || '',
+            kw.definiteArticle || '',
+            kw.chineseMeaning || '',
+            kw.originalForm || kw.word
+          ]
         );
       }
 
       // Update card_count
-      db.prepare(`
-        UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?)
-        WHERE id = ?
-      `).run(wordbookId, wordbookId);
+      await exec(
+        'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1) WHERE id = $1',
+        [wordbookId]
+      );
     }
 
     // Split text into sentences for audio generation
     const sentences = splitSentences(userTextEs);
 
     // Save creation
-    db.prepare(`
-      INSERT INTO creations (
+    await exec(
+      `INSERT INTO creations (
         id, user_id, teacher_requirement, keywords_json,
         user_text_es, user_text_zh, sentence_audios_json,
         linked_wordbook_id, word_count
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).run(
-      creationId, req.userId!,
-      teacherRequirement || '',
-      JSON.stringify(keywords || []),
-      userTextEs,
-      userTextZh || '',
-      JSON.stringify(sentences.map((s, i) => ({ index: i, text: s }))),
-      wordbookId,
-      wordCount
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+      [
+        creationId, req.userId!,
+        teacherRequirement || '',
+        JSON.stringify(keywords || []),
+        userTextEs,
+        userTextZh || '',
+        JSON.stringify(sentences.map((s, i) => ({ index: i, text: s }))),
+        wordbookId,
+        wordCount
+      ]
     );
 
-    const creation = db.prepare('SELECT * FROM creations WHERE id = ?').get(creationId);
+    const creation = await queryOne('SELECT * FROM creations WHERE id = $1', [creationId]);
 
     res.status(201).json({
       creation,
@@ -139,28 +139,30 @@ router.post('/', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // GET /api/create/:id - Get creation detail
-router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.get('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const creation = db.prepare(
-      'SELECT * FROM creations WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const creation = await queryOne<any>(
+      'SELECT * FROM creations WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
     if (!creation) {
       res.status(404).json({ error: '创作不存在' });
       return;
     }
 
-    let keywords = [];
-    let sentenceAudios = [];
+    let keywords: any[] = [];
+    let sentenceAudios: any[] = [];
     try { keywords = JSON.parse(creation.keywords_json || '[]'); } catch { /* ignore */ }
     try { sentenceAudios = JSON.parse(creation.sentence_audios_json || '[]'); } catch { /* ignore */ }
 
     // Get linked wordbook
     let wordbook = null;
     if (creation.linked_wordbook_id) {
-      wordbook = db.prepare(
-        'SELECT * FROM wordbooks WHERE id = ?'
-      ).get(creation.linked_wordbook_id);
+      wordbook = await queryOne(
+        'SELECT * FROM wordbooks WHERE id = $1',
+        [creation.linked_wordbook_id]
+      );
     }
 
     res.json({
@@ -173,18 +175,19 @@ router.get('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
 });
 
 // DELETE /api/create/:id
-router.delete('/:id', authMiddleware, (req: AuthRequest, res: Response) => {
+router.delete('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const creation = db.prepare(
-      'SELECT * FROM creations WHERE id = ? AND user_id = ?'
-    ).get(req.params.id, req.userId!) as any;
+    const creation = await queryOne<any>(
+      'SELECT * FROM creations WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
 
     if (!creation) {
       res.status(404).json({ error: '创作不存在' });
       return;
     }
 
-    db.prepare('DELETE FROM creations WHERE id = ?').run(req.params.id);
+    await exec('DELETE FROM creations WHERE id = $1', [req.params.id]);
     res.json({ message: '创作已删除' });
   } catch (err: any) {
     res.status(500).json({ error: '删除失败' });

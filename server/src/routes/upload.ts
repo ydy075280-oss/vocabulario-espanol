@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
-import db from '../db';
+import { query, queryOne, queryAll, transaction, exec } from '../db';
 import { extractWordsFromImage, extractWordsFromPDF, extractWordsFromDocx, transcribeVideoAudio, ExtractedWord, ExtractedSentence } from '../services/qwenClient';
 import { extractAudioFromVideo } from '../services/audioService';
 
@@ -49,8 +49,8 @@ const upload = multer({
 // ─── 公共：提取单词并入库 ───
 async function performExtraction(
   fileType: string,
-  filePathOnDisk: string, // 服务器上的绝对路径
-  filePublicPath: string, // 客户端使用的相对路径 /uploads/xxx
+  filePathOnDisk: string,
+  filePublicPath: string,
   wordbookId: string,
   userId: string,
 ): Promise<{
@@ -102,9 +102,10 @@ async function performExtraction(
   let mergedWordbookName = '';
 
   if (wordbookId) {
-    const currentWB = db.prepare(
-      'SELECT teacher_tag, course_tag, name FROM wordbooks WHERE id = ? AND user_id = ?'
-    ).get(wordbookId, userId) as { teacher_tag: string; course_tag: string; name: string } | undefined;
+    const currentWB = await queryOne<{ teacher_tag: string; course_tag: string; name: string }>(
+      'SELECT teacher_tag, course_tag, name FROM wordbooks WHERE id = $1 AND user_id = $2',
+      [wordbookId, userId]
+    );
 
     if (!currentWB) {
       console.warn(`[Extract] 单词本 ${wordbookId} 不存在，将忽略合并逻辑`);
@@ -113,20 +114,22 @@ async function performExtraction(
       const normalizedTeacher = (currentWB.teacher_tag || '').trim().toLowerCase();
       const normalizedCourse = (currentWB.course_tag || '').trim().toLowerCase();
 
-      let existingWB: { id: string; name: string } | undefined;
+      let existingWB: { id: string; name: string } | null = null;
       if (normalizedTeacher) {
-        existingWB = db.prepare(`
-          SELECT id, name FROM wordbooks
-          WHERE user_id = ? AND id != ? AND LOWER(TRIM(teacher_tag)) = ?
-          LIMIT 1
-        `).get(userId, wordbookId, normalizedTeacher) as { id: string; name: string } | undefined;
+        existingWB = await queryOne<{ id: string; name: string }>(
+          `SELECT id, name FROM wordbooks
+           WHERE user_id = $1 AND id != $2 AND LOWER(TRIM(teacher_tag)) = $3
+           LIMIT 1`,
+          [userId, wordbookId, normalizedTeacher]
+        );
       }
       if (!existingWB && normalizedCourse) {
-        existingWB = db.prepare(`
-          SELECT id, name FROM wordbooks
-          WHERE user_id = ? AND id != ? AND LOWER(TRIM(course_tag)) = ?
-          LIMIT 1
-        `).get(userId, wordbookId, normalizedCourse) as { id: string; name: string } | undefined;
+        existingWB = await queryOne<{ id: string; name: string }>(
+          `SELECT id, name FROM wordbooks
+           WHERE user_id = $1 AND id != $2 AND LOWER(TRIM(course_tag)) = $3
+           LIMIT 1`,
+          [userId, wordbookId, normalizedCourse]
+        );
       }
 
       if (existingWB) {
@@ -143,56 +146,57 @@ async function performExtraction(
   }
 
   const cardIds: string[] = [];
-  const insertCard = db.prepare(`
-    INSERT INTO word_cards (
-      id, wordbook_id, user_id, word, word_normalized, part_of_speech,
-      gender, definite_article, chinese_meaning, original_form,
-      accent_type, status, audio_url
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-  const insertSentence = db.prepare(`
-    INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, audio_url)
-    VALUES (?, ?, ?, ?, ?)
-  `);
+  let savedSentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }> = [];
 
-  const txResult = db.transaction(() => {
+  await transaction(async (client) => {
     for (let i = 0; i < words.length; i++) {
       const w = words[i];
       const cid = uuidv4();
       const norm = w.word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-      insertCard.run(cid, finalWordbookId, userId, w.word, norm, w.partOfSpeech,
-        w.gender || '', w.definiteArticle || '', w.chineseMeaning, w.originalForm || w.word,
-        'es-ES', 'new', '');
-      if (w.example) insertSentence.run(uuidv4(), cid, w.example, w.exampleZh || '', '');
+      await client.query(
+        `INSERT INTO word_cards (
+          id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+          gender, definite_article, chinese_meaning, original_form,
+          accent_type, status, audio_url
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+        [cid, finalWordbookId, userId, w.word, norm, w.partOfSpeech,
+          w.gender || '', w.definiteArticle || '', w.chineseMeaning, w.originalForm || w.word,
+          'es-ES', 'new', '']
+      );
+      if (w.example) await client.query(
+        'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, audio_url) VALUES ($1, $2, $3, $4, $5)',
+        [uuidv4(), cid, w.example, w.exampleZh || '', '']
+      );
       cardIds.push(cid);
     }
 
-    const savedSentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }> = [];
     if (sentences.length > 0 && cardIds.length > 0) {
       for (const s of sentences) {
         for (const cid of cardIds) {
-          insertSentence.run(uuidv4(), cid, s.es, s.zh, '');
+          await client.query(
+            'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, audio_url) VALUES ($1, $2, $3, $4, $5)',
+            [uuidv4(), cid, s.es, s.zh, '']
+          );
         }
         savedSentences.push({ es: s.es, zh: s.zh, cardId: cardIds[0] });
       }
     }
 
-    db.prepare(
-      'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?) WHERE id = ?'
-    ).run(finalWordbookId, finalWordbookId);
+    await client.query(
+      'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1) WHERE id = $1',
+      [finalWordbookId]
+    );
 
     if (mergedIntoExisting && wordbookId !== finalWordbookId) {
-      db.prepare('DELETE FROM wordbooks WHERE id = ?').run(wordbookId);
+      await client.query('DELETE FROM wordbooks WHERE id = $1', [wordbookId]);
       console.log(`[Extract] 已删除临时单词本: ${wordbookId}`);
     }
-
-    return { savedSentences };
-  })();
+  });
 
   return {
     cardIds,
     words,
-    sentences: txResult.savedSentences,
+    sentences: savedSentences,
     extractionSource,
     extractionNote: extractionNote || undefined,
     merged: mergedIntoExisting || undefined,
@@ -243,17 +247,18 @@ router.post(
               ? 'docx'
               : 'image';
         wordbookId = uuidv4();
-        db.prepare(`
-          INSERT INTO wordbooks (id, user_id, name, source_type, source_name, teacher_tag, course_tag)
-          VALUES (?, ?, ?, ?, ?, ?, ?)
-        `).run(
-          wordbookId,
-          req.userId!,
-          wordbookName,
-          sourceType,
-          files.map(f => f.originalname).join(', '),
-          teacherTag || '',
-          courseTag || ''
+        await exec(
+          `INSERT INTO wordbooks (id, user_id, name, source_type, source_name, teacher_tag, course_tag)
+           VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+          [
+            wordbookId,
+            req.userId!,
+            wordbookName,
+            sourceType,
+            files.map(f => f.originalname).join(', '),
+            teacherTag || '',
+            courseTag || ''
+          ]
         );
       }
 
@@ -292,7 +297,6 @@ router.post(
           });
         } catch (extractErr: any) {
           console.error('[AutoExtract] 提取失败:', extractErr.message);
-          // 上传成功但提取失败，返回部分成功
           res.json({
             message: `文件上传成功！${files.length} 个文件`,
             files: uploadedFiles,
@@ -372,7 +376,6 @@ function generateMockWords(fileType: string, filePath: string) {
     { word: 'profesor', partOfSpeech: 'sustantivo', gender: 'masculino', definiteArticle: 'el', chineseMeaning: '老师', originalForm: 'profesor', example: 'El profesor explica muy bien.', exampleZh: '老师解释得很好。' },
   ];
 
-  // Randomly select 4-8 words based on file path hash
   const count = 5 + (filePath.length % 4);
   const shuffled = [...spanishWords].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
