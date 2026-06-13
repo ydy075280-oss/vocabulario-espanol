@@ -12,11 +12,14 @@ export default defineConfig({
         name: 'Vocabulario - 西语单词学习',
         short_name: 'Vocabulario',
         description: '西班牙语词汇视听学习平台',
-        theme_color: '#4F46E5',
+        theme_color: '#FFD02F',
         background_color: '#F8FAFC',
         display: 'standalone',
+        display_override: ['standalone', 'minimal-ui'],
         orientation: 'portrait',
         start_url: '/',
+        categories: ['education', 'productivity'],
+        lang: 'zh-CN',
         icons: [
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: '/icon-144.png', sizes: '144x144', type: 'image/png', purpose: 'any' },
@@ -25,12 +28,14 @@ export default defineConfig({
         ],
       },
       workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
             urlPattern: /\/api\//,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',
+              networkTimeoutSeconds: 5,
               expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 },
             },
           },
@@ -40,6 +45,14 @@ export default defineConfig({
             options: {
               cacheName: 'media-cache',
               expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 7 },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'font-cache',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
             },
           },
         ],

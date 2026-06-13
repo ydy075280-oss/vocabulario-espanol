@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import AuthPage from './pages/AuthPage';
@@ -12,6 +13,7 @@ import ModuleDetailPage from './pages/ModuleDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import Layout from './components/Layout';
 import Loading from './components/Loading';
+import PWAInstallBanner from './components/PWAInstallBanner';
 
 export default function App() {
   const { user, loading } = useAuth();
@@ -45,5 +47,7 @@ export default function App() {
         }
       />
     </Routes>
+      <PWAInstallBanner />
+    </>
   );
 }
