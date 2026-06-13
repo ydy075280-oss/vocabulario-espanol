@@ -346,7 +346,7 @@ router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) 
     return { savedSentences };
     })();
     // 事务返回值：savedSentences 从作用域内取出
-    const { savedSentences } = txResult;
+    const { savedSentences } = result;
 
     const isVideo = fileType === 'video';
     const isPDF = fileType === 'pdf';
