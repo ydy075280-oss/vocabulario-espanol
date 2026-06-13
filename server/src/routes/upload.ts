@@ -201,6 +201,7 @@ async function performExtraction(
     extractionNote: extractionNote || undefined,
     merged: mergedIntoExisting || undefined,
     mergedWordbookName: mergedWordbookName || undefined,
+    wordbookId: finalWordbookId,
   };
 }
 
@@ -280,7 +281,7 @@ router.post(
           res.json({
             message: `文件上传成功！${files.length} 个文件`,
             files: uploadedFiles,
-            wordbookId: wordbookId,
+            wordbookId: extractResult.wordbookId,
             extract: {
               message: extractResult.extractionSource === 'ocr'
                 ? `AI 识别成功！从${sourceLabel}中提取了 ${extractResult.cardIds.length} 个西语单词、${extractResult.sentences.length} 条造句${mergeNote}`
@@ -290,7 +291,7 @@ router.post(
               sentences: extractResult.sentences,
               extractionSource: extractResult.extractionSource,
               extractionNote: extractResult.extractionNote,
-              wordbookId: wordbookId,
+              wordbookId: extractResult.wordbookId,
               merged: extractResult.merged,
               mergedWordbookName: extractResult.mergedWordbookName,
             },
@@ -341,7 +342,7 @@ router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) 
       sentences: result.sentences,
       extractionSource: result.extractionSource,
       extractionNote: result.extractionNote,
-      wordbookId,
+      wordbookId: result.wordbookId,
       merged: result.merged,
       mergedWordbookName: result.mergedWordbookName,
     });
