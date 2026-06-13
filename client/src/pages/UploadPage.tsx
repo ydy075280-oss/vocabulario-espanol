@@ -102,8 +102,19 @@ export default function UploadPage() {
           else setWarning(edata.message || `已生成 ${edata.cardIds?.length || 0} 个示例单词`);
           if (edata.sentences?.length > 0) setExtractedSentences(edata.sentences);
         } catch (extractErr: any) {
-          const extractMsg = extractErr.response?.data?.detail || extractErr.response?.data?.error || extractErr.message || '';
-          setWarning(`上传成功，但 AI 单词提取失败：${extractMsg.includes('timeout') ? '请求超时，请重试' : (extractMsg || '未知错误')}`);
+          const detail = extractErr.response?.data?.detail || '';
+          const err = extractErr.response?.data?.error || '';
+          const msg = extractErr.message || '';
+          const status = extractErr.response?.status;
+          const raw = extractErr.response?.data ? JSON.stringify(extractErr.response.data).slice(0, 200) : '';
+
+          console.error('[Extract Error]', { detail, err, msg, status, raw, extractErr });
+
+          if (detail) setWarning(`上传成功，但 AI 单词提取失败：${detail}`);
+          else if (err) setWarning(`上传成功，但 AI 单词提取失败：${err}`);
+          else if (msg.includes('timeout') || msg.includes('ECONNABORTED') || msg.includes('Network')) setWarning('上传成功，但 AI 单词提取失败：网络超时或连接中断');
+          else if (status) setWarning(`上传成功，但 AI 提取失败(状态码 ${status}): ${msg || '服务器内部错误'}`);
+          else setWarning(`上传成功，但 AI 单词提取失败：未知错误(${msg || '无响应'})`);
         }
       }
     } catch (err: any) {
