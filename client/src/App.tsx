@@ -20,7 +20,8 @@ export default function App() {
 
   if (loading) return <Loading full />;
 
-  return (
+    return (
+    <>
     <Routes>
       <Route path="/auth" element={user ? <Navigate to="/" replace /> : <AuthPage />} />
       <Route
