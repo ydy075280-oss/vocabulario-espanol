@@ -83,39 +83,29 @@ export default function UploadPage() {
 
   const handleUpload = async () => {
     if (files.length === 0) return;
-    setUploading(true); setProgress(0); setError(''); setWarning(''); setMessage(''); setExtractedSentences([]); setFinalWordbookId(null);
+    setUploading(true); setExtracting(true); setProgress(0); setError(''); setWarning(''); setMessage(''); setExtractedSentences([]); setFinalWordbookId(null);
     try {
       const formData = new FormData();
       files.forEach((f) => formData.append('files', f));
       formData.append('wordbookName', wordbookName || `上传于 ${new Date().toLocaleDateString('zh-CN')}`);
+      formData.append('autoExtract', 'true');
       if (teacherTag) formData.append('teacherTag', teacherTag);
       const { data } = await uploadAPI.upload(formData, (pct) => setProgress(pct));
-      setUploadedData(data); setMessage(`文件上传成功！${files.length} 个文件`);
-      setExtracting(true);
+      setUploadedData(data);
       if (data.wordbookId && data.files?.[0]) {
-        try {
-          const extractRes = await uploadAPI.extract({ filePath: data.files[0].path, fileType: data.files[0].type, wordbookId: data.wordbookId });
-          const edata = extractRes.data;
-          const targetId = edata.wordbookId || data.wordbookId;
-          setFinalWordbookId(targetId);
+        setFinalWordbookId(data.wordbookId);
+        if (data.extract) {
+          const edata = data.extract;
           if (edata.extractionSource === 'ocr') setMessage(edata.message);
           else setWarning(edata.message || `已生成 ${edata.cardIds?.length || 0} 个示例单词`);
           if (edata.sentences?.length > 0) setExtractedSentences(edata.sentences);
-        } catch (extractErr: any) {
-          const detail = extractErr.response?.data?.detail || '';
-          const err = extractErr.response?.data?.error || '';
-          const msg = extractErr.message || '';
-          const status = extractErr.response?.status;
-          const raw = extractErr.response?.data ? JSON.stringify(extractErr.response.data).slice(0, 200) : '';
-
-          console.error('[Extract Error]', { detail, err, msg, status, raw, extractErr });
-
-          if (detail) setWarning(`上传成功，但 AI 单词提取失败：${detail}`);
-          else if (err) setWarning(`上传成功，但 AI 单词提取失败：${err}`);
-          else if (msg.includes('timeout') || msg.includes('ECONNABORTED') || msg.includes('Network')) setWarning('上传成功，但 AI 单词提取失败：网络超时或连接中断');
-          else if (status) setWarning(`上传成功，但 AI 提取失败(状态码 ${status}): ${msg || '服务器内部错误'}`);
-          else setWarning(`上传成功，但 AI 单词提取失败：未知错误(${msg || '无响应'})`);
+        } else if (data.extractError) {
+          setWarning(`上传成功，但 AI 单词提取失败：${data.extractError}`);
+        } else {
+          setMessage(data.message);
         }
+      } else {
+        setMessage(data.message);
       }
     } catch (err: any) {
       const errMsg = err.response?.data?.error || err.message || '';

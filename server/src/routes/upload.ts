@@ -46,12 +46,166 @@ const upload = multer({
   },
 });
 
-// POST /api/upload - Upload files
+// ─── 公共：提取单词并入库 ───
+async function performExtraction(
+  fileType: string,
+  filePathOnDisk: string, // 服务器上的绝对路径
+  filePublicPath: string, // 客户端使用的相对路径 /uploads/xxx
+  wordbookId: string,
+  userId: string,
+): Promise<{
+  cardIds: string[];
+  words: ExtractedWord[];
+  sentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }>;
+  extractionSource: 'ocr' | 'mock';
+  extractionNote?: string;
+  merged?: boolean;
+  mergedWordbookName?: string;
+}> {
+  let words: ExtractedWord[] = [];
+  let sentences: ExtractedSentence[] = [];
+  let extractionSource: 'ocr' | 'mock' = 'mock';
+  let extractionNote = '';
+
+  if (fileType === 'image') {
+    const result = await extractWordsFromImage(filePathOnDisk);
+    words = result.words;
+    sentences = result.sentences;
+    extractionSource = 'ocr';
+  } else if (fileType === 'video') {
+    const audioBaseName = `audio_${uuidv4()}.mp3`;
+    const audioPath = await extractAudioFromVideo(filePathOnDisk, audioBaseName);
+    const asrResult = await transcribeVideoAudio(audioPath);
+    words = asrResult.words;
+    sentences = asrResult.sentences;
+    extractionSource = 'ocr';
+    try { fs.unlinkSync(audioPath); } catch {}
+  } else if (fileType === 'pdf') {
+    const result = await extractWordsFromPDF(filePathOnDisk);
+    words = result.words;
+    sentences = result.sentences;
+    extractionSource = 'ocr';
+  } else if (fileType === 'docx') {
+    const result = await extractWordsFromDocx(filePathOnDisk);
+    words = result.words;
+    sentences = result.sentences;
+    extractionSource = 'ocr';
+  } else {
+    words = generateMockWords(fileType, filePublicPath);
+    extractionSource = 'mock';
+    extractionNote = '未知文件类型，使用示例单词';
+  }
+
+  // ─── 去重合并 ───
+  let finalWordbookId = wordbookId;
+  let mergedIntoExisting = false;
+  let mergedWordbookName = '';
+
+  if (wordbookId) {
+    const currentWB = db.prepare(
+      'SELECT teacher_tag, course_tag, name FROM wordbooks WHERE id = ? AND user_id = ?'
+    ).get(wordbookId, userId) as { teacher_tag: string; course_tag: string; name: string } | undefined;
+
+    if (!currentWB) {
+      console.warn(`[Extract] 单词本 ${wordbookId} 不存在，将忽略合并逻辑`);
+      finalWordbookId = null as any;
+    } else {
+      const normalizedTeacher = (currentWB.teacher_tag || '').trim().toLowerCase();
+      const normalizedCourse = (currentWB.course_tag || '').trim().toLowerCase();
+
+      let existingWB: { id: string; name: string } | undefined;
+      if (normalizedTeacher) {
+        existingWB = db.prepare(`
+          SELECT id, name FROM wordbooks
+          WHERE user_id = ? AND id != ? AND LOWER(TRIM(teacher_tag)) = ?
+          LIMIT 1
+        `).get(userId, wordbookId, normalizedTeacher) as { id: string; name: string } | undefined;
+      }
+      if (!existingWB && normalizedCourse) {
+        existingWB = db.prepare(`
+          SELECT id, name FROM wordbooks
+          WHERE user_id = ? AND id != ? AND LOWER(TRIM(course_tag)) = ?
+          LIMIT 1
+        `).get(userId, wordbookId, normalizedCourse) as { id: string; name: string } | undefined;
+      }
+
+      if (existingWB) {
+        console.log(`[Extract] 检测到相同标签单词本: "${existingWB.name}", 合并单词`);
+        finalWordbookId = existingWB.id;
+        mergedIntoExisting = true;
+        mergedWordbookName = existingWB.name;
+      }
+    }
+  }
+
+  if (!finalWordbookId) {
+    throw new Error('单词本不存在，请重新上传文件');
+  }
+
+  const cardIds: string[] = [];
+  const insertCard = db.prepare(`
+    INSERT INTO word_cards (
+      id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+      gender, definite_article, chinese_meaning, original_form,
+      accent_type, status, audio_url
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+  const insertSentence = db.prepare(`
+    INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, audio_url)
+    VALUES (?, ?, ?, ?, ?)
+  `);
+
+  const txResult = db.transaction(() => {
+    for (let i = 0; i < words.length; i++) {
+      const w = words[i];
+      const cid = uuidv4();
+      const norm = w.word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      insertCard.run(cid, finalWordbookId, userId, w.word, norm, w.partOfSpeech,
+        w.gender || '', w.definiteArticle || '', w.chineseMeaning, w.originalForm || w.word,
+        'es-ES', 'new', '');
+      if (w.example) insertSentence.run(uuidv4(), cid, w.example, w.exampleZh || '', '');
+      cardIds.push(cid);
+    }
+
+    const savedSentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }> = [];
+    if (sentences.length > 0 && cardIds.length > 0) {
+      for (const s of sentences) {
+        for (const cid of cardIds) {
+          insertSentence.run(uuidv4(), cid, s.es, s.zh, '');
+        }
+        savedSentences.push({ es: s.es, zh: s.zh, cardId: cardIds[0] });
+      }
+    }
+
+    db.prepare(
+      'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?) WHERE id = ?'
+    ).run(finalWordbookId, finalWordbookId);
+
+    if (mergedIntoExisting && wordbookId !== finalWordbookId) {
+      db.prepare('DELETE FROM wordbooks WHERE id = ?').run(wordbookId);
+      console.log(`[Extract] 已删除临时单词本: ${wordbookId}`);
+    }
+
+    return { savedSentences };
+  })();
+
+  return {
+    cardIds,
+    words,
+    sentences: txResult.savedSentences,
+    extractionSource,
+    extractionNote: extractionNote || undefined,
+    merged: mergedIntoExisting || undefined,
+    mergedWordbookName: mergedWordbookName || undefined,
+  };
+}
+
+// POST /api/upload - Upload files (可选自动提取)
 router.post(
   '/',
   authMiddleware,
   upload.array('files', 20),
-  (req: AuthRequest, res: Response) => {
+  async (req: AuthRequest, res: Response) => {
     try {
       const files = req.files as Express.Multer.File[];
       if (!files || files.length === 0) {
@@ -59,7 +213,7 @@ router.post(
         return;
       }
 
-      const { wordbookName, teacherTag, courseTag } = req.body;
+      const { wordbookName, teacherTag, courseTag, autoExtract } = req.body;
 
       const uploadedFiles = files.map((file) => {
         let fileType: 'video' | 'image' | 'pdf' | 'docx';
@@ -101,8 +255,52 @@ router.post(
           teacherTag || '',
           courseTag || ''
         );
+      }
 
-        // Update card_count later
+      // 自动提取模式：上传后立即在同一个请求中提取
+      if (autoExtract === 'true' && wordbookId && files[0]) {
+        const f = files[0];
+        const fileType = uploadedFiles[0].type;
+        try {
+          const diskPath = path.join(uploadDir, f.filename);
+          const extractResult = await performExtraction(
+            fileType, diskPath, uploadedFiles[0].path, wordbookId, req.userId!
+          );
+
+          const sourceLabel = fileType === 'video' ? '视频' : fileType === 'pdf' ? 'PDF'
+            : fileType === 'docx' ? 'Word文档' : '图片';
+          const mergeNote = extractResult.merged
+            ? ` 已归入"${extractResult.mergedWordbookName}"` : '';
+
+          res.json({
+            message: `文件上传成功！${files.length} 个文件`,
+            files: uploadedFiles,
+            wordbookId: wordbookId,
+            extract: {
+              message: extractResult.extractionSource === 'ocr'
+                ? `AI 识别成功！从${sourceLabel}中提取了 ${extractResult.cardIds.length} 个西语单词、${extractResult.sentences.length} 条造句${mergeNote}`
+                : `已生成 ${extractResult.cardIds.length} 个示例单词（${extractResult.extractionNote || ''}）${mergeNote}`,
+              cardIds: extractResult.cardIds,
+              words: extractResult.words,
+              sentences: extractResult.sentences,
+              extractionSource: extractResult.extractionSource,
+              extractionNote: extractResult.extractionNote,
+              wordbookId: wordbookId,
+              merged: extractResult.merged,
+              mergedWordbookName: extractResult.mergedWordbookName,
+            },
+          });
+        } catch (extractErr: any) {
+          console.error('[AutoExtract] 提取失败:', extractErr.message);
+          // 上传成功但提取失败，返回部分成功
+          res.json({
+            message: `文件上传成功！${files.length} 个文件`,
+            files: uploadedFiles,
+            wordbookId,
+            extractError: extractErr.message || '提取失败',
+          });
+        }
+        return;
       }
 
       res.json({
@@ -116,257 +314,32 @@ router.post(
   }
 );
 
-// POST /api/upload/extract - Extract words from uploaded file
+// POST /api/upload/extract - Extract words from uploaded file (legacy, 逐步废弃)
 router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { filePath, fileType, wordbookId } = req.body;
-
-    // Choose extraction method based on file type
-    let words: ExtractedWord[] = [];
-    let extractionSource: 'ocr' | 'mock' = 'mock';
-    let extractionNote = '';
-
-    // 造句列表（图片有固定格式时才有）
-    let sentences: ExtractedSentence[] = [];
-
-    if (fileType === 'image') {
-      // 📷 图片 → qwen3-vl-flash OCR 提取
-      try {
-        const absolutePath = path.join(uploadDir, path.basename(filePath));
-        const result = await extractWordsFromImage(absolutePath);
-        words = result.words;
-        sentences = result.sentences;
-        extractionSource = 'ocr';
-      } catch (ocrErr: any) {
-        console.error('[OCR] 图片提取失败:', ocrErr.message);
-        // OCR 失败时返回明确错误，不静默降级为 mock
-        res.status(500).json({
-          error: '图片 OCR 提取失败',
-          detail: ocrErr.message,
-        });
-        return;
-      }
-    } else if (fileType === 'video') {
-      // 🎬 视频 → 提取音轨 + qwen3-asr-flash 语音转文字（不再保留原声音频，统一用 TTS）
-      try {
-        const videoAbsPath = path.join(uploadDir, path.basename(filePath));
-        const audioBaseName = `audio_${uuidv4()}.mp3`;
-        const audioPath = await extractAudioFromVideo(videoAbsPath, audioBaseName);
-
-        const asrResult = await transcribeVideoAudio(audioPath);
-        words = asrResult.words;
-        sentences = asrResult.sentences;
-        extractionSource = 'ocr';
-
-        // 清理提取的完整音轨（不再需要裁切）
-        try { fs.unlinkSync(audioPath); } catch {}
-
-        // 不再进行音频裁切，单词和造句均使用设备 TTS / API TTS 朗读
-        (req as any)._wordAudioUrls = words.map(() => '');
-        (req as any)._sentenceAudioUrls = sentences.map(() => '');
-      } catch (asrErr: any) {
-        console.error('[ASR] 视频语音识别失败:', asrErr.message);
-        res.status(500).json({
-          error: '视频语音识别失败',
-          detail: asrErr.message,
-        });
-        return;
-      }
-    } else if (fileType === 'pdf') {
-      // 📄 PDF → pdf-parse 提取文本 → LLM 拆分单词+造句
-      try {
-        const absolutePath = path.join(uploadDir, path.basename(filePath));
-        const result = await extractWordsFromPDF(absolutePath);
-        words = result.words;
-        sentences = result.sentences;
-        extractionSource = 'ocr';
-      } catch (pdfErr: any) {
-        console.error('[PDF] 提取失败:', pdfErr.message);
-        res.status(500).json({
-          error: 'PDF 提取失败',
-          detail: pdfErr.message,
-        });
-        return;
-      }
-    } else if (fileType === 'docx') {
-      // 📝 Word → mammoth 提取文本 → LLM 拆分单词+造句
-      try {
-        const absolutePath = path.join(uploadDir, path.basename(filePath));
-        const result = await extractWordsFromDocx(absolutePath);
-        words = result.words;
-        sentences = result.sentences;
-        extractionSource = 'ocr';
-      } catch (docxErr: any) {
-        console.error('[Docx] 提取失败:', docxErr.message);
-        res.status(500).json({
-          error: 'Word 文档提取失败',
-          detail: docxErr.message,
-        });
-        return;
-      }
-    } else {
-      words = generateMockWords(fileType, filePath);
-      extractionSource = 'mock';
-      extractionNote = '未知文件类型，使用示例单词';
-    }
-
-    // ─── 去重合并：检查是否已有相似标签的单词本 ───
-    let finalWordbookId = wordbookId;
-    let mergedIntoExisting = false;
-    let mergedWordbookName = '';
-
-    if (wordbookId) {
-      const currentWB = db.prepare(
-        'SELECT teacher_tag, course_tag, name FROM wordbooks WHERE id = ? AND user_id = ?'
-      ).get(wordbookId, req.userId!) as { teacher_tag: string; course_tag: string; name: string } | undefined;
-
-      if (!currentWB) {
-        // 原始单词本不存在（可能被删除），清除无效 ID
-        console.warn(`[Extract] 单词本 ${wordbookId} 不存在，将忽略合并逻辑`);
-        finalWordbookId = null;
-      } else {
-        const normalizedTeacher = (currentWB.teacher_tag || '').trim().toLowerCase();
-        const normalizedCourse = (currentWB.course_tag || '').trim().toLowerCase();
-
-        // 按教师标签或课程标签匹配已有单词本（排除自身）
-        let existingWB: { id: string; name: string } | undefined;
-        if (normalizedTeacher) {
-          existingWB = db.prepare(`
-            SELECT id, name FROM wordbooks
-            WHERE user_id = ? AND id != ? AND LOWER(TRIM(teacher_tag)) = ?
-            LIMIT 1
-          `).get(req.userId!, wordbookId, normalizedTeacher) as { id: string; name: string } | undefined;
-        }
-        if (!existingWB && normalizedCourse) {
-          existingWB = db.prepare(`
-            SELECT id, name FROM wordbooks
-            WHERE user_id = ? AND id != ? AND LOWER(TRIM(course_tag)) = ?
-            LIMIT 1
-          `).get(req.userId!, wordbookId, normalizedCourse) as { id: string; name: string } | undefined;
-        }
-
-        if (existingWB) {
-          console.log(`[Extract] 检测到相同标签单词本: "${existingWB.name}", 合并单词`);
-          finalWordbookId = existingWB.id;
-          mergedIntoExisting = true;
-          mergedWordbookName = existingWB.name;
-        }
-      }
-    }
-
-    // 如果没有有效的单词本 ID，返回错误（无法插入外键引用）
-    if (!finalWordbookId) {
-      res.status(400).json({
-        error: '单词本不存在，请重新上传文件',
-        detail: '关联的单词本已被删除或不存在',
-      });
-      return;
-    }
-
-    // 允许提取 0 个单词（图片中确实没有西语内容）
-    const cardIds: string[] = [];
-
-    const insertCard = db.prepare(`
-      INSERT INTO word_cards (
-        id, wordbook_id, user_id, word, word_normalized, part_of_speech,
-        gender, definite_article, chinese_meaning, original_form,
-        accent_type, status, audio_url
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    const insertSentence = db.prepare(`
-      INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, audio_url)
-      VALUES (?, ?, ?, ?, ?)
-    `);
-
-    // 音频 URL（视频上传不再保留原声，统一用 TTS，故均为空字符串）
-    const wordAudioUrls: string[] = (req as any)._wordAudioUrls || [];
-    const sentenceAudioUrls: string[] = (req as any)._sentenceAudioUrls || [];
-
-    // 用事务包裹所有数据库写入，保证原子性
-    const result = db.transaction(() => {
-      for (let i = 0; i < words.length; i++) {
-        const word = words[i];
-        const cardId = uuidv4();
-        const normalized = word.word
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase();
-
-        insertCard.run(
-          cardId,
-          finalWordbookId,
-          req.userId!,
-          word.word,
-          normalized,
-          word.partOfSpeech,
-          word.gender || '',
-          word.definiteArticle || '',
-          word.chineseMeaning,
-          word.originalForm || word.word,
-          'es-ES',
-          'new',
-          wordAudioUrls[i] || ''
-        );
-
-        if (word.example) {
-          insertSentence.run(uuidv4(), cardId, word.example, word.exampleZh || '', '');
-        }
-
-        cardIds.push(cardId);
-      }
-
-    // 存储造句 — 每条造句独立存储（音频统一用 TTS，不保留原声）
-    const savedSentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }> = [];
-    if (sentences.length > 0 && cardIds.length > 0) {
-      for (let si = 0; si < sentences.length; si++) {
-        const s = sentences[si];
-        const sentAudio = sentenceAudioUrls[si] || '';
-        // 每条造句为所有卡片各创建一条记录（例句可重复匹配）
-        for (const cardId of cardIds) {
-          insertSentence.run(uuidv4(), cardId, s.es, s.zh, sentAudio);
-        }
-        savedSentences.push({ es: s.es, zh: s.zh, cardId: cardIds[0], audioUrl: sentAudio });
-      }
-    }
-
-    // Update final wordbook card_count
-    if (finalWordbookId) {
-      db.prepare(
-        'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = ?) WHERE id = ?'
-      ).run(finalWordbookId, finalWordbookId);
-    }
-
-    // 合并后清理临时单词本
-    if (mergedIntoExisting && wordbookId && wordbookId !== finalWordbookId) {
-      db.prepare('DELETE FROM wordbooks WHERE id = ?').run(wordbookId);
-      console.log(`[Extract] 已删除临时单词本: ${wordbookId}`);
-    }
-
-    return { savedSentences };
-    })();
-    // 事务返回值：savedSentences 从作用域内取出
-    const { savedSentences } = result;
+    const diskPath = path.join(uploadDir, path.basename(filePath));
+    const result = await performExtraction(fileType, diskPath, filePath, wordbookId, req.userId!);
 
     const isVideo = fileType === 'video';
     const isPDF = fileType === 'pdf';
     const isDocx = fileType === 'docx';
     const sourceLabel = isVideo ? '视频' : isPDF ? 'PDF' : isDocx ? 'Word文档' : '图片';
-    const mergeNote = mergedIntoExisting
-      ? ` 已归入"${mergedWordbookName}"`
-      : '';
+    const mergeNote = result.merged
+      ? ` 已归入"${result.mergedWordbookName}"` : '';
+
     res.json({
-      message: extractionSource === 'ocr'
-        ? `AI 识别成功！从${sourceLabel}中提取了 ${cardIds.length} 个西语单词、${sentences.length} 条造句${mergeNote}`
-        : `已生成 ${cardIds.length} 个示例单词（${extractionNote}）${mergeNote}`,
-      cardIds,
-      words,
-      sentences: savedSentences,
-      extractionSource,
-      extractionNote: extractionNote || undefined,
-      wordbookId: finalWordbookId,    // 返回最终归属的单词本 ID
-      merged: mergedIntoExisting || undefined,
-      mergedWordbookName: mergedWordbookName || undefined,
+      message: result.extractionSource === 'ocr'
+        ? `AI 识别成功！从${sourceLabel}中提取了 ${result.cardIds.length} 个西语单词、${result.sentences.length} 条造句${mergeNote}`
+        : `已生成 ${result.cardIds.length} 个示例单词（${result.extractionNote || ''}）${mergeNote}`,
+      cardIds: result.cardIds,
+      words: result.words,
+      sentences: result.sentences,
+      extractionSource: result.extractionSource,
+      extractionNote: result.extractionNote,
+      wordbookId,
+      merged: result.merged,
+      mergedWordbookName: result.mergedWordbookName,
     });
   } catch (err: any) {
     console.error('[Extract] 未知错误:', err.message);
