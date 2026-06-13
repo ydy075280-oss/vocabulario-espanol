@@ -106,7 +106,8 @@ export default function UploadPage() {
         }
       }
     } catch (err: any) {
-      setError(err.response?.data?.error || '文件上传失败');
+      const errMsg = err.response?.data?.error || err.message || '';
+      setError(errMsg.includes('timeout') ? '上传超时，请检查网络后重试' : (errMsg || '文件上传失败'));
     } finally { setUploading(false); setExtracting(false); }
   };
 
