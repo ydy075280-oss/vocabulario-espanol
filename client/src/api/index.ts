@@ -106,7 +106,7 @@ export const uploadAPI = {
       },
     }),
   extract: (data: { filePath: string; fileType: string; wordbookId: string }) =>
-    api.post('/upload/extract', data),
+    api.post('/upload/extract', data, { timeout: 180000 }),
 };
 
 // ------ Wordbooks API ------

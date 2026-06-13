@@ -102,7 +102,8 @@ export default function UploadPage() {
           else setWarning(edata.message || `已生成 ${edata.cardIds?.length || 0} 个示例单词`);
           if (edata.sentences?.length > 0) setExtractedSentences(edata.sentences);
         } catch (extractErr: any) {
-          setWarning(`上传成功，但 AI 单词提取失败：${extractErr.response?.data?.detail || extractErr.response?.data?.error || '未知错误'}`);
+          const extractMsg = extractErr.response?.data?.detail || extractErr.response?.data?.error || extractErr.message || '';
+          setWarning(`上传成功，但 AI 单词提取失败：${extractMsg.includes('timeout') ? '请求超时，请重试' : (extractMsg || '未知错误')}`);
         }
       }
     } catch (err: any) {
