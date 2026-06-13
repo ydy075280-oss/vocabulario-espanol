@@ -220,7 +220,11 @@ router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) 
         'SELECT teacher_tag, course_tag, name FROM wordbooks WHERE id = ? AND user_id = ?'
       ).get(wordbookId, req.userId!) as { teacher_tag: string; course_tag: string; name: string } | undefined;
 
-      if (currentWB) {
+      if (!currentWB) {
+        // 原始单词本不存在（可能被删除），清除无效 ID
+        console.warn(`[Extract] 单词本 ${wordbookId} 不存在，将忽略合并逻辑`);
+        finalWordbookId = null;
+      } else {
         const normalizedTeacher = (currentWB.teacher_tag || '').trim().toLowerCase();
         const normalizedCourse = (currentWB.course_tag || '').trim().toLowerCase();
 
@@ -250,6 +254,15 @@ router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) 
       }
     }
 
+    // 如果没有有效的单词本 ID，返回错误（无法插入外键引用）
+    if (!finalWordbookId) {
+      res.status(400).json({
+        error: '单词本不存在，请重新上传文件',
+        detail: '关联的单词本已被删除或不存在',
+      });
+      return;
+    }
+
     // 允许提取 0 个单词（图片中确实没有西语内容）
     const cardIds: string[] = [];
 
@@ -270,39 +283,38 @@ router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) 
     const wordAudioUrls: string[] = (req as any)._wordAudioUrls || [];
     const sentenceAudioUrls: string[] = (req as any)._sentenceAudioUrls || [];
 
-    for (let i = 0; i < words.length; i++) {
-      const word = words[i];
-      const cardId = uuidv4();
-      const normalized = word.word
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase();
+    // 用事务包裹所有数据库写入，保证原子性
+    const result = db.transaction(() => {
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const cardId = uuidv4();
+        const normalized = word.word
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase();
 
-      // 单词发音 URL（统一用 TTS，此处为空）
-      const cardAudioUrl = wordAudioUrls[i] || '';
+        insertCard.run(
+          cardId,
+          finalWordbookId,
+          req.userId!,
+          word.word,
+          normalized,
+          word.partOfSpeech,
+          word.gender || '',
+          word.definiteArticle || '',
+          word.chineseMeaning,
+          word.originalForm || word.word,
+          'es-ES',
+          'new',
+          wordAudioUrls[i] || ''
+        );
 
-      insertCard.run(
-        cardId,
-        finalWordbookId,
-        req.userId!,
-        word.word,
-        normalized,
-        word.partOfSpeech,
-        word.gender || '',
-        word.definiteArticle || '',
-        word.chineseMeaning,
-        word.originalForm || word.word,
-        'es-ES',
-        'new',
-        cardAudioUrl
-      );
+        if (word.example) {
+          insertSentence.run(uuidv4(), cardId, word.example, word.exampleZh || '', '');
+        }
 
-      if (word.example) {
-        insertSentence.run(uuidv4(), cardId, word.example, word.exampleZh || '', '');
+        cardIds.push(cardId);
       }
-
-      cardIds.push(cardId);
-    }
 
     // 存储造句 — 每条造句独立存储（音频统一用 TTS，不保留原声）
     const savedSentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }> = [];
@@ -330,6 +342,11 @@ router.post('/extract', authMiddleware, async (req: AuthRequest, res: Response) 
       db.prepare('DELETE FROM wordbooks WHERE id = ?').run(wordbookId);
       console.log(`[Extract] 已删除临时单词本: ${wordbookId}`);
     }
+
+    return { savedSentences };
+    })();
+    // 事务返回值：savedSentences 从作用域内取出
+    const { savedSentences } = txResult;
 
     const isVideo = fileType === 'video';
     const isPDF = fileType === 'pdf';
