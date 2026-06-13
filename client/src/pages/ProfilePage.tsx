@@ -1,12 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { learnAPI } from '../api';
-
-interface Stats {
-  totalCards: number; masteredCards: number; learningCards: number;
-  dueNow: number; todayStudied: number; accuracy: number; todayMinutes: number;
-}
 
 const SPEED_OPTIONS = [
   { value: 0.5,  label: '0.5x', desc: '很慢' },
@@ -19,12 +13,9 @@ const SPEED_OPTIONS = [
 export default function ProfilePage() {
   const { user, logout, updateProfile } = useAuth();
   const navigate = useNavigate();
-  const [stats, setStats] = useState<Stats | null>(null);
   const [editing, setEditing] = useState(false);
   const [nickname, setNickname] = useState(user?.nickname || '');
   const [savingSpeed, setSavingSpeed] = useState(false);
-
-  useEffect(() => { learnAPI.stats().then(({ data }) => setStats(data)).catch(() => {}); }, []);
 
   const handleLogout = async () => {
     if (confirm('确定退出登录？')) { await logout(); navigate('/auth'); }
@@ -66,22 +57,6 @@ export default function ProfilePage() {
         <p className="text-sm text-typo-muted mt-1">{user?.email}</p>
       </div>
 
-      {stats && (
-        <div className="card mb-6">
-          <h3 className="text-eyebrow uppercase text-typo-muted mb-4" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>学习统计</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            <StatItem label="TOTAL" value={stats.totalCards} />
-            <StatItem label="MASTERED" value={stats.masteredCards} color="text-success" />
-            <StatItem label="LEARNING" value={stats.learningCards} color="text-warning" />
-            <StatItem label="DUE" value={stats.dueNow} color="text-danger" />
-            <StatItem label="TODAY" value={stats.todayStudied} />
-            <StatItem label="MINUTES" value={`${stats.todayMinutes}min`} />
-            <StatItem label="ACCURACY" value={`${stats.accuracy}%`} color="text-success" />
-            <StatItem label="PROGRESS" value={`${stats.masteredCards}/${stats.totalCards}`} />
-          </div>
-        </div>
-      )}
-
       <div className="card mb-6">
         <h3 className="text-eyebrow uppercase text-typo-muted mb-4" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>朗诵语速</h3>
         <p className="text-xs text-typo-muted mb-4">设置单词和句子的默认朗读语速，学习卡片页面可临时覆盖</p>
@@ -115,15 +90,6 @@ export default function ProfilePage() {
       </button>
 
       <p className="text-center text-xs text-typo-muted mt-6 mb-4">西语词汇学习平台 v1.0</p>
-    </div>
-  );
-}
-
-function StatItem({ label, value, color }: { label: string; value: string | number; color?: string }) {
-  return (
-    <div className="bg-surface rounded-card p-3 text-center border border-hairline-soft">
-      <p className={`text-lg font-medium ${color || 'text-ink'}`} style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>{value}</p>
-      <p className="text-[10px] text-typo-muted mt-1 uppercase tracking-wider" style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>{label}</p>
     </div>
   );
 }
