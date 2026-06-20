@@ -222,3 +222,9 @@ a, button {
 .animate-slide-up {
   animation: slide-up 0.25s ease-out;
 }
+
+/* Shrink bar animation for update prompt */
+@keyframes shrinkBar {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
