@@ -28,6 +28,8 @@ RUN cd server && npm run build && cd ..
 FROM node:20-slim
 
 # 安装 ffmpeg（最多重试 3 次应对网络波动）
+# CACHE_BUST: 修改此值强制重建缓存层
+ENV CACHE_BUST=20250620-v2
 RUN for i in 1 2 3; do \
         apt-get update && break || sleep 5; \
     done && \
