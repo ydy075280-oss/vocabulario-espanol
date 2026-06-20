@@ -61,6 +61,7 @@ async function performExtraction(
   extractionNote?: string;
   merged?: boolean;
   mergedWordbookName?: string;
+  wordbookId: string;
 }> {
   let words: ExtractedWord[] = [];
   let sentences: ExtractedSentence[] = [];
