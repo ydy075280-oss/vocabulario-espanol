@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { moduleAPI } from '../api/index';
+import { moduleAPI, memorizeAPI } from '../api/index';
 import Loading from '../components/Loading';
 
 // ============================================================
@@ -24,6 +24,7 @@ interface TaskData {
   userSentenceTTS?: Record<string, string>;
   userWriting?: string;
   userWritingTitle?: string;
+  memorize?: boolean;
 }
 
 interface ModuleTask {
@@ -129,6 +130,9 @@ export default function ModuleDetailPage() {
 
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
+  const [memorizedTasks, setMemorizedTasks] = useState<Set<string>>(new Set());
+  const [memorizeLoading, setMemorizeLoading] = useState<string | null>(null);
+
   useEffect(() => {
     if (id) loadModule();
   }, [id]);
@@ -157,6 +161,13 @@ export default function ModuleDetailPage() {
       });
       setUserSentences(us);
       setUserWritings(uw);
+
+      const memSet = new Set<string>();
+      module.tasks.forEach((t) => {
+        if (t.taskData?.memorize) memSet.add(t.id);
+      });
+      setMemorizedTasks(memSet);
+
       setInitialExpandDone(true);
     }
   }, [module, initialExpandDone]);
@@ -579,6 +590,37 @@ export default function ModuleDetailPage() {
     </div>
   );
   if (!module) return null;
+
+  const handleToggleMemorize = async (taskId: string) => {
+    if (!module) return;
+    setMemorizeLoading(taskId);
+    try {
+      const { data } = await memorizeAPI.toggle(module.id, taskId);
+      setMemorizedTasks((prev) => {
+        const next = new Set(prev);
+        if (data.memorize) next.add(taskId);
+        else next.delete(taskId);
+        return next;
+      });
+      // 同步更新 module 中的 taskData
+      setModule((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          tasks: prev.tasks.map((t) => {
+            if (t.id !== taskId) return t;
+            const td = { ...(t.taskData || {}) };
+            td.memorize = data.memorize;
+            return { ...t, taskData: td };
+          }),
+        };
+      });
+    } catch (err: any) {
+      console.error('背诵切换失败:', err);
+    } finally {
+      setMemorizeLoading(null);
+    }
+  };
 
   const totalTasks = module.tasks.length;
   const completedTasks = module.tasks.filter((t) => t.completed).length;
@@ -1207,6 +1249,24 @@ export default function ModuleDetailPage() {
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[10px] font-mono text-warning uppercase tracking-wider">✍️ 我的写作</span>
             <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleToggleMemorize(task.id)}
+                disabled={memorizeLoading === task.id}
+                className={`text-[10px] px-2 py-0.5 rounded-pill border transition-colors ${
+                  memorizedTasks.has(task.id)
+                    ? 'bg-warning/10 text-warning border-warning/30'
+                    : 'border-hairline text-typo-muted hover:border-warning/30 hover:text-warning'
+                }`}
+                title={memorizedTasks.has(task.id) ? '取消背诵' : '加入背诵列表'}
+              >
+                {memorizeLoading === task.id ? (
+                  <span className="w-2.5 h-2.5 border border-warning/30 border-t-warning rounded-full animate-spin inline-block" />
+                ) : memorizedTasks.has(task.id) ? (
+                  '✓ 已加入背诵'
+                ) : (
+                  '+ 加入背诵'
+                )}
+              </button>
               <button
                 onClick={() => {
                   if (writingAudioUrl) {

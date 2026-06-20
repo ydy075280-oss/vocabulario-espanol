@@ -11,6 +11,7 @@ import learnRoutes from './routes/learn';
 import createRoutes from './routes/create';
 import ttsRoutes from './routes/tts';
 import moduleRoutes from './routes/modules';
+import memorizeRoutes from './routes/memorize';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -37,6 +38,7 @@ app.use('/api/learn', learnRoutes);
 app.use('/api/create', createRoutes);
 app.use('/api/tts', ttsRoutes);
 app.use('/api/modules', moduleRoutes);
+app.use('/api/memorize', memorizeRoutes);
 
 // Health check
 app.get('/api/health', (_req, res) => {

@@ -201,4 +201,11 @@ export const moduleAPI = {
   exportWordbook: (id: string) => api.post(`/modules/${id}/export-wordbook`),
 };
 
+// ------ Memorize API ------
+export const memorizeAPI = {
+  list: () => api.get('/memorize'),
+  toggle: (moduleId: string, taskId: string) =>
+    api.post('/memorize/toggle', { moduleId, taskId }),
+};
+
 export default api;

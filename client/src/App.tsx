@@ -10,6 +10,7 @@ import LearnPage from './pages/LearnPage';
 import CreatePage from './pages/CreatePage';
 import ModuleListPage from './pages/ModuleListPage';
 import ModuleDetailPage from './pages/ModuleDetailPage';
+import MemorizePage from './pages/MemorizePage';
 import ProfilePage from './pages/ProfilePage';
 import Layout from './components/Layout';
 import Loading from './components/Loading';
@@ -39,6 +40,7 @@ export default function App() {
                 <Route path="/create" element={<CreatePage />} />
                 <Route path="/modules" element={<ModuleListPage />} />
                 <Route path="/modules/:id" element={<ModuleDetailPage />} />
+                <Route path="/memorize" element={<MemorizePage />} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Routes>
             </Layout>

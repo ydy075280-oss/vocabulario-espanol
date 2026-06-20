@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wordbookAPI } from '../api';
 
@@ -30,6 +30,9 @@ export default function WordbookList() {
   const [showCreate, setShowCreate] = useState(false);
   const [newName, setNewName] = useState('');
   const [newTeacher, setNewTeacher] = useState('');
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editName, setEditName] = useState('');
+  const editInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     loadBooks();
@@ -60,6 +63,27 @@ export default function WordbookList() {
       await wordbookAPI.delete(id);
       setWordbooks((prev) => prev.filter((w) => w.id !== id));
     } catch { /* ignore */ }
+  };
+
+  const startRename = (wb: Wordbook) => {
+    setEditingId(wb.id);
+    setEditName(wb.name);
+    setTimeout(() => editInputRef.current?.focus(), 0);
+  };
+
+  const saveRename = async (id: string) => {
+    const trimmed = editName.trim();
+    if (!trimmed) {
+      setEditingId(null);
+      return;
+    }
+    try {
+      await wordbookAPI.update(id, { name: trimmed });
+      setWordbooks((prev) =>
+        prev.map((w) => (w.id === id ? { ...w, name: trimmed } : w))
+      );
+    } catch { /* ignore */ }
+    setEditingId(null);
   };
 
   return (
@@ -123,7 +147,32 @@ export default function WordbookList() {
                   className="flex-1 min-w-0 cursor-pointer"
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-medium text-ink truncate">{wb.name}</h3>
+                    {editingId === wb.id ? (
+                      <input
+                        ref={editInputRef}
+                        value={editName}
+                        onChange={(e) => setEditName(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') saveRename(wb.id);
+                          if (e.key === 'Escape') setEditingId(null);
+                          e.stopPropagation();
+                        }}
+                        onBlur={() => saveRename(wb.id)}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex-1 min-w-0 px-1.5 py-0.5 text-sm font-medium bg-surface border border-hairline rounded-input outline-none focus:border-brand transition-colors"
+                      />
+                    ) : (
+                      <h3
+                        className="font-medium text-ink truncate hover:text-brand transition-colors cursor-text"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          startRename(wb);
+                        }}
+                        title="点击修改名称"
+                      >
+                        {wb.name}
+                      </h3>
+                    )}
                     <span className={`text-[10px] px-1.5 py-0.5 rounded-pill shrink-0 ${src.labelClass}`}>
                       {src.label}
                     </span>
