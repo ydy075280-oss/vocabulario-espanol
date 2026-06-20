@@ -168,7 +168,7 @@ export default function WordbookDetail() {
           return (
             <div key={card.id} className="card-hover flex items-center gap-3 group cursor-pointer" onClick={() => navigate(`/learn/${id}?start=${card.id}`)}>
               <button
-                onClick={() => speak(card.word)}
+                onClick={(e) => { e.stopPropagation(); speak(card.word); }}
                 className="p-2 text-typo-secondary hover:text-ink hover:bg-surface rounded-input transition-colors shrink-0"
                 title="播放发音"
               >
@@ -189,7 +189,7 @@ export default function WordbookDetail() {
                 </p>
               </div>
               <button
-                onClick={() => deleteCard(card.id, card.word)}
+                onClick={(e) => { e.stopPropagation(); deleteCard(card.id, card.word); }}
                 className="p-2 text-typo-muted hover:text-danger rounded-input opacity-0 group-hover:opacity-100 transition-all"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
