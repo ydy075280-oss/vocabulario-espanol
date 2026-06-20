@@ -6,6 +6,9 @@
 # ---- 阶段 1: 构建 ----
 FROM node:20-slim AS builder
 
+# Install build tools required by node-gyp (for better-sqlite3 native compilation)
+RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # 复制依赖文件
@@ -41,11 +44,9 @@ WORKDIR /app
 # 复制构建产物
 COPY --from=builder /app/client/dist ./client/dist
 COPY --from=builder /app/server/dist ./server/dist
+COPY --from=builder /app/server/node_modules ./server/node_modules
 COPY --from=builder /app/server/package*.json ./server/
 COPY --from=builder /app/package*.json ./
-
-# 仅安装 server 的生产依赖
-RUN cd server && npm ci --omit=dev
 
 # 创建运行时上传目录（TTS 音频等暂存文件）
 RUN mkdir -p /app/server/uploads
