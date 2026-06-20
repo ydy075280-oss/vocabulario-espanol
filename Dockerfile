@@ -27,9 +27,12 @@ RUN cd server && npm run build && cd ..
 # ---- 阶段 2: 运行 ----
 FROM node:20-slim
 
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
+# 安装 ffmpeg（最多重试 3 次应对网络波动）
+RUN for i in 1 2 3; do \
+        apt-get update && break || sleep 5; \
+    done && \
+    apt-get install -y --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
