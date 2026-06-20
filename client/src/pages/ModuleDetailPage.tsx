@@ -108,6 +108,7 @@ export default function ModuleDetailPage() {
 
   const [userSentences, setUserSentences] = useState<Record<string, Record<string, string[]>>>({});
   const [sentenceTTSLoading, setSentenceTTSLoading] = useState<string | null>(null);
+  const [writingTTSLoading, setWritingTTSLoading] = useState<string | null>(null);
 
   const [userWritings, setUserWritings] = useState<Record<string, string>>({});
   const writingSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -418,6 +419,41 @@ export default function ModuleDetailPage() {
       setTimeout(() => setTtsError(''), 5000);
     } finally {
       setSentenceTTSLoading(null);
+    }
+  };
+
+  const handleWritingTTS = async (taskId: string) => {
+    const text = userWritings[taskId] || module?.tasks.find(t => t.id === taskId)?.taskData?.userWriting;
+    if (!text?.trim()) return;
+
+    const ttsKey = `writing-${taskId}`;
+    setWritingTTSLoading(taskId);
+    setTtsError('');
+
+    try {
+      const { data } = await moduleAPI.generateUserTTS(id!, taskId, text.trim(), -1);
+      if (data.audioUrl) {
+        setModule((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            tasks: prev.tasks.map((t) => {
+              if (t.id !== taskId) return t;
+              const td = { ...(t.taskData || {}) };
+              td.userSentenceTTS = { ...(td.userSentenceTTS || {}), [ttsKey]: data.audioUrl };
+              return { ...t, taskData: td };
+            }),
+          };
+        });
+        handlePlayAudio(data.audioUrl, ttsKey);
+      }
+    } catch (err: any) {
+      const errMsg = err.response?.data?.error || err.message || '未知错误';
+      console.error('写作TTS失败:', errMsg);
+      setTtsError('语音生成失败: ' + errMsg);
+      setTimeout(() => setTtsError(''), 5000);
+    } finally {
+      setWritingTTSLoading(null);
     }
   };
 
@@ -1146,6 +1182,10 @@ export default function ModuleDetailPage() {
     const hasRefVocab = (taskData.referenceVocabulary || []).length > 0;
     const draft = userWritings[task.id] || taskData.userWriting || '';
     const wordCount = draft.replace(/\s/g, '').length;
+    const writingAudioKey = `writing-${task.id}`;
+    const writingAudioUrl = (taskData.userSentenceTTS || {})[writingAudioKey];
+    const isWritingPlaying = playingAudio === writingAudioKey;
+    const isWritingTTSLoading = writingTTSLoading === task.id;
 
     return (
       <div className="space-y-2">
@@ -1166,7 +1206,39 @@ export default function ModuleDetailPage() {
         <div className="bg-warning-muted/70 rounded-card p-2.5 border border-warning/10">
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[10px] font-mono text-warning uppercase tracking-wider">✍️ 我的写作</span>
-            <span className="text-[10px] font-mono text-warning/50">{wordCount} 字符</span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  if (writingAudioUrl) {
+                    handlePlayAudio(writingAudioUrl, writingAudioKey);
+                  } else {
+                    handleWritingTTS(task.id);
+                  }
+                }}
+                disabled={!draft.trim() || isWritingTTSLoading}
+                className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-pill border transition-colors ${
+                  isWritingTTSLoading
+                    ? 'border-hairline text-typo-disabled bg-surface cursor-not-allowed'
+                    : isWritingPlaying
+                    ? 'border-warning/50 bg-warning-muted text-warning'
+                    : draft.trim()
+                    ? 'border-hairline text-typo-muted hover:border-warning/30 hover:text-warning/70'
+                    : 'border-hairline text-typo-disabled bg-surface cursor-not-allowed'
+                }`}
+                title={writingAudioUrl ? '播放朗读' : '生成语音朗读'}
+              >
+                {isWritingTTSLoading ? (
+                  <><span className="w-2.5 h-2.5 border border-warning/30 border-t-warning rounded-full animate-spin" />生成中...</>
+                ) : isWritingPlaying ? (
+                  <><span className="w-2 h-2 bg-warning rounded-sm animate-pulse" />播放中...</>
+                ) : (
+                  <><svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  </svg>{writingAudioUrl ? '朗读' : '🔊 朗读'}</>
+                )}
+              </button>
+              <span className="text-[10px] font-mono text-warning/50">{wordCount} 字符</span>
+            </div>
           </div>
           <textarea
             value={draft}
