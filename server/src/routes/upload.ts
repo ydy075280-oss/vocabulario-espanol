@@ -264,48 +264,69 @@ router.post(
         );
       }
 
-      // 自动提取模式：上传后立即在同一个请求中提取
-      if (autoExtract === 'true' && wordbookId && files[0]) {
-        const f = files[0];
-        const fileType = uploadedFiles[0].type;
-        try {
-          const diskPath = path.join(uploadDir, f.filename);
-          const extractResult = await performExtraction(
-            fileType, diskPath, uploadedFiles[0].path, wordbookId, req.userId!
-          );
+      // 自动提取模式：上传后立即在同一个请求中处理所有文件
+      if (autoExtract === 'true' && wordbookId && files.length > 0) {
+        const allCardIds: string[] = [];
+        const allWords: ExtractedWord[] = [];
+        const allSentences: Array<{ es: string; zh: string; cardId: string; audioUrl?: string }> = [];
+        let mergedIntoExisting = false;
+        let mergedWordbookName = '';
+        let finalWbId = wordbookId;
+        const errors: string[] = [];
 
-          const sourceLabel = fileType === 'video' ? '视频' : fileType === 'pdf' ? 'PDF'
-            : fileType === 'docx' ? 'Word文档' : '图片';
-          const mergeNote = extractResult.merged
-            ? ` 已归入"${extractResult.mergedWordbookName}"` : '';
-
-          res.json({
-            message: `文件上传成功！${files.length} 个文件`,
-            files: uploadedFiles,
-            wordbookId: extractResult.wordbookId,
-            extract: {
-              message: extractResult.extractionSource === 'ocr'
-                ? `AI 识别成功！从${sourceLabel}中提取了 ${extractResult.cardIds.length} 个西语单词、${extractResult.sentences.length} 条造句${mergeNote}`
-                : `已生成 ${extractResult.cardIds.length} 个示例单词（${extractResult.extractionNote || ''}）${mergeNote}`,
-              cardIds: extractResult.cardIds,
-              words: extractResult.words,
-              sentences: extractResult.sentences,
-              extractionSource: extractResult.extractionSource,
-              extractionNote: extractResult.extractionNote,
-              wordbookId: extractResult.wordbookId,
-              merged: extractResult.merged,
-              mergedWordbookName: extractResult.mergedWordbookName,
-            },
-          });
-        } catch (extractErr: any) {
-          console.error('[AutoExtract] 提取失败:', extractErr.message);
-          res.json({
-            message: `文件上传成功！${files.length} 个文件`,
-            files: uploadedFiles,
-            wordbookId,
-            extractError: extractErr.message || '提取失败',
-          });
+        for (let i = 0; i < files.length; i++) {
+          const f = files[i];
+          const uf = uploadedFiles[i];
+          if (!uf) continue;
+          try {
+            const diskPath = path.join(uploadDir, f.filename);
+            const extractResult = await performExtraction(
+              uf.type, diskPath, uf.path, wordbookId, req.userId!
+            );
+            allCardIds.push(...extractResult.cardIds);
+            allWords.push(...extractResult.words);
+            allSentences.push(...extractResult.sentences);
+            if (extractResult.merged) {
+              mergedIntoExisting = true;
+              mergedWordbookName = extractResult.mergedWordbookName || '';
+              finalWbId = extractResult.wordbookId;
+            }
+          } catch (extractErr: any) {
+            console.error(`[AutoExtract] 文件 ${f.originalname} 提取失败:`, extractErr.message);
+            errors.push(`${f.originalname}: ${extractErr.message}`);
+          }
         }
+
+        // 汇总文件类型标签
+        const fileTypes = [...new Set(uploadedFiles.map(u => u.type))];
+        const hasVideo = fileTypes.includes('video');
+        const hasPDF = fileTypes.includes('pdf');
+        const hasDocx = fileTypes.includes('docx');
+        const hasImage = fileTypes.includes('image');
+        const typeLabel = [hasVideo && '视频', hasPDF && 'PDF', hasDocx && 'Word文档', hasImage && '图片']
+          .filter(Boolean).join('+');
+
+        const mergeNote = mergedIntoExisting
+          ? ` 已归入"${mergedWordbookName}"` : '';
+
+        res.json({
+          message: `文件上传成功！${files.length} 个文件`,
+          files: uploadedFiles,
+          wordbookId: finalWbId,
+          extract: {
+            message: allCardIds.length > 0
+              ? `AI 识别成功！从${typeLabel}中提取了 ${allCardIds.length} 个西语单词、${allSentences.length} 条造句${mergeNote}`
+              : `提取完成${mergeNote}`,
+            cardIds: allCardIds,
+            words: allWords,
+            sentences: allSentences,
+            extractionSource: 'ocr',
+            extractionNote: errors.length > 0 ? `${errors.length} 个文件提取失败` : undefined,
+            wordbookId: finalWbId,
+            merged: mergedIntoExisting || undefined,
+            mergedWordbookName: mergedWordbookName || undefined,
+          },
+        });
         return;
       }
 

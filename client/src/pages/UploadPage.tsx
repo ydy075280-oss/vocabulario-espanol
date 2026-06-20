@@ -111,7 +111,11 @@ export default function UploadPage() {
     } catch (err: any) {
       const errMsg = err.response?.data?.error || err.message || '';
       setError(errMsg.includes('timeout') ? '上传超时，请检查网络后重试' : (errMsg || '文件上传失败'));
-    } finally { setUploading(false); setExtracting(false); }
+    } finally {
+      setUploading(false); setExtracting(false);
+      setFiles([]); // 上传完成后清空文件列表，支持继续添加
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   };
 
   const formatSize = (bytes: number) => bytes < 1024 * 1024 ? `${(bytes / 1024).toFixed(0)}KB` : `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
