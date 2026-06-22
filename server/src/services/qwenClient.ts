@@ -521,7 +521,7 @@ export async function extractWordsFromDocx(
 
 // ============================================================
 // ✍️ 模型4：文本转语音（同步模式）
-// 模型：qwen3-tts-flash
+// 模型：qwen3-tts-instruct-flash
 // 方式：DashScope 同步 HTTP API（Qwen-TTS 不支持异步轮询）
 // 价格：0.8 元/万字符（输出不计费）
 // 音色：Cherry 女声
@@ -540,7 +540,7 @@ export async function textToSpeech(
 
   // Qwen-TTS 同步 API：所有参数放在 input 内，不带 X-DashScope-Async
   const requestBody: Record<string, any> = {
-    model: 'qwen3-tts-flash',
+    model: 'qwen3-tts-instruct-flash',
     input: {
       text,
       voice,
@@ -551,7 +551,7 @@ export async function textToSpeech(
     requestBody.input.speech_rate = speed;
   }
 
-  console.log(`[TTS] 同步请求, model=qwen3-tts-flash, voice=${voice}, text="${text.slice(0, 40)}..."`);
+  console.log(`[TTS] 同步请求, model=qwen3-tts-instruct-flash, voice=${voice}, text="${text.slice(0, 40)}..."`);
 
   // 一次同步 POST，响应中直接包含 output.audio.url
   const res = await fetch(
