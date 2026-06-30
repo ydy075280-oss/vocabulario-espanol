@@ -18,12 +18,14 @@ interface KeyWord {
 interface TaskData {
   keyWords?: KeyWord[];
   writingPrompt?: string;
+  speakingPrompt?: string;
   referenceVocabulary?: string[];
   ttsAudioUrls?: Record<string, string>;
   userSentences?: Record<string, string[]>;
   userSentenceTTS?: Record<string, string>;
   userWriting?: string;
   userWritingTitle?: string;
+  userSpeaking?: string;
   memorize?: boolean;
 }
 
@@ -59,7 +61,6 @@ interface ModuleDetail {
 const taskTypeLabels: Record<string, string> = {
   vocabulary: '词汇造句',
   grammar: '语法练习',
-  reading: '阅读理解',
   writing: '主题写作',
   listening: '听力训练',
   speaking: '口语表达',
@@ -68,7 +69,6 @@ const taskTypeLabels: Record<string, string> = {
 const taskTypeColors: Record<string, string> = {
   vocabulary: 'bg-accent-muted text-accent',
   grammar: 'bg-accent-muted text-accent',
-  reading: 'bg-success-muted text-success',
   writing: 'bg-warning-muted text-warning',
   listening: 'bg-accent-muted text-accent',
   speaking: 'bg-success-muted text-success',
@@ -77,7 +77,6 @@ const taskTypeColors: Record<string, string> = {
 const taskTypeIcons: Record<string, string> = {
   vocabulary: '📝',
   grammar: '📖',
-  reading: '📚',
   writing: '✍️',
   listening: '🎧',
   speaking: '🗣️',
@@ -110,9 +109,13 @@ export default function ModuleDetailPage() {
   const [userSentences, setUserSentences] = useState<Record<string, Record<string, string[]>>>({});
   const [sentenceTTSLoading, setSentenceTTSLoading] = useState<string | null>(null);
   const [writingTTSLoading, setWritingTTSLoading] = useState<string | null>(null);
+  const [speakingTTSLoading, setSpeakingTTSLoading] = useState<string | null>(null);
 
   const [userWritings, setUserWritings] = useState<Record<string, string>>({});
   const writingSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const [userSpeakings, setUserSpeakings] = useState<Record<string, string>>({});
+  const speakingSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [initialExpandDone, setInitialExpandDone] = useState(false);
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -133,6 +136,14 @@ export default function ModuleDetailPage() {
   const [memorizedTasks, setMemorizedTasks] = useState<Set<string>>(new Set());
   const [memorizeLoading, setMemorizeLoading] = useState<string | null>(null);
 
+  // 编辑写作题目的状态
+  const [editingPromptTaskId, setEditingPromptTaskId] = useState<string | null>(null);
+  const [editPromptText, setEditPromptText] = useState('');
+
+  // 拖拽排序状态
+  const [dragDayNum, setDragDayNum] = useState<number | null>(null);
+  const [dragOverDayNum, setDragOverDayNum] = useState<number | null>(null);
+
   useEffect(() => {
     if (id) loadModule();
   }, [id]);
@@ -141,7 +152,10 @@ export default function ModuleDetailPage() {
     if (module && !initialExpandDone) {
       const ids = new Set<string>();
       module.tasks.forEach((t) => {
-        if (t.content || (t.taskData?.keyWords?.length || 0) > 0 || t.taskData?.writingPrompt) {
+        if (t.content || (t.taskData?.keyWords?.length || 0) > 0 || t.taskData?.writingPrompt
+          || t.task_type === 'vocabulary' || t.task_type === 'grammar' || t.task_type === 'writing'
+          || t.task_type === 'speaking'
+        ) {
           ids.add(t.id);
         }
       });
@@ -149,6 +163,7 @@ export default function ModuleDetailPage() {
 
       const us: Record<string, Record<string, string[]>> = {};
       const uw: Record<string, string> = {};
+      const usp: Record<string, string> = {};
       module.tasks.forEach((t) => {
         if (t.taskData?.userSentences) {
           us[t.id] = { ...t.taskData.userSentences };
@@ -158,9 +173,13 @@ export default function ModuleDetailPage() {
         if (t.taskData?.userWriting) {
           uw[t.id] = t.taskData.userWriting;
         }
+        if (t.taskData?.userSpeaking) {
+          usp[t.id] = t.taskData.userSpeaking;
+        }
       });
       setUserSentences(us);
       setUserWritings(uw);
+      setUserSpeakings(usp);
 
       const memSet = new Set<string>();
       module.tasks.forEach((t) => {
@@ -374,6 +393,7 @@ export default function ModuleDetailPage() {
     return () => {
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
       if (writingSaveTimerRef.current) clearTimeout(writingSaveTimerRef.current);
+      if (speakingSaveTimerRef.current) clearTimeout(speakingSaveTimerRef.current);
       Object.entries(userSentences).forEach(([taskId, s]) => {
         moduleAPI.saveSentences(id, taskId, s).catch(() => {});
       });
@@ -382,8 +402,13 @@ export default function ModuleDetailPage() {
           moduleAPI.saveWriting(id, taskId, content).catch(() => {});
         }
       });
+      Object.entries(userSpeakings).forEach(([taskId, content]) => {
+        if (content?.trim()) {
+          moduleAPI.saveSpeaking(id, taskId, content).catch(() => {});
+        }
+      });
     };
-  }, [id, userSentences, userWritings]);
+  }, [id, userSentences, userWritings, userSpeakings]);
 
   const handleSentenceChange = (taskId: string, keyword: string, index: number, value: string) => {
     setUserSentences((prev) => {
@@ -478,6 +503,53 @@ export default function ModuleDetailPage() {
         console.error('自动保存写作失败:', err);
       }
     }, 1200);
+  };
+
+  const handleSpeakingChange = (taskId: string, value: string) => {
+    setUserSpeakings((prev) => ({ ...prev, [taskId]: value }));
+    if (speakingSaveTimerRef.current) clearTimeout(speakingSaveTimerRef.current);
+    speakingSaveTimerRef.current = setTimeout(async () => {
+      try {
+        await moduleAPI.saveSpeaking(id!, taskId, value);
+      } catch (err) {
+        console.error('自动保存口语失败:', err);
+      }
+    }, 1200);
+  };
+
+  const handleSpeakingTTS = async (taskId: string) => {
+    const text = userSpeakings[taskId] || module?.tasks.find(t => t.id === taskId)?.taskData?.userSpeaking;
+    if (!text?.trim()) return;
+
+    const ttsKey = `speaking-${taskId}`;
+    setSpeakingTTSLoading(taskId);
+    setTtsError('');
+
+    try {
+      const { data } = await moduleAPI.generateUserTTS(id!, taskId, text.trim(), -2);
+      if (data.audioUrl) {
+        setModule((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            tasks: prev.tasks.map((t) => {
+              if (t.id !== taskId) return t;
+              const td = { ...(t.taskData || {}) };
+              td.userSentenceTTS = { ...(td.userSentenceTTS || {}), [ttsKey]: data.audioUrl };
+              return { ...t, taskData: td };
+            }),
+          };
+        });
+        handlePlayAudio(data.audioUrl, ttsKey);
+      }
+    } catch (err: any) {
+      const errMsg = err.response?.data?.error || err.message || '未知错误';
+      console.error('口语TTS失败:', errMsg);
+      setTtsError('语音生成失败: ' + errMsg);
+      setTimeout(() => setTtsError(''), 5000);
+    } finally {
+      setSpeakingTTSLoading(null);
+    }
   };
 
   const handleDeleteKeyword = async (taskId: string, keywordIndex: number) => {
@@ -590,6 +662,102 @@ export default function ModuleDetailPage() {
     </div>
   );
   if (!module) return null;
+
+  // ===== 拖拽排序 =====
+  const handleDayDragStart = (dayNum: number) => {
+    setDragDayNum(dayNum);
+  };
+
+  const handleDayDragOver = (e: React.DragEvent, dayNum: number) => {
+    e.preventDefault();
+    setDragOverDayNum(dayNum);
+  };
+
+  const handleDayDragLeave = () => {
+    setDragOverDayNum(null);
+  };
+
+  const handleDayDrop = async (targetDayNum: number) => {
+    if (dragDayNum === null || dragDayNum === targetDayNum) {
+      setDragDayNum(null);
+      setDragOverDayNum(null);
+      return;
+    }
+
+    // 交换两个 day_number 的所有任务
+    const sourceDayNum = dragDayNum;
+    const newTasks = module!.tasks.map((t) => {
+      if (t.day_number === sourceDayNum) {
+        return { ...t, day_number: targetDayNum, sort_order: targetDayNum };
+      }
+      if (t.day_number === targetDayNum) {
+        return { ...t, day_number: sourceDayNum, sort_order: sourceDayNum };
+      }
+      return t;
+    });
+
+    // 乐观更新本地状态
+    setModule((prev) => prev ? { ...prev, tasks: newTasks } : prev);
+    setDragDayNum(null);
+    setDragOverDayNum(null);
+
+    // 异步保存到后端
+    try {
+      const reorderPayload = newTasks.map((t) => ({
+        id: t.id,
+        day_number: t.day_number,
+        sort_order: t.sort_order,
+      }));
+      await moduleAPI.reorder(id!, reorderPayload);
+    } catch (err) {
+      console.error('排序保存失败:', err);
+      loadModule(); // 失败时重新加载
+    }
+  };
+
+  const handleSaveWritingPrompt = async (taskId: string) => {
+    if (!editPromptText.trim()) return;
+    setEditingPromptTaskId(null);
+    // 更新本地状态
+    setModule((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        tasks: prev.tasks.map((t) => {
+          if (t.id !== taskId) return t;
+          const td = { ...(t.taskData || {}) };
+          td.writingPrompt = editPromptText.trim();
+          return { ...t, taskData: td as TaskData };
+        }),
+      };
+    });
+    // 保存到后端
+    try {
+      await moduleAPI.updateTask(id!, taskId, { writingPrompt: editPromptText.trim() });
+    } catch { /* ignore */ }
+  };
+
+  const handleSaveSpeakingPrompt = async (taskId: string) => {
+    if (!editPromptText.trim()) return;
+    setEditingPromptTaskId(null);
+    // 更新本地状态
+    setModule((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        tasks: prev.tasks.map((t) => {
+          if (t.id !== taskId) return t;
+          const td = { ...(t.taskData || {}) };
+          td.speakingPrompt = editPromptText.trim();
+          return { ...t, taskData: td as TaskData };
+        }),
+      };
+    });
+    // 保存到后端
+    try {
+      await moduleAPI.updateTask(id!, taskId, { speakingPrompt: editPromptText.trim() });
+    } catch { /* ignore */ }
+  };
 
   const handleToggleMemorize = async (taskId: string) => {
     if (!module) return;
@@ -770,9 +938,30 @@ export default function ModuleDetailPage() {
             const tasks = dayGroups[dayNum];
             const dayCompleted = tasks.every((t) => t.completed);
 
+            const isDragging = dragDayNum === dayNum;
+            const isDragOver = dragOverDayNum === dayNum;
+
             return (
-              <div key={dayNum} className="mb-5 md:mb-4">
-                <div className="flex items-center gap-2 mb-2">
+              <div
+                key={dayNum}
+                className={`mb-5 md:mb-4 transition-all ${isDragging ? 'opacity-40 scale-95' : ''}`}
+                draggable
+                onDragStart={() => handleDayDragStart(dayNum)}
+                onDragOver={(e) => handleDayDragOver(e, dayNum)}
+                onDragLeave={handleDayDragLeave}
+                onDrop={() => handleDayDrop(dayNum)}
+                onDragEnd={() => { setDragDayNum(null); setDragOverDayNum(null); }}
+              >
+                {/* 拖拽手柄 */}
+                <div
+                  className={`flex items-center gap-2 mb-2 px-1 py-1 rounded-lg transition-colors cursor-grab active:cursor-grabbing ${
+                    isDragOver ? 'bg-brand-muted border-2 border-dashed border-brand' : ''
+                  }`}
+                >
+                  {/* 拖拽把手图标 */}
+                  <svg className="w-4 h-4 text-typo-disabled flex-shrink-0 cursor-grab" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
+                  </svg>
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
                     dayCompleted ? 'bg-success-muted text-success' : 'bg-surface text-typo-muted'
                   }`}>
@@ -784,10 +973,15 @@ export default function ModuleDetailPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   )}
+                  {isDragOver && (
+                    <span className="text-[10px] text-brand font-medium ml-1">移至此处</span>
+                  )}
+                  <div className="flex-1" />
+                  <span className="text-[9px] text-typo-disabled mr-1">长按拖拽排序</span>
                   <button
-                    onClick={() => handleDeleteDay(dayNum)}
+                    onClick={(e) => { e.stopPropagation(); handleDeleteDay(dayNum); }}
                     disabled={actionLoading === `delete-day-${dayNum}`}
-                    className="ml-auto w-6 h-6 flex items-center justify-center rounded text-typo-muted hover:text-danger hover:bg-danger-muted transition-colors"
+                    className="w-6 h-6 flex items-center justify-center rounded text-typo-muted hover:text-danger hover:bg-danger-muted transition-colors"
                     title={`删除第 ${dayNum} 天`}
                   >
                     {actionLoading === `delete-day-${dayNum}` ? (
@@ -875,8 +1069,14 @@ export default function ModuleDetailPage() {
     const isExpanded = expandedTasks.has(task.id);
     const taskData = task.taskData || {};
     const keyWords = taskData.keyWords || [];
-    const hasVocabContent = keyWords.length > 0;
-    const hasWritingContent = !!taskData.writingPrompt;
+    // 根据任务类型决定是否显示对应内容区域，而非仅判断数据是否为空
+  // 这样手动添加的新任务也能显示添加按钮
+    const isVocabType = task.task_type === 'vocabulary' || task.task_type === 'grammar';
+    const isWritingType = task.task_type === 'writing';
+    const isSpeakingType = task.task_type === 'speaking';
+    const hasVocabContent = keyWords.length > 0 || isVocabType;
+    const hasWritingContent = !!taskData.writingPrompt || isWritingType;
+    const hasSpeakingContent = !!taskData.speakingPrompt || isSpeakingType;
     const ttsUrls = taskData.ttsAudioUrls || {};
     const userSentTTS = taskData.userSentenceTTS || {};
     const localSentences = userSentences[task.id] || {};
@@ -977,6 +1177,7 @@ export default function ModuleDetailPage() {
 
                     {hasVocabContent && renderVocabSection(task, keyWords, ttsUrls, userSentTTS, localSentences)}
                     {hasWritingContent && renderWritingBlock(task, taskData)}
+                    {hasSpeakingContent && renderSpeakingBlock(task, taskData)}
                   </div>
                 )}
               </div>
@@ -1220,6 +1421,135 @@ export default function ModuleDetailPage() {
     );
   }
 
+  function renderSpeakingBlock(task: ModuleTask, taskData: TaskData) {
+    const draft = userSpeakings[task.id] || taskData.userSpeaking || '';
+    const wordCount = draft.replace(/\s/g, '').length;
+    const speakingAudioKey = `speaking-${task.id}`;
+    const speakingAudioUrl = (taskData.userSentenceTTS || {})[speakingAudioKey];
+    const isSpeakingPlaying = playingAudio === speakingAudioKey;
+    const isSpeakingTTSLoading = speakingTTSLoading === task.id;
+    const isEditingPrompt = editingPromptTaskId === task.id;
+
+    return (
+      <div className="space-y-2">
+        <div className="bg-success-muted rounded-card p-2.5 border border-success/10">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[10px] font-mono text-success uppercase tracking-wider">口语题目</span>
+            {taskData.speakingPrompt && !isEditingPrompt && (
+              <button
+                onClick={() => { setEditingPromptTaskId(task.id); setEditPromptText(taskData.speakingPrompt || ''); }}
+                className="text-[10px] text-success/70 hover:text-success transition-colors"
+              >
+                编辑
+              </button>
+            )}
+          </div>
+          {isEditingPrompt || !taskData.speakingPrompt ? (
+            <div className="space-y-1.5">
+              <textarea
+                value={isEditingPrompt ? editPromptText : ''}
+                onChange={(e) => isEditingPrompt && setEditPromptText(e.target.value)}
+                onFocus={() => {
+                  if (!isEditingPrompt) {
+                    setEditingPromptTaskId(task.id);
+                    setEditPromptText(taskData.speakingPrompt || '');
+                  }
+                }}
+                placeholder="输入口语对话题目..."
+                rows={2}
+                className="w-full text-xs bg-canvas border border-hairline rounded-input px-2.5 py-1.5 outline-none text-ink placeholder:text-typo-disabled focus:border-success/40 resize-none"
+              />
+              {isEditingPrompt && (
+                <div className="flex gap-1.5">
+                  <button
+                    onClick={() => setEditingPromptTaskId(null)}
+                    className="text-[10px] px-2 py-1 border border-hairline rounded-input text-typo-secondary hover:text-ink transition-colors"
+                  >
+                    取消
+                  </button>
+                  <button
+                    onClick={() => handleSaveSpeakingPrompt(task.id)}
+                    className="text-[10px] px-2 py-1 bg-success text-white rounded-pill font-medium hover:opacity-90 transition-colors"
+                  >
+                    保存题目
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p className="text-xs text-typo-secondary leading-relaxed">{taskData.speakingPrompt}</p>
+          )}
+        </div>
+        <div className="bg-success-muted/70 rounded-card p-2.5 border border-success/10">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-[10px] font-mono text-success uppercase tracking-wider">🗣️ 我的对话</span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleToggleMemorize(task.id)}
+                disabled={memorizeLoading === task.id}
+                className={`text-[10px] px-2 py-0.5 rounded-pill border transition-colors ${
+                  memorizedTasks.has(task.id)
+                    ? 'bg-success/10 text-success border-success/30'
+                    : 'border-hairline text-typo-muted hover:border-success/30 hover:text-success'
+                }`}
+                title={memorizedTasks.has(task.id) ? '取消背诵' : '加入背诵列表'}
+              >
+                {memorizeLoading === task.id ? (
+                  <span className="w-2.5 h-2.5 border border-success/30 border-t-success rounded-full animate-spin inline-block" />
+                ) : memorizedTasks.has(task.id) ? (
+                  '✓ 已加入背诵'
+                ) : (
+                  '+ 加入背诵'
+                )}
+              </button>
+              <button
+                onClick={() => {
+                  if (speakingAudioUrl) {
+                    handlePlayAudio(speakingAudioUrl, speakingAudioKey);
+                  } else {
+                    handleSpeakingTTS(task.id);
+                  }
+                }}
+                disabled={!draft.trim() || isSpeakingTTSLoading}
+                className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-pill border transition-colors ${
+                  isSpeakingTTSLoading
+                    ? 'border-hairline text-typo-disabled bg-surface cursor-not-allowed'
+                    : isSpeakingPlaying
+                    ? 'border-success/50 bg-success-muted text-success'
+                    : draft.trim()
+                    ? 'border-hairline text-typo-muted hover:border-success/30 hover:text-success/70'
+                    : 'border-hairline text-typo-disabled bg-surface cursor-not-allowed'
+                }`}
+                title={speakingAudioUrl ? '播放朗读' : '生成语音朗读'}
+              >
+                {isSpeakingTTSLoading ? (
+                  <><span className="w-2.5 h-2.5 border border-success/30 border-t-success rounded-full animate-spin" />生成中...</>
+                ) : isSpeakingPlaying ? (
+                  <><span className="w-2 h-2 bg-success rounded-sm animate-pulse" />播放中...</>
+                ) : (
+                  <><svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  </svg>{speakingAudioUrl ? '朗读' : '🔊 朗读'}</>
+                )}
+              </button>
+              <span className="text-[10px] font-mono text-success/50">{wordCount} 字符</span>
+            </div>
+          </div>
+          <textarea
+            value={draft}
+            onChange={(e) => handleSpeakingChange(task.id, e.target.value)}
+            placeholder="在这里写你的对话..."
+            rows={8}
+            className="w-full text-sm bg-canvas border border-hairline rounded-card px-3 py-2.5 outline-none resize-y text-ink placeholder:text-typo-disabled focus:border-success/40 transition-colors min-h-[160px]"
+          />
+          {draft.trim() && (
+            <p className="text-[9px] text-success/50 mt-1">对话内容已自动保存</p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   function renderWritingBlock(task: ModuleTask, taskData: TaskData) {
     const hasRefVocab = (taskData.referenceVocabulary || []).length > 0;
     const draft = userWritings[task.id] || taskData.userWriting || '';
@@ -1228,12 +1558,57 @@ export default function ModuleDetailPage() {
     const writingAudioUrl = (taskData.userSentenceTTS || {})[writingAudioKey];
     const isWritingPlaying = playingAudio === writingAudioKey;
     const isWritingTTSLoading = writingTTSLoading === task.id;
+    const isEditingPrompt = editingPromptTaskId === task.id;
 
     return (
       <div className="space-y-2">
         <div className="bg-warning-muted rounded-card p-2.5 border border-warning/10">
-          <span className="text-[10px] font-mono text-warning uppercase tracking-wider mb-1 block">写作题目</span>
-          <p className="text-xs text-typo-secondary leading-relaxed">{taskData.writingPrompt}</p>
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[10px] font-mono text-warning uppercase tracking-wider">写作题目</span>
+            {taskData.writingPrompt && !isEditingPrompt && (
+              <button
+                onClick={() => { setEditingPromptTaskId(task.id); setEditPromptText(taskData.writingPrompt || ''); }}
+                className="text-[10px] text-warning/70 hover:text-warning transition-colors"
+              >
+                编辑
+              </button>
+            )}
+          </div>
+          {isEditingPrompt || !taskData.writingPrompt ? (
+            <div className="space-y-1.5">
+              <textarea
+                value={isEditingPrompt ? editPromptText : ''}
+                onChange={(e) => isEditingPrompt && setEditPromptText(e.target.value)}
+                onFocus={() => {
+                  if (!isEditingPrompt) {
+                    setEditingPromptTaskId(task.id);
+                    setEditPromptText(taskData.writingPrompt || '');
+                  }
+                }}
+                placeholder="输入写作题目..."
+                rows={2}
+                className="w-full text-xs bg-canvas border border-hairline rounded-input px-2.5 py-1.5 outline-none text-ink placeholder:text-typo-disabled focus:border-warning/40 resize-none"
+              />
+              {isEditingPrompt && (
+                <div className="flex gap-1.5">
+                  <button
+                    onClick={() => setEditingPromptTaskId(null)}
+                    className="text-[10px] px-2 py-1 border border-hairline rounded-input text-typo-secondary hover:text-ink transition-colors"
+                  >
+                    取消
+                  </button>
+                  <button
+                    onClick={() => handleSaveWritingPrompt(task.id)}
+                    className="text-[10px] px-2 py-1 bg-warning text-white rounded-pill font-medium hover:opacity-90 transition-colors"
+                  >
+                    保存题目
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p className="text-xs text-typo-secondary leading-relaxed">{taskData.writingPrompt}</p>
+          )}
         </div>
         {hasRefVocab && (
           <div className="bg-warning-muted rounded-card p-2.5 border border-warning/10">

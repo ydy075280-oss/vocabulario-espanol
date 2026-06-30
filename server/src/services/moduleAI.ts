@@ -32,7 +32,7 @@ export interface AIDayTask {
   dayNumber: number;
   title: string;
   content: string;
-  taskType: 'vocabulary' | 'grammar' | 'reading' | 'writing' | 'listening' | 'speaking';
+  taskType: 'vocabulary' | 'grammar' | 'writing' | 'listening' | 'speaking';
   keyWords: KeyWord[];
   writingPrompt: string;
   referenceVocabulary: string[];
@@ -84,7 +84,7 @@ JSON Schema（严格遵循，不增不减字段）：
     "dayNumber": 1,
     "title": "≤12字",
     "content": "任务指令。词汇类写'请用以下单词造句：A, B, C'，写作类写主题+字数+时态要求",
-    "taskType": "vocabulary|writing|grammar|reading|listening|speaking",
+    "taskType": "vocabulary|writing|grammar|listening|speaking",
     "keyWords": [],
     "writingPrompt": "",
     "referenceVocabulary": [],
@@ -96,7 +96,7 @@ JSON Schema（严格遵循，不增不减字段）：
 ■ vocabulary/grammar 任务 → keyWords 必填(每天2-4个)，writingPrompt=""，referenceVocabulary=[]
   每个 keyWord: {"word":"单词","translation":"中文","partOfSpeech":"词性","exampleSentence":"地道的短例句(≤15词)","exampleTranslation":"例句翻译"}
 ■ writing 任务 → keyWords=[]，writingPrompt 必填，referenceVocabulary 必填(3-6个单词原文)
-■ reading/listening/speaking → 全部空数组/空字符串
+■ listening/speaking → 全部空数组/空字符串
 ■ suggestedWords 填 keyWords 或 referenceVocabulary 中的单词原文
 
 编排规律：Day1-2 核心词汇/语法→Day3-5 场景拓展→Day6-7 整合复盘。每天1-2个任务。mixed 类型前段词汇后段写作。

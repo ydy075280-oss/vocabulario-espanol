@@ -18,6 +18,7 @@ function buildTaskData(task: any): object {
   return {
     keyWords: task.keyWords || [],
     writingPrompt: task.writingPrompt || '',
+    speakingPrompt: task.speakingPrompt || '',
     referenceVocabulary: task.referenceVocabulary || [],
     ttsAudioUrls: {}, // { sentenceIndex: audioUrl }
   };
@@ -238,7 +239,7 @@ router.put('/:id/tasks/:taskId', authMiddleware, async (req: AuthRequest, res: R
       return;
     }
 
-    const { title, content, taskType } = req.body;
+    const { title, content, taskType, writingPrompt, speakingPrompt, referenceVocabulary } = req.body;
 
     await exec(
       `UPDATE module_tasks
@@ -249,6 +250,19 @@ router.put('/:id/tasks/:taskId', authMiddleware, async (req: AuthRequest, res: R
        WHERE id = $4`,
       [title || null, content || null, taskType || null, req.params.taskId]
     );
+
+    // 如果提供了 writingPrompt / speakingPrompt 或 referenceVocabulary，更新 task_data
+    if (writingPrompt !== undefined || speakingPrompt !== undefined || referenceVocabulary !== undefined) {
+      let taskData: any = {};
+      try { taskData = JSON.parse(task.task_data || '{}'); } catch { /* ignore */ }
+      if (writingPrompt !== undefined) taskData.writingPrompt = writingPrompt;
+      if (speakingPrompt !== undefined) taskData.speakingPrompt = speakingPrompt;
+      if (referenceVocabulary !== undefined) taskData.referenceVocabulary = referenceVocabulary;
+      await exec(
+        'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
+        [JSON.stringify(taskData), req.params.taskId]
+      );
+    }
 
     const updated = await queryOne<any>('SELECT * FROM module_tasks WHERE id = $1', [req.params.taskId]);
     let taskData: any = {};
@@ -487,6 +501,39 @@ router.post('/:id/tasks/:taskId/writing', authMiddleware, async (req: AuthReques
 });
 
 // ============================================================
+// POST /api/modules/:id/tasks/:taskId/speaking - 保存用户口语对话
+// ============================================================
+router.post('/:id/tasks/:taskId/speaking', authMiddleware, async (req: AuthRequest, res: Response) => {
+  try {
+    const { content } = req.body;
+
+    const task = await queryOne<any>(
+      'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
+      [req.params.taskId, req.params.id]
+    );
+
+    if (!task) {
+      res.status(404).json({ error: '任务不存在' });
+      return;
+    }
+
+    let taskData: any = {};
+    try { taskData = JSON.parse(task.task_data || '{}'); } catch { /* ignore */ }
+
+    if (content !== undefined) taskData.userSpeaking = content;
+
+    await exec(
+      'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
+      [JSON.stringify(taskData), req.params.taskId]
+    );
+
+    res.json({ message: '口语对话已保存', userSpeaking: taskData.userSpeaking });
+  } catch (err: any) {
+    res.status(500).json({ error: '保存口语对话失败: ' + err.message });
+  }
+});
+
+// ============================================================
 // PUT /api/modules/:id/tasks/:taskId/keywords - 更新任务关键词（增删改）
 // ============================================================
 router.put('/:id/tasks/:taskId/keywords', authMiddleware, async (req: AuthRequest, res: Response) => {
@@ -532,13 +579,14 @@ router.post('/:id/tasks', authMiddleware, async (req: AuthRequest, res: Response
 
     if (!mod) { res.status(404).json({ error: '大模块不存在' }); return; }
 
-    const { title, content, taskType, dayNumber, keyWords, writingPrompt, referenceVocabulary } = req.body;
+    const { title, content, taskType, dayNumber, keyWords, writingPrompt, speakingPrompt, referenceVocabulary } = req.body;
     const day = dayNumber || (mod.total_days + 1);
 
     const taskId = uuidv4();
     const taskData = {
       keyWords: keyWords || [],
       writingPrompt: writingPrompt || '',
+      speakingPrompt: speakingPrompt || '',
       referenceVocabulary: referenceVocabulary || [],
       ttsAudioUrls: {},
     };
@@ -746,6 +794,39 @@ router.post('/:id/export-wordbook', authMiddleware, async (req: AuthRequest, res
     });
   } catch (err: any) {
     res.status(500).json({ error: '导出单词本失败: ' + err.message });
+  }
+});
+
+// ============================================================
+// PUT /api/modules/:id/reorder - 拖拽调整任务/天数顺序
+// ============================================================
+router.put('/:id/reorder', authMiddleware, async (req: AuthRequest, res: Response) => {
+  try {
+    const mod = await queryOne<any>(
+      'SELECT * FROM big_modules WHERE id = $1 AND user_id = $2',
+      [req.params.id, req.userId!]
+    );
+
+    if (!mod) { res.status(404).json({ error: '大模块不存在' }); return; }
+
+    const { tasks } = req.body; // [{ id: string, day_number: number, sort_order: number }]
+    if (!Array.isArray(tasks)) {
+      res.status(400).json({ error: 'tasks 必须是数组' });
+      return;
+    }
+
+    await transaction(async (client) => {
+      for (const t of tasks) {
+        await client.query(
+          `UPDATE module_tasks SET day_number = $1, sort_order = $2, updated_at = NOW() WHERE id = $3 AND module_id = $4`,
+          [t.day_number, t.sort_order, t.id, req.params.id]
+        );
+      }
+    });
+
+    res.json({ message: '排序已更新' });
+  } catch (err: any) {
+    res.status(500).json({ error: '排序失败: ' + err.message });
   }
 });
 

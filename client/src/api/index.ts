@@ -169,7 +169,7 @@ export const moduleAPI = {
   get: (id: string) => api.get(`/modules/${id}`),
   update: (id: string, data: { title?: string; description?: string }) =>
     api.put(`/modules/${id}`, data),
-  updateTask: (moduleId: string, taskId: string, data: { title?: string; content?: string; taskType?: string }) =>
+  updateTask: (moduleId: string, taskId: string, data: { title?: string; content?: string; taskType?: string; writingPrompt?: string; speakingPrompt?: string; referenceVocabulary?: string[] }) =>
     api.put(`/modules/${moduleId}/tasks/${taskId}`, data),
   toggleTask: (moduleId: string, taskId: string) =>
     api.post(`/modules/${moduleId}/tasks/${taskId}/toggle`),
@@ -193,12 +193,18 @@ export const moduleAPI = {
   // 保存用户写作
   saveWriting: (moduleId: string, taskId: string, content: string, title?: string) =>
     api.post(`/modules/${moduleId}/tasks/${taskId}/writing`, { content, title }),
+  // 保存用户口语对话
+  saveSpeaking: (moduleId: string, taskId: string, content: string) =>
+    api.post(`/modules/${moduleId}/tasks/${taskId}/speaking`, { content }),
   // 删除某一天任务
   deleteTask: (moduleId: string, taskId: string) =>
     api.delete(`/modules/${moduleId}/tasks/${taskId}`),
   delete: (id: string) => api.delete(`/modules/${id}`),
   // 导出模块词汇为单词本
   exportWordbook: (id: string) => api.post(`/modules/${id}/export-wordbook`),
+  // 拖拽排序更新
+  reorder: (moduleId: string, tasks: { id: string; day_number: number; sort_order: number }[]) =>
+    api.put(`/modules/${moduleId}/reorder`, { tasks }),
 };
 
 // ------ Memorize API ------
