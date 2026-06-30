@@ -15,10 +15,16 @@ interface KeyWord {
   exampleTranslation: string;
 }
 
+interface SpeakingCard {
+  topic: string;
+  userDialogue?: string;
+}
+
 interface TaskData {
   keyWords?: KeyWord[];
   writingPrompt?: string;
   speakingPrompt?: string;
+  speakingCards?: SpeakingCard[];
   referenceVocabulary?: string[];
   ttsAudioUrls?: Record<string, string>;
   userSentences?: Record<string, string[]>;
@@ -115,7 +121,9 @@ export default function ModuleDetailPage() {
   const writingSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [userSpeakings, setUserSpeakings] = useState<Record<string, string>>({});
+  const [userSpeakingCards, setUserSpeakingCards] = useState<Record<string, Record<number, string>>>({});
   const speakingSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const speakingCardSaveTimers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 
   const [initialExpandDone, setInitialExpandDone] = useState(false);
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -164,6 +172,7 @@ export default function ModuleDetailPage() {
       const us: Record<string, Record<string, string[]>> = {};
       const uw: Record<string, string> = {};
       const usp: Record<string, string> = {};
+      const uspc: Record<string, Record<number, string>> = {};
       module.tasks.forEach((t) => {
         if (t.taskData?.userSentences) {
           us[t.id] = { ...t.taskData.userSentences };
@@ -176,10 +185,18 @@ export default function ModuleDetailPage() {
         if (t.taskData?.userSpeaking) {
           usp[t.id] = t.taskData.userSpeaking;
         }
+        const cards = t.taskData?.speakingCards || [];
+        if (cards.length > 0) {
+          uspc[t.id] = {};
+          cards.forEach((c, i) => {
+            if (c.userDialogue) uspc[t.id][i] = c.userDialogue;
+          });
+        }
       });
       setUserSentences(us);
       setUserWritings(uw);
       setUserSpeakings(usp);
+      setUserSpeakingCards(uspc);
 
       const memSet = new Set<string>();
       module.tasks.forEach((t) => {
@@ -394,6 +411,7 @@ export default function ModuleDetailPage() {
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
       if (writingSaveTimerRef.current) clearTimeout(writingSaveTimerRef.current);
       if (speakingSaveTimerRef.current) clearTimeout(speakingSaveTimerRef.current);
+      Object.values(speakingCardSaveTimers.current).forEach(t => { if (t) clearTimeout(t); });
       Object.entries(userSentences).forEach(([taskId, s]) => {
         moduleAPI.saveSentences(id, taskId, s).catch(() => {});
       });
@@ -407,8 +425,15 @@ export default function ModuleDetailPage() {
           moduleAPI.saveSpeaking(id, taskId, content).catch(() => {});
         }
       });
+      Object.entries(userSpeakingCards).forEach(([taskId, cards]) => {
+        Object.entries(cards).forEach(([idx, content]) => {
+          if (content?.trim()) {
+            moduleAPI.saveSpeaking(id, taskId, content, Number(idx)).catch(() => {});
+          }
+        });
+      });
     };
-  }, [id, userSentences, userWritings, userSpeakings]);
+  }, [id, userSentences, userWritings, userSpeakings, userSpeakingCards]);
 
   const handleSentenceChange = (taskId: string, keyword: string, index: number, value: string) => {
     setUserSentences((prev) => {
@@ -517,16 +542,42 @@ export default function ModuleDetailPage() {
     }, 1200);
   };
 
-  const handleSpeakingTTS = async (taskId: string) => {
-    const text = userSpeakings[taskId] || module?.tasks.find(t => t.id === taskId)?.taskData?.userSpeaking;
+  const handleSpeakingCardChange = (taskId: string, cardIndex: number, value: string) => {
+    setUserSpeakingCards((prev) => ({
+      ...prev,
+      [taskId]: { ...(prev[taskId] || {}), [cardIndex]: value },
+    }));
+    const timerKey = `${taskId}-${cardIndex}`;
+    if (speakingCardSaveTimers.current[timerKey]) clearTimeout(speakingCardSaveTimers.current[timerKey]!);
+    speakingCardSaveTimers.current[timerKey] = setTimeout(async () => {
+      try {
+        await moduleAPI.saveSpeaking(id!, taskId, value, cardIndex);
+      } catch (err) {
+        console.error('自动保存口语卡片失败:', err);
+      }
+    }, 1200);
+  };
+
+  const handleSpeakingTTS = async (taskId: string, cardIndex?: number) => {
+    let text: string | undefined;
+    let ttsKey: string;
+    const idx = cardIndex ?? -2; // -2 = 旧版全局, >=0 = 卡片索引
+
+    if (cardIndex !== undefined && cardIndex >= 0) {
+      text = userSpeakingCards[taskId]?.[cardIndex]
+        || module?.tasks.find(t => t.id === taskId)?.taskData?.speakingCards?.[cardIndex]?.userDialogue;
+      ttsKey = `speaking-${taskId}-${cardIndex}`;
+    } else {
+      text = userSpeakings[taskId] || module?.tasks.find(t => t.id === taskId)?.taskData?.userSpeaking;
+      ttsKey = `speaking-${taskId}`;
+    }
     if (!text?.trim()) return;
 
-    const ttsKey = `speaking-${taskId}`;
     setSpeakingTTSLoading(taskId);
     setTtsError('');
 
     try {
-      const { data } = await moduleAPI.generateUserTTS(id!, taskId, text.trim(), -2);
+      const { data } = await moduleAPI.generateUserTTS(id!, taskId, text.trim(), idx);
       if (data.audioUrl) {
         setModule((prev) => {
           if (!prev) return prev;
@@ -1422,13 +1473,112 @@ export default function ModuleDetailPage() {
   }
 
   function renderSpeakingBlock(task: ModuleTask, taskData: TaskData) {
+    const speakingCards = taskData.speakingCards || [];
+    const isEditingPrompt = editingPromptTaskId === task.id;
+
+    // 如果有 speakingCards(新版多卡片模式)
+    if (speakingCards.length > 0) {
+      return (
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono text-success uppercase tracking-wider">
+              口语话题 ({speakingCards.length} 个)
+            </span>
+            <button
+              onClick={() => handleToggleMemorize(task.id)}
+              disabled={memorizeLoading === task.id}
+              className={`text-[10px] px-2 py-0.5 rounded-pill border transition-colors ${
+                memorizedTasks.has(task.id)
+                  ? 'bg-success/10 text-success border-success/30'
+                  : 'border-hairline text-typo-muted hover:border-success/30 hover:text-success'
+              }`}
+              title={memorizedTasks.has(task.id) ? '取消背诵' : '加入背诵列表'}
+            >
+              {memorizeLoading === task.id ? (
+                <span className="w-2.5 h-2.5 border border-success/30 border-t-success rounded-full animate-spin inline-block" />
+              ) : memorizedTasks.has(task.id) ? (
+                '✓ 已加入背诵'
+              ) : (
+                '+ 加入背诵'
+              )}
+            </button>
+          </div>
+
+          {speakingCards.map((card, cardIdx) => {
+            const draft = userSpeakingCards[task.id]?.[cardIdx] ?? card.userDialogue ?? '';
+            const wordCount = draft.replace(/\s/g, '').length;
+            const audioKey = `speaking-${task.id}-${cardIdx}`;
+            const audioUrl = (taskData.userSentenceTTS || {})[audioKey];
+            const isPlaying = playingAudio === audioKey;
+            const isTTSLoading = speakingTTSLoading === task.id;
+
+            return (
+              <div key={cardIdx} className="bg-success-muted rounded-card p-2.5 border border-success/10 space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-success/20 text-success text-[10px] font-bold flex items-center justify-center flex-shrink-0">
+                    {cardIdx + 1}
+                  </span>
+                  <span className="text-xs font-medium text-ink flex-1">{card.topic}</span>
+                  <span className="text-[10px] font-mono text-success/40">{wordCount} 字符</span>
+                </div>
+
+                <textarea
+                  value={draft}
+                  onChange={(e) => handleSpeakingCardChange(task.id, cardIdx, e.target.value)}
+                  placeholder={`围绕「${card.topic}」写你的对话...`}
+                  rows={5}
+                  className="w-full text-sm bg-canvas border border-hairline rounded-card px-3 py-2.5 outline-none resize-y text-ink placeholder:text-typo-disabled focus:border-success/40 transition-colors min-h-[100px]"
+                />
+
+                <div className="flex items-center justify-end gap-1.5">
+                  {draft.trim() && (
+                    <span className="text-[9px] text-success/40">已自动保存</span>
+                  )}
+                  <button
+                    onClick={() => {
+                      if (audioUrl) {
+                        handlePlayAudio(audioUrl, audioKey);
+                      } else {
+                        handleSpeakingTTS(task.id, cardIdx);
+                      }
+                    }}
+                    disabled={!draft.trim() || isTTSLoading}
+                    className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-pill border transition-colors ${
+                      isTTSLoading
+                        ? 'border-hairline text-typo-disabled bg-surface cursor-not-allowed'
+                        : isPlaying
+                        ? 'border-success/50 bg-success-muted text-success'
+                        : draft.trim()
+                        ? 'border-hairline text-typo-muted hover:border-success/30 hover:text-success/70'
+                        : 'border-hairline text-typo-disabled bg-surface cursor-not-allowed'
+                    }`}
+                    title={audioUrl ? '播放朗读' : '生成语音朗读'}
+                  >
+                    {isTTSLoading ? (
+                      <><span className="w-2 h-2 border border-success/30 border-t-success rounded-full animate-spin" />生成中...</>
+                    ) : isPlaying ? (
+                      <><span className="w-1.5 h-1.5 bg-success rounded-sm animate-pulse" />播放中...</>
+                    ) : (
+                      <><svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                      </svg>朗读</>
+                    )}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // 旧的单 speakingPrompt 模式（兼容旧数据）
     const draft = userSpeakings[task.id] || taskData.userSpeaking || '';
     const wordCount = draft.replace(/\s/g, '').length;
     const speakingAudioKey = `speaking-${task.id}`;
     const speakingAudioUrl = (taskData.userSentenceTTS || {})[speakingAudioKey];
     const isSpeakingPlaying = playingAudio === speakingAudioKey;
     const isSpeakingTTSLoading = speakingTTSLoading === task.id;
-    const isEditingPrompt = editingPromptTaskId === task.id;
 
     return (
       <div className="space-y-2">

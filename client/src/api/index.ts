@@ -169,7 +169,7 @@ export const moduleAPI = {
   get: (id: string) => api.get(`/modules/${id}`),
   update: (id: string, data: { title?: string; description?: string }) =>
     api.put(`/modules/${id}`, data),
-  updateTask: (moduleId: string, taskId: string, data: { title?: string; content?: string; taskType?: string; writingPrompt?: string; speakingPrompt?: string; referenceVocabulary?: string[] }) =>
+  updateTask: (moduleId: string, taskId: string, data: { title?: string; content?: string; taskType?: string; writingPrompt?: string; speakingPrompt?: string; speakingCards?: any[]; referenceVocabulary?: string[] }) =>
     api.put(`/modules/${moduleId}/tasks/${taskId}`, data),
   toggleTask: (moduleId: string, taskId: string) =>
     api.post(`/modules/${moduleId}/tasks/${taskId}/toggle`),
@@ -193,9 +193,9 @@ export const moduleAPI = {
   // 保存用户写作
   saveWriting: (moduleId: string, taskId: string, content: string, title?: string) =>
     api.post(`/modules/${moduleId}/tasks/${taskId}/writing`, { content, title }),
-  // 保存用户口语对话
-  saveSpeaking: (moduleId: string, taskId: string, content: string) =>
-    api.post(`/modules/${moduleId}/tasks/${taskId}/speaking`, { content }),
+  // 保存用户口语对话(支持多卡片)
+  saveSpeaking: (moduleId: string, taskId: string, content: string, cardIndex?: number) =>
+    api.post(`/modules/${moduleId}/tasks/${taskId}/speaking`, { content, cardIndex }),
   // 删除某一天任务
   deleteTask: (moduleId: string, taskId: string) =>
     api.delete(`/modules/${moduleId}/tasks/${taskId}`),

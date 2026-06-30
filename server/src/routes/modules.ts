@@ -19,8 +19,9 @@ function buildTaskData(task: any): object {
     keyWords: task.keyWords || [],
     writingPrompt: task.writingPrompt || '',
     speakingPrompt: task.speakingPrompt || '',
+    speakingCards: task.speakingCards || [],
     referenceVocabulary: task.referenceVocabulary || [],
-    ttsAudioUrls: {}, // { sentenceIndex: audioUrl }
+    ttsAudioUrls: {},
   };
 }
 
@@ -239,7 +240,7 @@ router.put('/:id/tasks/:taskId', authMiddleware, async (req: AuthRequest, res: R
       return;
     }
 
-    const { title, content, taskType, writingPrompt, speakingPrompt, referenceVocabulary } = req.body;
+    const { title, content, taskType, writingPrompt, speakingPrompt, referenceVocabulary, speakingCards } = req.body;
 
     await exec(
       `UPDATE module_tasks
@@ -251,13 +252,14 @@ router.put('/:id/tasks/:taskId', authMiddleware, async (req: AuthRequest, res: R
       [title || null, content || null, taskType || null, req.params.taskId]
     );
 
-    // 如果提供了 writingPrompt / speakingPrompt 或 referenceVocabulary，更新 task_data
-    if (writingPrompt !== undefined || speakingPrompt !== undefined || referenceVocabulary !== undefined) {
+    // 如果提供了 writingPrompt / speakingPrompt / referenceVocabulary / speakingCards，更新 task_data
+    if (writingPrompt !== undefined || speakingPrompt !== undefined || referenceVocabulary !== undefined || speakingCards !== undefined) {
       let taskData: any = {};
       try { taskData = JSON.parse(task.task_data || '{}'); } catch { /* ignore */ }
       if (writingPrompt !== undefined) taskData.writingPrompt = writingPrompt;
       if (speakingPrompt !== undefined) taskData.speakingPrompt = speakingPrompt;
       if (referenceVocabulary !== undefined) taskData.referenceVocabulary = referenceVocabulary;
+      if (speakingCards !== undefined) taskData.speakingCards = speakingCards;
       await exec(
         'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
         [JSON.stringify(taskData), req.params.taskId]
@@ -501,11 +503,11 @@ router.post('/:id/tasks/:taskId/writing', authMiddleware, async (req: AuthReques
 });
 
 // ============================================================
-// POST /api/modules/:id/tasks/:taskId/speaking - 保存用户口语对话
+// POST /api/modules/:id/tasks/:taskId/speaking - 保存用户口语对话(支持多卡片)
 // ============================================================
 router.post('/:id/tasks/:taskId/speaking', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
-    const { content } = req.body;
+    const { content, cardIndex } = req.body;
 
     const task = await queryOne<any>(
       'SELECT * FROM module_tasks WHERE id = $1 AND module_id = $2',
@@ -520,14 +522,23 @@ router.post('/:id/tasks/:taskId/speaking', authMiddleware, async (req: AuthReque
     let taskData: any = {};
     try { taskData = JSON.parse(task.task_data || '{}'); } catch { /* ignore */ }
 
-    if (content !== undefined) taskData.userSpeaking = content;
+    // cardIndex 存在时保存到对应卡片，兼容旧的全局 speaking 保存
+    if (cardIndex !== undefined && cardIndex >= 0) {
+      const cards = taskData.speakingCards || [];
+      if (cards[cardIndex]) {
+        cards[cardIndex].userDialogue = content;
+      }
+      taskData.speakingCards = cards;
+    } else {
+      taskData.userSpeaking = content;
+    }
 
     await exec(
       'UPDATE module_tasks SET task_data = $1, updated_at = NOW() WHERE id = $2',
       [JSON.stringify(taskData), req.params.taskId]
     );
 
-    res.json({ message: '口语对话已保存', userSpeaking: taskData.userSpeaking });
+    res.json({ message: '口语对话已保存', taskData });
   } catch (err: any) {
     res.status(500).json({ error: '保存口语对话失败: ' + err.message });
   }
@@ -579,7 +590,7 @@ router.post('/:id/tasks', authMiddleware, async (req: AuthRequest, res: Response
 
     if (!mod) { res.status(404).json({ error: '大模块不存在' }); return; }
 
-    const { title, content, taskType, dayNumber, keyWords, writingPrompt, speakingPrompt, referenceVocabulary } = req.body;
+    const { title, content, taskType, dayNumber, keyWords, writingPrompt, speakingPrompt, speakingCards, referenceVocabulary } = req.body;
     const day = dayNumber || (mod.total_days + 1);
 
     const taskId = uuidv4();
@@ -587,6 +598,7 @@ router.post('/:id/tasks', authMiddleware, async (req: AuthRequest, res: Response
       keyWords: keyWords || [],
       writingPrompt: writingPrompt || '',
       speakingPrompt: speakingPrompt || '',
+      speakingCards: speakingCards || [],
       referenceVocabulary: referenceVocabulary || [],
       ttsAudioUrls: {},
     };

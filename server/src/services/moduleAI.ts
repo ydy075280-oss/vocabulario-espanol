@@ -27,6 +27,11 @@ export interface KeyWord {
   exampleTranslation: string;
 }
 
+/** 口语卡片 */
+export interface SpeakingCard {
+  topic: string;
+}
+
 /** 单天任务 */
 export interface AIDayTask {
   dayNumber: number;
@@ -35,6 +40,7 @@ export interface AIDayTask {
   taskType: 'vocabulary' | 'grammar' | 'writing' | 'listening' | 'speaking';
   keyWords: KeyWord[];
   writingPrompt: string;
+  speakingCards: SpeakingCard[];
   referenceVocabulary: string[];
   suggestedWords: string[];
 }
@@ -87,6 +93,7 @@ JSON Schema（严格遵循，不增不减字段）：
     "taskType": "vocabulary|writing|grammar|listening|speaking",
     "keyWords": [],
     "writingPrompt": "",
+    "speakingCards": [],
     "referenceVocabulary": [],
     "suggestedWords": []
   }]
@@ -96,7 +103,9 @@ JSON Schema（严格遵循，不增不减字段）：
 ■ vocabulary/grammar 任务 → keyWords 必填(每天2-4个)，writingPrompt=""，referenceVocabulary=[]
   每个 keyWord: {"word":"单词","translation":"中文","partOfSpeech":"词性","exampleSentence":"地道的短例句(≤15词)","exampleTranslation":"例句翻译"}
 ■ writing 任务 → keyWords=[]，writingPrompt 必填，referenceVocabulary 必填(3-6个单词原文)
-■ listening/speaking → 全部空数组/空字符串
+■ speaking 任务 → keyWords=[]，writingPrompt=""，referenceVocabulary=[]，speakingCards 必填(2-4个口语主题)
+  每个 speakingCard: {"topic":"口语话题，如：在餐厅点餐 / 问路 / 自我介绍"}
+■ listening → 全部空数组/空字符串
 ■ suggestedWords 填 keyWords 或 referenceVocabulary 中的单词原文
 
 编排规律：Day1-2 核心词汇/语法→Day3-5 场景拓展→Day6-7 整合复盘。每天1-2个任务。mixed 类型前段词汇后段写作。
@@ -161,6 +170,11 @@ export async function generateModulePlan(homeworkText: string): Promise<AIModule
             }))
           : [],
         writingPrompt: t.writingPrompt || '',
+        speakingCards: Array.isArray(t.speakingCards)
+          ? t.speakingCards.map((sc: any) => ({
+              topic: sc.topic || '',
+            }))
+          : [],
         referenceVocabulary: Array.isArray(t.referenceVocabulary) ? t.referenceVocabulary : [],
         suggestedWords: Array.isArray(t.suggestedWords) ? t.suggestedWords : [],
       })),
