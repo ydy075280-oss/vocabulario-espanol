@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.ECS_USERNAME }}
           key: ${{ secrets.ECS_SSH_KEY }}
           script: |
-            cd /home/admin/vocabulario-espanol
+            cd /opt/vocabulario-espanol
             git pull origin main
             docker build -t vocabulario-espanol .
             docker stop vocabulario-espanol 2>/dev/null || true
