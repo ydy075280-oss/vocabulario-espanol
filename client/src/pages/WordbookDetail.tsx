@@ -9,6 +9,7 @@ interface Card {
   part_of_speech: string;
   gender: string;
   chinese_meaning: string;
+  notes?: string;
   status: string;
   sentences: Array<{ sentence_es: string }>;
 }
@@ -187,6 +188,11 @@ export default function WordbookDetail() {
                   {card.chinese_meaning}
                   {card.gender && ` · ${card.gender === 'masculino' ? '阳' : '阴'}`}
                 </p>
+                {card.notes && (
+                  <p className="text-xs text-typo-muted/70 truncate mt-0.5">
+                    {card.notes}
+                  </p>
+                )}
               </div>
               <button
                 onClick={(e) => { e.stopPropagation(); deleteCard(card.id, card.word); }}

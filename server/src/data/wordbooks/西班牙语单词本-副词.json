@@ -1,0 +1,570 @@
+{
+  "version": 2,
+  "wordbook": {
+    "name": "西班牙语单词本-副词",
+    "sourceType": "seed",
+    "courseTag": "副词"
+  },
+  "words": [
+    {
+      "word": "原形",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "中文释义",
+      "originalForm": "原形",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "西语原句",
+          "zh": "中文情景句"
+        }
+      ],
+      "notes": "拓展搭配 & 语法要点"
+    },
+    {
+      "word": "De cualquier manera",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "不管怎样",
+      "originalForm": "De cualquier manera",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "De cualquier manera, cuando me mira me ve entero",
+          "zh": "不管怎样，她看着我的时候看到的是完整的我"
+        }
+      ],
+      "notes": "副词短语，用于句首/句中，表让步"
+    },
+    {
+      "word": "En cualquier caso",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "任何情况下",
+      "originalForm": "En cualquier caso",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En cualquier caso, su mano sigue caliente cuando agarra la mía",
+          "zh": "任何情况下，她抓住我的手时，她的手还是暖的"
+        }
+      ],
+      "notes": "副词短语，用于句首/句中，表让步"
+    },
+    {
+      "word": "Pase lo que pase",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "无论发生什么",
+      "originalForm": "Pase lo que pase",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Pase lo que pase, ella es mi casa hace décadas",
+          "zh": "无论发生什么，她几十年来都是我的家"
+        }
+      ],
+      "notes": "副词短语，用于句首，表让步，虚拟式用法"
+    },
+    {
+      "word": "Por ejemplo",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "例如",
+      "originalForm": "Por ejemplo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Por ejemplo, unos ven romanticismo, otros ven soledad",
+          "zh": "比如有些人看到浪漫，有些人看到孤独"
+        }
+      ],
+      "notes": "副词短语，用于句首/句中，表举例"
+    },
+    {
+      "word": "Asi",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "这样",
+      "originalForm": "Asi",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Yo así la miro nomás, sin ponerle palabra",
+          "zh": "我就这样看着它，什么也不说"
+        }
+      ],
+      "notes": "副词，修饰动词/形容词，表方式"
+    },
+    {
+      "word": "De todas formas",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "无论如何",
+      "originalForm": "De todas formas",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "De todas formas, la luna no cambia, solo nosotros la vestimos de lo que sentimos",
+          "zh": "无论如何，月亮没变，只是我们用各自的心情去装饰它"
+        }
+      ],
+      "notes": "副词短语，用于句首/句中，表让步"
+    },
+    {
+      "word": "Ni siquiera",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "甚至不",
+      "originalForm": "Ni siquiera",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "ni siquiera conteste",
+          "zh": "我甚至没接"
+        }
+      ],
+      "notes": "副词短语，用于句中，表递进否定"
+    },
+    {
+      "word": "Mas bien",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "而是,宁可",
+      "originalForm": "Mas bien",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No fue por enojo, más bien porque estaba durmiendo la siesta",
+          "zh": "不是因为生气，而是因为我在睡午觉"
+        }
+      ],
+      "notes": "副词短语，用于句中，表转折"
+    },
+    {
+      "word": "Mejor dicho",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "更确切地说",
+      "originalForm": "Mejor dicho",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mejor dicho, estaba tirado en el sillón con el celular en vibrador y no lo senti",
+          "zh": "更确切地说，我瘫在沙发上，手机开着震动，完全没感觉到"
+        }
+      ],
+      "notes": "副词短语，用于句首，表修正说明"
+    },
+    {
+      "word": "Vale",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "行,好",
+      "originalForm": "Vale",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Vale, un poco",
+          "zh": "行，有一点"
+        }
+      ],
+      "notes": "感叹词/副词，用于口语，表同意"
+    },
+    {
+      "word": "Claro que sí",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "当然可以",
+      "originalForm": "Claro que sí",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Claro que si, aunque sea con un mate y mirando el mar",
+          "zh": "当然可以，哪怕只是喝着马黛茶看看海"
+        }
+      ],
+      "notes": "副词短语，用于口语，表肯定回答"
+    },
+    {
+      "word": "Claro que no",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "当然不",
+      "originalForm": "Claro que no",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Claro gue no, eso es peor",
+          "zh": "当然不，那更糟"
+        }
+      ],
+      "notes": "副词短语，用于口语，表否定回答"
+    },
+    {
+      "word": "De cabo a rabo",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "从头到尾",
+      "originalForm": "De cabo a rabo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me leí la novela de cabo a rabo en una noche",
+          "zh": "我一晚上从头到尾读完了那本小说"
+        }
+      ],
+      "notes": "副词短语，修饰动词，表全程"
+    },
+    {
+      "word": "Por si acaso",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "以防万一",
+      "originalForm": "Por si acaso",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Por si acaso, le saque fotos a las paginas que más me gustaron",
+          "zh": "以防万一，我把我最喜欢的那些页拍了下来"
+        }
+      ],
+      "notes": "副词短语，用于句首/句中，表目的"
+    },
+    {
+      "word": "De mil amores",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "非常情愿地",
+      "originalForm": "De mil amores",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Si me pidieras que la vuelva a leer, lo haria de mil amores",
+          "zh": "你要是让我再读一遍，我会十分乐意"
+        }
+      ],
+      "notes": "副词短语，修饰动词，表乐意"
+    },
+    {
+      "word": "De una vez",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "一次性/干脆",
+      "originalForm": "De una vez",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ya fue, me mudo de una vez el sabado que viene",
+          "zh": "算了，我干脆下周六搬家"
+        }
+      ],
+      "notes": "副词短语，修饰动词，表方式"
+    },
+    {
+      "word": "De antemano",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "预先,事先",
+      "originalForm": "De antemano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Te aviso de antemano que voy a necesitar ayuda con las cajas",
+          "zh": "我事先跟你说好，搬箱子我需要帮忙"
+        }
+      ],
+      "notes": "副词短语，修饰动词，表时间"
+    },
+    {
+      "word": "Entre bromas y veras",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "半开玩笑半认真地",
+      "originalForm": "Entre bromas y veras",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Entre bromas y veras, si veo una cucaracha en el departamento nuevo, me voy a vivir a un hotel",
+          "zh": "半开玩笑半认真地说，如果新家出现一只蟑螂，我就去住酒店"
+        }
+      ],
+      "notes": "副词短语，用于句首，表方式"
+    },
+    {
+      "word": "Por experiencia",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "凭经验",
+      "originalForm": "Por experiencia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Por experiencia sé que falta un rato para que la sopa tenga gusto",
+          "zh": "凭经验我知道汤还要过一会儿才有味道"
+        }
+      ],
+      "notes": "副词短语，用于句首，表依据"
+    },
+    {
+      "word": "A simple vista",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "一眼看去",
+      "originalForm": "A simple vista",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "A simple vista el agua ya está hirviendo",
+          "zh": "一眼看去，水已经开了"
+        }
+      ],
+      "notes": "副词短语，用于句首，表判断"
+    },
+    {
+      "word": "Sin más",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "不再多说",
+      "originalForm": "Sin más",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Sin mas, le pongo sal, tapo la olla y dejo que haga lo suyo",
+          "zh": "不再多说，我放了盐，盖上锅盖，让它自己慢慢煮"
+        }
+      ],
+      "notes": "副词短语，用于句首，表承接"
+    },
+    {
+      "word": "Ayer",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "昨天",
+      "originalForm": "Ayer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ayer dejé ir suavemente las cargas",
+          "zh": "昨日的负担，我已轻轻卸下"
+        }
+      ],
+      "notes": "时间副词，用于句首/句末"
+    },
+    {
+      "word": "Hoy",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "今天",
+      "originalForm": "Hoy",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hoy, valoro profundamente este instante",
+          "zh": "今日的风景，我正深深珍惜"
+        }
+      ],
+      "notes": "时间副词，用于句首/句末"
+    },
+    {
+      "word": "Manana",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "明天",
+      "originalForm": "Manana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Manana espero con calma la promesa",
+          "zh": "明日的希望，我将静静期待"
+        }
+      ],
+      "notes": "时间副词，用于句首/句末"
+    },
+    {
+      "word": "Temprano",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "早",
+      "originalForm": "Temprano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Algunos empiezan temprano a correr hacia el futuro",
+          "zh": "有人早早开始奔向未来"
+        }
+      ],
+      "notes": "时间副词，修饰动词"
+    },
+    {
+      "word": "Enseguida",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "立即",
+      "originalForm": "Enseguida",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "otros deciden cambiar enseguida al comprender la verdad",
+          "zh": "有人在领悟真相后立即改变"
+        }
+      ],
+      "notes": "时间副词，修饰动词"
+    },
+    {
+      "word": "Mientras",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "同时",
+      "originalForm": "Mientras",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mientras tanto, la vida revela su secreto",
+          "zh": "而与此同时，生命揭示出它的秘密"
+        }
+      ],
+      "notes": "时间副词/连词，表同时"
+    },
+    {
+      "word": "Jamás",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "从不",
+      "originalForm": "Jamás",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No digas que es demasiado tarde, pues es jamas tarde para comenzar de nuevo",
+          "zh": "莫言为时已晚，因为重新开始永远不晚"
+        }
+      ],
+      "notes": "否定副词，用于句中，比nunca语气更强"
+    },
+    {
+      "word": "Pronto",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "很快",
+      "originalForm": "Pronto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El cambio que anhelas llegara pronto",
+          "zh": "你所渴望的改变很快就会到来"
+        }
+      ],
+      "notes": "时间副词，用于句末/句首"
+    },
+    {
+      "word": "Tarde",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "晚",
+      "originalForm": "Tarde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No digas que es demasiado tarde",
+          "zh": "莫言为时已晚"
+        }
+      ],
+      "notes": "时间副词，用于句末/句首"
+    },
+    {
+      "word": "Aún",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "仍然",
+      "originalForm": "Aún",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El corazón siempre guarda un rincón de esperanza, aún en las noches más oscuras",
+          "zh": "心灵总是珍藏着一隅希望，即使在最深沉的黑夜"
+        }
+      ],
+      "notes": "副词，用于句中，表仍然"
+    },
+    {
+      "word": "Siempre",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "总是",
+      "originalForm": "Siempre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El corazón siempre guarda un rincón de esperanza",
+          "zh": "心灵总是珍藏着一隅希望"
+        }
+      ],
+      "notes": "频率副词，用于句中"
+    },
+    {
+      "word": "Nunca",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "从不",
+      "originalForm": "Nunca",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "porque nunca sabemos cuando el amanecer decidira pintar el cielo de nuevo",
+          "zh": "因为我们从不知道，黎明将于何时决心再次渲染天际"
+        }
+      ],
+      "notes": "否定副词，用于句中"
+    },
+    {
+      "word": "Luego",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "稍后",
+      "originalForm": "Luego",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Luego, cuando al fin demos el paso",
+          "zh": "而后，当我们终于迈出脚步时"
+        }
+      ],
+      "notes": "时间副词，用于句首"
+    },
+    {
+      "word": "Ya",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "已经",
+      "originalForm": "Ya",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ya hemos llegado al cruce de caminos",
+          "zh": "我们已抵达人生的十字路口"
+        }
+      ],
+      "notes": "时间副词，用于句中"
+    },
+    {
+      "word": "Todavia",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "仍然",
+      "originalForm": "Todavia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "pero todavía dudamos sobre la dirección",
+          "zh": "却仍然彷徨于前进的方向"
+        }
+      ],
+      "notes": "副词，用于句中，表仍然"
+    },
+    {
+      "word": "Ahora",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "现在",
+      "originalForm": "Ahora",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "pero solo ahora despertamos y existimos de verdad",
+          "zh": "但唯有此刻，我们才真正觉醒和存在"
+        }
+      ],
+      "notes": "时间副词，用于句首/句末"
+    },
+    {
+      "word": "Antes",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "以前",
+      "originalForm": "Antes",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Antes dormiamos en el sueno del pasado",
+          "zh": "以前我们沉睡于往昔的旧梦"
+        }
+      ],
+      "notes": "时间副词，用于句首"
+    },
+    {
+      "word": "Después",
+      "partOfSpeech": "adverbio",
+      "chineseMeaning": "之后",
+      "originalForm": "Después",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "después buscaremos en el proyecto del futuro",
+          "zh": "以后我们将追寻于未来的蓝图"
+        }
+      ],
+      "notes": "时间副词，用于句首/句末"
+    }
+  ]
+}

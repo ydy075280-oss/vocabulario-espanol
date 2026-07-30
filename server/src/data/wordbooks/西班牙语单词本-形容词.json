@@ -1,0 +1,1340 @@
+{
+  "version": 2,
+  "wordbook": {
+    "name": "西班牙语单词本-形容词",
+    "sourceType": "seed",
+    "courseTag": "形容词"
+  },
+  "words": [
+    {
+      "word": "原形",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "中文释义",
+      "originalForm": "原形",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "西语原句",
+          "zh": "中文情景句"
+        }
+      ],
+      "notes": "拓展搭配 & 语法要点"
+    },
+    {
+      "word": "Rapido/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "快的",
+      "originalForm": "Rapido/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La vida es un viaje: a veces rapido",
+          "zh": "人生是一场旅程：时而快"
+        }
+      ],
+      "notes": "-o/a结尾形容词，阴阳性变化；副词形式rápidamente"
+    },
+    {
+      "word": "Lento/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "慢的",
+      "originalForm": "Lento/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "a menudo lento",
+          "zh": "时常慢"
+        }
+      ],
+      "notes": "-o/a结尾形容词；副词形式lentamente"
+    },
+    {
+      "word": "Temprano",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "早的",
+      "originalForm": "Temprano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No importa si empiezas temprano",
+          "zh": "无关你出发得早"
+        }
+      ],
+      "notes": "无阴阳性变化；可作形容词/副词"
+    },
+    {
+      "word": "Tarde",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "迟的",
+      "originalForm": "Tarde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "o llegas tarde",
+          "zh": "或到得迟"
+        }
+      ],
+      "notes": "无阴阳性变化；可作形容词/副词"
+    },
+    {
+      "word": "Joven",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "年轻的",
+      "originalForm": "Joven",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un amor joven puede habitar en un corazón usado por la vida",
+          "zh": "一份年轻的爱可以栖居于被生活磨旧的心中"
+        }
+      ],
+      "notes": "无阴阳性变化；复数jóvenes"
+    },
+    {
+      "word": "Anciano(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "年迈的",
+      "originalForm": "Anciano(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "una herida anciana",
+          "zh": "一道年深日久的伤痕"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词joven"
+    },
+    {
+      "word": "Nuevo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "新的",
+      "originalForm": "Nuevo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una promesa nueva puede sanar una herida anciana",
+          "zh": "一个崭新的诺言可以治愈一道年深日久的伤痕"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词viejo"
+    },
+    {
+      "word": "Usado(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "用过的,旧的",
+      "originalForm": "Usado(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un corazón usado por la vida",
+          "zh": "被生活磨旧的心中"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词nuevo"
+    },
+    {
+      "word": "Caluroso(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "炎热的(天气)",
+      "originalForm": "Caluroso(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En esta ciudad húmeda, incluso la noche es calurosa",
+          "zh": "在这座潮湿的城市，连夜晚都闷热"
+        }
+      ],
+      "notes": "-o/a结尾形容词；仅用于天气"
+    },
+    {
+      "word": "Fresco(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "凉爽的",
+      "originalForm": "Fresco(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "alli, hasta el mediodia podia ser fresco",
+          "zh": "即便是正午也可能凉爽"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词caluroso"
+    },
+    {
+      "word": "Seco(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "干的",
+      "originalForm": "Seco(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "sueno con el viento seco de la meseta",
+          "zh": "我梦寐高原干燥的风"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词húmedo"
+    },
+    {
+      "word": "Húmedo(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "潮湿的",
+      "originalForm": "Húmedo(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En esta ciudad húmeda",
+          "zh": "在这座潮湿的城市"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词seco"
+    },
+    {
+      "word": "Duro(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "硬的",
+      "originalForm": "Duro(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El suelo duro de invierno se cubre con un manto blando",
+          "zh": "冬日的坚硬大地被柔软的雪毯覆盖"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词blando"
+    },
+    {
+      "word": "Blando(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "软的",
+      "originalForm": "Blando(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un manto blando",
+          "zh": "被柔软的雪毯覆盖"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词duro"
+    },
+    {
+      "word": "Pesado (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "重的",
+      "originalForm": "Pesado (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "acumulada se hace pesada",
+          "zh": "堆积起来却变得沉重"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词liviano"
+    },
+    {
+      "word": "Liviano (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "轻的",
+      "originalForm": "Liviano (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La primera nieve cae liviana",
+          "zh": "初雪飘落时很轻盈"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词pesado"
+    },
+    {
+      "word": "Abierto(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "开着的",
+      "originalForm": "Abierto(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Por la manana volvería a estar abierta",
+          "zh": "清晨它会再度敞开"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词cerrado"
+    },
+    {
+      "word": "Cerrado (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "关着的",
+      "originalForm": "Cerrado (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La libreriía ya estaba cerrada",
+          "zh": "书店已经打烊"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词abierto"
+    },
+    {
+      "word": "LLeno (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "满的",
+      "originalForm": "LLeno (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "llena de historias esperando lectores",
+          "zh": "满载着等待读者的故事"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词vacío"
+    },
+    {
+      "word": "Vacio (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "空的",
+      "originalForm": "Vacio (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "su escaparate vacio",
+          "zh": "橱窗空空如也"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词lleno"
+    },
+    {
+      "word": "Limpio/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "干净的",
+      "originalForm": "Limpio/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "pero sus risas dejan el alma limpia",
+          "zh": "但他们的笑声让灵魂纯净"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词manchado"
+    },
+    {
+      "word": "Manchado/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "有污渍的",
+      "originalForm": "Manchado/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Los ninos vuelven a casa con ropas manchadas de barro",
+          "zh": "孩子们回家时衣服沾满泥点"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词limpio"
+    },
+    {
+      "word": "Ordenado/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "整洁的",
+      "originalForm": "Ordenado/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y el dia perfectamente ordenado",
+          "zh": "让一天完美有序"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词desordenado"
+    },
+    {
+      "word": "Desordenado/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "凌乱的",
+      "originalForm": "Desordenado/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y habitaciones desordenadas",
+          "zh": "房间变得凌乱"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词ordenado"
+    },
+    {
+      "word": "Delgado/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "苗条的",
+      "originalForm": "Delgado/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No importa si es una baguette delgada o un pan rellenito de pueblo",
+          "zh": "无论是纤细的法棍还是圆胖的乡村面包"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词rellenito"
+    },
+    {
+      "word": "Rellenito/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "丰满的",
+      "originalForm": "Rellenito/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No importa si es una baguette delgada o un pan rellenito de pueblo",
+          "zh": "无论是纤细的法棍还是圆胖的乡村面包"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词delgado"
+    },
+    {
+      "word": "Caliente",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "热的",
+      "originalForm": "Caliente",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El pan recién horneado está caliente y crujiente por fuera",
+          "zh": "刚出炉的面包外皮滚烫酥脆"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词frío"
+    },
+    {
+      "word": "Frio/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "冷的",
+      "originalForm": "Frio/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "perfecto para un dia frio",
+          "zh": "最适合寒冷的天气"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词caliente"
+    },
+    {
+      "word": "Cerca",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "近的",
+      "originalForm": "Cerca",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lo que hoy parece cerca",
+          "zh": "今天看似近在眼前的"
+        }
+      ],
+      "notes": "无阴阳性变化；可作形容词/副词；反义词lejano"
+    },
+    {
+      "word": "Lejano/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "遥远的",
+      "originalForm": "Lejano/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Las estrellas estan lejanas",
+          "zh": "星辰很遥远"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词cerca"
+    },
+    {
+      "word": "Alto/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "高的",
+      "originalForm": "Alto/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Las cosas más altas empiezan desde lo más bajito",
+          "zh": "最高大的事物都始于最微小的根基"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词bajo"
+    },
+    {
+      "word": "Bajito/a",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "矮小的",
+      "originalForm": "Bajito/a",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Las cosas más altas empiezan desde lo más bajito",
+          "zh": "最高大的事物都始于最微小的根基"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词alto"
+    },
+    {
+      "word": "Guapo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "好看的",
+      "originalForm": "Guapo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un amor rico en comprensión es más guapo que mil palabras",
+          "zh": "一段充满理解的、丰盈的爱情，比千言万语都更美好"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词horrible"
+    },
+    {
+      "word": "Horrible",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "可怕的",
+      "originalForm": "Horrible",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "se convierte en una pesadilla horrible",
+          "zh": "则会变成一场可怕的噩梦"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词guapo"
+    },
+    {
+      "word": "Rico(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "富有的",
+      "originalForm": "Rico(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un amor rico en comprensión",
+          "zh": "一段充满理解的、丰盈的爱情"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词pobre"
+    },
+    {
+      "word": "Pobre",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "贫穷的",
+      "originalForm": "Pobre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un amor pobre en respeto",
+          "zh": "一段缺乏尊重的、贫瘠的爱情"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词rico"
+    },
+    {
+      "word": "Satisfecho (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "满意的",
+      "originalForm": "Satisfecho (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una relación saludable deja a ambas partes satisfechas y en crecimiento",
+          "zh": "一段健康的关系让双方都感到满足并共同成长"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词disgustado"
+    },
+    {
+      "word": "Disgustado(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "不高兴的",
+      "originalForm": "Disgustado(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "una relación enfermiza deja a las personas disgustadas y emocionalmente agotadas",
+          "zh": "一段病态的关系则让人不快且情感耗竭"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词satisfecho"
+    },
+    {
+      "word": "Saludable",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "健康的",
+      "originalForm": "Saludable",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una relación saludable deja a ambas partes satisfechas y en crecimiento",
+          "zh": "一段健康的关系让双方都感到满足并共同成长"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词enfermizo"
+    },
+    {
+      "word": "Enfermizo(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "多病的",
+      "originalForm": "Enfermizo(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "una relación enfermiza deja a las personas disgustadas y emocionalmente agotadas",
+          "zh": "一段病态的关系则让人不快且情感耗竭"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词saludable"
+    },
+    {
+      "word": "interesante",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "有趣的",
+      "originalForm": "interesante",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una pelicula interesante no necesita ser siempre alegre",
+          "zh": "一部有趣的电影并不需要总是欢快的"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词soso"
+    },
+    {
+      "word": "Soso(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "乏味的",
+      "originalForm": "Soso(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "uno feliz pero SOSO",
+          "zh": "一个快乐却平淡的结局"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词interesante"
+    },
+    {
+      "word": "Alegre",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "欢快的",
+      "originalForm": "Alegre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una pelicula interesante no necesita ser siempre alegre",
+          "zh": "一部有趣的电影并不需要总是欢快的"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词melancólico"
+    },
+    {
+      "word": "Melancolico (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "忧郁的",
+      "originalForm": "Melancolico (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un final melancolico puede ser más memorable que uno feliz pero SOSO",
+          "zh": "一个忧郁的结局可能比一个快乐却平淡的结局更令人难忘"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词alegre"
+    },
+    {
+      "word": "Tranquilo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "平静的",
+      "originalForm": "Tranquilo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El parque está tranquilo al amanecer",
+          "zh": "黎明时公园很宁静"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词alborotado"
+    },
+    {
+      "word": "Alborotado (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "喧闹的/吵闹的",
+      "originalForm": "Alborotado (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "por la noche, el bar cercano se vuelve alborotado",
+          "zh": "夜晚，附近的酒吧变得喧闹"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词tranquilo"
+    },
+    {
+      "word": "Seguro (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "安全的",
+      "originalForm": "Seguro (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Caminar de dia es seguro",
+          "zh": "白天走路很安全"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词arriesgado"
+    },
+    {
+      "word": "Arriesgado(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "危险的/冒险的",
+      "originalForm": "Arriesgado(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "pero esa callejuela de noche parece arriesgada",
+          "zh": "但那条小巷在夜里看来却危机四伏"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词seguro"
+    },
+    {
+      "word": "Largo(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "长的",
+      "originalForm": "Largo(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "largo y resistente",
+          "zh": "长长而坚韧"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词corto"
+    },
+    {
+      "word": "Corto (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "短的",
+      "originalForm": "Corto (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "que une momentos cortos",
+          "zh": "串起短暂的瞬间"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词largo"
+    },
+    {
+      "word": "Grueso(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "厚的/粗的",
+      "originalForm": "Grueso(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "otras se hace grueso con el peso del tiempo",
+          "zh": "有时又因时光的重量而变得粗重"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词fino"
+    },
+    {
+      "word": "Fino(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "薄的/细的",
+      "originalForm": "Fino(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La memoria es un hilo fino",
+          "zh": "记忆是一根细细的线"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词grueso"
+    },
+    {
+      "word": "Fuerte",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "强壮的/强烈的",
+      "originalForm": "Fuerte",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI roble es fuerte contra el viento",
+          "zh": "橡树强健抗风"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词débil"
+    },
+    {
+      "word": "Débil",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "虚弱的/微弱的",
+      "originalForm": "Débil",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el junco es débil y se dobla",
+          "zh": "芦苇柔弱易弯"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词fuerte"
+    },
+    {
+      "word": "Ancho(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "宽的/宽阔的",
+      "originalForm": "Ancho(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La copa ancha da sombra",
+          "zh": "宽阔的树冠投下荫凉"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词angosto"
+    },
+    {
+      "word": "Angosto(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "狭窄的/窄的",
+      "originalForm": "Angosto(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el tronco angosto llega alto",
+          "zh": "纤细的树干长得更高"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词ancho"
+    },
+    {
+      "word": "Trabajador (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "勤劳的",
+      "originalForm": "Trabajador (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El chef trabajador que innovaba con ingredientes frescos era popular entre los comensales",
+          "zh": "那位用新鲜食材创新的勤勉主厨很受食客喜爱"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词flojo"
+    },
+    {
+      "word": "Flojo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "懒散的",
+      "originalForm": "Flojo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El chef flojo que usaba productos congelados se volvio impopular rapidamente",
+          "zh": "那位使用冷冻产品的懈怠主厨则很快变得声名狼藉"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词trabajador"
+    },
+    {
+      "word": "Popular",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "受欢迎的",
+      "originalForm": "Popular",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "era popular entre los comensales",
+          "zh": "那位用新鲜食材创新的勤勉主厨很受食客喜爱"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词impopular"
+    },
+    {
+      "word": "Impopular",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "不受欢迎的",
+      "originalForm": "Impopular",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "se volvio impopular rapidamente",
+          "zh": "那位使用冷冻产品的懈怠主厨则很快变得声名狼藉"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词popular"
+    },
+    {
+      "word": "Optimista",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "乐观的",
+      "originalForm": "Optimista",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ella, optimista y activa, llenó el fin de semana con planes",
+          "zh": "她乐观又好动，把周末排满了计划"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词pesimista"
+    },
+    {
+      "word": "Pesimista",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "悲观的",
+      "originalForm": "Pesimista",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI, pesimista y perezoso, predijo que todos saldrian mal",
+          "zh": "他悲观又懒，预言一切都会搞砸"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词optimista"
+    },
+    {
+      "word": "activo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "活跃的",
+      "originalForm": "activo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ella, optimista y activa, llenó el fin de semana con planes",
+          "zh": "她乐观又好动，把周末排满了计划"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词perezoso"
+    },
+    {
+      "word": "Perezoso (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "懒惰的",
+      "originalForm": "Perezoso (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI, pesimista y perezoso, predijo que todos saldrian mal",
+          "zh": "他悲观又懒，预言一切都会搞砸"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词activo"
+    },
+    {
+      "word": "Responsable",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "负责的",
+      "originalForm": "Responsable",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una persona responsable cumple sus promesas con una atención cuidadosa a los detalles",
+          "zh": "一个负责的人会履行承诺，并细致地关注细节"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词irresponsable"
+    },
+    {
+      "word": "Irresponsable",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "不负责任的",
+      "originalForm": "Irresponsable",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "una persona irresponsable hace promesas descuidadas",
+          "zh": "一个不负责任的人则会做出轻率的承诺"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词responsable"
+    },
+    {
+      "word": "Cuidadoso (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "小心的",
+      "originalForm": "Cuidadoso (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "con una atención cuidadosa a los detalles",
+          "zh": "并细致地关注细节"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词descuidado"
+    },
+    {
+      "word": "Descuidado (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "粗心的",
+      "originalForm": "Descuidado (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "una persona irresponsable hace promesas descuidadas",
+          "zh": "一个不负责任的人则会做出轻率的承诺"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词cuidadoso"
+    },
+    {
+      "word": "Paciente",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "耐心的",
+      "originalForm": "Paciente",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un artista paciente trabaja anos en una obra",
+          "zh": "有耐心的艺术家在一件作品上耕耘数年"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词impaciente"
+    },
+    {
+      "word": "Impaciente",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "不耐烦的",
+      "originalForm": "Impaciente",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "uno impaciente busca el éxito rapido",
+          "zh": "没耐心的艺术家则追求快速成功"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词paciente"
+    },
+    {
+      "word": "Honesto(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "诚实的",
+      "originalForm": "Honesto(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El arte más honesto revela el alma",
+          "zh": "最真诚的艺术揭示灵魂"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词mentiroso"
+    },
+    {
+      "word": "Mentiroso (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "说谎的",
+      "originalForm": "Mentiroso (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el mentiroso solo repite modas",
+          "zh": "虚假的艺术只是重复潮流"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词honesto"
+    },
+    {
+      "word": "Generoso (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "慷慨的",
+      "originalForm": "Generoso (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El soldado valiente compartió su última galleta con el recluta cobarde",
+          "zh": "勇敢的士兵把最后一块饼干分给胆怯的新兵"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词egoísta"
+    },
+    {
+      "word": "Egoista",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "自私的",
+      "originalForm": "Egoista",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El oficial egoista guardaba chocolate para si",
+          "zh": "自私的军官把巧克力留给自己"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词generoso"
+    },
+    {
+      "word": "Valiente",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "勇敢的",
+      "originalForm": "Valiente",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El soldado valiente compartió su última galleta con el recluta cobarde",
+          "zh": "勇敢的士兵把最后一块饼干分给胆怯的新兵"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词cobarde"
+    },
+    {
+      "word": "Cobarde",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "胆小的",
+      "originalForm": "Cobarde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el recluta cobarde",
+          "zh": "胆怯的新兵"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词valiente"
+    },
+    {
+      "word": "Listo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "聪明的",
+      "originalForm": "Listo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el duende era muy listo",
+          "zh": "小精灵非常聪明"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词torpe"
+    },
+    {
+      "word": "Torpe",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "笨拙的",
+      "originalForm": "Torpe",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el hada era amable pero un poco torpe con su magia",
+          "zh": "仙女很友善，但施魔法时有点笨拙"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词listo"
+    },
+    {
+      "word": "Amable",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "友善的",
+      "originalForm": "Amable",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el hada era amable",
+          "zh": "仙女很友善"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词antipático"
+    },
+    {
+      "word": "Antipatico (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "不友善的",
+      "originalForm": "Antipatico (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "pero completamente antipatico",
+          "zh": "却完全不友善"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词amable"
+    },
+    {
+      "word": "Nuevo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "新",
+      "originalForm": "Nuevo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un nuevo amanecer se asoma sobre los tejados viejos",
+          "zh": "新的晨光从旧屋顶上洒下"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词viejo"
+    },
+    {
+      "word": "Viejo(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "旧",
+      "originalForm": "Viejo(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un nuevo amanecer se asoma sobre los tejados viejos",
+          "zh": "新的晨光从旧屋顶上洒下"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词nuevo"
+    },
+    {
+      "word": "Ruidoso (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "闹",
+      "originalForm": "Ruidoso (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "mientras la plaza parece ruidosa",
+          "zh": "广场虽显得喧闹"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词tranquilo"
+    },
+    {
+      "word": "Tranquilo (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "静",
+      "originalForm": "Tranquilo (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "en el corazón se guarda un rincón tranquilo",
+          "zh": "心中却自留一方宁静"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词ruidoso"
+    },
+    {
+      "word": "Seco(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "干",
+      "originalForm": "Seco(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI campo seco espera la lluvia",
+          "zh": "干涸的土地期盼着雨水"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词mojado"
+    },
+    {
+      "word": "Mojado(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "湿",
+      "originalForm": "Mojado(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la tierra mojada refleja el cielo",
+          "zh": "湿润的大地倒映着天空"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词seco"
+    },
+    {
+      "word": "Natural",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "自然的",
+      "originalForm": "Natural",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI sabor natural de la miel",
+          "zh": "蜂蜜的天然滋味"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词artificial"
+    },
+    {
+      "word": "Artificial",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "人工的",
+      "originalForm": "Artificial",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "los endulzantes artificiales comunes en la dieta moderna",
+          "zh": "现代饮食中常见的人工甜味剂"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词natural"
+    },
+    {
+      "word": "Moderno(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "现代的",
+      "originalForm": "Moderno(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "contrasta con los endulzantes artificiales comunes en la dieta moderna",
+          "zh": "与现代饮食中常见的人工甜味剂形成鲜明对比"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词antiguo"
+    },
+    {
+      "word": "Antiguo(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "古代的",
+      "originalForm": "Antiguo(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "apreciado desde tiempos antiguos",
+          "zh": "自远古时代就受人珍视"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词moderno"
+    },
+    {
+      "word": "Formal",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "正式的",
+      "originalForm": "Formal",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La boda formal en el ayuntamiento fue un acto publico",
+          "zh": "在市政厅举行的正式婚礼是一个公开活动"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词informal"
+    },
+    {
+      "word": "Informal",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "非正式的",
+      "originalForm": "Informal",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La celebración informal en el jardin después fue solo para invitados privados",
+          "zh": "之后在花园里的非正式庆祝则只面向私密的宾客"
+        }
+      ],
+      "notes": "无阴阳性变化；反义词formal"
+    },
+    {
+      "word": "Publico (a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "公共的",
+      "originalForm": "Publico (a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La boda formal en el ayuntamiento fue un acto publico",
+          "zh": "在市政厅举行的正式婚礼是一个公开活动"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词privado"
+    },
+    {
+      "word": "Privado(a)",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "私人的",
+      "originalForm": "Privado(a)",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "fue solo para invitados privados",
+          "zh": "之后在花园里的非正式庆祝则只面向私密的宾客"
+        }
+      ],
+      "notes": "-o/a结尾形容词；反义词público"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ interface CardData {
   definite_article: string;
   chinese_meaning: string;
   original_form: string;
+  notes?: string;
   audio_url?: string;
   sentences: Array<{ id: string; sentence_es: string; sentence_zh: string; audio_url?: string }>;
   conjugation: Record<string, Record<string, string>>;
@@ -141,6 +142,17 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* 拓展搭配 & 语法要点 */}
+            {card.notes && card.notes.trim() && (
+              <div className="mb-4 p-3 bg-accent-muted/30 rounded-card border border-accent/10 text-xs">
+                <p className="font-medium text-accent mb-1.5 text-eyebrow uppercase"
+                   style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
+                  拓展搭配 & 语法要点
+                </p>
+                <p className="text-typo-secondary leading-relaxed whitespace-pre-wrap">{card.notes}</p>
               </div>
             )}
 

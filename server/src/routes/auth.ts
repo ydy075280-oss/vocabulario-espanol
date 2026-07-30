@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
-import { query, queryOne, queryAll, exec } from '../db';
+import { query, queryOne, queryAll, exec, copySeedToUser } from '../db';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
 
 const router = Router();
@@ -44,6 +44,9 @@ router.post('/register', async (req: Request, res: Response) => {
       'INSERT INTO users (id, email, password_hash, nickname, tts_speed) VALUES ($1, $2, $3, $4, 1.0)',
       [id, email, passwordHash, displayName]
     );
+
+    // 注册成功后自动为该用户创建默认单词本副本（进度独立）
+    await copySeedToUser(id);
 
     // Generate tokens
     const accessToken = jwt.sign({ userId: id }, JWT_SECRET, { expiresIn: '2h' });

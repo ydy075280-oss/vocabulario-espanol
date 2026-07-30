@@ -1,0 +1,1340 @@
+{
+  "version": 2,
+  "wordbook": {
+    "name": "西班牙语单词本-名词",
+    "sourceType": "seed",
+    "courseTag": "名词"
+  },
+  "words": [
+    {
+      "word": "原形",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "中文释义",
+      "originalForm": "原形",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "西语原句",
+          "zh": "中文情景句"
+        }
+      ],
+      "notes": "拓展搭配 & 语法要点"
+    },
+    {
+      "word": "Montana",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "山",
+      "originalForm": "Montana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La montaña guarda siglos de memoria en sus rocas",
+          "zh": "山将几个世纪的记忆藏于岩石"
+        }
+      ],
+      "notes": "阴性名词；复数montañas；搭配：subir una montaña爬山"
+    },
+    {
+      "word": "Bosque",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "森林",
+      "originalForm": "Bosque",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El bosque cuenta historias de las estaciones con su susurro",
+          "zh": "森林用沙沙声讲述着四季的故事"
+        }
+      ],
+      "notes": "阳性名词；复数bosques；搭配：entrar en el bosque进入森林"
+    },
+    {
+      "word": "Playa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "海滩",
+      "originalForm": "Playa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La playa guarda la ternura de cada ola",
+          "zh": "海滩收藏着每一朵浪花的温柔"
+        }
+      ],
+      "notes": "阴性名词；复数playas；搭配：ir a la playa去海滩"
+    },
+    {
+      "word": "Pais",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "国家",
+      "originalForm": "Pais",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En tiempos de crisis, el pais depende de la solidaridad entre estados",
+          "zh": "在危机时期，国家依赖州与州之间的团结"
+        }
+      ],
+      "notes": "阳性名词；复数países；搭配：viajar por el país周游全国"
+    },
+    {
+      "word": "Estado",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "州/状态",
+      "originalForm": "Estado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la solidaridad entre estados",
+          "zh": "国家依赖州与州之间的团结"
+        }
+      ],
+      "notes": "阳性名词；复数estados；多义词：州/状态/国家"
+    },
+    {
+      "word": "Grupo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "群体",
+      "originalForm": "Grupo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y del compromiso de cada grupo",
+          "zh": "以及每个群体的承诺"
+        }
+      ],
+      "notes": "阳性名词；复数grupos；搭配：un grupo de一群"
+    },
+    {
+      "word": "Trabajo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "工作",
+      "originalForm": "Trabajo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y el trabajo transforma cada minuto en melodía",
+          "zh": "而工作把每一分钟都转化为旋律"
+        }
+      ],
+      "notes": "阳性名词；复数trabajos；搭配：ir al trabajo去上班"
+    },
+    {
+      "word": "Lugar",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "地方",
+      "originalForm": "Lugar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cada lugar tiene un ritmo propio",
+          "zh": "每个地方都有其独特的节奏"
+        }
+      ],
+      "notes": "阳性名词；复数lugares；搭配：en cualquier lugar在任何地方"
+    },
+    {
+      "word": "Minuto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "分钟",
+      "originalForm": "Minuto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y el trabajo transforma cada minuto en melodía",
+          "zh": "而工作把每一分钟都转化为旋律"
+        }
+      ],
+      "notes": "阳性名词；复数minutos；搭配：cada minuto每分钟"
+    },
+    {
+      "word": "Mujer",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "女人",
+      "originalForm": "Mujer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una mujer que observa con ojo perspicaz el pueblo",
+          "zh": "一个以敏锐目光注视着小镇的女人"
+        }
+      ],
+      "notes": "阴性名词；复数mujeres；搭配：una mujer joven年轻女性"
+    },
+    {
+      "word": "Pueblo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "村庄",
+      "originalForm": "Pueblo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "observa con ojo perspicaz el pueblo",
+          "zh": "注视着小镇的女人"
+        }
+      ],
+      "notes": "阳性名词；复数pueblos；搭配：un pueblo pequeño小村庄"
+    },
+    {
+      "word": "Ojo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "眼睛",
+      "originalForm": "Ojo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una mujer que observa con ojo perspicaz el pueblo",
+          "zh": "一个以敏锐目光注视着小镇的女人"
+        }
+      ],
+      "notes": "阳性名词；复数ojos；搭配：con los ojos abiertos睁着眼睛"
+    },
+    {
+      "word": "Vida",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "生命",
+      "originalForm": "Vida",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "deja una huella invisible en su vida",
+          "zh": "在他生命中留下无形且不可磨灭的印记"
+        }
+      ],
+      "notes": "阴性名词；复数vidas；搭配：toda la vida一生"
+    },
+    {
+      "word": "Mano",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "手",
+      "originalForm": "Mano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La mano que acaricia al nifno",
+          "zh": "那只抚摸孩子的手"
+        }
+      ],
+      "notes": "阴性名词；复数manos；搭配：con las manos en el bolsillo双手插兜"
+    },
+    {
+      "word": "Nino",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "孩子",
+      "originalForm": "Nino",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La mano que acaricia al nifno",
+          "zh": "那只抚摸孩子的手"
+        }
+      ],
+      "notes": "阳性名词；复数niños；搭配：un niño pequeño小孩子"
+    },
+    {
+      "word": "Ano",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "年",
+      "originalForm": "Ano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "los anos corren sin aviso",
+          "zh": "岁月在不经意间流逝"
+        }
+      ],
+      "notes": "阳性名词；复数años；搭配：cada año每年"
+    },
+    {
+      "word": "Dia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "天",
+      "originalForm": "Dia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y cada día nos recuerda que todo cambia",
+          "zh": "而每一天都提醒着我们"
+        }
+      ],
+      "notes": "阳性名词；复数días；搭配：todos los días每天"
+    },
+    {
+      "word": "Mundo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "世界",
+      "originalForm": "Mundo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI mundo gira sin detenerse",
+          "zh": "世界不停地旋转"
+        }
+      ],
+      "notes": "阳性名词；复数mundos；搭配：en todo el mundo全世界"
+    },
+    {
+      "word": "Casa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "家",
+      "originalForm": "Casa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En una casa donde el tiempo parece detenerse",
+          "zh": "在一座时间仿佛静止的房子里"
+        }
+      ],
+      "notes": "阴性名词；复数casas；搭配：en casa在家"
+    },
+    {
+      "word": "Tiempo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "时间",
+      "originalForm": "Tiempo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En una casa donde el tiempo parece detenerse",
+          "zh": "在一座时间仿佛静止的房子里"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：perder el tiempo浪费时间"
+    },
+    {
+      "word": "Hombre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "人",
+      "originalForm": "Hombre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el hombre aprende que la verdadera riqueza no está en las paredes",
+          "zh": "人明白真正的财富不在墙壁之间"
+        }
+      ],
+      "notes": "阳性名词；复数hombres；搭配：un hombre de negocios商人"
+    },
+    {
+      "word": "Jefe",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "上司",
+      "originalForm": "Jefe",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un buen jefe es como una universidad ambulante",
+          "zh": "一位好的上司就像一所流动的大学"
+        }
+      ],
+      "notes": "阳性名词；复数jefes；搭配：el jefe de departamento部门主管"
+    },
+    {
+      "word": "Estudiante",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "学生",
+      "originalForm": "Estudiante",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y cada proyecto es una clase donde todos somos estudiantes",
+          "zh": "而每个项目都是一堂课，在那里我们每个人都是学生"
+        }
+      ],
+      "notes": "阳性/阴性名词；复数estudiantes；搭配：un estudiante de universidad大学生"
+    },
+    {
+      "word": "Universidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "大学",
+      "originalForm": "Universidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un buen jefe es como una universidad ambulante",
+          "zh": "一位好的上司就像一所流动的大学"
+        }
+      ],
+      "notes": "阴性名词；复数universidades；搭配：ir a la universidad上大学"
+    },
+    {
+      "word": "Padre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "父亲",
+      "originalForm": "Padre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi padre nunca me contó su historia",
+          "zh": "我的父亲从未向我讲述他的故事"
+        }
+      ],
+      "notes": "阳性名词；复数padres；搭配：mi padre我的父亲"
+    },
+    {
+      "word": "Camino",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "道路",
+      "originalForm": "Camino",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "pero la aprendí en cada curva de su espalda y en el camino que me enseno a caminar",
+          "zh": "但我从他弯下的脊背和教会我行走的道路上读懂了它"
+        }
+      ],
+      "notes": "阳性名词；复数caminos；搭配：en el camino在路上"
+    },
+    {
+      "word": "Historia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "故事",
+      "originalForm": "Historia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi padre nunca me contó su historia",
+          "zh": "我的父亲从未向我讲述他的故事"
+        }
+      ],
+      "notes": "阴性名词；复数historias；搭配：contar una historia讲故事"
+    },
+    {
+      "word": "Sistema",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "系统",
+      "originalForm": "Sistema",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En el silencioso sistema de la noche",
+          "zh": "在夜晚寂静的星系里"
+        }
+      ],
+      "notes": "阳性名词；复数sistemas；搭配：un sistema operativo操作系统"
+    },
+    {
+      "word": "Amigo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "朋友",
+      "originalForm": "Amigo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un amigo es la constelación que guía mi camino",
+          "zh": "一位朋友是指引我前行的星辰"
+        }
+      ],
+      "notes": "阳性名词；复数amigos；搭配：un amigo cercano亲密的朋友"
+    },
+    {
+      "word": "Madre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "母亲",
+      "originalForm": "Madre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y el eco de mi madre es la luna que me abraza sin palabras",
+          "zh": "而母亲的回声，是无言拥抱我的月光"
+        }
+      ],
+      "notes": "阴性名词；复数madres；搭配：mi madre我的母亲"
+    },
+    {
+      "word": "Punto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "点",
+      "originalForm": "Punto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el dolor no era un final, sino el punto donde todo recomienza",
+          "zh": "这具身体是我能称之为\"我\"的宇宙唯一之点"
+        }
+      ],
+      "notes": "阳性名词；复数puntos；搭配：un punto de vista观点"
+    },
+    {
+      "word": "Cuerpo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "身体",
+      "originalForm": "Cuerpo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llegó un momento en que todo mi cuerpo comprendió la verdad",
+          "zh": "这具身体是我能称之为\"我\"的宇宙唯一之点"
+        }
+      ],
+      "notes": "阳性名词；复数cuerpos；搭配：el cuerpo humano人体"
+    },
+    {
+      "word": "Momento",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "时刻",
+      "originalForm": "Momento",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llegó un momento en que todo mi cuerpo comprendió la verdad",
+          "zh": "而在这觉醒的时刻，整个宇宙都在我体内显现"
+        }
+      ],
+      "notes": "阳性名词；复数momentos；搭配：en este momento此刻"
+    },
+    {
+      "word": "Caso",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "情况",
+      "originalForm": "Caso",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En caso de conflicto",
+          "zh": "在冲突的情况下"
+        }
+      ],
+      "notes": "阳性名词；复数casos；搭配：en caso de如果"
+    },
+    {
+      "word": "Forma",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "方式",
+      "originalForm": "Forma",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la forma de comunicarnos con nuestra familia",
+          "zh": "与家人沟通的方式"
+        }
+      ],
+      "notes": "阴性名词；复数formas；搭配：de esta forma用这种方式"
+    },
+    {
+      "word": "Familia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "家庭",
+      "originalForm": "Familia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la forma de comunicarnos con nuestra familia",
+          "zh": "与家人沟通的方式"
+        }
+      ],
+      "notes": "阴性名词；复数familias；搭配：mi familia我的家庭"
+    },
+    {
+      "word": "Parte",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "部分",
+      "originalForm": "Parte",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la vida está hecha de pequenas partes y cosas simples",
+          "zh": "生活由小小的部分和简单的事物组成"
+        }
+      ],
+      "notes": "阴性名词；复数partes；搭配：una parte de一部分"
+    },
+    {
+      "word": "Cosa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "事物",
+      "originalForm": "Cosa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la vida está hecha de pequenas partes y cosas simples",
+          "zh": "生活由小小的部分和简单的事物组成"
+        }
+      ],
+      "notes": "阴性名词；复数cosas；搭配：cosas simples简单的事物"
+    },
+    {
+      "word": "Mes",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "月份",
+      "originalForm": "Mes",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cada mes nos recuerda que",
+          "zh": "每个月都提醒我们"
+        }
+      ],
+      "notes": "阳性名词；复数meses；搭配：cada mes每个月"
+    },
+    {
+      "word": "Tierra",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "土地",
+      "originalForm": "Tierra",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tocar la tierra con reverencia",
+          "zh": "怀着敬畏触摸土地"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la tierra地球/土地"
+    },
+    {
+      "word": "Dios",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "神",
+      "originalForm": "Dios",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "puede ser una forma de sentir a dios",
+          "zh": "或许是感受神的一种方式"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：Dios上帝"
+    },
+    {
+      "word": "Sentido",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "意义",
+      "originalForm": "Sentido",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "muchas personas encuentran el sentido_de pertenencia al universo",
+          "zh": "许多人找到了归属于宇宙的意义"
+        }
+      ],
+      "notes": "阳性名词；复数sentidos；搭配：el sentido de la vida生命的意义"
+    },
+    {
+      "word": "Ciudad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "城市",
+      "originalForm": "Ciudad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El arbol crece entre el cemento, testigo de cómo la ciudad enciende sus luces",
+          "zh": "树木在水泥丛中生长，见证着城市如何点亮灯火"
+        }
+      ],
+      "notes": "阴性名词；复数ciudades；搭配：la ciudad城市"
+    },
+    {
+      "word": "Arbol",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "树木",
+      "originalForm": "Arbol",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El arbol crece entre el cemento",
+          "zh": "树木在水泥丛中生长"
+        }
+      ],
+      "notes": "阳性名词；复数árboles；搭配：un árbol de manzana苹果树"
+    },
+    {
+      "word": "Noche",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "夜晚",
+      "originalForm": "Noche",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "contra el manto de la noche",
+          "zh": "对抗夜晚的帷幕"
+        }
+      ],
+      "notes": "阴性名词；复数noches；搭配：de noche在晚上"
+    },
+    {
+      "word": "Nacimiento",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "出生/诞生",
+      "originalForm": "Nacimiento",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Con mi nacimiento, recibi dos regalos",
+          "zh": "随着我的诞生，我收到了两份礼物"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：el nacimiento de un bebé婴儿的出生"
+    },
+    {
+      "word": "Estrella",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "星星",
+      "originalForm": "Estrella",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el cielo con su primera estrella",
+          "zh": "拥有第一颗星星的天空"
+        }
+      ],
+      "notes": "阴性名词；复数estrellas；搭配：las estrellas星星"
+    },
+    {
+      "word": "Perro",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "狗",
+      "originalForm": "Perro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "un perro fiel que me ensenó sobre el amor incondicional",
+          "zh": "一只教会我何为无条件的爱的忠犬"
+        }
+      ],
+      "notes": "阳性名词；复数perros；搭配：un perro fiel忠实的狗"
+    },
+    {
+      "word": "Rio",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "河流",
+      "originalForm": "Rio",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cada nombre que olvidamos es una piedra que se hunde en el rio del olvido",
+          "zh": "每一个被我们遗忘的名字，都是一颗沉入遗忘之河的石头"
+        }
+      ],
+      "notes": "阳性名词；复数ríos；搭配：el río河流"
+    },
+    {
+      "word": "Personas",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "人们",
+      "originalForm": "Personas",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "llevándose consigo la historia de innumerables personas",
+          "zh": "带走了无数人们的故事"
+        }
+      ],
+      "notes": "阴性名词；复数personas；搭配：muchas personas很多人"
+    },
+    {
+      "word": "Nombre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "名字",
+      "originalForm": "Nombre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cada nombre que olvidamos",
+          "zh": "每一个被我们遗忘的名字"
+        }
+      ],
+      "notes": "阳性名词；复数nombres；搭配：mi nombre我的名字"
+    },
+    {
+      "word": "Gobierno",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "政府",
+      "originalForm": "Gobierno",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "impulsando la economia que el gobierno busca administrar",
+          "zh": "推动着政府试图管理的经济"
+        }
+      ],
+      "notes": "阳性名词；复数gobiernos；搭配：el gobierno政府"
+    },
+    {
+      "word": "Companía",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "公司",
+      "originalForm": "Companía",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una companía visionaria es como un rio que fluye hacia el mar",
+          "zh": "一家有远见的公司如同奔流向海的江河"
+        }
+      ],
+      "notes": "阴性名词；复数compañías；搭配：una empresa公司"
+    },
+    {
+      "word": "Mar",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "海洋",
+      "originalForm": "Mar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una companía visionaria es como un rio que fluye hacia el mar",
+          "zh": "一家有远见的公司如同奔流向海的江河"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：el mar海洋"
+    },
+    {
+      "word": "Fin",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "终点",
+      "originalForm": "Fin",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el sudor del trabajador_que no conoce el fin de su lucha",
+          "zh": "它的基石不是法律，而是那些不知斗争何时是终点的劳动者的汗水"
+        }
+      ],
+      "notes": "阳性名词；复数fines；搭配：el fin de la lucha斗争的终点"
+    },
+    {
+      "word": "Trabajador",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "工人",
+      "originalForm": "Trabajador",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el sudor del trabajador_que no conoce el fin de su lucha",
+          "zh": "而是那些不知斗争何时是终点的劳动者的汗水"
+        }
+      ],
+      "notes": "阳性名词；复数trabajadores；搭配：un trabajador工人"
+    },
+    {
+      "word": "Proyecto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "项目/规划",
+      "originalForm": "Proyecto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Entre el proyecto sonado y la realidad lograda",
+          "zh": "在梦想的蓝图与达成的现实之间"
+        }
+      ],
+      "notes": "阳性名词；复数proyectos；搭配：un proyecto项目"
+    },
+    {
+      "word": "Gente",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "人们",
+      "originalForm": "Gente",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "hay un puente que solo la gente puede construir con su esfuerzo y esperanza",
+          "zh": "有一座唯有人们能用自己的努力与希望建造的桥梁"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la gente人们"
+    },
+    {
+      "word": "Realidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "现实",
+      "originalForm": "Realidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Entre el proyecto sonado y la realidad lograda",
+          "zh": "在梦想的蓝图与达成的现实之间"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la realidad现实"
+    },
+    {
+      "word": "Cabeza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "头",
+      "originalForm": "Cabeza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la cabeza en las estrellas",
+          "zh": "头脑置于星空"
+        }
+      ],
+      "notes": "阴性名词；复数cabezas；搭配：la cabeza头"
+    },
+    {
+      "word": "Pie",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "脚",
+      "originalForm": "Pie",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Con los pies en la tierra",
+          "zh": "双脚踏于实地"
+        }
+      ],
+      "notes": "阳性名词；复数pies；搭配：los pies脚"
+    },
+    {
+      "word": "Area",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "区域",
+      "originalForm": "Area",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el área entre ambos",
+          "zh": "两者之间的这片空间"
+        }
+      ],
+      "notes": "阴性名词；复数áreas；搭配：un área区域"
+    },
+    {
+      "word": "Hogar",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "家",
+      "originalForm": "Hogar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI verdadero titulo que anhelo no está en mi tarjeta de presentación, sino en ser el arquitecto de mi hogar",
+          "zh": "我渴望的真正头衔不在我的名片上，而在于成为我家的建筑师"
+        }
+      ],
+      "notes": "阳性名词；复数hogares；搭配：mi hogar我的家"
+    },
+    {
+      "word": "Creación",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "创造",
+      "originalForm": "Creación",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la creación de una historia familiar llena de amor",
+          "zh": "以及一段充满爱的家族历史的创造者"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la creación创造"
+    },
+    {
+      "word": "Titulo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "头衔",
+      "originalForm": "Titulo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI verdadero titulo que anhelo no está en mi tarjeta de presentación",
+          "zh": "我渴望的真正头衔不在我的名片上"
+        }
+      ],
+      "notes": "阳性名词；复数títulos；搭配：un título头衔"
+    },
+    {
+      "word": "Sol",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "太阳",
+      "originalForm": "Sol",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cada amanecer que regala el sol",
+          "zh": "太阳赐予的每一个黎明"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：el sol太阳"
+    },
+    {
+      "word": "Semana",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "星期",
+      "originalForm": "Semana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "marca el inicio de una nueva semana de posibilidades",
+          "zh": "都标志着一个充满可能的新星期的开始"
+        }
+      ],
+      "notes": "阴性名词；复数semanas；搭配：cada semana每个星期"
+    },
+    {
+      "word": "Mes",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "月份",
+      "originalForm": "Mes",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "al final de cada mes",
+          "zh": "而在每个月的末尾"
+        }
+      ],
+      "notes": "阳性名词；复数meses；搭配：cada mes每个月"
+    },
+    {
+      "word": "Luna",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "月亮",
+      "originalForm": "Luna",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "como la luna ensena a las mareas su eterno ritmo",
+          "zh": "如同月亮教会潮汐它永恒的节奏"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la luna月亮"
+    },
+    {
+      "word": "Hijo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "儿子",
+      "originalForm": "Hijo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Le enseno a mi hijo a navegar este mundo",
+          "zh": "我教会儿子如何在这个世界航行"
+        }
+      ],
+      "notes": "阳性名词；复数hijos；搭配：mi hijo我的儿子"
+    },
+    {
+      "word": "Politica",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "政治",
+      "originalForm": "Politica",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En la estación de la historia, la politica sube y baja del poder como pasajeros apresurados",
+          "zh": "在历史的车站里，政治如匆忙旅客般上下权力列车"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la política政治"
+    },
+    {
+      "word": "Estación",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "车站",
+      "originalForm": "Estación",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En la estación de la historia",
+          "zh": "在历史的车站里"
+        }
+      ],
+      "notes": "阴性名词；复数estaciones；搭配：la estación de tren火车站"
+    },
+    {
+      "word": "Iglesia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "教堂",
+      "originalForm": "Iglesia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "mientras la iglesia permanece como la boveda antigua que observa los trenes partir",
+          "zh": "而教堂仍是凝视火车离去的古老穹顶"
+        }
+      ],
+      "notes": "阴性名词；复数iglesias；搭配：la iglesia教堂"
+    },
+    {
+      "word": "Sueno",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "梦想",
+      "originalForm": "Sueno",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La economía mide el precio de las cosas, la literatura explora su valor, y en esa brecha habita el sueno humano de una vida con sentido",
+          "zh": "经济衡量万物的价格，文学探索其价值，而人类的梦想便栖息于此间的裂隙"
+        }
+      ],
+      "notes": "阳性名词；复数sueños；搭配：un sueño梦想"
+    },
+    {
+      "word": "Economía",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "经济",
+      "originalForm": "Economía",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La economía mide el precio de las cosas",
+          "zh": "经济衡量万物的价格"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la economía经济"
+    },
+    {
+      "word": "Literatura",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "文学",
+      "originalForm": "Literatura",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la literatura explora su valor",
+          "zh": "文学探索其价值"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la literatura文学"
+    },
+    {
+      "word": "Cara",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "脸",
+      "originalForm": "Cara",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI cielo testigo como el cabello se tine de plata y la cara se pinta de arrugas",
+          "zh": "天空见证着青丝如何染上银霜，脸庞如何刻上皱纹"
+        }
+      ],
+      "notes": "阴性名词；复数caras；搭配：la cara脸"
+    },
+    {
+      "word": "Cabello",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "头发",
+      "originalForm": "Cabello",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "EI cielo testigo como el cabello se tine de plata",
+          "zh": "天空见证着青丝如何染上银霜"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：el cabello头发"
+    },
+    {
+      "word": "Cielo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "天空",
+      "originalForm": "Cielo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "contando historias de una vida bien vivida",
+          "zh": "诉说着一段丰盛生命的故事"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：el cielo天空"
+    },
+    {
+      "word": "Vista",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "视野",
+      "originalForm": "Vista",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "no preguntaran qué llevaste en el bolsillo, sino qué paisajes guardaste en tu vista",
+          "zh": "没人会问你口袋里曾装着什么，只会问你视野中珍藏了怎样的风景"
+        }
+      ],
+      "notes": "阴性名词；复数vistas；搭配：la vista视野"
+    },
+    {
+      "word": "Bolsillo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "口袋",
+      "originalForm": "Bolsillo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "no preguntaran qué llevaste en el bolsillo",
+          "zh": "没人会问你口袋里曾装着什么"
+        }
+      ],
+      "notes": "阳性名词；复数bolsillos；搭配：el bolsillo口袋"
+    },
+    {
+      "word": "Corazón",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "心",
+      "originalForm": "Corazón",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "y qué amor en tu corazón",
+          "zh": "以及心中存留着怎样的爱"
+        }
+      ],
+      "notes": "阳性名词；复数corazones；搭配：el corazón心"
+    },
+    {
+      "word": "Estilo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "风格",
+      "originalForm": "Estilo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La justicia no es solo un veredicto, es un estilo de vida que se practica en cada conversación cotidiana con los demas",
+          "zh": "正义不只是一纸判决，更是一种体现在每日与他人交谈中的生活方式"
+        }
+      ],
+      "notes": "阳性名词；复数estilos；搭配：el estilo风格"
+    },
+    {
+      "word": "Justicia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "正义",
+      "originalForm": "Justicia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La justicia no es solo un veredicto",
+          "zh": "正义不只是一纸判决"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la justicia正义"
+    },
+    {
+      "word": "Conversación",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "对话",
+      "originalForm": "Conversación",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "es un estilo de vida que se practica en cada conversación cotidiana con los demas",
+          "zh": "更是一种体现在每日与他人交谈中的生活方式"
+        }
+      ],
+      "notes": "阴性名词；复数conversaciones；搭配：una conversación对话"
+    },
+    {
+      "word": "Paz",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "和平",
+      "originalForm": "Paz",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La historia nos muestra mil maneras de hacer la guerra, y apenas unas pocas de construir la paz",
+          "zh": "历史向我们展示了千百种发动战争的方式，却只给出了寥寥几种构建和平的途径"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la paz和平"
+    },
+    {
+      "word": "Guerra",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "战争",
+      "originalForm": "Guerra",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La historia nos muestra mil maneras de hacer la guerra",
+          "zh": "历史向我们展示了千百种发动战争的方式"
+        }
+      ],
+      "notes": "阴性名词；复数guerras；搭配：la guerra战争"
+    },
+    {
+      "word": "Manera",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "方式",
+      "originalForm": "Manera",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La historia nos muestra mil maneras de hacer la guerra",
+          "zh": "历史向我们展示了千百种发动战争的方式"
+        }
+      ],
+      "notes": "阴性名词；复数maneras；搭配：de esta manera用这种方式"
+    },
+    {
+      "word": "Educación",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "教育",
+      "originalForm": "Educación",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El mejor trabajo es aquel que nace de lo que amas y utiliza lo que la educación te dio",
+          "zh": "最好的工作，源于你所爱，并运用教育所予"
+        }
+      ],
+      "notes": "阴性名词；不可数；搭配：la educación教育"
+    },
+    {
+      "word": "Amor",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "爱",
+      "originalForm": "Amor",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El mejor trabajo es aquel que nace de lo que amas",
+          "zh": "最好的工作，源于你所爱"
+        }
+      ],
+      "notes": "阳性名词；不可数；搭配：el amor爱"
+    },
+    {
+      "word": "Trabajo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "工作",
+      "originalForm": "Trabajo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El mejor trabajo es aquel que nace de lo que amas",
+          "zh": "最好的工作，源于你所爱"
+        }
+      ],
+      "notes": "阳性名词；复数trabajos；搭配：el trabajo工作"
+    },
+    {
+      "word": "Dólar",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "美元",
+      "originalForm": "Dólar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En el centro de la ciudad, el rascacielos del programa financiero late al ritmo del dólar",
+          "zh": "在城市中心，金融项目的摩天大楼随着美元的节奏跳动"
+        }
+      ],
+      "notes": "阳性名词；复数dólares；搭配：el dólar美元"
+    },
+    {
+      "word": "Centro",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "中心",
+      "originalForm": "Centro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En el centro de la ciudad",
+          "zh": "在城市中心"
+        }
+      ],
+      "notes": "阳性名词；复数centros；搭配：el centro中心"
+    },
+    {
+      "word": "Programa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "计划",
+      "originalForm": "Programa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "el rascacielos del programa financiero late al ritmo del dólar",
+          "zh": "金融项目的摩天大楼随着美元的节奏跳动"
+        }
+      ],
+      "notes": "阳性名词；复数programas；搭配：un programa计划"
+    }
+  ]
+}

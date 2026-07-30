@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "tsc && node -e \"require('fs').cpSync('src/data','dist/data',{recursive:true})\"",
+    "start": "node dist/index.js",
+    "seed:csv": "node scripts/csv-to-seed.js"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -22,7 +23,8 @@
     "openai": "^6.42.0",
     "pdf-parse": "^2.4.5",
     "pg": "^8.13.1",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

@@ -1,13 +1,16 @@
 import { Router, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
-import { query, queryOne, queryAll, exec } from '../db';
+import { query, queryOne, queryAll, exec, copySeedToUser, syncAllSeedForUser } from '../db';
 
 const router = Router();
 
 // GET /api/wordbooks - List all wordbooks for current user
 router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
+    // 确保老用户（功能上线前注册）也自动拥有默认单词本副本
+    await copySeedToUser(req.userId!);
+
     const wordbooks = await queryAll(
       `SELECT wb.*, 
         COUNT(wc.id) as current_card_count
@@ -45,6 +48,16 @@ router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     res.status(201).json({ wordbook });
   } catch (err: any) {
     res.status(500).json({ error: '创建单词本失败' });
+  }
+});
+
+// POST /api/wordbooks/sync-seed - 把 git 更新的种子单词本同步到当前用户的私人副本
+router.post('/sync-seed', authMiddleware, async (req: AuthRequest, res: Response) => {
+  try {
+    await syncAllSeedForUser(req.userId!);
+    res.json({ message: '种子单词本已同步最新内容' });
+  } catch (err: any) {
+    res.status(500).json({ error: '同步种子单词本失败: ' + err.message });
   }
 });
 

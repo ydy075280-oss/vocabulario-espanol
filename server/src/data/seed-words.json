@@ -1,0 +1,980 @@
+{
+  "version": 2,
+  "wordbook": {
+    "name": "默认单词本 · 站长精选",
+    "sourceType": "seed",
+    "courseTag": "默认"
+  },
+  "words": [
+    {
+      "word": "Leer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "阅读",
+      "originalForm": "Leer",
+      "conjugation": {
+        "nosotros": "leemos"
+      },
+      "sentences": [
+        {
+          "es": "A veces, leemos demasiado en los recuerdos tristes.",
+          "zh": "有时我们过度翻阅悲伤回忆"
+        }
+      ],
+      "notes": "搭配：leer un libro 读书；及物动词，直接加读物，不加前置词 a"
+    },
+    {
+      "word": "Vender",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "出售",
+      "originalForm": "Vender",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "hay que aprender a vender ese dolor al pasado",
+          "zh": "学会把痛苦卖给过去"
+        }
+      ],
+      "notes": "搭配：vender algo a alguien 卖给某人某物；变位规则：-er 第二变位动词"
+    },
+    {
+      "word": "Poseer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "拥有",
+      "originalForm": "Poseer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "poseer la paz del presente",
+          "zh": "拥有当下内心的平静"
+        }
+      ],
+      "notes": "特殊变位：yo poseo；含义侧重 “内在持有”，区别 tener（客观拥有）"
+    },
+    {
+      "word": "Bailar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "跳舞",
+      "originalForm": "Bailar",
+      "conjugation": {
+        "él/ella/usted": "baila"
+      },
+      "sentences": [
+        {
+          "es": "El silencio baila entre las palabras",
+          "zh": "寂静在词语之间起舞"
+        }
+      ],
+      "notes": "-ar 第一变位动词；搭配 bailar una canción 伴着歌跳舞"
+    },
+    {
+      "word": "Reflejar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "映照",
+      "originalForm": "Reflejar",
+      "conjugation": {
+        "él/ella/usted": "refleja"
+      },
+      "sentences": [
+        {
+          "es": "refleja lo no dicho",
+          "zh": "映照那些未说出口的心事"
+        }
+      ],
+      "notes": "及物动词，reflejar algo 反射 / 映照某物"
+    },
+    {
+      "word": "Pintar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "绘画",
+      "originalForm": "Pintar",
+      "conjugation": {
+        "él/ella/usted": "pinta"
+      },
+      "sentences": [
+        {
+          "es": "pinta en el alma sombras de colores",
+          "zh": "在灵魂上绘出彩色阴影"
+        }
+      ],
+      "notes": "常用：pintar un cuadro 画画；自复 pintarse 化妆"
+    },
+    {
+      "word": "Distinguir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "区分",
+      "originalForm": "Distinguir",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Es fácil distinguir un amigo verdadero",
+          "zh": "真正的好友很容易分辨"
+        }
+      ],
+      "notes": "搭配 distinguir A de B 区分 A 和 B；需前置词 de"
+    },
+    {
+      "word": "Caminar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "行走",
+      "originalForm": "Caminar",
+      "conjugation": {
+        "él/ella/usted": "camina"
+      },
+      "sentences": [
+        {
+          "es": "Camina a tu lado en silencio",
+          "zh": "难过时安静陪在你身旁"
+        }
+      ],
+      "notes": "不及物动词，caminar despacio 慢行"
+    },
+    {
+      "word": "Cantar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "歌唱",
+      "originalForm": "Cantar",
+      "conjugation": {
+        "él/ella/usted": "canta"
+      },
+      "sentences": [
+        {
+          "es": "canta contigo en la alegría",
+          "zh": "开心时和你一同歌唱"
+        }
+      ],
+      "notes": "搭配 cantar una canción 唱歌"
+    },
+    {
+      "word": "Percibir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "察觉",
+      "originalForm": "Percibir",
+      "conjugation": {
+        "yo": "Percibo"
+      },
+      "sentences": [
+        {
+          "es": "Percibo tu sonrisa",
+          "zh": "我察觉到你强装的微笑"
+        }
+      ],
+      "notes": "书面高级词，侧重细微感知；近义词 notar"
+    },
+    {
+      "word": "Advertir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "留意 / 警示",
+      "originalForm": "Advertir",
+      "conjugation": {
+        "ellos/ellas/ustedes": "advierten"
+      },
+      "sentences": [
+        {
+          "es": "Pero tus ojos advierten tristeza",
+          "zh": "你的眼神流露心底悲伤"
+        }
+      ],
+      "notes": "双重含义：1. 察觉 2. 警告；advertir a alguien de algo 提醒某人某事"
+    },
+    {
+      "word": "Notar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "注意",
+      "originalForm": "Notar",
+      "conjugation": {
+        "yo": "Noto"
+      },
+      "sentences": [
+        {
+          "es": "Noto tu verdadera sensación",
+          "zh": "我留意到你真实情绪"
+        }
+      ],
+      "notes": "日常用词，不用复杂前置词"
+    },
+    {
+      "word": "Constituir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "构成",
+      "originalForm": "Constituir",
+      "conjugation": {
+        "él/ella/usted": "constituye"
+      },
+      "sentences": [
+        {
+          "es": "La vida constituye un regalo",
+          "zh": "生活本身就是一份礼物"
+        }
+      ],
+      "notes": "正式书面词，表 “由… 构成”"
+    },
+    {
+      "word": "Representar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "代表",
+      "originalForm": "Representar",
+      "conjugation": {
+        "él/ella/usted": "representa"
+      },
+      "sentences": [
+        {
+          "es": "Cada día representa una nueva oportunidad",
+          "zh": "每一天都代表全新机会"
+        }
+      ],
+      "notes": "搭配 representar a una empresa 代表公司"
+    },
+    {
+      "word": "Observar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "观察",
+      "originalForm": "Observar",
+      "conjugation": {
+        "él/ella/usted": "Observa"
+      },
+      "sentences": [
+        {
+          "es": "Observa el mundo y encontrarás belleza",
+          "zh": "静心观察世界便能发现美"
+        }
+      ],
+      "notes": "及物，objetivo directo 直接宾语；objetivo indirecto 人加 a"
+    },
+    {
+      "word": "Existir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "存在",
+      "originalForm": "Existir",
+      "conjugation": {
+        "él/ella/usted": "existe"
+      },
+      "sentences": [
+        {
+          "es": "La paz existe en el silencio",
+          "zh": "和平藏在寂静之中"
+        }
+      ],
+      "notes": "不及物，无被动；existir en 存在于某处"
+    },
+    {
+      "word": "Pertenecer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "属于",
+      "originalForm": "Pertenecer",
+      "conjugation": {
+        "él/ella/usted": "Pertenece"
+      },
+      "sentences": [
+        {
+          "es": "Pertenece a todos nosotros",
+          "zh": "和平属于我们所有人"
+        }
+      ],
+      "notes": "必加前置词 a：pertenecer a alguien/algún lugar"
+    },
+    {
+      "word": "Consistir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "由… 组成",
+      "originalForm": "Consistir",
+      "conjugation": {
+        "él/ella/usted": "consiste"
+      },
+      "sentences": [
+        {
+          "es": "Un día de paz consiste en sonrisas y tranquilitad",
+          "zh": "安宁的一日由微笑与宁静组成"
+        }
+      ],
+      "notes": "固定搭配：consistir en + 名词，由… 构成"
+    },
+    {
+      "word": "Caer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "掉落",
+      "originalForm": "Caer",
+      "conjugation": {
+        "ellos/ellas/ustedes": "caen"
+      },
+      "sentences": [
+        {
+          "es": "Observo cómo caen las hojas",
+          "zh": "静静观察树叶飘落的姿态"
+        }
+      ],
+      "notes": "不规则变位；搭配 caer bien 讨人喜欢"
+    },
+    {
+      "word": "Soler",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "习惯于",
+      "originalForm": "Soler",
+      "conjugation": {
+        "yo": "suelo"
+      },
+      "sentences": [
+        {
+          "es": "Me suelo sentar en silencio",
+          "zh": "我习惯静坐感受四季变化"
+        }
+      ],
+      "notes": "固定结构 soler + 动词原形，表 “常常、习惯于”"
+    },
+    {
+      "word": "Enseñar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "教学 / 告知",
+      "originalForm": "Enseñar",
+      "conjugation": {
+        "ellos/ellas/ustedes": "enseñan"
+      },
+      "sentences": [
+        {
+          "es": "Ellas me enseñan la belleza del cambio",
+          "zh": "落叶教会我变化之美"
+        }
+      ],
+      "notes": "双宾语：enseñar algo a alguien 教某人某事"
+    },
+    {
+      "word": "Caber",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "容纳",
+      "originalForm": "Caber",
+      "conjugation": {
+        "ellos/ellas/ustedes": "caben"
+      },
+      "sentences": [
+        {
+          "es": "Las mejores cosas no caben en la prisa",
+          "zh": "美好事物容不下匆忙"
+        }
+      ],
+      "notes": "不及物，无主语人；caber en un espacio 容纳在空间内"
+    },
+    {
+      "word": "Valer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "有价值",
+      "originalForm": "Valer",
+      "conjugation": {
+        "él/ella/usted": "vale"
+      },
+      "sentences": [
+        {
+          "es": "lo que realmente vale, suele tomar su tiempo",
+          "zh": "真正珍贵的事物值得等待"
+        }
+      ],
+      "notes": "搭配 valer la pena 值得"
+    },
+    {
+      "word": "Andar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "行走",
+      "originalForm": "Andar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Aprende a andar despacio",
+          "zh": "学会慢慢行走感受生活"
+        }
+      ],
+      "notes": "andar + 形容词：andar cansado 疲惫"
+    },
+    {
+      "word": "Preparar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "准备",
+      "originalForm": "Preparar",
+      "conjugation": {
+        "yo": "preparo"
+      },
+      "sentences": [
+        {
+          "es": "preparo la comida cada domingo",
+          "zh": "周末提前备好一周食材"
+        }
+      ],
+      "notes": "-ar 变位；prepararse para 为… 做准备"
+    },
+    {
+      "word": "Organizar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "整理",
+      "originalForm": "Organizar",
+      "conjugation": {
+        "yo": "organizo"
+      },
+      "sentences": [
+        {
+          "es": "organizo la semana",
+          "zh": "周日梳理好下周计划"
+        }
+      ],
+      "notes": "及物，organizar un evento 组织活动"
+    },
+    {
+      "word": "Limpiar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "打扫",
+      "originalForm": "Limpiar",
+      "conjugation": {
+        "yo": "limpio"
+      },
+      "sentences": [
+        {
+          "es": "limpio mi casa",
+          "zh": "每周日打扫全屋"
+        }
+      ],
+      "notes": "搭配 limpiar la habitación 打扫房间"
+    },
+    {
+      "word": "Convertir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "转变",
+      "originalForm": "Convertir",
+      "conjugation": {
+        "él/ella/usted": "convierte"
+      },
+      "sentences": [
+        {
+          "es": "ese simple ritual convierte a la persona profesional",
+          "zh": "简单仪式将职场人转为居家者"
+        }
+      ],
+      "notes": "固定搭配 convertir A en B 把 A 变为 B"
+    },
+    {
+      "word": "Vestirse",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "穿衣",
+      "originalForm": "Vestirse",
+      "conjugation": {
+        "yo": "me visto"
+      },
+      "sentences": [
+        {
+          "es": "me visto con ropa cómoda",
+          "zh": "下班后换上舒适家居服"
+        }
+      ],
+      "notes": "自复动词，原形带 se；vestir（及物）给别人穿衣"
+    },
+    {
+      "word": "Ducharse",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "淋浴",
+      "originalForm": "Ducharse",
+      "conjugation": {
+        "yo": "me ducho"
+      },
+      "sentences": [
+        {
+          "es": "me ducho después de trabajar",
+          "zh": "下班先冲澡放松身心"
+        }
+      ],
+      "notes": "自复动词，表自身动作"
+    },
+    {
+      "word": "Concluir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "结束",
+      "originalForm": "Concluir",
+      "conjugation": {
+        "él/ella/usted": "concluye"
+      },
+      "sentences": [
+        {
+          "es": "El día concluye, pero no sufras por lo que no hiciste",
+          "zh": "一天终了不必纠结未完成事"
+        }
+      ],
+      "notes": "-ir 变位，结尾 - uir 特殊变化"
+    },
+    {
+      "word": "Sufrir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "承受",
+      "originalForm": "Sufrir",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "no sufras por lo que no hiciste",
+          "zh": "不必为未完成任务苦恼"
+        }
+      ],
+      "notes": "及物，sufrir dolor 承受痛苦"
+    },
+    {
+      "word": "Añadir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "增添",
+      "originalForm": "Añadir",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "mejor añade un pequeño plan para mañana",
+          "zh": "为明天增加小计划"
+        }
+      ],
+      "notes": "añadir A a B 把 A 添加到 B"
+    },
+    {
+      "word": "Temer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "害怕",
+      "originalForm": "Temer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "las cosas que tememos perder",
+          "zh": "我们害怕与珍视之物告别"
+        }
+      ],
+      "notes": "搭配 temer a alguien 害怕某人；temer hacer 害怕做"
+    },
+    {
+      "word": "Conceder",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "给予",
+      "originalForm": "Conceder",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "concedemos un \"adios\" a las cosas",
+          "zh": "成长意味着向遗憾挥手告别"
+        }
+      ],
+      "notes": "-er 动词，conceder permiso 准许"
+    },
+    {
+      "word": "Partir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "分割 / 离开",
+      "originalForm": "Partir",
+      "conjugation": {
+        "él/ella/usted": "parte"
+      },
+      "sentences": [
+        {
+          "es": "Es un dolor que nos parte",
+          "zh": "离别之痛将我们内心撕裂"
+        }
+      ],
+      "notes": "多义：1. 分割 2. 出发 partir para 动身去"
+    },
+    {
+      "word": "Sugerir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "暗示 / 建议",
+      "originalForm": "Sugerir",
+      "conjugation": {
+        "él/ella/usted": "sugiere"
+      },
+      "sentences": [
+        {
+          "es": "La noche sugiere misterio",
+          "zh": "夜色暗藏无尽神秘"
+        }
+      ],
+      "notes": "不规则变位；sugerir que + 虚拟式"
+    },
+    {
+      "word": "Proponer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "提议",
+      "originalForm": "Proponer",
+      "conjugation": {
+        "ellos/ellas/ustedes": "proponen"
+      },
+      "sentences": [
+        {
+          "es": "Las estrellas proponen un mapa",
+          "zh": "星辰为旅人勾勒前路地图"
+        }
+      ],
+      "notes": "proponer hacer 提议做某事"
+    },
+    {
+      "word": "Anhelar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "渴望",
+      "originalForm": "Anhelar",
+      "conjugation": {
+        "él/ella/usted": "anhela"
+      },
+      "sentences": [
+        {
+          "es": "El viajero anhela un horizonte desconocido",
+          "zh": "旅人向往未知远方地平线"
+        }
+      ],
+      "notes": "书面词，强烈渴望，近义词 desear"
+    },
+    {
+      "word": "Lograr",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "达成",
+      "originalForm": "Lograr",
+      "conjugation": {
+        "él/ella/usted": "logra"
+      },
+      "sentences": [
+        {
+          "es": "Logra sus sueños paso a paso",
+          "zh": "一步一步实现心中梦想"
+        }
+      ],
+      "notes": "lograr + 原形，成功做到某事"
+    },
+    {
+      "word": "Evitar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "避免",
+      "originalForm": "Evitar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Evita la prisa innecesaria",
+          "zh": "尽量避开无意义的匆忙"
+        }
+      ],
+      "notes": "evitar hacer 避免做某事"
+    },
+    {
+      "word": "Esperar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "等待 / 希望",
+      "originalForm": "Esperar",
+      "conjugation": {
+        "él/ella/usted": "Espera"
+      },
+      "sentences": [
+        {
+          "es": "Espera con paciencia y trabaja con fe",
+          "zh": "怀揣耐心静待时机到来"
+        }
+      ],
+      "notes": "双重含义；esperar a alguien 等候某人"
+    },
+    {
+      "word": "Guardar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "珍藏 / 保存",
+      "originalForm": "Guardar",
+      "conjugation": {
+        "él/ella/usted": "guarda"
+      },
+      "sentences": [
+        {
+          "es": "El mar guarda secretos en sus profundidades",
+          "zh": "深海大海埋藏无数秘密"
+        }
+      ],
+      "notes": "搭配 guardar memoria 珍藏回忆"
+    },
+    {
+      "word": "Intentar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "尝试",
+      "originalForm": "Intentar",
+      "conjugation": {
+        "él/ella/usted": "intenta"
+      },
+      "sentences": [
+        {
+          "es": "Cada barco intenta encontrar su puerto",
+          "zh": "每艘船都在寻找属于港湾"
+        }
+      ],
+      "notes": "intentar hacer 试图做某事"
+    },
+    {
+      "word": "Saltar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "跳跃",
+      "originalForm": "Saltar",
+      "conjugation": {
+        "él/ella/usted": "salta"
+      },
+      "sentences": [
+        {
+          "es": "La fe salta al vacío",
+          "zh": "信念勇敢跃入虚无虚空"
+        }
+      ],
+      "notes": "-ar 动词，saltar de alegría 欣喜跳跃"
+    },
+    {
+      "word": "Empujar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "推动",
+      "originalForm": "Empujar",
+      "conjugation": {
+        "él/ella/usted": "empuja"
+      },
+      "sentences": [
+        {
+          "es": "El tiempo empuja todas las cosas",
+          "zh": "时间推着世间万物前行"
+        }
+      ],
+      "notes": "及物，empujar la puerta 推门"
+    },
+    {
+      "word": "Tirar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "拉 / 扔",
+      "originalForm": "Tirar",
+      "conjugation": {
+        "él/ella/usted": "tira"
+      },
+      "sentences": [
+        {
+          "es": "Cada decisión tira un hilo en el tejido del destino",
+          "zh": "命运拉扯人生丝线"
+        }
+      ],
+      "notes": "多义：tirar de 拉；tirar basura 扔垃圾"
+    },
+    {
+      "word": "Describir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "描述",
+      "originalForm": "Describir",
+      "conjugation": {
+        "él/ella/usted": "describe"
+      },
+      "sentences": [
+        {
+          "es": "El poeta describe la lluvia",
+          "zh": "诗人细致描绘落雨之景"
+        }
+      ],
+      "notes": "-ir 变位动词，describir paisaje 写景"
+    },
+    {
+      "word": "Mover",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "移动",
+      "originalForm": "Mover",
+      "conjugation": {
+        "él/ella/usted": "mueve"
+      },
+      "sentences": [
+        {
+          "es": "El viento mueve las hoves",
+          "zh": "风吹动林间所有树叶"
+        }
+      ],
+      "notes": "不规则变位 yo muevo"
+    },
+    {
+      "word": "Lanzar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "投掷",
+      "originalForm": "Lanzar",
+      "conjugation": {
+        "él/ella/usted": "lanza"
+      },
+      "sentences": [
+        {
+          "es": "El corazón lanza sus preguntas",
+          "zh": "内心向天空抛出万千疑问"
+        }
+      ],
+      "notes": "lanzar una pelota 扔球"
+    },
+    {
+      "word": "Practicar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "练习",
+      "originalForm": "Practicar",
+      "conjugation": {
+        "él/ella/usted": "practica"
+      },
+      "sentences": [
+        {
+          "es": "El sabio practica la paciencia",
+          "zh": "智者日日练习耐心"
+        }
+      ],
+      "notes": "-car 动词，c 变 qu：yo practico"
+    },
+    {
+      "word": "Discutir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "争论",
+      "originalForm": "Discutir",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No discute con lo inevitable",
+          "zh": "不和必然之事徒劳争辩"
+        }
+      ],
+      "notes": "discutir con alguien 和人争论"
+    },
+    {
+      "word": "Comentar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "评论",
+      "originalForm": "Comentar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Comenta con sabiduria y en el momento justo",
+          "zh": "合适时机用智慧点评世事"
+        }
+      ],
+      "notes": "comentar sobre 评论某事，可省略 sobre"
+    },
+    {
+      "word": "Establecer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "建立",
+      "originalForm": "Establecer",
+      "conjugation": {
+        "él/ella/usted": "establece"
+      },
+      "sentences": [
+        {
+          "es": "Ella establece orden en su diario",
+          "zh": "她用日记梳理内心秩序"
+        }
+      ],
+      "notes": "-cer 动词，c 变 z：yo establezco"
+    },
+    {
+      "word": "Ocurrir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "发生",
+      "originalForm": "Ocurrir",
+      "conjugation": {
+        "ellos/ellas/ustedes": "ocurren"
+      },
+      "sentences": [
+        {
+          "es": "Las epifanías a menudo ocurren mientras escribe",
+          "zh": "书写时常顿悟悄然发生"
+        }
+      ],
+      "notes": "不及物，无人称；ocurrir a alguien 某人想到"
+    },
+    {
+      "word": "Surgir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "浮现",
+      "originalForm": "Surgir",
+      "conjugation": {
+        "ellos/ellas/ustedes": "surgen"
+      },
+      "sentences": [
+        {
+          "es": "emociones olvidadas surgen con la tinta",
+          "zh": "尘封情绪随笔墨重现人间"
+        }
+      ],
+      "notes": "-gir 变位，g 变 j"
+    },
+    {
+      "word": "Merecer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "值得",
+      "originalForm": "Merecer",
+      "conjugation": {
+        "él/ella/usted": "merece"
+      },
+      "sentences": [
+        {
+          "es": "El arcoiris tras la lluvia merece la espera",
+          "zh": "雨后彩虹值得长久等待"
+        }
+      ],
+      "notes": "merecer la pena 值得"
+    },
+    {
+      "word": "Aparecer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "出现",
+      "originalForm": "Aparecer",
+      "conjugation": {
+        "él/ella/usted": "aparece"
+      },
+      "sentences": [
+        {
+          "es": "Aparece brevemente en el horizonte",
+          "zh": "彩虹短暂出现在天际"
+        }
+      ],
+      "notes": "不规则，自复 aparecerse 露面"
+    },
+    {
+      "word": "Desaparecer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "消失",
+      "originalForm": "Desaparecer",
+      "conjugation": {
+        "él/ella/usted": "desaparece"
+      },
+      "sentences": [
+        {
+          "es": "luego desaparece en silencio bajo el sol",
+          "zh": "阳光之下静静消散"
+        }
+      ],
+      "notes": "反义词 aparecer"
+    },
+    {
+      "word": "Sostener",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "支撑",
+      "originalForm": "Sostener",
+      "conjugation": {
+        "él/ella/usted": "sostiene"
+      },
+      "sentences": [
+        {
+          "es": "Ella sostiene sola a la familia",
+          "zh": "她一人独自支撑整个家庭"
+        }
+      ],
+      "notes": "不规则变位；sostener peso 承重"
+    },
+    {
+      "word": "Convenir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "适合",
+      "originalForm": "Convenir",
+      "conjugation": {
+        "él/ella/usted": "conviene"
+      },
+      "sentences": [
+        {
+          "es": "Cree que cambiar de trabajo le conviene",
+          "zh": "换工作更适配当下处境"
+        }
+      ],
+      "notes": "无人称：conviene hacer 适合做某事"
+    },
+    {
+      "word": "Ofrecer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "提供",
+      "originalForm": "Ofrecer",
+      "conjugation": {
+        "él/ella/usted": "ofrece"
+      },
+      "sentences": [
+        {
+          "es": "la empresa le ofrece la opción de teletrabajo",
+          "zh": "公司提供远程办公选择"
+        }
+      ],
+      "notes": "ofrecer algo a alguien 提供某物给人"
+    }
+  ]
+}

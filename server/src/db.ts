@@ -1,4 +1,5 @@
 import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
 
 // ─── 环境检测：有 DATABASE_URL 就用 PostgreSQL，否则用 SQLite ───
 const usePostgres = !!process.env.DATABASE_URL;
@@ -230,6 +231,7 @@ export async function initDatabase(): Promise<void> {
         status TEXT DEFAULT 'new',
         conjugation_json TEXT DEFAULT '{}',
         image_url TEXT DEFAULT '',
+        notes TEXT DEFAULT '',
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
       );
@@ -314,7 +316,20 @@ export async function initDatabase(): Promise<void> {
       CREATE INDEX IF NOT EXISTS idx_tasks_module ON module_tasks(module_id);
     `);
 
+    // 迁移：为已存在的库补充 notes 字段（幂等）
+    await pool.query(`
+      DO $$ BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name = 'word_cards' AND column_name = 'notes'
+        ) THEN
+          ALTER TABLE word_cards ADD COLUMN notes TEXT DEFAULT '';
+        END IF;
+      END $$;
+    `);
+
     console.log('🐘 PostgreSQL database connected & tables initialized');
+    await ensureSeedWordbook();
     return;
   }
 
@@ -383,6 +398,7 @@ export async function initDatabase(): Promise<void> {
       status TEXT DEFAULT 'new',
       conjugation_json TEXT DEFAULT '{}',
       image_url TEXT DEFAULT '',
+      notes TEXT DEFAULT '',
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
@@ -456,6 +472,14 @@ export async function initDatabase(): Promise<void> {
     );
   `);
 
+  // 迁移：为已存在的库补充 notes 字段（幂等）
+  {
+    const cols = db.prepare("PRAGMA table_info(word_cards)").all();
+    if (!cols.some((c: any) => c.name === 'notes')) {
+      db.exec("ALTER TABLE word_cards ADD COLUMN notes TEXT DEFAULT ''");
+    }
+  }
+
   // ─── 索引 ───
   db.exec(`
     CREATE INDEX IF NOT EXISTS idx_wordbooks_user ON wordbooks(user_id);
@@ -471,6 +495,260 @@ export async function initDatabase(): Promise<void> {
   `);
 
   console.log('📦 SQLite database initialized');
+  await ensureSeedWordbook();
+}
+
+// ──────────────────────────────────────────────────────────
+// 多单词本（种子数据）：随 git 更新，所有用户自动获得私人副本
+// 数据流：server/src/data/wordbooks/*.json（真源，一个文件 = 一个单词本）
+//   → 系统级单词本（SEED_USER_ID 持有，确定性 ID）
+//   → 每个用户注册/打开时自动获得私人副本（进度独立）
+//   → git pull + 重启后系统真源更新，并按 source_name 增量同步
+// 兼容：如 wordbooks/ 目录为空或无文件，fallback 到旧版 seed-words.json
+// ──────────────────────────────────────────────────────────
+export const SEED_USER_ID = '00000000-0000-0000-0000-0000000000seed';
+
+// 基于名称生成确定性 ID（同一名称永远返回相同 ID，用于系统级单词本）
+function seedWordbookId(name: string): string {
+  const hash = require('crypto').createHash('md5').update(name, 'utf-8').digest('hex').slice(0, 24);
+  return '00000000-0000-seed-' + hash;
+}
+
+function normalizeWord(word?: string): string {
+  return (word || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+// 从 wordbooks/ 目录加载所有种子数据，兼容旧版 seed-words.json
+function loadAllSeedData(): { name: string; id: string; data: any }[] {
+  const fs = require('fs');
+  const results: { name: string; id: string; data: any }[] = [];
+  const wordbooksDir = path.join(__dirname, 'data', 'wordbooks');
+
+  // 优先：wordbooks/ 目录（多单词本模式）
+  if (fs.existsSync(wordbooksDir)) {
+    const files = fs.readdirSync(wordbooksDir).filter((f: string) => f.endsWith('.json'));
+    for (const f of files) {
+      try {
+        const raw = JSON.parse(fs.readFileSync(path.join(wordbooksDir, f), 'utf-8'));
+        const name = raw.wordbook?.name || path.basename(f, '.json');
+        results.push({ name, id: seedWordbookId(name), data: raw });
+      } catch { /* 跳过损坏文件 */ }
+    }
+  }
+
+  // Fallback：旧版 seed-words.json（单单词本兼容）
+  if (results.length === 0) {
+    const oldPath = path.join(__dirname, 'data', 'seed-words.json');
+    if (fs.existsSync(oldPath)) {
+      try {
+        const raw = JSON.parse(fs.readFileSync(oldPath, 'utf-8'));
+        const name = raw.wordbook?.name || '默认单词本';
+        results.push({ name, id: seedWordbookId(name), data: raw });
+      } catch { /* 忽略 */ }
+    }
+  }
+
+  return results;
+}
+
+async function insertSeedCards(
+  client: { query: (sql: string, params?: any[]) => any },
+  wordbookId: string,
+  userId: string,
+  seed: any
+): Promise<void> {
+  for (const w of seed.words || []) {
+    const cardId = uuidv4();
+    const normalized = normalizeWord(w.word);
+    await client.query(
+      `INSERT INTO word_cards (
+        id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+        gender, definite_article, chinese_meaning, original_form, conjugation_json, notes
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
+      [
+        cardId, wordbookId, userId, w.word || '', normalized,
+        w.partOfSpeech || 'verbo', w.gender || '', w.definiteArticle || '',
+        w.chineseMeaning || '', w.originalForm || w.word || '',
+        JSON.stringify(w.conjugation || {}), w.notes || ''
+      ]
+    );
+    const sentences = w.sentences || [];
+    for (let i = 0; i < sentences.length; i++) {
+      const s = sentences[i];
+      await client.query(
+        'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, sort_order) VALUES ($1, $2, $3, $4, $5)',
+        [uuidv4(), cardId, s.es || '', s.zh || '', i]
+      );
+    }
+  }
+}
+
+// 把系统真源中「用户副本尚未拥有」的新词增量补充进去（保留已有学习进度）
+async function syncUserSeedCopy(userId: string, wordbookId: string, seed: any): Promise<void> {
+  const existing = await queryAll('SELECT word_normalized FROM word_cards WHERE wordbook_id = $1', [wordbookId]);
+  const have = new Set(existing.map((c: any) => c.word_normalized));
+  const toAdd = (seed.words || []).filter((w: any) => !have.has(normalizeWord(w.word)));
+  if (toAdd.length === 0) return;
+
+  await transaction(async (client) => {
+    for (const w of toAdd) {
+      const cardId = uuidv4();
+      const normalized = normalizeWord(w.word);
+      await client.query(
+        `INSERT INTO word_cards (
+          id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+          gender, definite_article, chinese_meaning, original_form, conjugation_json, notes
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
+        [
+          cardId, wordbookId, userId, w.word || '', normalized,
+          w.partOfSpeech || 'verbo', w.gender || '', w.definiteArticle || '',
+          w.chineseMeaning || '', w.originalForm || w.word || '',
+          JSON.stringify(w.conjugation || {}), w.notes || ''
+        ]
+      );
+      const sentences = w.sentences || [];
+      for (let i = 0; i < sentences.length; i++) {
+        const s = sentences[i];
+        await client.query(
+          'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, sort_order) VALUES ($1, $2, $3, $4, $5)',
+          [uuidv4(), cardId, s.es || '', s.zh || '', i]
+        );
+      }
+    }
+  });
+
+  await exec(
+    'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+    [wordbookId]
+  );
+}
+
+// 同步某一单词本的增量 → 所有持有该单词本副本的用户
+async function syncAllUserSeedCopies(seedName: string, seed: any): Promise<void> {
+  const copies = await queryAll(
+    "SELECT id, user_id FROM wordbooks WHERE source_type = $1 AND source_name = $2",
+    ['seed', seedName]
+  );
+  for (const wb of copies) {
+    await syncUserSeedCopy(wb.user_id, wb.id, seed);
+  }
+}
+
+// 为指定用户创建所有种子单词本私人副本（仅首次，幂等）
+export async function copySeedToUser(userId: string): Promise<void> {
+  try {
+    const allSeeds = loadAllSeedData();
+    if (allSeeds.length === 0) return;
+
+    for (const { name, data } of allSeeds) {
+      if (!data || !data.words || data.words.length === 0) continue;
+
+      const existing = await queryOne(
+        'SELECT id FROM wordbooks WHERE user_id = $1 AND source_type = $2 AND source_name = $3',
+        [userId, 'seed', name]
+      );
+      if (existing) continue;
+
+      const wbId = uuidv4();
+      await exec(
+        'INSERT INTO wordbooks (id, user_id, name, source_type, source_name, course_tag, card_count) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+        [wbId, userId, data.wordbook?.name || name, 'seed', name, data.wordbook?.courseTag || '默认', 0]
+      );
+      await transaction(async (client) => {
+        await insertSeedCards(client, wbId, userId, data);
+      });
+      await exec(
+        'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+        [wbId]
+      );
+    }
+  } catch (err: any) {
+    console.error('⚠️ 创建默认单词本副本失败:', err.message);
+  }
+}
+
+// 手动触发：将指定用户的所有种子单词本副本同步到最新（路由中调用）
+export async function syncAllSeedForUser(userId: string): Promise<void> {
+  const allSeeds = loadAllSeedData();
+  if (allSeeds.length === 0) return;
+
+  const userCopies = await queryAll(
+    "SELECT id, source_name FROM wordbooks WHERE user_id = $1 AND source_type = $2",
+    [userId, 'seed']
+  );
+
+  if (userCopies.length === 0) {
+    await copySeedToUser(userId);
+  } else {
+    for (const copy of userCopies) {
+      const seed = allSeeds.find(s => s.name === copy.source_name);
+      if (seed) {
+        await syncUserSeedCopy(userId, copy.id, seed.data);
+      }
+    }
+  }
+}
+
+// 同步系统级所有种子单词本（真源），并在 initDatabase 时调用
+export async function ensureSeedWordbook(): Promise<void> {
+  try {
+    const allSeeds = loadAllSeedData();
+    if (allSeeds.length === 0) {
+      console.log('🌱 未发现种子数据，跳过默认单词本同步');
+      return;
+    }
+
+    // 1. 确保系统用户存在（持有真源单词本，不会被用来登录）
+    const existingUser = await queryOne('SELECT id FROM users WHERE id = $1', [SEED_USER_ID]);
+    if (!existingUser) {
+      await exec(
+        'INSERT INTO users (id, email, password_hash, nickname) VALUES ($1, $2, $3, $4)',
+        [SEED_USER_ID, 'seed-system@vocabulario.local', 'SEED_SYSTEM_PLACEHOLDER', '系统默认']
+      );
+    }
+
+    // 2. 遍历每个种子单词本
+    for (const { name, id, data } of allSeeds) {
+      // 2a. 确保系统级单词本存在
+      const existingWb = await queryOne('SELECT id FROM wordbooks WHERE id = $1', [id]);
+      if (!existingWb) {
+        await exec(
+          'INSERT INTO wordbooks (id, user_id, name, source_type, source_name, course_tag, card_count) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+          [id, SEED_USER_ID, data.wordbook?.name || name, 'seed', name, data.wordbook?.courseTag || '默认', 0]
+        );
+      } else {
+        // 更新名称与标签（改名即同步）
+        await exec(
+          'UPDATE wordbooks SET name = $1, course_tag = $2, updated_at = NOW() WHERE id = $3',
+          [data.wordbook?.name || name, data.wordbook?.courseTag || '默认', id]
+        );
+      }
+
+      // 2b. 重建系统真源卡片
+      await transaction(async (client) => {
+        await client.query(
+          'DELETE FROM example_sentences WHERE card_id IN (SELECT id FROM word_cards WHERE wordbook_id = $1)',
+          [id]
+        );
+        await client.query('DELETE FROM word_cards WHERE wordbook_id = $1', [id]);
+        await insertSeedCards(client, id, SEED_USER_ID, data);
+      });
+      await exec(
+        'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
+        [id]
+      );
+
+      // 2c. 增量同步到所有已有用户的私人副本
+      await syncAllUserSeedCopies(name, data);
+
+      console.log(`🌱 "${name}" 已同步，共 ${(data.words || []).length} 词`);
+    }
+  } catch (err: any) {
+    console.error('⚠️ 默认单词本同步失败:', err.message);
+  }
 }
 
 // 默认导出：生产环境为 null（不直接暴露连接），本地为 db 实例
