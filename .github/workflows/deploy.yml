@@ -1,0 +1,29 @@
+name: Deploy to ECS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.ECS_HOST }}
+          username: ${{ secrets.ECS_USERNAME }}
+          key: ${{ secrets.ECS_SSH_KEY }}
+          script: |
+            cd /home/admin/vocabulario-espanol
+            git pull origin main
+            docker build -t vocabulario-espanol .
+            docker stop vocabulario-espanol 2>/dev/null || true
+            docker rm vocabulario-espanol 2>/dev/null || true
+            docker run -d \
+              --name vocabulario-espanol \
+              --restart unless-stopped \
+              -p 3001:3001 \
+              --env-file .env \
+              vocabulario-espanol
+            docker image prune -f
