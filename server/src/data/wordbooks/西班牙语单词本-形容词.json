@@ -7,20 +7,6 @@
   },
   "words": [
     {
-      "word": "原形",
-      "partOfSpeech": "adjetivo",
-      "chineseMeaning": "中文释义",
-      "originalForm": "原形",
-      "conjugation": {},
-      "sentences": [
-        {
-          "es": "西语原句",
-          "zh": "中文情景句"
-        }
-      ],
-      "notes": "拓展搭配 & 语法要点"
-    },
-    {
       "word": "Rapido/a",
       "partOfSpeech": "adjetivo",
       "chineseMeaning": "快的",
@@ -28,8 +14,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La vida es un viaje: a veces rapido",
-          "zh": "人生是一场旅程：时而快"
+          "es": "La vida es un viaje: a veces rapido.",
+          "zh": "人生是一场旅程：时而快。"
         }
       ],
       "notes": "-o/a结尾形容词，阴阳性变化；副词形式rápidamente"
@@ -42,8 +28,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "a menudo lento",
-          "zh": "时常慢"
+          "es": "Él a menudo lento.",
+          "zh": "他时常慢。"
         }
       ],
       "notes": "-o/a结尾形容词；副词形式lentamente"
@@ -56,8 +42,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "No importa si empiezas temprano",
-          "zh": "无关你出发得早"
+          "es": "Él No importa si empiezas temprano.",
+          "zh": "无关你出发得早。"
         }
       ],
       "notes": "无阴阳性变化；可作形容词/副词"
@@ -70,8 +56,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "o llegas tarde",
-          "zh": "或到得迟"
+          "es": "Él o llegas tarde.",
+          "zh": "他或到得迟。"
         }
       ],
       "notes": "无阴阳性变化；可作形容词/副词"
@@ -84,8 +70,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "un amor joven puede habitar en un corazón usado por la vida",
-          "zh": "一份年轻的爱可以栖居于被生活磨旧的心中"
+          "es": "Él un amor joven puede habitar en un corazón usado por la vida.",
+          "zh": "一份年轻的爱可以栖居于被生活磨旧的心中。"
         }
       ],
       "notes": "无阴阳性变化；复数jóvenes"
@@ -98,8 +84,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "una herida anciana",
-          "zh": "一道年深日久的伤痕"
+          "es": "Él una herida anciana.",
+          "zh": "他一道年深日久的伤痕。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词joven"
@@ -112,8 +98,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Una promesa nueva puede sanar una herida anciana",
-          "zh": "一个崭新的诺言可以治愈一道年深日久的伤痕"
+          "es": "Él Una promesa nueva puede sanar una herida anciana.",
+          "zh": "他一个崭新的诺言可以治愈一道年深日久的伤痕。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词viejo"
@@ -126,8 +112,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "un corazón usado por la vida",
-          "zh": "被生活磨旧的心中"
+          "es": "Él un corazón usado por la vida.",
+          "zh": "被生活磨旧的心中。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词nuevo"
@@ -140,8 +126,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "En esta ciudad húmeda, incluso la noche es calurosa",
-          "zh": "在这座潮湿的城市，连夜晚都闷热"
+          "es": "Él En esta ciudad húmeda, incluso la noche es calurosa.",
+          "zh": "他在这座潮湿的城市，连夜晚都闷热。"
         }
       ],
       "notes": "-o/a结尾形容词；仅用于天气"
@@ -154,8 +140,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "alli, hasta el mediodia podia ser fresco",
-          "zh": "即便是正午也可能凉爽"
+          "es": "Él alli, hasta el mediodia podia ser fresco.",
+          "zh": "他即便是正午也可能凉爽。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词caluroso"
@@ -168,8 +154,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "sueno con el viento seco de la meseta",
-          "zh": "我梦寐高原干燥的风"
+          "es": "Él sueno con el viento seco de la meseta.",
+          "zh": "我梦寐高原干燥的风。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词húmedo"
@@ -182,8 +168,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "En esta ciudad húmeda",
-          "zh": "在这座潮湿的城市"
+          "es": "Él En esta ciudad húmeda.",
+          "zh": "他在这座潮湿的城市。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词seco"
@@ -196,8 +182,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El suelo duro de invierno se cubre con un manto blando",
-          "zh": "冬日的坚硬大地被柔软的雪毯覆盖"
+          "es": "El suelo duro de invierno se cubre con un manto blando.",
+          "zh": "他冬日的坚硬大地被柔软的雪毯覆盖。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词blando"
@@ -210,8 +196,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "un manto blando",
-          "zh": "被柔软的雪毯覆盖"
+          "es": "Él un manto blando.",
+          "zh": "他被柔软的雪毯覆盖。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词duro"
@@ -224,8 +210,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "acumulada se hace pesada",
-          "zh": "堆积起来却变得沉重"
+          "es": "Él acumulada se hace pesada.",
+          "zh": "他堆积起来却变得沉重。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词liviano"
@@ -238,8 +224,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La primera nieve cae liviana",
-          "zh": "初雪飘落时很轻盈"
+          "es": "La primera nieve cae liviana.",
+          "zh": "他初雪飘落时很轻盈。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词pesado"
@@ -252,8 +238,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Por la manana volvería a estar abierta",
-          "zh": "清晨它会再度敞开"
+          "es": "Él Por la manana volvería a estar abierta.",
+          "zh": "清晨它会再度敞开。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词cerrado"
@@ -266,8 +252,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La libreriía ya estaba cerrada",
-          "zh": "书店已经打烊"
+          "es": "La libreriía ya estaba cerrada.",
+          "zh": "他书店已经打烊。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词abierto"
@@ -280,8 +266,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "llena de historias esperando lectores",
-          "zh": "满载着等待读者的故事"
+          "es": "Él llena de historias esperando lectores.",
+          "zh": "他满载着等待读者的故事。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词vacío"
@@ -294,8 +280,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "su escaparate vacio",
-          "zh": "橱窗空空如也"
+          "es": "Él su escaparate vacio.",
+          "zh": "他橱窗空空如也。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词lleno"
@@ -308,8 +294,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "pero sus risas dejan el alma limpia",
-          "zh": "但他们的笑声让灵魂纯净"
+          "es": "Él pero sus risas dejan el alma limpia.",
+          "zh": "但他们的笑声让灵魂纯净。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词manchado"
@@ -322,8 +308,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Los ninos vuelven a casa con ropas manchadas de barro",
-          "zh": "孩子们回家时衣服沾满泥点"
+          "es": "Los ninos vuelven a casa con ropas manchadas de barro.",
+          "zh": "他孩子们回家时衣服沾满泥点。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词limpio"
@@ -336,8 +322,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "y el dia perfectamente ordenado",
-          "zh": "让一天完美有序"
+          "es": "Él y el dia perfectamente ordenado.",
+          "zh": "他让一天完美有序。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词desordenado"
@@ -350,8 +336,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "y habitaciones desordenadas",
-          "zh": "房间变得凌乱"
+          "es": "Él y habitaciones desordenadas.",
+          "zh": "他房间变得凌乱。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词ordenado"
@@ -364,8 +350,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "No importa si es una baguette delgada o un pan rellenito de pueblo",
-          "zh": "无论是纤细的法棍还是圆胖的乡村面包"
+          "es": "Él No importa si es una baguette delgada o un pan rellenito de pueblo.",
+          "zh": "他无论是纤细的法棍还是圆胖的乡村面包。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词rellenito"
@@ -378,8 +364,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "No importa si es una baguette delgada o un pan rellenito de pueblo",
-          "zh": "无论是纤细的法棍还是圆胖的乡村面包"
+          "es": "Él No importa si es una baguette delgada o un pan rellenito de pueblo.",
+          "zh": "他无论是纤细的法棍还是圆胖的乡村面包。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词delgado"
@@ -392,8 +378,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El pan recién horneado está caliente y crujiente por fuera",
-          "zh": "刚出炉的面包外皮滚烫酥脆"
+          "es": "El pan recién horneado está caliente y crujiente por fuera.",
+          "zh": "他刚出炉的面包外皮滚烫酥脆。"
         }
       ],
       "notes": "无阴阳性变化；反义词frío"
@@ -406,8 +392,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "perfecto para un dia frio",
-          "zh": "最适合寒冷的天气"
+          "es": "Él perfecto para un dia frio.",
+          "zh": "他最适合寒冷的天气。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词caliente"
@@ -420,8 +406,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Lo que hoy parece cerca",
-          "zh": "今天看似近在眼前的"
+          "es": "Él Lo que hoy parece cerca.",
+          "zh": "他今天看似近在眼前的。"
         }
       ],
       "notes": "无阴阳性变化；可作形容词/副词；反义词lejano"
@@ -434,8 +420,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Las estrellas estan lejanas",
-          "zh": "星辰很遥远"
+          "es": "Las estrellas estan lejanas.",
+          "zh": "他星辰很遥远。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词cerca"
@@ -448,8 +434,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Las cosas más altas empiezan desde lo más bajito",
-          "zh": "最高大的事物都始于最微小的根基"
+          "es": "Las cosas más altas empiezan desde lo más bajito.",
+          "zh": "他最高大的事物都始于最微小的根基。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词bajo"
@@ -462,8 +448,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Las cosas más altas empiezan desde lo más bajito",
-          "zh": "最高大的事物都始于最微小的根基"
+          "es": "Las cosas más altas empiezan desde lo más bajito.",
+          "zh": "他最高大的事物都始于最微小的根基。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词alto"
@@ -476,8 +462,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Un amor rico en comprensión es más guapo que mil palabras",
-          "zh": "一段充满理解的、丰盈的爱情，比千言万语都更美好"
+          "es": "Él Un amor rico en comprensión es más guapo que mil palabras.",
+          "zh": "他一段充满理解的、丰盈的爱情，比千言万语都更美好。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词horrible"
@@ -490,8 +476,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "se convierte en una pesadilla horrible",
-          "zh": "则会变成一场可怕的噩梦"
+          "es": "Él se convierte en una pesadilla horrible.",
+          "zh": "他则会变成一场可怕的噩梦。"
         }
       ],
       "notes": "无阴阳性变化；反义词guapo"
@@ -504,8 +490,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Un amor rico en comprensión",
-          "zh": "一段充满理解的、丰盈的爱情"
+          "es": "Él Un amor rico en comprensión.",
+          "zh": "他一段充满理解的、丰盈的爱情。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词pobre"
@@ -518,8 +504,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "un amor pobre en respeto",
-          "zh": "一段缺乏尊重的、贫瘠的爱情"
+          "es": "Él un amor pobre en respeto.",
+          "zh": "他一段缺乏尊重的、贫瘠的爱情。"
         }
       ],
       "notes": "无阴阳性变化；反义词rico"
@@ -532,8 +518,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Una relación saludable deja a ambas partes satisfechas y en crecimiento",
-          "zh": "一段健康的关系让双方都感到满足并共同成长"
+          "es": "Él Una relación saludable deja a ambas partes satisfechas y en crecimiento.",
+          "zh": "他一段健康的关系让双方都感到满足并共同成长。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词disgustado"
@@ -546,8 +532,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "una relación enfermiza deja a las personas disgustadas y emocionalmente agotadas",
-          "zh": "一段病态的关系则让人不快且情感耗竭"
+          "es": "Él una relación enfermiza deja a las personas disgustadas y emocionalmente agotadas.",
+          "zh": "他一段病态的关系则让人不快且情感耗竭。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词satisfecho"
@@ -560,8 +546,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Una relación saludable deja a ambas partes satisfechas y en crecimiento",
-          "zh": "一段健康的关系让双方都感到满足并共同成长"
+          "es": "Él Una relación saludable deja a ambas partes satisfechas y en crecimiento.",
+          "zh": "他一段健康的关系让双方都感到满足并共同成长。"
         }
       ],
       "notes": "无阴阳性变化；反义词enfermizo"
@@ -574,8 +560,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "una relación enfermiza deja a las personas disgustadas y emocionalmente agotadas",
-          "zh": "一段病态的关系则让人不快且情感耗竭"
+          "es": "Él una relación enfermiza deja a las personas disgustadas y emocionalmente agotadas.",
+          "zh": "他一段病态的关系则让人不快且情感耗竭。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词saludable"
@@ -588,8 +574,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Una pelicula interesante no necesita ser siempre alegre",
-          "zh": "一部有趣的电影并不需要总是欢快的"
+          "es": "Él Una pelicula interesante no necesita ser siempre alegre.",
+          "zh": "他一部有趣的电影并不需要总是欢快的。"
         }
       ],
       "notes": "无阴阳性变化；反义词soso"
@@ -602,8 +588,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "uno feliz pero SOSO",
-          "zh": "一个快乐却平淡的结局"
+          "es": "Él uno feliz pero SOSO.",
+          "zh": "他一个快乐却平淡的结局。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词interesante"
@@ -616,8 +602,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Una pelicula interesante no necesita ser siempre alegre",
-          "zh": "一部有趣的电影并不需要总是欢快的"
+          "es": "Él Una pelicula interesante no necesita ser siempre alegre.",
+          "zh": "他一部有趣的电影并不需要总是欢快的。"
         }
       ],
       "notes": "无阴阳性变化；反义词melancólico"
@@ -630,8 +616,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "un final melancolico puede ser más memorable que uno feliz pero SOSO",
-          "zh": "一个忧郁的结局可能比一个快乐却平淡的结局更令人难忘"
+          "es": "Él un final melancolico puede ser más memorable que uno feliz pero SOSO.",
+          "zh": "他一个忧郁的结局可能比一个快乐却平淡的结局更令人难忘。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词alegre"
@@ -644,8 +630,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El parque está tranquilo al amanecer",
-          "zh": "黎明时公园很宁静"
+          "es": "El parque está tranquilo al amanecer.",
+          "zh": "他黎明时公园很宁静。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词alborotado"
@@ -658,8 +644,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "por la noche, el bar cercano se vuelve alborotado",
-          "zh": "夜晚，附近的酒吧变得喧闹"
+          "es": "Él por la noche, el bar cercano se vuelve alborotado.",
+          "zh": "他夜晚，附近的酒吧变得喧闹。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词tranquilo"
@@ -672,8 +658,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Caminar de dia es seguro",
-          "zh": "白天走路很安全"
+          "es": "Él Caminar de dia es seguro.",
+          "zh": "他白天走路很安全。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词arriesgado"
@@ -686,8 +672,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "pero esa callejuela de noche parece arriesgada",
-          "zh": "但那条小巷在夜里看来却危机四伏"
+          "es": "Él pero esa callejuela de noche parece arriesgada.",
+          "zh": "他但那条小巷在夜里看来却危机四伏。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词seguro"
@@ -700,8 +686,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "largo y resistente",
-          "zh": "长长而坚韧"
+          "es": "Él largo y resistente.",
+          "zh": "他长长而坚韧。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词corto"
@@ -714,8 +700,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "que une momentos cortos",
-          "zh": "串起短暂的瞬间"
+          "es": "Él que une momentos cortos.",
+          "zh": "他串起短暂的瞬间。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词largo"
@@ -728,8 +714,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "otras se hace grueso con el peso del tiempo",
-          "zh": "有时又因时光的重量而变得粗重"
+          "es": "Él otras se hace grueso con el peso del tiempo.",
+          "zh": "他有时又因时光的重量而变得粗重。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词fino"
@@ -742,8 +728,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La memoria es un hilo fino",
-          "zh": "记忆是一根细细的线"
+          "es": "La memoria es un hilo fino.",
+          "zh": "他记忆是一根细细的线。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词grueso"
@@ -756,8 +742,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "EI roble es fuerte contra el viento",
-          "zh": "橡树强健抗风"
+          "es": "El roble es fuerte contra el viento.",
+          "zh": "他橡树强健抗风。"
         }
       ],
       "notes": "无阴阳性变化；反义词débil"
@@ -770,8 +756,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el junco es débil y se dobla",
-          "zh": "芦苇柔弱易弯"
+          "es": "El junco es débil y se dobla.",
+          "zh": "他芦苇柔弱易弯。"
         }
       ],
       "notes": "无阴阳性变化；反义词fuerte"
@@ -784,8 +770,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La copa ancha da sombra",
-          "zh": "宽阔的树冠投下荫凉"
+          "es": "La copa ancha da sombra.",
+          "zh": "他宽阔的树冠投下荫凉。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词angosto"
@@ -798,8 +784,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el tronco angosto llega alto",
-          "zh": "纤细的树干长得更高"
+          "es": "El tronco angosto llega alto.",
+          "zh": "他纤细的树干长得更高。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词ancho"
@@ -812,8 +798,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El chef trabajador que innovaba con ingredientes frescos era popular entre los comensales",
-          "zh": "那位用新鲜食材创新的勤勉主厨很受食客喜爱"
+          "es": "El chef trabajador que innovaba con ingredientes frescos era popular entre los comensales.",
+          "zh": "他那位用新鲜食材创新的勤勉主厨很受食客喜爱。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词flojo"
@@ -826,8 +812,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El chef flojo que usaba productos congelados se volvio impopular rapidamente",
-          "zh": "那位使用冷冻产品的懈怠主厨则很快变得声名狼藉"
+          "es": "El chef flojo que usaba productos congelados se volvio impopular rapidamente.",
+          "zh": "他那位使用冷冻产品的懈怠主厨则很快变得声名狼藉。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词trabajador"
@@ -840,8 +826,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "era popular entre los comensales",
-          "zh": "那位用新鲜食材创新的勤勉主厨很受食客喜爱"
+          "es": "Él era popular entre los comensales.",
+          "zh": "他那位用新鲜食材创新的勤勉主厨很受食客喜爱。"
         }
       ],
       "notes": "无阴阳性变化；反义词impopular"
@@ -854,8 +840,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "se volvio impopular rapidamente",
-          "zh": "那位使用冷冻产品的懈怠主厨则很快变得声名狼藉"
+          "es": "Él se volvio impopular rapidamente.",
+          "zh": "他那位使用冷冻产品的懈怠主厨则很快变得声名狼藉。"
         }
       ],
       "notes": "无阴阳性变化；反义词popular"
@@ -868,8 +854,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Ella, optimista y activa, llenó el fin de semana con planes",
-          "zh": "她乐观又好动，把周末排满了计划"
+          "es": "Ella, optimista y activa, llenó el fin de semana con planes.",
+          "zh": "她乐观又好动，把周末排满了计划。"
         }
       ],
       "notes": "无阴阳性变化；反义词pesimista"
@@ -882,8 +868,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "EI, pesimista y perezoso, predijo que todos saldrian mal",
-          "zh": "他悲观又懒，预言一切都会搞砸"
+          "es": "El, pesimista y perezoso, predijo que todos saldrian mal.",
+          "zh": "他悲观又懒，预言一切都会搞砸。"
         }
       ],
       "notes": "无阴阳性变化；反义词optimista"
@@ -896,8 +882,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Ella, optimista y activa, llenó el fin de semana con planes",
-          "zh": "她乐观又好动，把周末排满了计划"
+          "es": "Ella, optimista y activa, llenó el fin de semana con planes.",
+          "zh": "她乐观又好动，把周末排满了计划。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词perezoso"
@@ -910,8 +896,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "EI, pesimista y perezoso, predijo que todos saldrian mal",
-          "zh": "他悲观又懒，预言一切都会搞砸"
+          "es": "El, pesimista y perezoso, predijo que todos saldrian mal.",
+          "zh": "他悲观又懒，预言一切都会搞砸。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词activo"
@@ -924,8 +910,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Una persona responsable cumple sus promesas con una atención cuidadosa a los detalles",
-          "zh": "一个负责的人会履行承诺，并细致地关注细节"
+          "es": "Él Una persona responsable cumple sus promesas con una atención cuidadosa a los detalles.",
+          "zh": "他一个负责的人会履行承诺，并细致地关注细节。"
         }
       ],
       "notes": "无阴阳性变化；反义词irresponsable"
@@ -938,8 +924,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "una persona irresponsable hace promesas descuidadas",
-          "zh": "一个不负责任的人则会做出轻率的承诺"
+          "es": "Él una persona irresponsable hace promesas descuidadas.",
+          "zh": "他一个不负责任的人则会做出轻率的承诺。"
         }
       ],
       "notes": "无阴阳性变化；反义词responsable"
@@ -952,8 +938,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "con una atención cuidadosa a los detalles",
-          "zh": "并细致地关注细节"
+          "es": "Él con una atención cuidadosa a los detalles.",
+          "zh": "他并细致地关注细节。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词descuidado"
@@ -966,8 +952,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "una persona irresponsable hace promesas descuidadas",
-          "zh": "一个不负责任的人则会做出轻率的承诺"
+          "es": "Él una persona irresponsable hace promesas descuidadas.",
+          "zh": "他一个不负责任的人则会做出轻率的承诺。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词cuidadoso"
@@ -980,8 +966,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Un artista paciente trabaja anos en una obra",
-          "zh": "有耐心的艺术家在一件作品上耕耘数年"
+          "es": "Él Un artista paciente trabaja anos en una obra.",
+          "zh": "他有耐心的艺术家在一件作品上耕耘数年。"
         }
       ],
       "notes": "无阴阳性变化；反义词impaciente"
@@ -994,8 +980,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "uno impaciente busca el éxito rapido",
-          "zh": "没耐心的艺术家则追求快速成功"
+          "es": "Él uno impaciente busca el éxito rapido.",
+          "zh": "他没耐心的艺术家则追求快速成功。"
         }
       ],
       "notes": "无阴阳性变化；反义词paciente"
@@ -1008,8 +994,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El arte más honesto revela el alma",
-          "zh": "最真诚的艺术揭示灵魂"
+          "es": "El arte más honesto revela el alma.",
+          "zh": "他最真诚的艺术揭示灵魂。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词mentiroso"
@@ -1022,8 +1008,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el mentiroso solo repite modas",
-          "zh": "虚假的艺术只是重复潮流"
+          "es": "El mentiroso solo repite modas.",
+          "zh": "他虚假的艺术只是重复潮流。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词honesto"
@@ -1036,8 +1022,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El soldado valiente compartió su última galleta con el recluta cobarde",
-          "zh": "勇敢的士兵把最后一块饼干分给胆怯的新兵"
+          "es": "El soldado valiente compartió su última galleta con el recluta cobarde.",
+          "zh": "他勇敢的士兵把最后一块饼干分给胆怯的新兵。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词egoísta"
@@ -1050,8 +1036,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El oficial egoista guardaba chocolate para si",
-          "zh": "自私的军官把巧克力留给自己"
+          "es": "El oficial egoista guardaba chocolate para si.",
+          "zh": "他自私的军官把巧克力留给自己。"
         }
       ],
       "notes": "无阴阳性变化；反义词generoso"
@@ -1064,8 +1050,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El soldado valiente compartió su última galleta con el recluta cobarde",
-          "zh": "勇敢的士兵把最后一块饼干分给胆怯的新兵"
+          "es": "El soldado valiente compartió su última galleta con el recluta cobarde.",
+          "zh": "他勇敢的士兵把最后一块饼干分给胆怯的新兵。"
         }
       ],
       "notes": "无阴阳性变化；反义词cobarde"
@@ -1078,8 +1064,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el recluta cobarde",
-          "zh": "胆怯的新兵"
+          "es": "El recluta cobarde.",
+          "zh": "他胆怯的新兵。"
         }
       ],
       "notes": "无阴阳性变化；反义词valiente"
@@ -1092,8 +1078,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el duende era muy listo",
-          "zh": "小精灵非常聪明"
+          "es": "El duende era muy listo.",
+          "zh": "他小精灵非常聪明。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词torpe"
@@ -1106,8 +1092,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el hada era amable pero un poco torpe con su magia",
-          "zh": "仙女很友善，但施魔法时有点笨拙"
+          "es": "El hada era amable pero un poco torpe con su magia.",
+          "zh": "他仙女很友善，但施魔法时有点笨拙。"
         }
       ],
       "notes": "无阴阳性变化；反义词listo"
@@ -1120,8 +1106,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "el hada era amable",
-          "zh": "仙女很友善"
+          "es": "El hada era amable.",
+          "zh": "他仙女很友善。"
         }
       ],
       "notes": "无阴阳性变化；反义词antipático"
@@ -1134,8 +1120,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "pero completamente antipatico",
-          "zh": "却完全不友善"
+          "es": "Él pero completamente antipatico.",
+          "zh": "他却完全不友善。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词amable"
@@ -1148,8 +1134,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Un nuevo amanecer se asoma sobre los tejados viejos",
-          "zh": "新的晨光从旧屋顶上洒下"
+          "es": "Él Un nuevo amanecer se asoma sobre los tejados viejos.",
+          "zh": "他新的晨光从旧屋顶上洒下。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词viejo"
@@ -1162,8 +1148,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Un nuevo amanecer se asoma sobre los tejados viejos",
-          "zh": "新的晨光从旧屋顶上洒下"
+          "es": "Él Un nuevo amanecer se asoma sobre los tejados viejos.",
+          "zh": "他新的晨光从旧屋顶上洒下。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词nuevo"
@@ -1176,8 +1162,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "mientras la plaza parece ruidosa",
-          "zh": "广场虽显得喧闹"
+          "es": "Él mientras la plaza parece ruidosa.",
+          "zh": "他广场虽显得喧闹。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词tranquilo"
@@ -1190,8 +1176,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "en el corazón se guarda un rincón tranquilo",
-          "zh": "心中却自留一方宁静"
+          "es": "Él en el corazón se guarda un rincón tranquilo.",
+          "zh": "他心中却自留一方宁静。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词ruidoso"
@@ -1204,8 +1190,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "EI campo seco espera la lluvia",
-          "zh": "干涸的土地期盼着雨水"
+          "es": "El campo seco espera la lluvia.",
+          "zh": "他干涸的土地期盼着雨水。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词mojado"
@@ -1218,8 +1204,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "la tierra mojada refleja el cielo",
-          "zh": "湿润的大地倒映着天空"
+          "es": "Él la tierra mojada refleja el cielo.",
+          "zh": "他湿润的大地倒映着天空。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词seco"
@@ -1232,8 +1218,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "EI sabor natural de la miel",
-          "zh": "蜂蜜的天然滋味"
+          "es": "El sabor natural de la miel.",
+          "zh": "他蜂蜜的天然滋味。"
         }
       ],
       "notes": "无阴阳性变化；反义词artificial"
@@ -1246,8 +1232,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "los endulzantes artificiales comunes en la dieta moderna",
-          "zh": "现代饮食中常见的人工甜味剂"
+          "es": "Él los endulzantes artificiales comunes en la dieta moderna.",
+          "zh": "他现代饮食中常见的人工甜味剂。"
         }
       ],
       "notes": "无阴阳性变化；反义词natural"
@@ -1260,8 +1246,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "contrasta con los endulzantes artificiales comunes en la dieta moderna",
-          "zh": "与现代饮食中常见的人工甜味剂形成鲜明对比"
+          "es": "Él contrasta con los endulzantes artificiales comunes en la dieta moderna.",
+          "zh": "他与现代饮食中常见的人工甜味剂形成鲜明对比。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词antiguo"
@@ -1274,8 +1260,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "apreciado desde tiempos antiguos",
-          "zh": "自远古时代就受人珍视"
+          "es": "Él apreciado desde tiempos antiguos.",
+          "zh": "他自远古时代就受人珍视。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词moderno"
@@ -1288,8 +1274,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La boda formal en el ayuntamiento fue un acto publico",
-          "zh": "在市政厅举行的正式婚礼是一个公开活动"
+          "es": "La boda formal en el ayuntamiento fue un acto publico.",
+          "zh": "他在市政厅举行的正式婚礼是一个公开活动。"
         }
       ],
       "notes": "无阴阳性变化；反义词informal"
@@ -1302,8 +1288,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La celebración informal en el jardin después fue solo para invitados privados",
-          "zh": "之后在花园里的非正式庆祝则只面向私密的宾客"
+          "es": "La celebración informal en el jardin después fue solo para invitados privados.",
+          "zh": "他之后在花园里的非正式庆祝则只面向私密的宾客。"
         }
       ],
       "notes": "无阴阳性变化；反义词formal"
@@ -1316,8 +1302,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La boda formal en el ayuntamiento fue un acto publico",
-          "zh": "在市政厅举行的正式婚礼是一个公开活动"
+          "es": "La boda formal en el ayuntamiento fue un acto publico.",
+          "zh": "他在市政厅举行的正式婚礼是一个公开活动。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词privado"
@@ -1330,8 +1316,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "fue solo para invitados privados",
-          "zh": "之后在花园里的非正式庆祝则只面向私密的宾客"
+          "es": "Él fue solo para invitados privados.",
+          "zh": "他之后在花园里的非正式庆祝则只面向私密的宾客。"
         }
       ],
       "notes": "-o/a结尾形容词；反义词público"

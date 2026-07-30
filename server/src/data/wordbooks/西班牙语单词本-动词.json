@@ -7,31 +7,21 @@
   },
   "words": [
     {
-      "word": "原形",
-      "partOfSpeech": "verbo",
-      "chineseMeaning": "中文释义",
-      "originalForm": "原形",
-      "conjugation": {},
-      "sentences": [
-        {
-          "es": "西语原句",
-          "zh": "中文情景句"
-        }
-      ],
-      "notes": "拓展搭配 & 语法要点"
-    },
-    {
       "word": "Descubrir",
       "partOfSpeech": "verbo",
       "chineseMeaning": "发现",
       "originalForm": "Descubrir",
       "conjugation": {
-        "él/ella/usted": "descubre"
+        "陈述式现在时": {
+          "él/ella/usted": "descubre",
+          "yo": "descubro",
+          "tú": "descubres"
+        }
       },
       "sentences": [
         {
-          "es": "El descubre un poema de amor en un libro viejo",
-          "zh": "他在旧书里发现一首情诗"
+          "es": "El descubre un poema de amor en un libro viejo.",
+          "zh": "他在旧书里发现一首情诗。"
         }
       ],
       "notes": "搭配：descubrir un secreto发现秘密；及物动词，直接加宾语"
@@ -42,12 +32,16 @@
       "chineseMeaning": "分析",
       "originalForm": "Analizar",
       "conjugation": {
-        "él/ella/usted": "analiza"
+        "陈述式现在时": {
+          "él/ella/usted": "analiza",
+          "yo": "analizo",
+          "tú": "analizas"
+        }
       },
       "sentences": [
         {
-          "es": "analiza la escritura descolorida",
-          "zh": "分析着泛黄的笔迹"
+          "es": "Él analiza la escritura descolorida.",
+          "zh": "他分析着泛黄的笔迹。"
         }
       ],
       "notes": "-ar变位动词；搭配：analizar datos分析数据"
@@ -57,11 +51,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "发展",
       "originalForm": "Desarrollar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "desarrollo",
+          "tú": "desarrollas",
+          "él/ella/usted": "desarrolla"
+        }
+      },
       "sentences": [
         {
-          "es": "decide desarrollar la historia en un relato corto",
-          "zh": "决定把故事发展成短篇小说"
+          "es": "Él decide desarrollar la historia en un relato corto.",
+          "zh": "他决定把故事发展成短篇小说。"
         }
       ],
       "notes": "搭配：desarrollar un proyecto发展项目；自复desarrollarse发展"
@@ -72,12 +72,16 @@
       "chineseMeaning": "要求",
       "originalForm": "Exigir",
       "conjugation": {
-        "él/ella/usted": "exige"
+        "陈述式现在时": {
+          "él/ella/usted": "exige",
+          "yo": "exigo",
+          "tú": "exiges"
+        }
       },
       "sentences": [
         {
-          "es": "El arte no exige explicación",
-          "zh": "艺术不强求解释"
+          "es": "El arte no exige explicación.",
+          "zh": "他艺术不强求解释。"
         }
       ],
       "notes": "搭配：exigir algo a alguien向某人要求某事；需加前置词a"
@@ -87,11 +91,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "调查",
       "originalForm": "Investigar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "investigo",
+          "tú": "investigas",
+          "él/ella/usted": "investiga"
+        }
+      },
       "sentences": [
         {
-          "es": "invita a investigar la emoción",
-          "zh": "邀请人们体察情感，探寻感受的新天地"
+          "es": "Él invita a investigar la emoción.",
+          "zh": "邀请人们体察情感，探寻感受的新天地。"
         }
       ],
       "notes": "搭配：investigar un caso调查案件；及物动词"
@@ -101,11 +111,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "探索",
       "originalForm": "Explorar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "exploro",
+          "tú": "exploras",
+          "él/ella/usted": "explora"
+        }
+      },
       "sentences": [
         {
-          "es": "explorar nuevos paisajes del sentir",
-          "zh": "探寻感受的新天地"
+          "es": "Él explorar nuevos paisajes del sentir.",
+          "zh": "他探寻感受的新天地。"
         }
       ],
       "notes": "搭配：explorar un lugar探索某地；及物动词"
@@ -116,12 +132,16 @@
       "chineseMeaning": "监督",
       "originalForm": "Supervisar",
       "conjugation": {
-        "él/ella/usted": "supervisa"
+        "陈述式现在时": {
+          "él/ella/usted": "supervisa",
+          "yo": "superviso",
+          "tú": "supervisas"
+        }
       },
       "sentences": [
         {
-          "es": "El crepusculo supervisa la retirada del día",
-          "zh": "黄昏监督白昼的退场"
+          "es": "El crepusculo supervisa la retirada del día.",
+          "zh": "他黄昏监督白昼的退场。"
         }
       ],
       "notes": "搭配：supervisar un trabajo监督工作；及物动词"
@@ -132,12 +152,17 @@
       "chineseMeaning": "调节",
       "originalForm": "Regular",
       "conjugation": {
-        "ellos/ellas/ustedes": "regulan"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "regulan",
+          "yo": "regulo",
+          "tú": "regulas",
+          "él/ella/usted": "regula"
+        }
       },
       "sentences": [
         {
-          "es": "las estrellas regulan la densidad de la noche",
-          "zh": "星辰调节夜色的浓度"
+          "es": "Él las estrellas regulan la densidad de la noche.",
+          "zh": "他星辰调节夜色的浓度。"
         }
       ],
       "notes": "搭配：regular la temperatura调节温度；及物动词"
@@ -148,12 +173,16 @@
       "chineseMeaning": "禁止",
       "originalForm": "Prohibir",
       "conjugation": {
-        "él/ella/usted": "prohíbe"
+        "陈述式现在时": {
+          "él/ella/usted": "prohibe",
+          "yo": "prohibo",
+          "tú": "prohibes"
+        }
       },
       "sentences": [
         {
-          "es": "el cielo nunca prohibe que ningún rayo de luz atraviese la oscuridad",
-          "zh": "天空从不禁止任何一缕光穿越黑暗"
+          "es": "El ciElo nunca prohibe que ningún rayo de luz atraviese la oscuridad.",
+          "zh": "他天空从不禁止任何一缕光穿越黑暗。"
         }
       ],
       "notes": "搭配：prohibir algo a alguien禁止某人某事；变位特殊：yo prohíbo"
@@ -164,12 +193,16 @@
       "chineseMeaning": "祝贺",
       "originalForm": "Felicitar",
       "conjugation": {
-        "él/ella/usted": "felicita"
+        "陈述式现在时": {
+          "él/ella/usted": "felicita",
+          "yo": "felicito",
+          "tú": "felicitas"
+        }
       },
       "sentences": [
         {
-          "es": "EI tiempo felicita cada amanecer",
-          "zh": "时间祝贺每一次日出"
+          "es": "El tiempo felicita cada amanecer.",
+          "zh": "时间祝贺每一次日出。"
         }
       ],
       "notes": "搭配：felicitar a alguien por algo为某事祝贺某人；需加前置词a"
@@ -180,12 +213,16 @@
       "chineseMeaning": "控制",
       "originalForm": "Controlar",
       "conjugation": {
-        "él/ella/usted": "controla"
+        "陈述式现在时": {
+          "él/ella/usted": "controla",
+          "yo": "controlo",
+          "tú": "controlas"
+        }
       },
       "sentences": [
         {
-          "es": "nunca controla en exceso la trayectoria de la luz",
-          "zh": "从不过分控制光的轨迹"
+          "es": "Él nunca controla en exceso la trayectoria de la luz.",
+          "zh": "他从不过分控制光的轨迹。"
         }
       ],
       "notes": "搭配：controlar el tiempo控制时间；及物动词"
@@ -196,12 +233,16 @@
       "chineseMeaning": "管理",
       "originalForm": "Administrar",
       "conjugation": {
-        "él/ella/usted": "administra"
+        "陈述式现在时": {
+          "él/ella/usted": "administra",
+          "yo": "administro",
+          "tú": "administras"
+        }
       },
       "sentences": [
         {
-          "es": "solo administra en silencio el orden del dia y la noche",
-          "zh": "安静地管理着昼夜的秩序"
+          "es": "Él solo administra en silencio el orden del dia y la noche.",
+          "zh": "他安静地管理着昼夜的秩序。"
         }
       ],
       "notes": "搭配：administrar una empresa管理公司；及物动词"
@@ -212,12 +253,16 @@
       "chineseMeaning": "陪伴",
       "originalForm": "Acompanar",
       "conjugation": {
-        "él/ella/usted": "acompaña"
+        "陈述式现在时": {
+          "él/ella/usted": "acompana",
+          "yo": "acompano",
+          "tú": "acompanas"
+        }
       },
       "sentences": [
         {
-          "es": "La luna acompana a quienes no duermen",
-          "zh": "月光陪伴失眠的人"
+          "es": "La luna acompana a quienes no duermen.",
+          "zh": "他月光陪伴失眠的人。"
         }
       ],
       "notes": "搭配：acompañar a alguien陪伴某人；需加前置词a"
@@ -228,12 +273,16 @@
       "chineseMeaning": "介绍",
       "originalForm": "Presentar",
       "conjugation": {
-        "él/ella/usted": "presenta"
+        "陈述式现在时": {
+          "él/ella/usted": "presenta",
+          "yo": "presento",
+          "tú": "presentas"
+        }
       },
       "sentences": [
         {
-          "es": "el rocio matinal presenta un nuevo día",
-          "zh": "晨露介绍新的一天"
+          "es": "El rocio matinal presenta un nuevo día.",
+          "zh": "他晨露介绍新的一天。"
         }
       ],
       "notes": "搭配：presentar a alguien介绍某人；及物动词"
@@ -244,12 +293,16 @@
       "chineseMeaning": "推荐",
       "originalForm": "Recomendar",
       "conjugation": {
-        "él/ella/usted": "recomienda"
+        "陈述式现在时": {
+          "él/ella/usted": "recomenda",
+          "yo": "recomendo",
+          "tú": "recomendas"
+        }
       },
       "sentences": [
         {
-          "es": "la brisa primaveral recomienda rutas para caminar",
-          "zh": "春风推荐散步的路线"
+          "es": "Él la brisa primaveral recomienda rutas para caminar.",
+          "zh": "他春风推荐散步的路线。"
         }
       ],
       "notes": "搭配：recomendar algo a alguien向某人推荐某物；变位特殊：yo recomiendo"
@@ -260,12 +313,16 @@
       "chineseMeaning": "使高兴",
       "originalForm": "Alegrar",
       "conjugation": {
-        "él/ella/usted": "alegra"
+        "陈述式现在时": {
+          "él/ella/usted": "alegra",
+          "yo": "alegro",
+          "tú": "alegras"
+        }
       },
       "sentences": [
         {
-          "es": "La primera nevada alegra a todos los ninos de la calle",
-          "zh": "初雪让整条街的孩子都高兴起来"
+          "es": "La primera nevada alegra a todos los ninos de la calle.",
+          "zh": "他初雪让整条街的孩子都高兴起来。"
         }
       ],
       "notes": "使役动词；搭配：alegrar el corazón使人心喜"
@@ -276,12 +333,16 @@
       "chineseMeaning": "使平静",
       "originalForm": "Tranquilizar",
       "conjugation": {
-        "él/ella/usted": "tranquiliza"
+        "陈述式现在时": {
+          "él/ella/usted": "tranquiliza",
+          "yo": "tranquilizo",
+          "tú": "tranquilizas"
+        }
       },
       "sentences": [
         {
-          "es": "el aroma del chocolate caliente tranquiliza",
-          "zh": "热巧克力的香气使人平静"
+          "es": "El aroma dEl chocolate caliente tranquiliza.",
+          "zh": "他热巧克力的香气使人平静。"
         }
       ],
       "notes": "使役动词；搭配：tranquilizar los nervios平复紧张"
@@ -292,12 +353,16 @@
       "chineseMeaning": "邀请",
       "originalForm": "Invitar",
       "conjugation": {
-        "él/ella/usted": "invita"
+        "陈述式现在时": {
+          "él/ella/usted": "invita",
+          "yo": "invito",
+          "tú": "invitas"
+        }
       },
       "sentences": [
         {
-          "es": "la luz de la cafetería invita con suavidad a cada transeúnte",
-          "zh": "咖啡馆的灯光温柔地邀请着每个过路人"
+          "es": "Él la luz de la cafetería invita con suavidad a cada transeúnte.",
+          "zh": "他咖啡馆的灯光温柔地邀请着每个过路人。"
         }
       ],
       "notes": "搭配：invitar a alguien a hacer algo邀请某人做某事；需加前置词a"
@@ -308,12 +373,16 @@
       "chineseMeaning": "惊吓",
       "originalForm": "Asustar",
       "conjugation": {
-        "él/ella/usted": "asusta"
+        "陈述式现在时": {
+          "él/ella/usted": "asusta",
+          "yo": "asusto",
+          "tú": "asustas"
+        }
       },
       "sentences": [
         {
-          "es": "La lluvia asusta a los gatos callejeros",
-          "zh": "雨声惊吓到流浪猫"
+          "es": "La lluvia asusta a los gatos callejeros.",
+          "zh": "他雨声惊吓到流浪猫。"
         }
       ],
       "notes": "使役动词；搭配：asustar a alguien惊吓某人"
@@ -324,12 +393,16 @@
       "chineseMeaning": "使惊讶",
       "originalForm": "Sorprender",
       "conjugation": {
-        "él/ella/usted": "sorprende"
+        "陈述式现在时": {
+          "él/ella/usted": "sorprende",
+          "yo": "sorprendo",
+          "tú": "sorprendes"
+        }
       },
       "sentences": [
         {
-          "es": "el arcoiris sorprende a los ninos",
-          "zh": "彩虹使孩子们惊喜"
+          "es": "El arcoiris sorprende a los ninos.",
+          "zh": "他彩虹使孩子们惊喜。"
         }
       ],
       "notes": "使役动词；搭配：sorprender a alguien使某人惊讶"
@@ -340,12 +413,16 @@
       "chineseMeaning": "使担心",
       "originalForm": "Preocupar",
       "conjugation": {
-        "él/ella/usted": "preocupa"
+        "陈述式现在时": {
+          "él/ella/usted": "preocupa",
+          "yo": "preocupo",
+          "tú": "preocupas"
+        }
       },
       "sentences": [
         {
-          "es": "el familiar que no regresa preocupa",
-          "zh": "未归的亲人使人担忧"
+          "es": "El familiar que no regresa preocupa.",
+          "zh": "他未归的亲人使人担忧。"
         }
       ],
       "notes": "使役动词；搭配：preocupar a alguien使某人担心"
@@ -356,12 +433,16 @@
       "chineseMeaning": "指导",
       "originalForm": "Dirigir",
       "conjugation": {
-        "él/ella/usted": "dirige"
+        "陈述式现在时": {
+          "él/ella/usted": "dirige",
+          "yo": "dirigo",
+          "tú": "diriges"
+        }
       },
       "sentences": [
         {
-          "es": "En el examen de la vida nadie te dirige",
-          "zh": "人生这场考试无人指导"
+          "es": "Él En el examen de la vida nadie te dirige.",
+          "zh": "人生这场考试无人指导。"
         }
       ],
       "notes": "搭配：dirigir a alguien指导某人；变位特殊：yo dirijo"
@@ -372,12 +453,16 @@
       "chineseMeaning": "选择",
       "originalForm": "Elegir",
       "conjugation": {
-        "él/ella/usted": "elige"
+        "陈述式现在时": {
+          "él/ella/usted": "elege",
+          "yo": "elego",
+          "tú": "eleges"
+        }
       },
       "sentences": [
         {
-          "es": "debes elegir tus propias respuestas",
-          "zh": "我们必须自己选择答案"
+          "es": "Él debes elegir tus propias respuestas.",
+          "zh": "我们必须自己选择答案。"
         }
       ],
       "notes": "变位特殊：yo elijo；搭配：elegir algo选择某物"
@@ -388,12 +473,16 @@
       "chineseMeaning": "要求",
       "originalForm": "Exigir",
       "conjugation": {
-        "él/ella/usted": "exige"
+        "陈述式现在时": {
+          "él/ella/usted": "exige",
+          "yo": "exigo",
+          "tú": "exiges"
+        }
       },
       "sentences": [
         {
-          "es": "el tiempo siempre exige que entregues la hoja",
-          "zh": "时间总会要求我们交卷"
+          "es": "El tiempo siempre exige que entregues la hoja.",
+          "zh": "时间总会要求我们交卷。"
         }
       ],
       "notes": "搭配：exigir que + 虚拟式；需加前置词a"
@@ -404,12 +493,16 @@
       "chineseMeaning": "完成",
       "originalForm": "Completar",
       "conjugation": {
-        "él/ella/usted": "completa"
+        "陈述式现在时": {
+          "él/ella/usted": "completa",
+          "yo": "completo",
+          "tú": "completas"
+        }
       },
       "sentences": [
         {
-          "es": "EI rio completa su viaje desembocando en el mar",
-          "zh": "河流以入海完成其旅程"
+          "es": "El rio completa su viaje desembocando en el mar.",
+          "zh": "他河流以入海完成其旅程。"
         }
       ],
       "notes": "搭配：completar una tarea完成任务；及物动词"
@@ -420,12 +513,16 @@
       "chineseMeaning": "使适应/改编",
       "originalForm": "Adaptar",
       "conjugation": {
-        "él/ella/usted": "adapta"
+        "陈述式现在时": {
+          "él/ella/usted": "adapta",
+          "yo": "adapto",
+          "tú": "adaptas"
+        }
       },
       "sentences": [
         {
-          "es": "sabe adaptarse a cada curva de la orilla",
-          "zh": "懂得将自己适应每一道河岸的曲线"
+          "es": "Él sabe adaptarse a cada curva de la orilla.",
+          "zh": "他懂得将自己适应每一道河岸的曲线。"
         }
       ],
       "notes": "自复动词adaptarse a适应；搭配：adaptar una obra改编作品"
@@ -436,12 +533,16 @@
       "chineseMeaning": "解决",
       "originalForm": "Resolver",
       "conjugation": {
-        "él/ella/usted": "resuelve"
+        "陈述式现在时": {
+          "él/ella/usted": "resolve",
+          "yo": "resolvo",
+          "tú": "resolves"
+        }
       },
       "sentences": [
         {
-          "es": "resolviendo al fin en disolución y fusión la cuestion del regreso",
-          "zh": "最终在溶解与交融中解决归处的命题"
+          "es": "Él resolviendo al fin en disolución y fusión la cuestion del regreso.",
+          "zh": "他最终在溶解与交融中解决归处的命题。"
         }
       ],
       "notes": "变位特殊：yo resuelvo；搭配：resolver un problema解决问题"
@@ -452,12 +553,16 @@
       "chineseMeaning": "使用",
       "originalForm": "Utilizar",
       "conjugation": {
-        "él/ella/usted": "utiliza"
+        "陈述式现在时": {
+          "él/ella/usted": "utiliza",
+          "yo": "utilizo",
+          "tú": "utilizas"
+        }
       },
       "sentences": [
         {
-          "es": "Ella utiliza méetodos tradicionales para hacer cerámica",
-          "zh": "她使用传统方法制作陶器"
+          "es": "Ella utiliza méetodos tradicionales para hacer cerámica.",
+          "zh": "她使用传统方法制作陶器。"
         }
       ],
       "notes": "搭配：utilizar algo使用某物；及物动词"
@@ -468,12 +573,16 @@
       "chineseMeaning": "运行",
       "originalForm": "Funcionar",
       "conjugation": {
-        "él/ella/usted": "funciona"
+        "陈述式现在时": {
+          "él/ella/usted": "funciona",
+          "yo": "funciono",
+          "tú": "funcionas"
+        }
       },
       "sentences": [
         {
-          "es": "el torno del taller funciona con un zumbido familiar",
-          "zh": "工作室的拉坯机运行时会发出熟悉的嗡嗡声"
+          "es": "El torno dEl taller funciona con un zumbido familiar.",
+          "zh": "他工作室的拉坯机运行时会发出熟悉的嗡嗡声。"
         }
       ],
       "notes": "不及物动词；搭配：funcionar bien运行良好"
@@ -484,12 +593,16 @@
       "chineseMeaning": "改进",
       "originalForm": "Mejorar",
       "conjugation": {
-        "él/ella/usted": "mejora"
+        "陈述式现在时": {
+          "él/ella/usted": "mejora",
+          "yo": "mejoro",
+          "tú": "mejoras"
+        }
       },
       "sentences": [
         {
-          "es": "cada pieza intenta mejorar los matices del esmalte",
-          "zh": "每件作品都在尝试改进釉料的色彩层次"
+          "es": "Él cada pieza intenta mejorar los matices del esmalte.",
+          "zh": "他每件作品都在尝试改进釉料的色彩层次。"
         }
       ],
       "notes": "搭配：mejorar la calidad改进质量；及物动词"
@@ -500,12 +613,16 @@
       "chineseMeaning": "结束",
       "originalForm": "Concluir",
       "conjugation": {
-        "él/ella/usted": "concluye"
+        "陈述式现在时": {
+          "él/ella/usted": "conclue",
+          "yo": "concluo",
+          "tú": "conclues"
+        }
       },
       "sentences": [
         {
-          "es": "El otono concluye el capitulo del verano con dorados",
-          "zh": "秋天以金黄结束盛夏的篇章"
+          "es": "El otono concluye el capitulo del verano con dorados.",
+          "zh": "他秋天以金黄结束盛夏的篇章。"
         }
       ],
       "notes": "-uir变位动词；搭配：concluir una reunión结束会议"
@@ -516,12 +633,16 @@
       "chineseMeaning": "分配",
       "originalForm": "Distribuir",
       "conjugation": {
-        "él/ella/usted": "distribuye"
+        "陈述式现在时": {
+          "él/ella/usted": "distribue",
+          "yo": "distribuo",
+          "tú": "distribues"
+        }
       },
       "sentences": [
         {
-          "es": "distribuye los frutos a las manos que esperan",
-          "zh": "将果实分配给等待的双手"
+          "es": "Él distribuye los frutos a las manos que esperan.",
+          "zh": "他将果实分配给等待的双手。"
         }
       ],
       "notes": "搭配：distribuir algo a alguien分配某物给某人；及物动词"
@@ -532,12 +653,16 @@
       "chineseMeaning": "应用",
       "originalForm": "Aplicar",
       "conjugation": {
-        "él/ella/usted": "aplica"
+        "陈述式现在时": {
+          "él/ella/usted": "aplica",
+          "yo": "aplico",
+          "tú": "aplicas"
+        }
       },
       "sentences": [
         {
-          "es": "aplica esta abundancia en la preparación para el invierno",
-          "zh": "并把这份丰饶应用于寒冬的准备"
+          "es": "Él aplica esta abundancia en la preparación para el invierno.",
+          "zh": "他并把这份丰饶应用于寒冬的准备。"
         }
       ],
       "notes": "搭配：aplicar algo a algo把某物应用于某处；及物动词"
@@ -548,12 +673,16 @@
       "chineseMeaning": "建造",
       "originalForm": "Construir",
       "conjugation": {
-        "él/ella/usted": "construye"
+        "陈述式现在时": {
+          "él/ella/usted": "construye",
+          "yo": "construyo",
+          "tú": "construyes"
+        }
       },
       "sentences": [
         {
-          "es": "El poeta construye castillos de imagenes con palabras",
-          "zh": "诗人用词语建造意象的城堡"
+          "es": "El poeta construye castillos de imagenes con palabras.",
+          "zh": "他诗人用词语建造意象的城堡。"
         }
       ],
       "notes": "变位特殊：yo construyo；搭配：construir un edificio建造建筑"
@@ -564,12 +693,16 @@
       "chineseMeaning": "破坏",
       "originalForm": "Destruir",
       "conjugation": {
-        "él/ella/usted": "destruye"
+        "陈述式现在时": {
+          "él/ella/usted": "destruye",
+          "yo": "destruyo",
+          "tú": "destruyes"
+        }
       },
       "sentences": [
         {
-          "es": "la realidad destruye murallas de ilusión con el tiempo",
-          "zh": "现实用时间摧毁幻想的城墙"
+          "es": "Él la realidad destruye murallas de ilusión con el tiempo.",
+          "zh": "现实用时间摧毁幻想的城墙。"
         }
       ],
       "notes": "变位特殊：yo destruyo；搭配：destruir algo破坏某物"
@@ -580,12 +713,16 @@
       "chineseMeaning": "影响",
       "originalForm": "Influir",
       "conjugation": {
-        "él/ella/usted": "influye"
+        "陈述式现在时": {
+          "él/ella/usted": "influe",
+          "yo": "influo",
+          "tú": "influes"
+        }
       },
       "sentences": [
         {
-          "es": "la belleza eternamente influye en la percepción humana",
-          "zh": "而美永恒地影响着人类的感知"
+          "es": "Él la belleza eternamente influye en la percepción humana.",
+          "zh": "他而美永恒地影响着人类的感知。"
         }
       ],
       "notes": "搭配：influir en algo影响某事；需加前置词en"
@@ -595,11 +732,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "挠刮",
       "originalForm": "Rascar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "rasco",
+          "tú": "rascas",
+          "él/ella/usted": "rasca"
+        }
+      },
       "sentences": [
         {
-          "es": "me deja rascarle la pancita",
-          "zh": "让我挠它的肚皮"
+          "es": "Él me deja rascarle la pancita.",
+          "zh": "让我挠它的肚皮。"
         }
       ],
       "notes": "搭配：rascar la cabeza挠头；及物动词"
@@ -610,12 +753,16 @@
       "chineseMeaning": "拥抱",
       "originalForm": "Abrazar",
       "conjugation": {
-        "él/ella/usted": "abraza"
+        "陈述式现在时": {
+          "él/ella/usted": "abraza",
+          "yo": "abrazo",
+          "tú": "abrazas"
+        }
       },
       "sentences": [
         {
-          "es": "Después me abraza con las patas",
-          "zh": "然后它用爪子抱住我"
+          "es": "Él Después me abraza con las patas.",
+          "zh": "然后它用爪子抱住我。"
         }
       ],
       "notes": "搭配：abrazar a alguien拥抱某人；需加前置词a"
@@ -626,12 +773,16 @@
       "chineseMeaning": "亲吻",
       "originalForm": "Besar",
       "conjugation": {
-        "él/ella/usted": "besa"
+        "陈述式现在时": {
+          "él/ella/usted": "besa",
+          "yo": "beso",
+          "tú": "besas"
+        }
       },
       "sentences": [
         {
-          "es": "me besa la nariz con su lengua áspera",
-          "zh": "用粗糙的舌头亲我的鼻子"
+          "es": "Él me besa la nariz con su lengua áspera.",
+          "zh": "用粗糙的舌头亲我的鼻子。"
         }
       ],
       "notes": "搭配：besar a alguien亲吻某人；需加前置词a"
@@ -642,12 +793,16 @@
       "chineseMeaning": "触摸",
       "originalForm": "Tocar",
       "conjugation": {
-        "él/ella/usted": "toca"
+        "陈述式现在时": {
+          "él/ella/usted": "toca",
+          "yo": "toco",
+          "tú": "tocas"
+        }
       },
       "sentences": [
         {
-          "es": "Mi abuela siempre me toca la cara cuando me ve",
-          "zh": "我奶奶每次见到我都会触摸我的脸"
+          "es": "Él Mi abuela siempre me toca la cara cuando me ve.",
+          "zh": "我奶奶每次见到我都会触摸我的脸。"
         }
       ],
       "notes": "搭配：tocar algo触摸某物；及物动词"
@@ -658,12 +813,16 @@
       "chineseMeaning": "抚摸",
       "originalForm": "Acariciar",
       "conjugation": {
-        "él/ella/usted": "acaricia"
+        "陈述式现在时": {
+          "él/ella/usted": "acaricia",
+          "yo": "acaricio",
+          "tú": "acaricias"
+        }
       },
       "sentences": [
         {
-          "es": "Me la acaricia con la mano arrugada",
-          "zh": "她用布满皱纹的手抚摸它"
+          "es": "Él Me la acaricia con la mano arrugada.",
+          "zh": "她用布满皱纹的手抚摸它。"
         }
       ],
       "notes": "搭配：acariciar a alguien抚摸某人；需加前置词a"
@@ -674,12 +833,16 @@
       "chineseMeaning": "掐",
       "originalForm": "Pellizcar",
       "conjugation": {
-        "él/ella/usted": "pellizca"
+        "陈述式现在时": {
+          "él/ella/usted": "pellizca",
+          "yo": "pellizco",
+          "tú": "pellizcas"
+        }
       },
       "sentences": [
         {
-          "es": "Y a veces me pellizca la mejilla",
-          "zh": "有时她会掐一下我的脸蛋"
+          "es": "Él Y a veces me pellizca la mejilla.",
+          "zh": "有时她会掐一下我的脸蛋。"
         }
       ],
       "notes": "搭配：pellizcar a alguien掐某人；需加前置词a"
@@ -689,11 +852,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "吐",
       "originalForm": "Escupir",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "escupo",
+          "tú": "escupes",
+          "él/ella/usted": "escupe"
+        }
+      },
       "sentences": [
         {
-          "es": "al final tragar o escupir",
-          "zh": "最后要么咽要么吐"
+          "es": "Él al final tragar o escupir.",
+          "zh": "他最后要么咽要么吐。"
         }
       ],
       "notes": "不及物/及物动词；搭配：escupir algo吐某物"
@@ -703,11 +872,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "闻",
       "originalForm": "Oler",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "olo",
+          "tú": "oles",
+          "él/ella/usted": "ole"
+        }
+      },
       "sentences": [
         {
-          "es": "primero oler",
-          "zh": "先闻"
+          "es": "Él primero oler.",
+          "zh": "他先闻。"
         }
       ],
       "notes": "变位特殊：yo huelo；搭配：oler algo闻某物"
@@ -717,11 +892,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "品",
       "originalForm": "Saborear",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "saboreo",
+          "tú": "saboreas",
+          "él/ella/usted": "saborea"
+        }
+      },
       "sentences": [
         {
-          "es": "luego saborear",
-          "zh": "再品"
+          "es": "Él luego saborear.",
+          "zh": "他再品。"
         }
       ],
       "notes": "搭配：saborear la comida品尝食物；及物动词"
@@ -732,12 +913,16 @@
       "chineseMeaning": "咬",
       "originalForm": "Morder",
       "conjugation": {
-        "yo": "muerdo"
+        "陈述式现在时": {
+          "yo": "mordo",
+          "tú": "mordes",
+          "él/ella/usted": "morde"
+        }
       },
       "sentences": [
         {
-          "es": "le muerdo al pan sin pensar",
-          "zh": "我想都没想就咬了一口面包"
+          "es": "Él le muerdo al pan sin pensar.",
+          "zh": "我想都没想就咬了一口面包。"
         }
       ],
       "notes": "变位特殊：yo muerdo；搭配：morder algo咬某物"
@@ -748,12 +933,16 @@
       "chineseMeaning": "咀嚼",
       "originalForm": "Masticar",
       "conjugation": {
-        "yo": "mastico"
+        "陈述式现在时": {
+          "yo": "mastico",
+          "tú": "masticas",
+          "él/ella/usted": "mastica"
+        }
       },
       "sentences": [
         {
-          "es": "Lo mastico rapido",
-          "zh": "飞快地嚼了几口"
+          "es": "Él Lo mastico rapido.",
+          "zh": "他飞快地嚼了几口。"
         }
       ],
       "notes": "搭配：masticar la comida咀嚼食物；及物动词"
@@ -764,12 +953,16 @@
       "chineseMeaning": "吞咽",
       "originalForm": "Tragar",
       "conjugation": {
-        "él/ella/usted": "tragó"
+        "陈述式现在时": {
+          "él/ella/usted": "traga",
+          "yo": "trago",
+          "tú": "tragas"
+        }
       },
       "sentences": [
         {
-          "es": "Lo trago y la panza deja de quejarse",
-          "zh": "咽下去，肚子总算不叫了"
+          "es": "Él Lo trago y la panza deja de quejarse.",
+          "zh": "他咽下去，肚子总算不叫了。"
         }
       ],
       "notes": "搭配：tragar algo吞咽某物；及物动词"
@@ -780,12 +973,16 @@
       "chineseMeaning": "打喷嚏",
       "originalForm": "Estornudar",
       "conjugation": {
-        "yo": "estornudo"
+        "陈述式现在时": {
+          "yo": "estornudo",
+          "tú": "estornudas",
+          "él/ella/usted": "estornuda"
+        }
       },
       "sentences": [
         {
-          "es": "no paro de estornudar",
-          "zh": "春天一到，我就打喷嚏打个不停"
+          "es": "Él no paro de estornudar.",
+          "zh": "春天一到，我就打喷嚏打个不停。"
         }
       ],
       "notes": "不及物动词；无变位特殊"
@@ -796,12 +993,16 @@
       "chineseMeaning": "打哈欠",
       "originalForm": "Bostezar",
       "conjugation": {
-        "yo": "bostezo"
+        "陈述式现在时": {
+          "yo": "bostezo",
+          "tú": "bostezas",
+          "él/ella/usted": "bosteza"
+        }
       },
       "sentences": [
         {
-          "es": "Bostezar me da sueno por la alergia",
-          "zh": "过敏让我老想打哈欠"
+          "es": "Él Bostezar me da sueno por la alergia.",
+          "zh": "过敏让我老想打哈欠。"
         }
       ],
       "notes": "不及物动词；搭配：bostezar de sueño困得打哈欠"
@@ -812,12 +1013,16 @@
       "chineseMeaning": "眨眼",
       "originalForm": "Parpadear",
       "conjugation": {
-        "yo": "parpadeo"
+        "陈述式现在时": {
+          "yo": "parpadeo",
+          "tú": "parpadeas",
+          "él/ella/usted": "parpadea"
+        }
       },
       "sentences": [
         {
-          "es": "solo puedo parpadear para que no me lloren los ojos",
-          "zh": "我只能靠眨眼来不让眼睛那么难受"
+          "es": "Él solo puedo parpadear para que no me lloren los ojos.",
+          "zh": "我只能靠眨眼来不让眼睛那么难受。"
         }
       ],
       "notes": "不及物动词；搭配：parpadear rápido快速眨眼"
@@ -828,12 +1033,16 @@
       "chineseMeaning": "呼吸",
       "originalForm": "Respirar",
       "conjugation": {
-        "yo": "respiro"
+        "陈述式现在时": {
+          "yo": "respiro",
+          "tú": "respiras",
+          "él/ella/usted": "respira"
+        }
       },
       "sentences": [
         {
-          "es": "solo atino a respirar hondo",
-          "zh": "跑完步之后，我只能深呼吸"
+          "es": "Él solo atino a respirar hondo.",
+          "zh": "跑完步之后，我只能深呼吸。"
         }
       ],
       "notes": "搭配：respirar hondo深呼吸；及物/不及物"
@@ -844,12 +1053,16 @@
       "chineseMeaning": "出汗",
       "originalForm": "Sudar",
       "conjugation": {
-        "yo": "sudo"
+        "陈述式现在时": {
+          "yo": "sudo",
+          "tú": "sudas",
+          "él/ella/usted": "suda"
+        }
       },
       "sentences": [
         {
-          "es": "Sudar es inevitable",
-          "zh": "出汗是免不了的"
+          "es": "Él Sudar es inevitable.",
+          "zh": "他出汗是免不了的。"
         }
       ],
       "notes": "不及物动词；搭配：sudar mucho出很多汗"
@@ -860,12 +1073,16 @@
       "chineseMeaning": "咳嗽",
       "originalForm": "Toser",
       "conjugation": {
-        "yo": "toso"
+        "陈述式现在时": {
+          "yo": "toso",
+          "tú": "toses",
+          "él/ella/usted": "tose"
+        }
       },
       "sentences": [
         {
-          "es": "luego viene toser un poco",
-          "zh": "然后会咳嗽几下"
+          "es": "Él luego viene toser un poco.",
+          "zh": "他然后会咳嗽几下。"
         }
       ],
       "notes": "不及物动词；搭配：toser seco干咳"
@@ -876,12 +1093,16 @@
       "chineseMeaning": "使惊奇",
       "originalForm": "Asombrar",
       "conjugation": {
-        "él/ella/usted": "asombra"
+        "陈述式现在时": {
+          "él/ella/usted": "asombra",
+          "yo": "asombro",
+          "tú": "asombras"
+        }
       },
       "sentences": [
         {
-          "es": "Me asombra cómo la lluvia cambia todo el animo",
-          "zh": "一场雨怎么就能改变整个心情，这让我很惊奇"
+          "es": "Él Me asombra cómo la lluvia cambia todo el animo.",
+          "zh": "一场雨怎么就能改变整个心情，这让我很惊奇。"
         }
       ],
       "notes": "使役动词；搭配：asombrar a alguien使某人惊奇"
@@ -892,12 +1113,16 @@
       "chineseMeaning": "安慰",
       "originalForm": "Consolar",
       "conjugation": {
-        "él/ella/usted": "consuela"
+        "陈述式现在时": {
+          "él/ella/usted": "consola",
+          "yo": "consolo",
+          "tú": "consolas"
+        }
       },
       "sentences": [
         {
-          "es": "Me consuela el olor a tierra mojada",
-          "zh": "泥土的湿气味安慰了我"
+          "es": "Él Me consuela el olor a tierra mojada.",
+          "zh": "泥土的湿气味安慰了我。"
         }
       ],
       "notes": "搭配：consolar a alguien安慰某人；需加前置词a"
@@ -908,12 +1133,16 @@
       "chineseMeaning": "鼓励",
       "originalForm": "Animar",
       "conjugation": {
-        "él/ella/usted": "anima"
+        "陈述式现在时": {
+          "él/ella/usted": "anima",
+          "yo": "animo",
+          "tú": "animas"
+        }
       },
       "sentences": [
         {
-          "es": "Me anima pensar que manana va a salir el sol",
-          "zh": "想着明天会出太阳，这鼓励了我"
+          "es": "Él Me anima pensar que manana va a salir el sol.",
+          "zh": "想着明天会出太阳，这鼓励了我。"
         }
       ],
       "notes": "搭配：animar a alguien鼓励某人；需加前置词a"
@@ -924,12 +1153,16 @@
       "chineseMeaning": "想念",
       "originalForm": "Extranar",
       "conjugation": {
-        "yo": "extrano"
+        "陈述式现在时": {
+          "yo": "extrano",
+          "tú": "extranas",
+          "él/ella/usted": "extrana"
+        }
       },
       "sentences": [
         {
-          "es": "Extrano los domingos de la infancia",
-          "zh": "我想念小时候不用想星期一的星期天"
+          "es": "Él Extrano los domingos de la infancia.",
+          "zh": "我想念小时候不用想星期一的星期天。"
         }
       ],
       "notes": "搭配：extranar a alguien想念某人；需加前置词a"
@@ -940,12 +1173,16 @@
       "chineseMeaning": "使不悦",
       "originalForm": "Disgustar",
       "conjugation": {
-        "él/ella/usted": "disgusta"
+        "陈述式现在时": {
+          "él/ella/usted": "disgusta",
+          "yo": "disgusto",
+          "tú": "disgustas"
+        }
       },
       "sentences": [
         {
-          "es": "Me disgusta sentir esa ansiedad al atardecer",
-          "zh": "黄昏时那种焦虑感让我不悦"
+          "es": "Él Me disgusta sentir esa ansiedad al atardecer.",
+          "zh": "黄昏时那种焦虑感让我不悦。"
         }
       ],
       "notes": "使役动词；搭配：disgustar a alguien使某人不悦"
@@ -956,12 +1193,16 @@
       "chineseMeaning": "使生气",
       "originalForm": "Enfadar",
       "conjugation": {
-        "él/ella/usted": "enfada"
+        "陈述式现在时": {
+          "él/ella/usted": "enfada",
+          "yo": "enfado",
+          "tú": "enfadas"
+        }
       },
       "sentences": [
         {
-          "es": "Me enfada que el finde termine siempre tan rapido",
-          "zh": "周末总是结束得那么快，这让我生气"
+          "es": "Él Me enfada que el finde termine siempre tan rapido.",
+          "zh": "周末总是结束得那么快，这让我生气。"
         }
       ],
       "notes": "使役动词；搭配：enfadar a alguien使某人生气"
@@ -972,12 +1213,16 @@
       "chineseMeaning": "称重",
       "originalForm": "Pesar",
       "conjugation": {
-        "yo": "peso"
+        "陈述式现在时": {
+          "yo": "peso",
+          "tú": "pesas",
+          "él/ella/usted": "pesa"
+        }
       },
       "sentences": [
         {
-          "es": "Me peso cada manana",
-          "zh": "每天早上我都称一下体重"
+          "es": "Él Me peso cada manana.",
+          "zh": "每天早上我都称一下体重。"
         }
       ],
       "notes": "自复动词pesarse称重；及物动词pesar某物重"
@@ -988,12 +1233,16 @@
       "chineseMeaning": "计算",
       "originalForm": "Calcular",
       "conjugation": {
-        "yo": "calculo"
+        "陈述式现在时": {
+          "yo": "calculo",
+          "tú": "calculas",
+          "él/ella/usted": "calcula"
+        }
       },
       "sentences": [
         {
-          "es": "calculo las calorías que como",
-          "zh": "算我吃了多少卡路里"
+          "es": "Él calculo las calorías que como.",
+          "zh": "算我吃了多少卡路里。"
         }
       ],
       "notes": "搭配：calcular algo计算某物；及物动词"
@@ -1004,12 +1253,16 @@
       "chineseMeaning": "总结",
       "originalForm": "Resumir",
       "conjugation": {
-        "yo": "resumo"
+        "陈述式现在时": {
+          "yo": "resumo",
+          "tú": "resumes",
+          "él/ella/usted": "resume"
+        }
       },
       "sentences": [
         {
-          "es": "y resumo que bajar de peso es mas dificil que subir",
-          "zh": "最后总结：减肥比增肥难多了"
+          "es": "Él y resumo que bajar de peso es mas dificil que subir.",
+          "zh": "他最后总结：减肥比增肥难多了。"
         }
       ],
       "notes": "搭配：resumir algo总结某事；及物动词"
@@ -1020,12 +1273,16 @@
       "chineseMeaning": "比较",
       "originalForm": "Comparar",
       "conjugation": {
-        "yo": "comparo"
+        "陈述式现在时": {
+          "yo": "comparo",
+          "tú": "comparas",
+          "él/ella/usted": "compara"
+        }
       },
       "sentences": [
         {
-          "es": "Comparo cámaras",
-          "zh": "比较摄像头"
+          "es": "Él Comparo cámaras.",
+          "zh": "他比较摄像头。"
         }
       ],
       "notes": "搭配：comparar A con B比较A和B；及物动词"
@@ -1036,12 +1293,16 @@
       "chineseMeaning": "评估",
       "originalForm": "Evaluar",
       "conjugation": {
-        "yo": "evalúo"
+        "陈述式现在时": {
+          "yo": "evaluo",
+          "tú": "evaluas",
+          "él/ella/usted": "evalua"
+        }
       },
       "sentences": [
         {
-          "es": "evalúo la batería de cada modelo",
-          "zh": "评估每个型号的电池"
+          "es": "Él evalúo la batería de cada modelo.",
+          "zh": "他评估每个型号的电池。"
         }
       ],
       "notes": "搭配：evaluar algo评估某物；变位特殊：yo evalúo"
@@ -1052,12 +1313,16 @@
       "chineseMeaning": "测量",
       "originalForm": "Medir",
       "conjugation": {
-        "yo": "mido"
+        "陈述式现在时": {
+          "yo": "medo",
+          "tú": "medes",
+          "él/ella/usted": "mede"
+        }
       },
       "sentences": [
         {
-          "es": "mido el tamano de la pantalla",
-          "zh": "量屏幕尺寸"
+          "es": "Él mido el tamano de la pantalla.",
+          "zh": "他量屏幕尺寸。"
         }
       ],
       "notes": "变位特殊：yo mido；搭配：medir algo测量某物"
@@ -1068,12 +1333,16 @@
       "chineseMeaning": "想象",
       "originalForm": "Imaginar",
       "conjugation": {
-        "yo": "imagino"
+        "陈述式现在时": {
+          "yo": "imagino",
+          "tú": "imaginas",
+          "él/ella/usted": "imagina"
+        }
       },
       "sentences": [
         {
-          "es": "Miro una nube e imagino que es un dragón",
-          "zh": "我看着一朵云，想象它是一条龙"
+          "es": "Él Miro una nube e imagino que es un dragón.",
+          "zh": "我看着一朵云，想象它是一条龙。"
         }
       ],
       "notes": "搭配：imaginar algo想象某物；及物动词"
@@ -1084,12 +1353,16 @@
       "chineseMeaning": "假设",
       "originalForm": "Suponer",
       "conjugation": {
-        "yo": "supongo"
+        "陈述式现在时": {
+          "yo": "supono",
+          "tú": "supones",
+          "él/ella/usted": "supone"
+        }
       },
       "sentences": [
         {
-          "es": "Tú, en cambio, supongo que ves otra cosa",
-          "zh": "我猜你肯定看到的是别的"
+          "es": "Él Tú, en cambio, supongo que ves otra cosa.",
+          "zh": "我猜你肯定看到的是别的。"
         }
       ],
       "notes": "搭配：suponer algo假设某物；及物动词"
@@ -1100,12 +1373,16 @@
       "chineseMeaning": "推断",
       "originalForm": "Deducir",
       "conjugation": {
-        "yo": "deduco"
+        "陈述式现在时": {
+          "yo": "deduco",
+          "tú": "deduces",
+          "él/ella/usted": "deduce"
+        }
       },
       "sentences": [
         {
-          "es": "Asi que deduzco que cada uno mira el cielo como le da la gana",
-          "zh": "所以我推断，每个人都是爱怎么看天就怎么看"
+          "es": "Él Asi que deduzco que cada uno mira el cielo como le da la gana.",
+          "zh": "所以我推断，每个人都是爱怎么看天就怎么看。"
         }
       ],
       "notes": "变位特殊：yo deduzco；搭配：deducir algo推断某事"
@@ -1115,11 +1392,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "握住",
       "originalForm": "Sujetar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "sujeto",
+          "tú": "sujetas",
+          "él/ella/usted": "sujeta"
+        }
+      },
       "sentences": [
         {
-          "es": "Quiero sujetar el sueno",
-          "zh": "我想抓住睡意"
+          "es": "Él Quiero sujetar el sueno.",
+          "zh": "我想抓住睡意。"
         }
       ],
       "notes": "搭配：sujetar algo握住某物；及物动词"
@@ -1130,12 +1413,16 @@
       "chineseMeaning": "松开",
       "originalForm": "Soltar",
       "conjugation": {
-        "él/ella/usted": "suelta"
+        "陈述式现在时": {
+          "él/ella/usted": "solta",
+          "yo": "solto",
+          "tú": "soltas"
+        }
       },
       "sentences": [
         {
-          "es": "pero se me suelta en cuanto cierro los ojos",
-          "zh": "但一闭眼它就溜走了"
+          "es": "Él pero se me suelta en cuanto cierro los ojos.",
+          "zh": "但一闭眼它就溜走了。"
         }
       ],
       "notes": "变位特殊：yo suelto；搭配：soltar algo松开某物"
@@ -1145,11 +1432,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "做梦",
       "originalForm": "Sonar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "sono",
+          "tú": "sonas",
+          "él/ella/usted": "sona"
+        }
+      },
       "sentences": [
         {
-          "es": "Entonces empiezo a sonar despierto",
-          "zh": "然后我就开始睁着眼睛做梦"
+          "es": "Él Entonces empiezo a sonar despierto.",
+          "zh": "然后我就开始睁着眼睛做梦。"
         }
       ],
       "notes": "不及物动词；搭配：sonar con algo梦到某事"
@@ -1160,12 +1453,16 @@
       "chineseMeaning": "领导",
       "originalForm": "Liderar",
       "conjugation": {
-        "él/ella/usted": "lidera"
+        "陈述式现在时": {
+          "él/ella/usted": "lidera",
+          "yo": "lidero",
+          "tú": "lideras"
+        }
       },
       "sentences": [
         {
-          "es": "En mi casa, lidera mi mamá",
-          "zh": "我家做主的是我妈"
+          "es": "Él En mi casa, lidera mi mamá.",
+          "zh": "我家做主的是我妈。"
         }
       ],
       "notes": "搭配：liderar un equipo领导团队；及物动词"
@@ -1176,12 +1473,16 @@
       "chineseMeaning": "谈判",
       "originalForm": "Negociar",
       "conjugation": {
-        "yo": "negociamos"
+        "陈述式现在时": {
+          "yo": "negocio",
+          "tú": "negocias",
+          "él/ella/usted": "negocia"
+        }
       },
       "sentences": [
         {
-          "es": "Para decidir las vacaciones, negociamos entre todos",
-          "zh": "度假的事大家商量着来"
+          "es": "Él Para decidir las vacaciones, negociamos entre todos.",
+          "zh": "他度假的事大家商量着来。"
         }
       ],
       "notes": "搭配：negociar con alguien和某人谈判；及物动词"
@@ -1192,12 +1493,16 @@
       "chineseMeaning": "竞争",
       "originalForm": "Competir",
       "conjugation": {
-        "yo": "competimos"
+        "陈述式现在时": {
+          "yo": "competo",
+          "tú": "competes",
+          "él/ella/usted": "compete"
+        }
       },
       "sentences": [
         {
-          "es": "No competimos",
-          "zh": "我们不争"
+          "es": "Él No competimos.",
+          "zh": "我们不争。"
         }
       ],
       "notes": "变位特殊：yo compito；搭配：competir con alguien和某人竞争"
@@ -1207,11 +1512,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "服从",
       "originalForm": "Obedecer",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "obedeco",
+          "tú": "obedeces",
+          "él/ella/usted": "obedece"
+        }
+      },
       "sentences": [
         {
-          "es": "Obedecer a tus principios es mas importante que agradar a los demas",
-          "zh": "服从自己的原则比取悦别人更重要"
+          "es": "Él Obedecer a tus principios es mas importante que agradar a los demas.",
+          "zh": "他服从自己的原则比取悦别人更重要。"
         }
       ],
       "notes": "搭配：obedecer a alguien服从某人；需加前置词a"
@@ -1221,11 +1532,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "不服从",
       "originalForm": "Desobedecer",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "desobedeco",
+          "tú": "desobedeces",
+          "él/ella/usted": "desobedece"
+        }
+      },
       "sentences": [
         {
-          "es": "desobedecer una orden injusta puede ser un acto de valentia",
-          "zh": "不服从不公正的命令，可能是一种勇敢的行为"
+          "es": "Él desobedecer una orden injusta puede ser un acto de valentia.",
+          "zh": "他不服从不公正的命令，可能是一种勇敢的行为。"
         }
       ],
       "notes": "搭配：desobedecer a alguien不服从某人；需加前置词a"
@@ -1235,11 +1552,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "履行/遵守",
       "originalForm": "Cumplir",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "cumplo",
+          "tú": "cumples",
+          "él/ella/usted": "cumple"
+        }
+      },
       "sentences": [
         {
-          "es": "Una promesa hay que cumplirla, cueste lo que cueste",
-          "zh": "承诺就得履行，不管付出什么代价"
+          "es": "Él Una promesa hay que cumplirla, cueste lo que cueste.",
+          "zh": "他承诺就得履行，不管付出什么代价。"
         }
       ],
       "notes": "搭配：cumplir una promesa履行承诺；cumplir años过生日"
@@ -1249,11 +1572,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "浇水",
       "originalForm": "Regar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "rego",
+          "tú": "regas",
+          "él/ella/usted": "rega"
+        }
+      },
       "sentences": [
         {
-          "es": "Estudio todos los días para cosechar buenas notas",
-          "zh": "我每天都学习，想着能收获个好分数"
+          "es": "Él Estudio todos los días para cosechar buenas notas.",
+          "zh": "我每天都学习，想着能收获个好分数。"
         }
       ],
       "notes": "搭配：regar una planta给植物浇水；及物动词"
@@ -1263,11 +1592,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "收获",
       "originalForm": "Cosechar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "cosecho",
+          "tú": "cosechas",
+          "él/ella/usted": "cosecha"
+        }
+      },
       "sentences": [
         {
-          "es": "Estudio todos los días para cosechar buenas notas",
-          "zh": "想着能收获个好分数"
+          "es": "Él Estudio todos los días para cosechar buenas notas.",
+          "zh": "他想着能收获个好分数。"
         }
       ],
       "notes": "搭配：cosechar frutos收获果实；及物动词"
@@ -1278,12 +1613,16 @@
       "chineseMeaning": "犁地",
       "originalForm": "Arar",
       "conjugation": {
-        "yo": "aro"
+        "陈述式现在时": {
+          "yo": "aro",
+          "tú": "aras",
+          "él/ella/usted": "ara"
+        }
       },
       "sentences": [
         {
-          "es": "A veces siento que aro el mar",
-          "zh": "有时候觉得自己在犁大海"
+          "es": "Él A veces siento que aro el mar.",
+          "zh": "他有时候觉得自己在犁大海。"
         }
       ],
       "notes": "搭配：arar la tierra犁地；及物动词"
@@ -1294,12 +1633,17 @@
       "chineseMeaning": "开花",
       "originalForm": "Florecer",
       "conjugation": {
-        "ellos/ellas/ustedes": "florecen"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "florecen",
+          "yo": "floreco",
+          "tú": "floreces",
+          "él/ella/usted": "florece"
+        }
       },
       "sentences": [
         {
-          "es": "Las plantas florecen en primavera",
-          "zh": "春天植物都开花了"
+          "es": "Las plantas florecen en primavera.",
+          "zh": "他春天植物都开花了。"
         }
       ],
       "notes": "不及物动词；搭配：florecer en primavera春天开花"
@@ -1310,12 +1654,16 @@
       "chineseMeaning": "生长",
       "originalForm": "Crecer",
       "conjugation": {
-        "él/ella/usted": "crece"
+        "陈述式现在时": {
+          "él/ella/usted": "crece",
+          "yo": "creco",
+          "tú": "creces"
+        }
       },
       "sentences": [
         {
-          "es": "El pasto del jardin crece muy rapido",
-          "zh": "花园里的草长得很快"
+          "es": "El pasto del jardin crece muy rapido.",
+          "zh": "他花园里的草长得很快。"
         }
       ],
       "notes": "不及物动词；搭配：crecer rápido长得快"
@@ -1325,11 +1673,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "修剪",
       "originalForm": "Podar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "podo",
+          "tú": "podas",
+          "él/ella/usted": "poda"
+        }
+      },
       "sentences": [
         {
-          "es": "Tengo que podar los arboles cada dos meses",
-          "zh": "我每两个月就得修剪一次树枝"
+          "es": "Él Tengo que podar los arboles cada dos meses.",
+          "zh": "我每两个月就得修剪一次树枝。"
         }
       ],
       "notes": "搭配：podar los árboles修剪树枝；及物动词"
@@ -1339,11 +1693,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "天亮/日出",
       "originalForm": "Amanecer",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "amaneco",
+          "tú": "amaneces",
+          "él/ella/usted": "amanece"
+        }
+      },
       "sentences": [
         {
-          "es": "Si esperas hasta que amanece, desaparecen",
-          "zh": "如果你等到天亮，它们就消失了"
+          "es": "Él Si esperas hasta que amanece, desaparecen.",
+          "zh": "如果你等到天亮，它们就消失了。"
         }
       ],
       "notes": "不及物动词；无人称：amanece天亮了"
@@ -1354,12 +1714,16 @@
       "chineseMeaning": "天黑/日落",
       "originalForm": "Anochecer",
       "conjugation": {
-        "él/ella/usted": "anochece"
+        "陈述式现在时": {
+          "él/ella/usted": "anochece",
+          "yo": "anocheco",
+          "tú": "anocheces"
+        }
       },
       "sentences": [
         {
-          "es": "Las estrellas brillan mas cuando anochece",
-          "zh": "天黑的时候星星闪耀得更亮"
+          "es": "Las estrellas brillan mas cuando anochece.",
+          "zh": "他天黑的时候星星闪耀得更亮。"
         }
       ],
       "notes": "不及物动词；无人称：anochece天黑了"
@@ -1370,12 +1734,17 @@
       "chineseMeaning": "闪耀",
       "originalForm": "Brillar",
       "conjugation": {
-        "ellos/ellas/ustedes": "brillan"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "brillan",
+          "yo": "brillo",
+          "tú": "brillas",
+          "él/ella/usted": "brilla"
+        }
       },
       "sentences": [
         {
-          "es": "Las estrellas brillan mas cuando anochece",
-          "zh": "天黑的时候星星闪耀得更亮"
+          "es": "Las estrellas brillan mas cuando anochece.",
+          "zh": "他天黑的时候星星闪耀得更亮。"
         }
       ],
       "notes": "不及物动词；搭配：brillar con luz propia自身发光"
@@ -1385,11 +1754,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "下冰雹",
       "originalForm": "Granizar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "granizo",
+          "tú": "granizas",
+          "él/ella/usted": "graniza"
+        }
+      },
       "sentences": [
         {
-          "es": "De chico, granizar me sorprendia un montón",
-          "zh": "小时候，下冰雹让我很惊奇"
+          "es": "Él De chico, granizar me sorprendia un montón.",
+          "zh": "小时候，下冰雹让我很惊奇。"
         }
       ],
       "notes": "不及物动词；无人称：graniza下冰雹"
@@ -1399,11 +1774,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "闪电(闪出光)",
       "originalForm": "Destellar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "destello",
+          "tú": "destellas",
+          "él/ella/usted": "destella"
+        }
+      },
       "sentences": [
         {
-          "es": "Destellar me parecía magico",
-          "zh": "闪出光让我觉得很神奇"
+          "es": "Él Destellar me parecía magico.",
+          "zh": "闪出光让我觉得很神奇。"
         }
       ],
       "notes": "不及物动词；无人称：destella闪电"
@@ -1413,11 +1794,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "打雷",
       "originalForm": "Tronar",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "trono",
+          "tú": "tronas",
+          "él/ella/usted": "trona"
+        }
+      },
       "sentences": [
         {
-          "es": "Y tronar me asustaba",
-          "zh": "而打雷会让我害怕"
+          "es": "Él Y tronar me asustaba.",
+          "zh": "而打雷会让我害怕。"
         }
       ],
       "notes": "不及物动词；无人称：trona打雷"
@@ -1427,11 +1814,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "减少",
       "originalForm": "Disminuir",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "disminuo",
+          "tú": "disminues",
+          "él/ella/usted": "disminue"
+        }
+      },
       "sentences": [
         {
-          "es": "Para disminuir la ansiedad, respiro hondo",
-          "zh": "为了减少焦虑，我深呼吸"
+          "es": "Él Para disminuir la ansiedad, respiro hondo.",
+          "zh": "为了减少焦虑，我深呼吸。"
         }
       ],
       "notes": "-uir变位动词；搭配：disminuir el riesgo减少风险"
@@ -1442,12 +1835,16 @@
       "chineseMeaning": "加速",
       "originalForm": "Acelerar",
       "conjugation": {
-        "él/ella/usted": "acelera"
+        "陈述式现在时": {
+          "él/ella/usted": "acelera",
+          "yo": "acelero",
+          "tú": "aceleras"
+        }
       },
       "sentences": [
         {
-          "es": "La música acelera mi corazón o lo frena",
-          "zh": "音乐会加速或者减缓我的心跳"
+          "es": "La música acelera mi corazón o lo frena.",
+          "zh": "音乐会加速或者减缓我的心跳。"
         }
       ],
       "notes": "搭配：acelerar el paso加速步伐；及物动词"
@@ -1458,12 +1855,16 @@
       "chineseMeaning": "刹车/阻止",
       "originalForm": "Frenar",
       "conjugation": {
-        "él/ella/usted": "frena"
+        "陈述式现在时": {
+          "él/ella/usted": "frena",
+          "yo": "freno",
+          "tú": "frenas"
+        }
       },
       "sentences": [
         {
-          "es": "La música acelera mi corazón o lo frena",
-          "zh": "音乐会加速或者减缓我的心跳"
+          "es": "La música acelera mi corazón o lo frena.",
+          "zh": "音乐会加速或者减缓我的心跳。"
         }
       ],
       "notes": "搭配：frenar el coche刹车；及物动词"
@@ -1474,12 +1875,16 @@
       "chineseMeaning": "融合",
       "originalForm": "Fusionar",
       "conjugation": {
-        "él/ella/usted": "fusiona"
+        "陈述式现在时": {
+          "él/ella/usted": "fusiona",
+          "yo": "fusiono",
+          "tú": "fusionas"
+        }
       },
       "sentences": [
         {
-          "es": "La chef fusiona sabores de diferentes paises",
-          "zh": "这位大厨融合了不同国家的口味"
+          "es": "La chef fusiona sabores de diferentes paises.",
+          "zh": "他这位大厨融合了不同国家的口味。"
         }
       ],
       "notes": "搭配：fusionar sabores融合口味；及物动词"
@@ -1490,12 +1895,16 @@
       "chineseMeaning": "转变",
       "originalForm": "Transformar",
       "conjugation": {
-        "él/ella/usted": "transforma"
+        "陈述式现在时": {
+          "él/ella/usted": "transforma",
+          "yo": "transformo",
+          "tú": "transformas"
+        }
       },
       "sentences": [
         {
-          "es": "Transforma ingredientes simples en platos increibles",
-          "zh": "她把简单的食材转变成令人惊叹的菜肴"
+          "es": "Él Transforma ingredientes simples en platos increibles.",
+          "zh": "她把简单的食材转变成令人惊叹的菜肴。"
         }
       ],
       "notes": "搭配：transformar A en B把A转变为B；及物动词"
@@ -1506,12 +1915,16 @@
       "chineseMeaning": "增加",
       "originalForm": "Aumentar",
       "conjugation": {
-        "él/ella/usted": "aumenta"
+        "陈述式现在时": {
+          "él/ella/usted": "aumenta",
+          "yo": "aumento",
+          "tú": "aumentas"
+        }
       },
       "sentences": [
         {
-          "es": "Eso aumenta la fama de su restaurante",
-          "zh": "这增加了她餐厅的名气"
+          "es": "Él Eso aumenta la fama de su restaurante.",
+          "zh": "这增加了她餐厅的名气。"
         }
       ],
       "notes": "搭配：aumentar el precio提高价格；及物/不及物"
@@ -1521,11 +1934,17 @@
       "partOfSpeech": "verbo",
       "chineseMeaning": "排除",
       "originalForm": "Excluir",
-      "conjugation": {},
+      "conjugation": {
+        "陈述式现在时": {
+          "yo": "excluo",
+          "tú": "exclues",
+          "él/ella/usted": "exclue"
+        }
+      },
       "sentences": [
         {
-          "es": "En el trabajo, no hay que excluir las ideas nuevas",
-          "zh": "在工作中，不应该排除新想法"
+          "es": "Él En el trabajo, no hay que excluir las ideas nuevas.",
+          "zh": "他在工作中，不应该排除新想法。"
         }
       ],
       "notes": "搭配：excluir algo排除某物；及物动词"
@@ -1536,12 +1955,17 @@
       "chineseMeaning": "分离",
       "originalForm": "Separar",
       "conjugation": {
-        "ellos/ellas/ustedes": "separan"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "separan",
+          "yo": "separo",
+          "tú": "separas",
+          "él/ella/usted": "separa"
+        }
       },
       "sentences": [
         {
-          "es": "Los prejuicios pueden separar a los companeros",
-          "zh": "偏见可能会分离同事之间的关系"
+          "es": "Los prejuicios pueden separar a los companeros.",
+          "zh": "他偏见可能会分离同事之间的关系。"
         }
       ],
       "notes": "搭配：separar A de B把A和B分离；及物动词"
@@ -1552,12 +1976,16 @@
       "chineseMeaning": "联合",
       "originalForm": "Unir",
       "conjugation": {
-        "él/ella/usted": "une"
+        "陈述式现在时": {
+          "él/ella/usted": "une",
+          "yo": "uno",
+          "tú": "unes"
+        }
       },
       "sentences": [
         {
-          "es": "Un proyecto exitoso une talentos diversos",
-          "zh": "一个成功的项目会联合各种不同的才华"
+          "es": "Él Un proyecto exitoso une talentos diversos.",
+          "zh": "他一个成功的项目会联合各种不同的才华。"
         }
       ],
       "notes": "变位特殊：yo uno；搭配：unir A y B联合A和B"
@@ -1568,12 +1996,16 @@
       "chineseMeaning": "嫉妒",
       "originalForm": "Envidiar",
       "conjugation": {
-        "él/ella/usted": "envidia"
+        "陈述式现在时": {
+          "él/ella/usted": "envidia",
+          "yo": "envidio",
+          "tú": "envidias"
+        }
       },
       "sentences": [
         {
-          "es": "Una amistad verdadera no envidia los logros del otro",
-          "zh": "真正的友谊不会嫉妒对方的成就"
+          "es": "Él Una amistad verdadera no envidia los logros del otro.",
+          "zh": "他真正的友谊不会嫉妒对方的成就。"
         }
       ],
       "notes": "搭配：envidiar a alguien嫉妒某人；需加前置词a"
@@ -1584,12 +2016,16 @@
       "chineseMeaning": "背叛",
       "originalForm": "Traicionar",
       "conjugation": {
-        "él/ella/usted": "traiciona"
+        "陈述式现在时": {
+          "él/ella/usted": "traiciona",
+          "yo": "traiciono",
+          "tú": "traicionas"
+        }
       },
       "sentences": [
         {
-          "es": "Tampoco traiciona la confianza",
-          "zh": "也不会背叛信任"
+          "es": "Él Tampoco traiciona la confianza.",
+          "zh": "他也不会背叛信任。"
         }
       ],
       "notes": "搭配：traicionar a alguien背叛某人；需加前置词a"
@@ -1600,12 +2036,16 @@
       "chineseMeaning": "包括",
       "originalForm": "Incluir",
       "conjugation": {
-        "él/ella/usted": "incluye"
+        "陈述式现在时": {
+          "él/ella/usted": "inclue",
+          "yo": "incluo",
+          "tú": "inclues"
+        }
       },
       "sentences": [
         {
-          "es": "Incluye estar presente en las malas",
-          "zh": "它包含在困难的时候陪伴"
+          "es": "Él Incluye estar presente en las malas.",
+          "zh": "它包含在困难的时候陪伴。"
         }
       ],
       "notes": "搭配：incluir algo包括某物；及物动词"
@@ -1616,12 +2056,17 @@
       "chineseMeaning": "批评",
       "originalForm": "Criticar",
       "conjugation": {
-        "ellos/ellas/ustedes": "critican"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "critican",
+          "yo": "critico",
+          "tú": "criticas",
+          "él/ella/usted": "critica"
+        }
       },
       "sentences": [
         {
-          "es": "En internet critican todo sin saber",
-          "zh": "在网上，什么他们都能批评一顿"
+          "es": "Él En internet critican todo sin saber.",
+          "zh": "在网上，什么他们都能批评一顿。"
         }
       ],
       "notes": "搭配：criticar algo批评某物；及物动词"
@@ -1632,12 +2077,17 @@
       "chineseMeaning": "赞扬",
       "originalForm": "Alabar",
       "conjugation": {
-        "ellos/ellas/ustedes": "alaban"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "alaban",
+          "yo": "alabo",
+          "tú": "alabas",
+          "él/ella/usted": "alaba"
+        }
       },
       "sentences": [
         {
-          "es": "Pocos alaban cuando algo está bien",
-          "zh": "做对了的时候很少有人赞扬"
+          "es": "Él Pocos alaban cuando algo está bien.",
+          "zh": "他做对了的时候很少有人赞扬。"
         }
       ],
       "notes": "搭配：alabar a alguien赞扬某人；需加前置词a"
@@ -1648,12 +2098,16 @@
       "chineseMeaning": "钦佩",
       "originalForm": "Admirar",
       "conjugation": {
-        "yo": "admiro"
+        "陈述式现在时": {
+          "yo": "admiro",
+          "tú": "admiras",
+          "él/ella/usted": "admira"
+        }
       },
       "sentences": [
         {
-          "es": "Yo admiro a los que comentan con respeto",
-          "zh": "我钦佩那些即使观点不同也能好好评论的人"
+          "es": "Él Yo admiro a los que comentan con respeto.",
+          "zh": "我钦佩那些即使观点不同也能好好评论的人。"
         }
       ],
       "notes": "搭配：admirar a alguien钦佩某人；需加前置词a"
@@ -1664,12 +2118,16 @@
       "chineseMeaning": "合作",
       "originalForm": "Cooperar",
       "conjugation": {
-        "yo": "cooperamos"
+        "陈述式现在时": {
+          "yo": "coopero",
+          "tú": "cooperas",
+          "él/ella/usted": "coopera"
+        }
       },
       "sentences": [
         {
-          "es": "Si no cooperamos, no lo terminamos",
-          "zh": "不配合就完不成"
+          "es": "Él Si no cooperamos, no lo terminamos.",
+          "zh": "他不配合就完不成。"
         }
       ],
       "notes": "搭配：cooperar con alguien和某人合作；需加前置词con"
@@ -1680,12 +2138,16 @@
       "chineseMeaning": "打招呼",
       "originalForm": "Saludar",
       "conjugation": {
-        "yo": "saludo"
+        "陈述式现在时": {
+          "yo": "saludo",
+          "tú": "saludas",
+          "él/ella/usted": "saluda"
+        }
       },
       "sentences": [
         {
-          "es": "Cada manana saludo a mis companeros",
-          "zh": "每天早上我跟同学打招呼"
+          "es": "Él Cada manana saludo a mis companeros.",
+          "zh": "每天早上我跟同学打招呼。"
         }
       ],
       "notes": "搭配：saludar a alguien向某人打招呼；需加前置词a"
@@ -1696,12 +2158,16 @@
       "chineseMeaning": "告别/解雇",
       "originalForm": "Despedir",
       "conjugation": {
-        "yo": "despedimos"
+        "陈述式现在时": {
+          "yo": "despedo",
+          "tú": "despedes",
+          "él/ella/usted": "despede"
+        }
       },
       "sentences": [
         {
-          "es": "Al final del ano, despedimos a los que se van con una foto",
-          "zh": "年底，送别离开的同学时会拍张照"
+          "es": "Él Al final del ano, despedimos a los que se van con una foto.",
+          "zh": "他年底，送别离开的同学时会拍张照。"
         }
       ],
       "notes": "搭配：despedir a someone送别/解雇某人；需加前置词a"
@@ -1712,12 +2178,16 @@
       "chineseMeaning": "存储",
       "originalForm": "Almacenar",
       "conjugation": {
-        "él/ella/usted": "almacena"
+        "陈述式现在时": {
+          "él/ella/usted": "almacena",
+          "yo": "almaceno",
+          "tú": "almacenas"
+        }
       },
       "sentences": [
         {
-          "es": "EI servidor almacena todos los contratos",
-          "zh": "服务器里存着所有的合同"
+          "es": "El servidor almacena todos los contratos.",
+          "zh": "他服务器里存着所有的合同。"
         }
       ],
       "notes": "搭配：almacenar datos存储数据；及物动词"
@@ -1728,12 +2198,16 @@
       "chineseMeaning": "处理",
       "originalForm": "Procesar",
       "conjugation": {
-        "él/ella/usted": "procesa"
+        "陈述式现在时": {
+          "él/ella/usted": "procesa",
+          "yo": "proceso",
+          "tú": "procesas"
+        }
       },
       "sentences": [
         {
-          "es": "EI abogado los procesa para encontrar errores",
-          "zh": "律师会过一遍，查找问题"
+          "es": "El abogado los procesa para encontrar errores.",
+          "zh": "他律师会过一遍，查找问题。"
         }
       ],
       "notes": "搭配：procesar información处理信息；及物动词"
@@ -1744,12 +2218,16 @@
       "chineseMeaning": "执行/运行",
       "originalForm": "Ejecutar",
       "conjugation": {
-        "él/ella/usted": "ejecuta"
+        "陈述式现在时": {
+          "él/ella/usted": "ejecuta",
+          "yo": "ejecuto",
+          "tú": "ejecutas"
+        }
       },
       "sentences": [
         {
-          "es": "Si está todo bien, el jefe ejecuta la firma",
-          "zh": "没问题的话，老板就签字"
+          "es": "Él Si está todo bien, el jefe ejecuta la firma.",
+          "zh": "他没问题的话，老板就签字。"
         }
       ],
       "notes": "搭配：ejecutar un plan执行计划；ejecutar un programa运行程序"
@@ -1760,12 +2238,17 @@
       "chineseMeaning": "编程",
       "originalForm": "Programar",
       "conjugation": {
-        "ellos/ellas/ustedes": "programan"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "programan",
+          "yo": "programo",
+          "tú": "programas",
+          "él/ella/usted": "programa"
+        }
       },
       "sentences": [
         {
-          "es": "Los ingenieros programan un robot que limpia la casa",
-          "zh": "工程师们编程了一个会打扫屋子的机器人"
+          "es": "Los ingenieros programan un robot que limpia la casa.",
+          "zh": "他工程师们编程了一个会打扫屋子的机器人。"
         }
       ],
       "notes": "搭配：programar un robot给机器人编程；及物动词"
@@ -1776,12 +2259,17 @@
       "chineseMeaning": "编码",
       "originalForm": "Codificar",
       "conjugation": {
-        "ellos/ellas/ustedes": "codifican"
+        "陈述式现在时": {
+          "ellos/ellas/ustedes": "codifican",
+          "yo": "codifico",
+          "tú": "codificas",
+          "él/ella/usted": "codifica"
+        }
       },
       "sentences": [
         {
-          "es": "Codifican cada movimiento con precisión",
-          "zh": "他们精准编码每一个动作"
+          "es": "Él Codifican cada movimiento con precisión.",
+          "zh": "他们精准编码每一个动作。"
         }
       ],
       "notes": "搭配：codificar información编码信息；及物动词"
@@ -1792,12 +2280,16 @@
       "chineseMeaning": "解码",
       "originalForm": "Decodificar",
       "conjugation": {
-        "él/ella/usted": "decodifica"
+        "陈述式现在时": {
+          "él/ella/usted": "decodifica",
+          "yo": "decodifico",
+          "tú": "decodificas"
+        }
       },
       "sentences": [
         {
-          "es": "El robot decodifica las órdenes y las ejecuta",
-          "zh": "机器人解码指令并执行"
+          "es": "El robot decodifica las órdenes y las ejecuta.",
+          "zh": "他机器人解码指令并执行。"
         }
       ],
       "notes": "搭配：decodificar información解码信息；及物动词"
@@ -1808,12 +2300,16 @@
       "chineseMeaning": "扫描",
       "originalForm": "Escanear",
       "conjugation": {
-        "yo": "escaneo"
+        "陈述式现在时": {
+          "yo": "escaneo",
+          "tú": "escaneas",
+          "él/ella/usted": "escanea"
+        }
       },
       "sentences": [
         {
-          "es": "Escaneo las facturas antes de tirarlas",
-          "zh": "扔掉账单之前我先扫描一下"
+          "es": "Él Escaneo las facturas antes de tirarlas.",
+          "zh": "扔掉账单之前我先扫描一下。"
         }
       ],
       "notes": "搭配：escanear un documento扫描文件；及物动词"
@@ -1824,12 +2320,16 @@
       "chineseMeaning": "下载",
       "originalForm": "Descargar",
       "conjugation": {
-        "yo": "descargo"
+        "陈述式现在时": {
+          "yo": "descargo",
+          "tú": "descargas",
+          "él/ella/usted": "descarga"
+        }
       },
       "sentences": [
         {
-          "es": "Si las necesito, las descargo desde donde esté",
-          "zh": "有需要的话，我随时下载"
+          "es": "Él Si las necesito, las descargo desde donde esté.",
+          "zh": "有需要的话，我随时下载。"
         }
       ],
       "notes": "搭配：descargar un archivo下载文件；及物动词"
@@ -1840,12 +2340,16 @@
       "chineseMeaning": "上传/上升",
       "originalForm": "Subir",
       "conjugation": {
-        "yo": "subo"
+        "陈述式现在时": {
+          "yo": "subo",
+          "tú": "subes",
+          "él/ella/usted": "sube"
+        }
       },
       "sentences": [
         {
-          "es": "Subo los archivos a una carpeta",
-          "zh": "把文件上传到一个文件夹"
+          "es": "Él Subo los archivos a una carpeta.",
+          "zh": "他把文件上传到一个文件夹。"
         }
       ],
       "notes": "搭配：subir un archivo上传文件；subir a una place上升到某处"
@@ -1856,12 +2360,16 @@
       "chineseMeaning": "录制/刻录",
       "originalForm": "Grabar",
       "conjugation": {
-        "yo": "grabamos"
+        "陈述式现在时": {
+          "yo": "grabo",
+          "tú": "grabas",
+          "él/ella/usted": "graba"
+        }
       },
       "sentences": [
         {
-          "es": "Grabamos su voz cantando el feliz cumpleanos",
-          "zh": "我们录了她唱生日歌的声音"
+          "es": "Él Grabamos su voz cantando el feliz cumpleanos.",
+          "zh": "我们录了她唱生日歌的声音。"
         }
       ],
       "notes": "搭配：grabar un vídeo录制视频；grabar un disco刻录光盘"
@@ -1872,12 +2380,16 @@
       "chineseMeaning": "拍摄",
       "originalForm": "Filmar",
       "conjugation": {
-        "yo": "filmamos"
+        "陈述式现在时": {
+          "yo": "filmo",
+          "tú": "filmas",
+          "él/ella/usted": "filma"
+        }
       },
       "sentences": [
         {
-          "es": "Filmamos el cumpleanos de la abuela",
-          "zh": "我们拍了奶奶的生日"
+          "es": "Él Filmamos el cumpleanos de la abuela.",
+          "zh": "我们拍了奶奶的生日。"
         }
       ],
       "notes": "搭配：filmar una película拍摄电影；及物动词"
@@ -1888,12 +2400,16 @@
       "chineseMeaning": "点击",
       "originalForm": "Clicar",
       "conjugation": {
-        "yo": "clicamos"
+        "陈述式现在时": {
+          "yo": "clico",
+          "tú": "clicas",
+          "él/ella/usted": "clica"
+        }
       },
       "sentences": [
         {
-          "es": "Ahora clicamos ese video cada vez que la extranamos",
-          "zh": "现在我们每次想她，就点开那个视频"
+          "es": "Él Ahora clicamos ese video cada vez que la extranamos.",
+          "zh": "现在我们每次想她，就点开那个视频。"
         }
       ],
       "notes": "搭配：clicar el botón点击按钮；拉美西语常用，西班牙多用pulsar"

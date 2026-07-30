@@ -155,6 +155,7 @@
 .card-flip {
   position: relative;
   width: 100%;
+  display: grid;
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -164,7 +165,8 @@
 }
 
 .card-face {
-  @apply absolute inset-0 rounded-card backface-hidden;
+  grid-area: 1 / 1 / 2 / 2;
+  @apply relative w-full rounded-card backface-hidden;
   border: 1px solid #eef0f3;
 }
 

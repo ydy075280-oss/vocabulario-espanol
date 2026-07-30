@@ -58,21 +58,47 @@ function parseCSV(text) {
   return rows;
 }
 
-// 从「形式（描述）」解析出 { 人称: 形式 }；非具体人称则返回 {}
-function parseConjugation(raw) {
+// 解析整列变位数据（支持 | 分隔多个变位形式）
+// 格式示例：descubre（三单） | 第一人称(yo): descubro | 第二人称(tú): descubres | 第三人称(él/ella/usted): descubre
+function parseFullConjugation(raw) {
   if (!raw) return {};
-  const m = raw.match(/^(.*?)[（(](.+?)[)）]\s*$/);
-  if (!m) return {};
-  const form = m[1].trim();
-  const desc = m[2].trim();
-  // 原形 / 虚拟式 / 命令式 / 搭配 等不计入变位表
-  if (/原形|虚拟|命令|搭配/.test(desc)) return {};
-  let person = null;
-  for (const key of Object.keys(PERSON_MAP)) {
-    if (desc.includes(key)) { person = PERSON_MAP[key]; break; }
+  const conjugation = {};
+  // 切分各变位片段
+  const parts = raw.split(/\s*\|\s*/);
+  for (const part of parts) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    // 跳过原形/虚拟/命令/搭配等非变位描述
+    if (/原形|虚拟|命令|搭配/.test(trimmed)) continue;
+
+    // 格式1: 第一人称(yo): descubro  或  第三人称(él/ella/usted): descubre
+    const mNamed = trimmed.match(/^第[一二三]人称\s*[(（](.+?)[)）]\s*:\s*(.+)$/);
+    if (mNamed) {
+      const person = mNamed[1].trim();
+      const form = mNamed[2].trim();
+      if (person && form) conjugation[person] = form;
+      continue;
+    }
+
+    // 格式2: descubre（三单） — 提取中文人称简称
+    const mDesc = trimmed.match(/^(.+?)[（(](.+?)[)）]\s*$/);
+    if (mDesc) {
+      const form = mDesc[1].trim();
+      const desc = mDesc[2].trim();
+      for (const key of Object.keys(PERSON_MAP)) {
+        if (desc.includes(key)) { conjugation[PERSON_MAP[key]] = form; break; }
+      }
+      continue;
+    }
+
+    // 格式3: descubre（él/ella/usted）— 括号内直接是西语人称
+    const mNative = trimmed.match(/^(.+?)[（(](yo|tú|él\/ella\/usted|nosotros|vosotros|ellos\/ellas\/ustedes)[)）]\s*$/);
+    if (mNative) {
+      conjugation[mNative[2].trim()] = mNative[1].trim();
+    }
   }
-  if (!person) return {};
-  return { [person]: form };
+  // 至少存一个人称才返回；否则 {}
+  return Object.keys(conjugation).length > 0 ? { '陈述式现在时': conjugation } : {};
 }
 
 // 从文件名推断单词本名称（去掉常见前缀与扩展名）
@@ -150,7 +176,7 @@ function main() {
     const chineseMeaning = (r[1] || '').trim();
     // 跳过表头与无释义的空白行
     if (!word || !chineseMeaning) { skipped++; continue; }
-    if (word === '动词原形') continue; // 表头
+    if (word === '动词原形' || word === '原形') continue; // 表头
 
     const conjugationRaw = (r[2] || '').trim();
     const zh = (r[3] || '').trim();
@@ -162,7 +188,7 @@ function main() {
       partOfSpeech: inferPartOfSpeech(bookName),
       chineseMeaning,
       originalForm: word,
-      conjugation: parseConjugation(conjugationRaw),
+      conjugation: parseFullConjugation(conjugationRaw),
       sentences: es ? [{ es, zh }] : [],
     };
     if (notes) entry.notes = notes;

@@ -12,6 +12,7 @@ interface Card {
   notes?: string;
   status: string;
   sentences: Array<{ sentence_es: string }>;
+  conjugation: Record<string, Record<string, string>>;
 }
 
 export default function WordbookDetail() {
@@ -80,6 +81,16 @@ export default function WordbookDetail() {
     };
     const label: Record<string, string> = { new: '新学', learning: '学习中', mastered: '已掌握' };
     return { className: map[status] || '', label: label[status] || status };
+  };
+
+  const flatConjugation = (conj: Record<string, Record<string, string>>): string[] => {
+    const forms: string[] = [];
+    for (const tense of Object.keys(conj)) {
+      for (const person of Object.keys(conj[tense])) {
+        forms.push(conj[tense][person]);
+      }
+    }
+    return forms;
   };
 
   if (loading) {
@@ -192,6 +203,15 @@ export default function WordbookDetail() {
                   <p className="text-xs text-typo-muted/70 truncate mt-0.5">
                     {card.notes}
                   </p>
+                )}
+                {card.conjugation && Object.keys(card.conjugation).length > 0 && (
+                  <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1">
+                    {flatConjugation(card.conjugation).map((form, i) => (
+                      <span key={i} className="text-[10px] text-accent bg-accent/10 px-1.5 py-0.5 rounded-pill">
+                        {form}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
               <button

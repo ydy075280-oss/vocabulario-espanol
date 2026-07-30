@@ -56,12 +56,11 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
       {/* Card */}
       <div
         className="perspective-1000 cursor-pointer select-none"
-        style={{ minHeight: '340px' }}
         onClick={handleFlip}
       >
-        <div className={`card-flip ${flipped ? 'flipped' : ''}`} style={{ minHeight: '340px' }}>
+        <div className={`card-flip ${flipped ? 'flipped' : ''}`}>
           {/* Front */}
-          <div className="card-face bg-canvas flex flex-col items-center justify-center p-8 border border-hairline-soft">
+          <div className="card-face bg-canvas min-h-[340px] flex flex-col items-center justify-center p-8 border border-hairline-soft">
             {card.part_of_speech && (
               <span className="text-eyebrow uppercase text-typo-muted mb-3"
                     style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
@@ -134,11 +133,18 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
                    style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
                   动词变位
                 </p>
-                <div className="grid grid-cols-2 gap-1">
-                  {Object.entries(card.conjugation).map(([person, form]) => (
-                    <div key={person} className="flex justify-between px-2 py-0.5">
-                      <span className="text-typo-muted">{person}:</span>
-                      <span className="font-medium text-ink">{String(form)}</span>
+                <div className="space-y-2">
+                  {Object.entries(card.conjugation).map(([tense, persons]) => (
+                    <div key={tense}>
+                      <p className="text-typo-muted/70 mb-1 text-[10px]">{tense}</p>
+                      <div className="grid grid-cols-2 gap-1">
+                        {Object.entries(persons).map(([person, form]) => (
+                          <div key={person} className="flex justify-between px-2 py-0.5">
+                            <span className="text-typo-muted">{person}:</span>
+                            <span className="font-medium text-ink">{form}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -158,7 +164,7 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
 
             {/* 造句段落 */}
             {card.sentences && card.sentences.length > 0 && (
-              <div className="flex-1 overflow-y-auto p-4 bg-surface rounded-card border border-hairline-soft">
+              <div className="p-4 bg-surface rounded-card border border-hairline-soft">
                 <p className="text-eyebrow uppercase text-typo-muted mb-2"
                    style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
                   造句

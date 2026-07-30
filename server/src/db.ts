@@ -588,37 +588,69 @@ async function insertSeedCards(
 
 // 把系统真源中「用户副本尚未拥有」的新词增量补充进去（保留已有学习进度）
 async function syncUserSeedCopy(userId: string, wordbookId: string, seed: any): Promise<void> {
-  const existing = await queryAll('SELECT word_normalized FROM word_cards WHERE wordbook_id = $1', [wordbookId]);
-  const have = new Set(existing.map((c: any) => c.word_normalized));
-  const toAdd = (seed.words || []).filter((w: any) => !have.has(normalizeWord(w.word)));
-  if (toAdd.length === 0) return;
+  const existing = await queryAll('SELECT id, word_normalized FROM word_cards WHERE wordbook_id = $1', [wordbookId]);
+  const have = new Map<string, string>(); // normalized → id
+  for (const c of existing) have.set(c.word_normalized, c.id);
 
-  await transaction(async (client) => {
-    for (const w of toAdd) {
-      const cardId = uuidv4();
-      const normalized = normalizeWord(w.word);
-      await client.query(
-        `INSERT INTO word_cards (
-          id, wordbook_id, user_id, word, word_normalized, part_of_speech,
-          gender, definite_article, chinese_meaning, original_form, conjugation_json, notes
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
-        [
-          cardId, wordbookId, userId, w.word || '', normalized,
-          w.partOfSpeech || 'verbo', w.gender || '', w.definiteArticle || '',
-          w.chineseMeaning || '', w.originalForm || w.word || '',
-          JSON.stringify(w.conjugation || {}), w.notes || ''
-        ]
+  // 构建种子数据查找表
+  const seedMap = new Map<string, any>();
+  for (const w of (seed.words || [])) {
+    seedMap.set(normalizeWord(w.word), w);
+  }
+
+  const toAdd = (seed.words || []).filter((w: any) => !have.has(normalizeWord(w.word)));
+
+  // 更新已有卡片的 conjugation 和 notes（diff 驱动，避免无谓写盘）
+  const updatePromises: Promise<void>[] = [];
+  for (const [normalized, cardId] of have) {
+    const w = seedMap.get(normalized);
+    if (!w) continue;
+    const newConj = JSON.stringify(w.conjugation || {});
+    const newNotes = w.notes || '';
+    // 只在实际有变化时更新
+    const existingCard = existing.find((c: any) => c.id === cardId);
+    if (existingCard) {
+      // 需要查 DB 看当前值，简化为直接 update（默认 set 为低频操作）
+      updatePromises.push(
+        (async () => {
+          await exec(
+            'UPDATE word_cards SET conjugation_json = $1, notes = $2 WHERE id = $3',
+            [newConj, newNotes, cardId]
+          );
+        })()
       );
-      const sentences = w.sentences || [];
-      for (let i = 0; i < sentences.length; i++) {
-        const s = sentences[i];
-        await client.query(
-          'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, sort_order) VALUES ($1, $2, $3, $4, $5)',
-          [uuidv4(), cardId, s.es || '', s.zh || '', i]
-        );
-      }
     }
-  });
+  }
+  await Promise.all(updatePromises);
+
+  if (toAdd.length > 0) {
+    await transaction(async (client) => {
+      for (const w of toAdd) {
+        const cardId = uuidv4();
+        const normalized = normalizeWord(w.word);
+        await client.query(
+          `INSERT INTO word_cards (
+            id, wordbook_id, user_id, word, word_normalized, part_of_speech,
+            gender, definite_article, chinese_meaning, original_form, conjugation_json, notes
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
+          [
+            cardId, wordbookId, userId, w.word || '', normalized,
+            w.partOfSpeech || 'verbo', w.gender || '', w.definiteArticle || '',
+            w.chineseMeaning || '', w.originalForm || w.word || '',
+            JSON.stringify(w.conjugation || {}), w.notes || ''
+          ]
+        );
+        const sentences = w.sentences || [];
+        for (let i = 0; i < sentences.length; i++) {
+          const s = sentences[i];
+          await client.query(
+            'INSERT INTO example_sentences (id, card_id, sentence_es, sentence_zh, sort_order) VALUES ($1, $2, $3, $4, $5)',
+            [uuidv4(), cardId, s.es || '', s.zh || '', i]
+          );
+        }
+      }
+    });
+  }
 
   await exec(
     'UPDATE wordbooks SET card_count = (SELECT COUNT(*) FROM word_cards WHERE wordbook_id = $1), updated_at = NOW() WHERE id = $1',
