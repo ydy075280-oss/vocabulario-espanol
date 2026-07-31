@@ -8,7 +8,40 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 在 GitHub Runner 上构建（Runner 能访问 GitHub/npm，ECS 不能）
+      - name: Build client & server
+        run: |
+          cd client && npm ci && npm run build && cd ..
+          cd server && npm ci && npm run build && cd ..
+
+      # 把代码 + 构建产物 + node_modules 推到 ECS（ECS 不访问 GitHub）
+      - name: Sync files to ECS via rsync
+        env:
+          SSH_KEY: ${{ secrets.ECS_SSH_KEY }}
+          ECS_HOST: ${{ secrets.ECS_HOST }}
+          ECS_USER: ${{ secrets.ECS_USERNAME }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/ecs_key
+          chmod 600 ~/.ssh/ecs_key
+          ssh-keyscan -H "$ECS_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          rsync -az --delete \
+            --exclude='.git' \
+            --exclude='client/node_modules' \
+            --exclude='server/.env' \
+            --exclude='*.log' \
+            -e "ssh -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no" \
+            ./ "$ECS_USER@$ECS_HOST:/opt/vocabulario-espanol/"
+
+      - name: Configure & start on ECS
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.ECS_HOST }}
@@ -17,20 +50,9 @@ jobs:
           script: |
             set -e
             cd /opt/vocabulario-espanol
-            git pull origin main
-
-            # 安装依赖
-            cd client && npm ci && cd ..
-            cd server && npm ci && cd ..
-
-            # 构建前后端
-            cd client && npm run build && cd ..
-            cd server && npm run build && cd ..
-
-            # 写入环境变量
+            # 注入生产环境变量（来自仓库 Secret ENV_FILE_CONTENT）
             printf '%s' "${{ secrets.ENV_FILE_CONTENT }}" > server/.env
 
-            # 用 PM2 启动/重启后端（后端会同时托管前端静态文件）
             cd server
             pm2 delete vocabulario-server 2>/dev/null || true
             pm2 start dist/index.js --name vocabulario-server
