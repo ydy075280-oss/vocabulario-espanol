@@ -18,14 +18,20 @@ jobs:
             set -e
             cd /opt/vocabulario-espanol
             git pull origin main
-            printf '%s' "${{ secrets.ENV_FILE_CONTENT }}" > .env
-            docker build -t vocabulario-espanol .
-            docker stop vocabulario-espanol 2>/dev/null || true
-            docker rm vocabulario-espanol 2>/dev/null || true
-            docker run -d \
-              --name vocabulario-espanol \
-              --restart unless-stopped \
-              -p 3001:3001 \
-              --env-file .env \
-              vocabulario-espanol
-            docker image prune -f
+
+            # 安装依赖
+            cd client && npm ci && cd ..
+            cd server && npm ci && cd ..
+
+            # 构建前后端
+            cd client && npm run build && cd ..
+            cd server && npm run build && cd ..
+
+            # 写入环境变量
+            printf '%s' "${{ secrets.ENV_FILE_CONTENT }}" > server/.env
+
+            # 用 PM2 启动/重启后端（后端会同时托管前端静态文件）
+            cd server
+            pm2 delete vocabulario-server 2>/dev/null || true
+            pm2 start dist/index.js --name vocabulario-server
+            pm2 save
