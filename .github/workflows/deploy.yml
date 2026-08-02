@@ -3,6 +3,7 @@ name: Deploy to ECS
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -21,6 +22,17 @@ jobs:
         run: |
           cd client && npm ci && npm run build && cd ..
           cd server && npm ci && npm run build && cd ..
+
+      # 调试：确认网络可达性
+      - name: Debug SSH connectivity
+        env:
+          ECS_HOST: ${{ secrets.ECS_HOST }}
+          ECS_USER: ${{ secrets.ECS_USERNAME }}
+        run: |
+          echo "ECS_HOST=$ECS_HOST"
+          echo "ECS_USER=$ECS_USER"
+          echo "Testing TCP port 22..."
+          timeout 10 bash -c "until nc -z -v $ECS_HOST 22; do sleep 1; done" || echo "Port 22 not reachable"
 
       # 把代码 + 构建产物 + node_modules 推到 ECS（ECS 不访问 GitHub）
       - name: Sync files to ECS via rsync
