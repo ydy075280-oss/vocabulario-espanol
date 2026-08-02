@@ -5,6 +5,7 @@ import path from 'path';
 import { initDatabase } from './db';
 import authRoutes from './routes/auth';
 import uploadRoutes from './routes/upload';
+import chatRoutes from './routes/chat';
 import wordbookRoutes from './routes/wordbooks';
 import cardRoutes from './routes/cards';
 import learnRoutes from './routes/learn';
@@ -39,6 +40,7 @@ app.use('/api/create', createRoutes);
 app.use('/api/tts', ttsRoutes);
 app.use('/api/modules', moduleRoutes);
 app.use('/api/memorize', memorizeRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Health check
 app.get('/api/health', (_req, res) => {

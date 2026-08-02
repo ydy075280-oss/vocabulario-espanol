@@ -1,0 +1,3412 @@
+{
+  "version": 2,
+  "wordbook": {
+    "name": "高频词汇",
+    "sourceType": "seed",
+    "courseTag": "高频"
+  },
+  "words": [
+    {
+      "word": "el invierno",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "冬天",
+      "originalForm": "el invierno",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En invierno hace mucho frío.",
+          "zh": "冬天很冷。"
+        }
+      ],
+      "notes": "【主题】季节\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】en invierno - 在冬天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la primavera",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "春天",
+      "originalForm": "la primavera",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En primavera florecen las flores.",
+          "zh": "春天花开。"
+        }
+      ],
+      "notes": "【主题】季节\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】en primavera - 在春天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el verano",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "夏天",
+      "originalForm": "el verano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En verano vamos a la playa.",
+          "zh": "夏天我们去海边。"
+        }
+      ],
+      "notes": "【主题】季节\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】en verano - 在夏天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el otoño",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "秋天",
+      "originalForm": "el otoño",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En otoño las hojas cambian de color.",
+          "zh": "秋天树叶变色。"
+        }
+      ],
+      "notes": "【主题】季节\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】en otoño - 在秋天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el sol",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "太阳",
+      "originalForm": "el sol",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hoy hace sol.",
+          "zh": "今天阳光很好。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer sol - 晴天、有太阳\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la luna",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "月亮",
+      "originalForm": "la luna",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta ver la luna por la noche.",
+          "zh": "我喜欢晚上看月亮。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ver la luna - 看月亮\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la estrella",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "星星",
+      "originalForm": "la estrella",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Miramos las estrellas desde la ventana.",
+          "zh": "我们从窗户看星星。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mirar las estrellas - 看星星\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la lluvia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "雨",
+      "originalForm": "la lluvia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mañana va a llover mucho.",
+          "zh": "明天会下大雨。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】llover mucho - 下大雨\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la nieve",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "雪",
+      "originalForm": "la nieve",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "En invierno suele nevar aquí.",
+          "zh": "这里冬天经常下雪。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】nevar mucho - 下大雪\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la nube",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "云",
+      "originalForm": "la nube",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El cielo está lleno de nubes.",
+          "zh": "天空布满云。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】cielo con nubes - 多云的天空\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el viento",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "风",
+      "originalForm": "el viento",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hoy hace mucho viento.",
+          "zh": "今天风很大。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer viento - 刮风\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el huracán",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "飓风",
+      "originalForm": "el huracán",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El huracán llegó a la costa.",
+          "zh": "飓风到达海岸。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】un huracán fuerte - 强烈飓风\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "el granizo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "冰雹",
+      "originalForm": "el granizo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ayer cayó granizo.",
+          "zh": "昨天下冰雹。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】caer granizo - 下冰雹\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "el frío",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "寒冷",
+      "originalForm": "el frío",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hace frío esta mañana.",
+          "zh": "今天早上很冷。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer frío - 冷\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el calor",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "炎热",
+      "originalForm": "el calor",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hace mucho calor en agosto.",
+          "zh": "八月很热。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer calor - 热\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la niebla",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "雾",
+      "originalForm": "la niebla",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hay mucha niebla por la mañana.",
+          "zh": "早上有大雾。"
+        }
+      ],
+      "notes": "【主题】天气\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】haber niebla - 有雾\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "rojo",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "红色的",
+      "originalForm": "rojo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El coche es rojo.",
+          "zh": "这辆车是红色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color rojo - 红色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "azul",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "蓝色的",
+      "originalForm": "azul",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El cielo es azul.",
+          "zh": "天空是蓝色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color azul - 蓝色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "amarillo",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "黄色的",
+      "originalForm": "amarillo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La flor es amarilla.",
+          "zh": "花是黄色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color amarillo - 黄色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "verde",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "绿色的",
+      "originalForm": "verde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta el color verde.",
+          "zh": "我喜欢绿色。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】color verde - 绿色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "negro",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "黑色的",
+      "originalForm": "negro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lleva una camisa negra.",
+          "zh": "他穿黑色衬衫。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】ropa negra - 黑色衣服\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "blanco",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "白色的",
+      "originalForm": "blanco",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La pared es blanca.",
+          "zh": "墙是白色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color blanco - 白色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "gris",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "灰色的",
+      "originalForm": "gris",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El cielo está gris.",
+          "zh": "天空是灰色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color gris - 灰色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "morado",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "紫色的",
+      "originalForm": "morado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene una bolsa morada.",
+          "zh": "她有一个紫色包。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color morado - 紫色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "rosa",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "粉色的",
+      "originalForm": "rosa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La habitación es rosa.",
+          "zh": "房间是粉色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color rosa - 粉色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "marrón",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "棕色的",
+      "originalForm": "marrón",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El perro es marrón.",
+          "zh": "狗是棕色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color marrón - 棕色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "naranja",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "橙色的",
+      "originalForm": "naranja",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La camiseta es naranja.",
+          "zh": "T恤是橙色的。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color naranja - 橙色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "dorado",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "金色的",
+      "originalForm": "dorado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene un reloj dorado.",
+          "zh": "他有一块金色手表。"
+        }
+      ],
+      "notes": "【主题】颜色\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】color dorado - 金色\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "grande",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "大的",
+      "originalForm": "grande",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Madrid es una ciudad grande.",
+          "zh": "马德里是一座大城市。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】una ciudad grande - 大城市\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "pequeño",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "小的",
+      "originalForm": "pequeño",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Este móvil es pequeño.",
+          "zh": "这个手机很小。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】un poco pequeño - 有点小\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "alto",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "高的",
+      "originalForm": "alto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi hermano es alto.",
+          "zh": "我哥哥很高。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】persona alta - 高个子的人\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "bajo",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "矮的/低的",
+      "originalForm": "bajo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Este producto tiene un precio bajo.",
+          "zh": "这个产品价格低。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】precio bajo - 低价格\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "gordo",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "胖的",
+      "originalForm": "gordo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Está un poco gordo.",
+          "zh": "他有点胖。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】estar gordo - 变胖\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "delgado",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "瘦的",
+      "originalForm": "delgado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi amigo es delgado.",
+          "zh": "我的朋友很瘦。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】estar delgado - 很瘦\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "joven",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "年轻的",
+      "originalForm": "joven",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Es una persona joven.",
+          "zh": "他是年轻人。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】persona joven - 年轻人\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "viejo",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "老的",
+      "originalForm": "viejo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Es un edificio viejo.",
+          "zh": "这是一栋旧建筑。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】un edificio viejo - 旧建筑\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "nuevo",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "新的",
+      "originalForm": "nuevo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Compré un teléfono nuevo.",
+          "zh": "我买了新手机。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】producto nuevo - 新产品\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "antiguo",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "古老的",
+      "originalForm": "antiguo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Toledo es una ciudad antigua.",
+          "zh": "托莱多是一座古城。"
+        }
+      ],
+      "notes": "【主题】描述\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】una ciudad antigua - 古城\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "bueno",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "好的",
+      "originalForm": "bueno",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La comida está muy buena.",
+          "zh": "食物很好吃。"
+        }
+      ],
+      "notes": "【主题】评价\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】muy bueno - 非常好\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "malo",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "坏的",
+      "originalForm": "malo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hoy tengo un mal día.",
+          "zh": "今天很糟糕。"
+        }
+      ],
+      "notes": "【主题】评价\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】un mal día - 糟糕的一天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "feliz",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "开心的",
+      "originalForm": "feliz",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Estoy muy feliz hoy.",
+          "zh": "我今天很开心。"
+        }
+      ],
+      "notes": "【主题】情绪\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】estar feliz - 感到开心\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "triste",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "难过的",
+      "originalForm": "triste",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Está triste por la noticia.",
+          "zh": "他因为消息很难过。"
+        }
+      ],
+      "notes": "【主题】情绪\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】estar triste - 感到难过\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "rápido",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "快的",
+      "originalForm": "rápido",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El tren es muy rápido.",
+          "zh": "火车很快。"
+        }
+      ],
+      "notes": "【主题】速度\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】muy rápido - 非常快\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "lento",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "慢的",
+      "originalForm": "lento",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El internet va lento.",
+          "zh": "网络很慢。"
+        }
+      ],
+      "notes": "【主题】速度\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】ir lento - 运行慢\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "fácil",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "简单的",
+      "originalForm": "fácil",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Este ejercicio es fácil.",
+          "zh": "这个练习很简单。"
+        }
+      ],
+      "notes": "【主题】难度\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】ser fácil - 很简单\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "difícil",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "困难的",
+      "originalForm": "difícil",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Aprender español no es fácil, pero tampoco es difícil.",
+          "zh": "学西语不容易，但也不难。"
+        }
+      ],
+      "notes": "【主题】难度\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】ser difícil - 很困难\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "dulce",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "甜的",
+      "originalForm": "dulce",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta la comida dulce.",
+          "zh": "我喜欢甜食。"
+        }
+      ],
+      "notes": "【主题】味道\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】comida dulce - 甜食\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "salado",
+      "partOfSpeech": "adjetivo",
+      "chineseMeaning": "咸的",
+      "originalForm": "salado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La sopa está muy salada.",
+          "zh": "汤太咸了。"
+        }
+      ],
+      "notes": "【主题】味道\n【词性】形容词\n【变位/形式】阴阳性、单复数变化补充\n【搭配】comida salada - 咸味食物\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "sano",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "健康的",
+      "originalForm": "sano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Como comida sana.",
+          "zh": "我吃健康食品。"
+        }
+      ],
+      "notes": "【主题】健康\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】comida sana - 健康食品\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "ser",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "是",
+      "originalForm": "ser",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Es importante aprender idiomas.",
+          "zh": "学习语言很重要。"
+        }
+      ],
+      "notes": "【主题】存在状态\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】ser importante - 很重要\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "estar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "在、处于",
+      "originalForm": "estar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Estoy bien, gracias.",
+          "zh": "我很好，谢谢。"
+        }
+      ],
+      "notes": "【主题】状态位置\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】estar bien - 状态很好\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "tener",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "有",
+      "originalForm": "tener",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No tengo tiempo hoy.",
+          "zh": "我今天没有时间。"
+        }
+      ],
+      "notes": "【主题】拥有\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】tener tiempo - 有时间\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "haber",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "存在、有",
+      "originalForm": "haber",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hay mucha gente aquí.",
+          "zh": "这里有很多人。"
+        }
+      ],
+      "notes": "【主题】存在\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】hay muchas personas - 有很多人\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "hacer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "做",
+      "originalForm": "hacer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hago ejercicio todos los días.",
+          "zh": "我每天运动。"
+        }
+      ],
+      "notes": "【主题】动作\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】hacer ejercicio - 运动\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "ir",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "去",
+      "originalForm": "ir",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy al trabajo.",
+          "zh": "我去工作。"
+        }
+      ],
+      "notes": "【主题】移动\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】ir a + 地点 - 去某地\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "ver",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "看见",
+      "originalForm": "ver",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Veo una película esta noche.",
+          "zh": "我今晚看电影。"
+        }
+      ],
+      "notes": "【主题】视觉\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】ver una película - 看电影\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "comer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "吃",
+      "originalForm": "comer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Comemos fuera este fin de semana.",
+          "zh": "这个周末我们出去吃饭。"
+        }
+      ],
+      "notes": "【主题】饮食\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】comer fuera - 外出吃饭\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "beber",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "喝",
+      "originalForm": "beber",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Bebo mucha agua.",
+          "zh": "我喝很多水。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】beber agua - 喝水\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "hablar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "说话",
+      "originalForm": "hablar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hablo español un poco.",
+          "zh": "我会说一点西语。"
+        }
+      ],
+      "notes": "【主题】交流\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】hablar español - 说西班牙语\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "leer",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "阅读",
+      "originalForm": "leer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Leo un libro antes de dormir.",
+          "zh": "我睡前读书。"
+        }
+      ],
+      "notes": "【主题】学习\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】leer un libro - 读书\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "escuchar",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "听",
+      "originalForm": "escuchar",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Escucho música todos los días.",
+          "zh": "我每天听音乐。"
+        }
+      ],
+      "notes": "【主题】听觉\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】escuchar música - 听音乐\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la casa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "家",
+      "originalForm": "la casa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Estoy en casa ahora.",
+          "zh": "我现在在家。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】estar en casa - 在家\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la escuela",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "学校",
+      "originalForm": "la escuela",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Los niños van a la escuela.",
+          "zh": "孩子们去学校。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir a la escuela - 去学校\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el hospital",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "医院",
+      "originalForm": "el hospital",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo que ir al hospital.",
+          "zh": "我必须去医院。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir al hospital - 去医院\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la calle",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "街道",
+      "originalForm": "la calle",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hay mucha gente en la calle.",
+          "zh": "街上有很多人。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】en la calle - 在街上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la ciudad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "城市",
+      "originalForm": "la ciudad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Vivo en una ciudad grande.",
+          "zh": "我住在大城市。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】una ciudad grande - 大城市\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "aquí",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "这里",
+      "originalForm": "aquí",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Estoy aquí esperando.",
+          "zh": "我在这里等。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】estar aquí - 在这里\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "allí",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "那里",
+      "originalForm": "allí",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi coche está allí.",
+          "zh": "我的车在那里。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】estar allí - 在那里\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "izquierda",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "左边",
+      "originalForm": "izquierda",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El banco está a la izquierda.",
+          "zh": "银行在左边。"
+        }
+      ],
+      "notes": "【主题】方向\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a la izquierda - 在左边\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "derecha",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "右边",
+      "originalForm": "derecha",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Gira a la derecha.",
+          "zh": "向右转。"
+        }
+      ],
+      "notes": "【主题】方向\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a la derecha - 在右边\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la tienda",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "商店",
+      "originalForm": "la tienda",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy a la tienda a comprar pan.",
+          "zh": "我去商店买面包。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir a la tienda - 去商店\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la estación",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "车站",
+      "originalForm": "la estación",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La estación está cerca.",
+          "zh": "车站很近。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】estación de tren - 火车站\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la plaza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "广场",
+      "originalForm": "la plaza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Nos vemos en la plaza.",
+          "zh": "我们在广场见。"
+        }
+      ],
+      "notes": "【主题】地点\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】en la plaza - 在广场\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la madre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "妈妈",
+      "originalForm": "la madre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi madre cocina muy bien.",
+          "zh": "我妈妈做饭很好。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mi madre - 我的妈妈\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el padre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "爸爸",
+      "originalForm": "el padre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi padre trabaja mucho.",
+          "zh": "我爸爸工作很多。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mi padre - 我的爸爸\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el hijo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "儿子",
+      "originalForm": "el hijo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene un hijo pequeño.",
+          "zh": "他有一个小儿子。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tener un hijo - 有一个儿子\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la hija",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "女儿",
+      "originalForm": "la hija",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene una hija de cinco años.",
+          "zh": "他有一个五岁的女儿。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tener una hija - 有一个女儿\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el abuelo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "祖父、爷爷",
+      "originalForm": "el abuelo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi abuelo vive en el campo.",
+          "zh": "我爷爷住在乡下。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mi abuelo - 我的爷爷\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la abuela",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "祖母、奶奶",
+      "originalForm": "la abuela",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi abuela hace comida deliciosa.",
+          "zh": "我奶奶做饭很好吃。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mi abuela - 我的奶奶\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el nieto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "孙子",
+      "originalForm": "el nieto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi abuelo tiene dos nietos.",
+          "zh": "我爷爷有两个孙子。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tener un nieto - 有一个孙子\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la nieta",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "孙女",
+      "originalForm": "la nieta",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene una nieta muy bonita.",
+          "zh": "他有一个漂亮的孙女。"
+        }
+      ],
+      "notes": "【主题】家庭\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tener una nieta - 有一个孙女\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el esposo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "丈夫",
+      "originalForm": "el esposo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi esposo trabaja en Madrid.",
+          "zh": "我丈夫在马德里工作。"
+        }
+      ],
+      "notes": "【主题】关系\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mi esposo - 我的丈夫\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la esposa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "妻子",
+      "originalForm": "la esposa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi esposa es profesora.",
+          "zh": "我妻子是老师。"
+        }
+      ],
+      "notes": "【主题】关系\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mi esposa - 我的妻子\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el profesor / la profesora",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "老师",
+      "originalForm": "el profesor / la profesora",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi profesor explica muy bien.",
+          "zh": "我的老师讲得很好。"
+        }
+      ],
+      "notes": "【主题】职业\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】profesor de español - 西语老师\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el médico / la médica",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "医生",
+      "originalForm": "el médico / la médica",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo que ir al médico.",
+          "zh": "我必须去看医生。"
+        }
+      ],
+      "notes": "【主题】职业\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir al médico - 去看医生\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el estudiante",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "学生",
+      "originalForm": "el estudiante",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Soy estudiante de español.",
+          "zh": "我是西语学生。"
+        }
+      ],
+      "notes": "【主题】身份\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ser estudiante - 是学生\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el amigo / la amiga",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "朋友",
+      "originalForm": "el amigo / la amiga",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Quiero hacer nuevos amigos.",
+          "zh": "我想交新朋友。"
+        }
+      ],
+      "notes": "【主题】关系\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer amigos - 交朋友\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el hombre",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "男人",
+      "originalForm": "el hombre",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Es un hombre joven.",
+          "zh": "他是一个年轻男人。"
+        }
+      ],
+      "notes": "【主题】人物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】un hombre joven - 年轻男人\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la mujer",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "女人",
+      "originalForm": "la mujer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Es una mujer muy fuerte.",
+          "zh": "她是一个很坚强的女人。"
+        }
+      ],
+      "notes": "【主题】人物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】una mujer fuerte - 坚强的女人\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el agua",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "水",
+      "originalForm": "el agua",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Bebo agua todos los días.",
+          "zh": "我每天喝水。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】beber agua - 喝水\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el café",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "咖啡",
+      "originalForm": "el café",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tomo café por la mañana.",
+          "zh": "我早上喝咖啡。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar café - 喝咖啡\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el té",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "茶",
+      "originalForm": "el té",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta tomar té verde.",
+          "zh": "我喜欢喝绿茶。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar té - 喝茶\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el zumo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "果汁",
+      "originalForm": "el zumo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Los niños toman zumo.",
+          "zh": "孩子们喝果汁。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar zumo - 喝果汁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el refresco",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "汽水",
+      "originalForm": "el refresco",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No bebo muchos refrescos.",
+          "zh": "我不喝很多汽水。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】beber refresco - 喝汽水\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el vino",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "葡萄酒",
+      "originalForm": "el vino",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "España produce mucho vino.",
+          "zh": "西班牙生产很多葡萄酒。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】beber vino - 喝葡萄酒\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la cerveza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "啤酒",
+      "originalForm": "la cerveza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tomamos una cerveza juntos.",
+          "zh": "我们一起喝一杯啤酒。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar una cerveza - 喝一杯啤酒\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la leche",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "牛奶",
+      "originalForm": "la leche",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Bebo leche por la mañana.",
+          "zh": "我早上喝牛奶。"
+        }
+      ],
+      "notes": "【主题】饮品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】beber leche - 喝牛奶\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el pan",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "面包",
+      "originalForm": "el pan",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy a comprar pan.",
+          "zh": "我要去买面包。"
+        }
+      ],
+      "notes": "【主题】食物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comprar pan - 买面包\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el arroz",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "米饭",
+      "originalForm": "el arroz",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Comemos arroz con pollo.",
+          "zh": "我们吃鸡肉饭。"
+        }
+      ],
+      "notes": "【主题】食物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer arroz - 吃米饭\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la pasta",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "意大利面",
+      "originalForm": "la pasta",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi madre hace pasta los domingos.",
+          "zh": "我妈妈星期天做意大利面。"
+        }
+      ],
+      "notes": "【主题】食物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer pasta - 做意大利面\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la sopa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "汤",
+      "originalForm": "la sopa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La sopa está caliente.",
+          "zh": "汤很热。"
+        }
+      ],
+      "notes": "【主题】食物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar sopa - 喝汤\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la pizza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "披萨",
+      "originalForm": "la pizza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Comemos pizza los viernes.",
+          "zh": "我们星期五吃披萨。"
+        }
+      ],
+      "notes": "【主题】食物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer pizza - 吃披萨\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la ensalada",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "沙拉",
+      "originalForm": "la ensalada",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Preparo una ensalada fresca.",
+          "zh": "我准备一份新鲜沙拉。"
+        }
+      ],
+      "notes": "【主题】食物\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer una ensalada - 做沙拉\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la carne",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "肉",
+      "originalForm": "la carne",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No como mucha carne.",
+          "zh": "我不吃很多肉。"
+        }
+      ],
+      "notes": "【主题】肉类\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer carne - 吃肉\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el pollo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "鸡肉",
+      "originalForm": "el pollo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta el pollo con arroz.",
+          "zh": "我喜欢鸡肉饭。"
+        }
+      ],
+      "notes": "【主题】肉类\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】pollo con arroz - 鸡肉配米饭\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el cerdo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "猪肉",
+      "originalForm": "el cerdo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No como carne de cerdo.",
+          "zh": "我不吃猪肉。"
+        }
+      ],
+      "notes": "【主题】肉类\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】carne de cerdo - 猪肉\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el pescado",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "鱼",
+      "originalForm": "el pescado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Como pescado dos veces por semana.",
+          "zh": "我每周吃两次鱼。"
+        }
+      ],
+      "notes": "【主题】肉类\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer pescado - 吃鱼\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el marisco",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "海鲜",
+      "originalForm": "el marisco",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El marisco está fresco.",
+          "zh": "海鲜很新鲜。"
+        }
+      ],
+      "notes": "【主题】海鲜\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】marisco fresco - 新鲜海鲜\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el huevo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "鸡蛋",
+      "originalForm": "el huevo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Quiero un huevo frito.",
+          "zh": "我想要一个煎蛋。"
+        }
+      ],
+      "notes": "【主题】蛋类\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】huevo frito - 煎蛋\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el queso",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "奶酪",
+      "originalForm": "el queso",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta el queso fresco.",
+          "zh": "我喜欢新鲜奶酪。"
+        }
+      ],
+      "notes": "【主题】乳制品\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】queso fresco - 新鲜奶酪\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el aceite",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "食用油",
+      "originalForm": "el aceite",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Uso aceite de oliva para cocinar.",
+          "zh": "我用橄榄油做饭。"
+        }
+      ],
+      "notes": "【主题】调味\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】aceite de oliva - 橄榄油\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la sal",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "盐",
+      "originalForm": "la sal",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Pon un poco de sal.",
+          "zh": "加一点盐。"
+        }
+      ],
+      "notes": "【主题】调味\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】poner sal - 加盐\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la pimienta",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "胡椒",
+      "originalForm": "la pimienta",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Añade pimienta negra.",
+          "zh": "加入黑胡椒。"
+        }
+      ],
+      "notes": "【主题】调味\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】pimienta negra - 黑胡椒\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el tomate",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "西红柿",
+      "originalForm": "el tomate",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Compro tomates frescos.",
+          "zh": "我买新鲜西红柿。"
+        }
+      ],
+      "notes": "【主题】蔬菜\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomate fresco - 新鲜西红柿\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la cebolla",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "洋葱",
+      "originalForm": "la cebolla",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Estoy cortando cebolla.",
+          "zh": "我正在切洋葱。"
+        }
+      ],
+      "notes": "【主题】蔬菜\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】cortar cebolla - 切洋葱\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la patata",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "土豆",
+      "originalForm": "la patata",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gustan las patatas fritas.",
+          "zh": "我喜欢炸薯条。"
+        }
+      ],
+      "notes": "【主题】蔬菜\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】patatas fritas - 炸薯条\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el pepino",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "黄瓜",
+      "originalForm": "el pepino",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hago una ensalada de pepino.",
+          "zh": "我做黄瓜沙拉。"
+        }
+      ],
+      "notes": "【主题】蔬菜\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ensalada de pepino - 黄瓜沙拉\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la lechuga",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "生菜",
+      "originalForm": "la lechuga",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La lechuga está fresca.",
+          "zh": "生菜很新鲜。"
+        }
+      ],
+      "notes": "【主题】蔬菜\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hoja de lechuga - 生菜叶\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la manzana",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "苹果",
+      "originalForm": "la manzana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Como una manzana cada día.",
+          "zh": "我每天吃一个苹果。"
+        }
+      ],
+      "notes": "【主题】水果\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer una manzana - 吃苹果\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el plátano",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "香蕉",
+      "originalForm": "el plátano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Como un plátano después del deporte.",
+          "zh": "运动后吃香蕉。"
+        }
+      ],
+      "notes": "【主题】水果\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer plátano - 吃香蕉\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la naranja",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "橙子",
+      "originalForm": "la naranja",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Quiero un zumo de naranja.",
+          "zh": "我想要一杯橙汁。"
+        }
+      ],
+      "notes": "【主题】水果\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】zumo de naranja - 橙汁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la uva",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "葡萄",
+      "originalForm": "la uva",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Las uvas son dulces.",
+          "zh": "葡萄很甜。"
+        }
+      ],
+      "notes": "【主题】水果\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comer uvas - 吃葡萄\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la fresa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "草莓",
+      "originalForm": "la fresa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gustan las fresas frescas.",
+          "zh": "我喜欢新鲜草莓。"
+        }
+      ],
+      "notes": "【主题】水果\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】fresas frescas - 新鲜草莓\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el desayuno",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "早餐",
+      "originalForm": "el desayuno",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tomo el desayuno a las ocho.",
+          "zh": "我八点吃早餐。"
+        }
+      ],
+      "notes": "【主题】饮食时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar el desayuno - 吃早餐\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el almuerzo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "午餐",
+      "originalForm": "el almuerzo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Preparo el almuerzo para mi familia.",
+          "zh": "我给家人准备午餐。"
+        }
+      ],
+      "notes": "【主题】饮食时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】preparar el almuerzo - 准备午餐\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la cena",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "晚餐",
+      "originalForm": "la cena",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cenamos juntos los domingos.",
+          "zh": "我们星期天一起吃晚饭。"
+        }
+      ],
+      "notes": "【主题】饮食时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】cenar juntos - 一起吃晚饭\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "uno / una",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "一",
+      "originalForm": "uno / una",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Quiero uno de estos.",
+          "zh": "我想要其中一个。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】uno de + 名词 - 其中一个\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "dos",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "二",
+      "originalForm": "dos",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy al gimnasio dos veces por semana.",
+          "zh": "我每周去两次健身房。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】dos veces - 两次\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "tres",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "三",
+      "originalForm": "tres",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Trabajo tres días a la semana.",
+          "zh": "我每周工作三天。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】tres días - 三天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "cuatro",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "四",
+      "originalForm": "cuatro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Somos cuatro personas.",
+          "zh": "我们有四个人。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】cuatro personas - 四个人\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "cinco",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "五",
+      "originalForm": "cinco",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Espera cinco minutos, por favor.",
+          "zh": "请等五分钟。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】cinco minutos - 五分钟\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "seis",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "六",
+      "originalForm": "seis",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Duermo seis horas cada noche.",
+          "zh": "我每天晚上睡六小时。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】seis horas - 六小时\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "siete",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "七",
+      "originalForm": "siete",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una semana tiene siete días.",
+          "zh": "一周有七天。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】siete días - 七天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "ocho",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "八",
+      "originalForm": "ocho",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El tren sale a las ocho.",
+          "zh": "火车八点出发。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a las ocho - 八点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "nueve",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "九",
+      "originalForm": "nueve",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene nueve años.",
+          "zh": "他九岁。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】nueve años - 九岁/九年\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "diez",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十",
+      "originalForm": "diez",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llegaré en diez minutos.",
+          "zh": "我十分钟后到。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】diez minutos - 十分钟\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "once",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十一",
+      "originalForm": "once",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La clase empieza a las once.",
+          "zh": "课程十一点开始。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】once horas - 十一点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "doce",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十二",
+      "originalForm": "doce",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un año tiene doce meses.",
+          "zh": "一年有十二个月。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】doce meses - 十二个月\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "trece",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十三",
+      "originalForm": "trece",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi hermano tiene trece años.",
+          "zh": "我弟弟十三岁。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】trece años - 十三岁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "catorce",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十四",
+      "originalForm": "catorce",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El vuelo sale a las catorce horas.",
+          "zh": "航班14点起飞。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】catorce horas - 14点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "quince",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十五",
+      "originalForm": "quince",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Espera quince minutos.",
+          "zh": "等十五分钟。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】quince minutos - 十五分钟\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "dieciséis",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十六",
+      "originalForm": "dieciséis",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene dieciséis años.",
+          "zh": "他十六岁。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】dieciséis años - 十六岁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "diecisiete",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十七",
+      "originalForm": "diecisiete",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El viaje dura diecisiete días.",
+          "zh": "旅行持续十七天。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】diecisiete días - 十七天\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "dieciocho",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十八",
+      "originalForm": "dieciocho",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene dieciocho años.",
+          "zh": "他十八岁。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】dieciocho años - 十八岁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "diecinueve",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "十九",
+      "originalForm": "diecinueve",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cuesta diecinueve euros.",
+          "zh": "价格十九欧元。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】diecinueve euros - 十九欧元\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "veinte",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "二十",
+      "originalForm": "veinte",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llegaré en veinte minutos.",
+          "zh": "我二十分钟后到。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】veinte minutos - 二十分钟\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "veintiuno",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "二十一",
+      "originalForm": "veintiuno",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene veintiún años.",
+          "zh": "他二十一岁。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】veintiún años - 二十一岁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "veintidós",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "二十二",
+      "originalForm": "veintidós",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El tren llega a las veintidós horas.",
+          "zh": "火车22点到达。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】veintidós horas - 22点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "veintitrés",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "二十三",
+      "originalForm": "veintitrés",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Faltan veintitrés minutos.",
+          "zh": "还有二十三分钟。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】veintitrés minutos - 二十三分钟\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "veinticuatro",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "二十四",
+      "originalForm": "veinticuatro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un día tiene veinticuatro horas.",
+          "zh": "一天有二十四小时。"
+        }
+      ],
+      "notes": "【主题】数字\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】veinticuatro horas - 二十四小时\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el día",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "天、白天",
+      "originalForm": "el día",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Trabajo durante el día.",
+          "zh": "我白天工作。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】durante el día - 白天期间\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la hora",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "小时、时间",
+      "originalForm": "la hora",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "¿Qué hora es ahora?",
+          "zh": "现在几点？"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】¿Qué hora es? - 几点了？\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la mañana",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "早上、上午",
+      "originalForm": "la mañana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Estudio español por la mañana.",
+          "zh": "我早上学习西语。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】por la mañana - 在早上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la tarde",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "下午",
+      "originalForm": "la tarde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Trabajo por la tarde.",
+          "zh": "我下午工作。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】por la tarde - 在下午\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la noche",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "晚上",
+      "originalForm": "la noche",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Duermo por la noche.",
+          "zh": "我晚上睡觉。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】por la noche - 在晚上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el mes",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "月份",
+      "originalForm": "el mes",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Este mes tengo mucho trabajo.",
+          "zh": "这个月我工作很多。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】este mes - 这个月\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el año",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "年",
+      "originalForm": "el año",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Este año quiero viajar.",
+          "zh": "今年我想旅行。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】este año - 今年\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la semana",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "星期、周",
+      "originalForm": "la semana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Esta semana estoy ocupado.",
+          "zh": "这周我很忙。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】esta semana - 这周\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "a la una",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "一点钟",
+      "originalForm": "a la una",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La comida es a la una.",
+          "zh": "午饭是一点。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a la una de la tarde - 下午一点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "a las + 数字",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "几点钟",
+      "originalForm": "a las + 数字",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me levanto a las ocho.",
+          "zh": "我八点起床。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a las ocho de la mañana - 早上八点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "de la mañana",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "早上的",
+      "originalForm": "de la mañana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Trabajo a las siete de la mañana.",
+          "zh": "我早上七点工作。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】siete de la mañana - 早上七点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "de la tarde",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "下午的",
+      "originalForm": "de la tarde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La reunión es a las tres de la tarde.",
+          "zh": "会议下午三点。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】tres de la tarde - 下午三点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "de la noche",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "晚上的",
+      "originalForm": "de la noche",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llego a casa a las diez de la noche.",
+          "zh": "我晚上十点到家。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】diez de la noche - 晚上十点\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "de madrugada",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "凌晨",
+      "originalForm": "de madrugada",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Trabajo de madrugada a veces.",
+          "zh": "我有时凌晨工作。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】trabajar de madrugada - 凌晨工作\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "medio día",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "半天",
+      "originalForm": "medio día",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo medio día libre.",
+          "zh": "我有半天假。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】medio día libre - 半天假\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "las 13 horas",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "13点",
+      "originalForm": "las 13 horas",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El avión sale a las 13 horas.",
+          "zh": "飞机13点起飞。"
+        }
+      ],
+      "notes": "【主题】正式时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a las 13 horas - 13点（正式）\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "las 14 horas",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "14点",
+      "originalForm": "las 14 horas",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La reunión empieza a las 14 horas.",
+          "zh": "会议14点开始。"
+        }
+      ],
+      "notes": "【主题】正式时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a las 14 horas - 14点（正式）\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "las 18 horas",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "18点",
+      "originalForm": "las 18 horas",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El museo cierra a las 18 horas.",
+          "zh": "博物馆18点关闭。"
+        }
+      ],
+      "notes": "【主题】正式时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a las 18 horas - 18点（正式）\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "las 24 horas",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "24小时",
+      "originalForm": "las 24 horas",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La tienda está abierta las 24 horas.",
+          "zh": "商店24小时营业。"
+        }
+      ],
+      "notes": "【主题】正式时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】abierto las 24 horas - 全天营业\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "temprano",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "早",
+      "originalForm": "temprano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me levanto temprano todos los días.",
+          "zh": "我每天早起。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】levantarse temprano - 早起\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "tarde",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "晚、迟",
+      "originalForm": "tarde",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No quiero llegar tarde.",
+          "zh": "我不想迟到。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】llegar tarde - 迟到\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "antes",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "之前",
+      "originalForm": "antes",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lávate las manos antes de comer.",
+          "zh": "吃饭前洗手。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】antes de + 动词 - 在……之前\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "después",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "之后",
+      "originalForm": "después",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Después de trabajar descanso.",
+          "zh": "工作后休息。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】después de + 动词 - 在……之后\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "ahora",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "现在",
+      "originalForm": "ahora",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lo necesito ahora mismo.",
+          "zh": "我现在就需要。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】ahora mismo - 现在马上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "hoy",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "今天",
+      "originalForm": "hoy",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo una reunión hoy por la mañana.",
+          "zh": "我今天上午有会议。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】hoy por la mañana - 今天早上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "mañana",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "明天",
+      "originalForm": "mañana",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hasta mañana.",
+          "zh": "明天见。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】hasta mañana - 到明天/明天见\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "ayer",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "昨天",
+      "originalForm": "ayer",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lo vi ayer por la noche.",
+          "zh": "我昨天晚上看见他。"
+        }
+      ],
+      "notes": "【主题】时间\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】ayer por la noche - 昨天晚上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el jabón",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "肥皂",
+      "originalForm": "el jabón",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me lavo las manos con jabón.",
+          "zh": "我用肥皂洗手。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse con jabón - 用肥皂洗\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el champú",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "洗发水",
+      "originalForm": "el champú",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Uso champú natural.",
+          "zh": "我使用天然洗发水。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse el pelo con champú - 用洗发水洗头\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el cepillo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "刷子、梳子",
+      "originalForm": "el cepillo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Necesito un cepillo de dientes nuevo.",
+          "zh": "我需要一个新牙刷。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】cepillo de dientes - 牙刷\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la pasta de dientes",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "牙膏",
+      "originalForm": "la pasta de dientes",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me lavo los dientes después de comer.",
+          "zh": "我吃饭后刷牙。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse los dientes con pasta - 用牙膏刷牙\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la ducha",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "淋浴",
+      "originalForm": "la ducha",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy a tomar una ducha.",
+          "zh": "我要去洗澡。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar una ducha - 洗澡\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el baño",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "浴室、洗澡",
+      "originalForm": "el baño",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo que ir al baño.",
+          "zh": "我必须去厕所。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir al baño - 去厕所\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la toalla",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "毛巾",
+      "originalForm": "la toalla",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me seco con una toalla.",
+          "zh": "我用毛巾擦干。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】secarse con una toalla - 用毛巾擦干\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el perfume",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "香水",
+      "originalForm": "el perfume",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ella se pone perfume antes de salir.",
+          "zh": "她出门前喷香水。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ponerse perfume - 喷香水\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la crema",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "面霜、乳霜",
+      "originalForm": "la crema",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me pongo crema en las manos.",
+          "zh": "我在手上涂护肤霜。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ponerse crema - 涂面霜\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el maquillaje",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "化妆品",
+      "originalForm": "el maquillaje",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Ella usa maquillaje todos los días.",
+          "zh": "她每天化妆。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ponerse maquillaje - 化妆\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el peine",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "梳子",
+      "originalForm": "el peine",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me peino antes de salir.",
+          "zh": "我出门前梳头。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】peinarse con un peine - 用梳子梳头\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la ropa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "衣服",
+      "originalForm": "la ropa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lavo la ropa los domingos.",
+          "zh": "我星期天洗衣服。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavar la ropa - 洗衣服\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la lavadora",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "洗衣机",
+      "originalForm": "la lavadora",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La lavadora está funcionando.",
+          "zh": "洗衣机正在运行。"
+        }
+      ],
+      "notes": "【主题】洗护\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】usar la lavadora - 使用洗衣机\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el coche",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "汽车",
+      "originalForm": "el coche",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Conduzco un coche todos los días.",
+          "zh": "我每天开车。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】conducir un coche - 开车\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el autobús",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "公交车",
+      "originalForm": "el autobús",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tomo el autobús para ir al trabajo.",
+          "zh": "我坐公交去工作。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar el autobús - 坐公交\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el tren",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "火车",
+      "originalForm": "el tren",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tomo el tren a Madrid.",
+          "zh": "我坐火车去马德里。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar el tren - 坐火车\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el metro",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "地铁",
+      "originalForm": "el metro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy al centro en metro.",
+          "zh": "我坐地铁去市中心。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】coger el metro - 坐地铁\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el avión",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "飞机",
+      "originalForm": "el avión",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mañana tomo un avión.",
+          "zh": "我明天坐飞机。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar un avión - 坐飞机\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el taxi",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "出租车",
+      "originalForm": "el taxi",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Voy a tomar un taxi.",
+          "zh": "我要打车。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tomar un taxi - 打车\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la bicicleta",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "自行车",
+      "originalForm": "la bicicleta",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta montar en bicicleta.",
+          "zh": "我喜欢骑自行车。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】montar en bicicleta - 骑自行车\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la moto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "摩托车",
+      "originalForm": "la moto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Va al trabajo en moto.",
+          "zh": "他骑摩托去工作。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir en moto - 骑摩托\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el barco",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "船",
+      "originalForm": "el barco",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Viajamos en barco por la isla.",
+          "zh": "我们坐船环岛旅行。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】viajar en barco - 坐船旅行\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★"
+    },
+    {
+      "word": "la estación",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "车站",
+      "originalForm": "la estación",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La estación está cerca.",
+          "zh": "车站很近。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】estación de tren - 火车站\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el aeropuerto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "机场",
+      "originalForm": "el aeropuerto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo que ir al aeropuerto.",
+          "zh": "我必须去机场。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ir al aeropuerto - 去机场\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el billete",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "票",
+      "originalForm": "el billete",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Quiero comprar un billete de tren.",
+          "zh": "我想买火车票。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】comprar un billete - 买票\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el viaje",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "旅行",
+      "originalForm": "el viaje",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hago un viaje en verano.",
+          "zh": "我夏天旅行。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer un viaje - 旅行\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el camino",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "道路",
+      "originalForm": "el camino",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Sigue este camino.",
+          "zh": "沿着这条路走。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】seguir el camino - 沿着道路\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la carretera",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "公路",
+      "originalForm": "la carretera",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hay mucho tráfico en la carretera.",
+          "zh": "公路上交通拥堵。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】en la carretera - 在公路上\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la dirección",
+      "partOfSpeech": "verbo",
+      "chineseMeaning": "地址、方向",
+      "originalForm": "la dirección",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "¿Me puede dar la dirección?",
+          "zh": "您可以告诉我地址吗？"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】动词\n【变位/形式】yo / tú / él-ella / nosotros / vosotros / ellos 现在时变位补充\n【搭配】dar una dirección - 提供方向\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "izquierda",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "左边",
+      "originalForm": "izquierda",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El banco está a la izquierda.",
+          "zh": "银行在左边。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a la izquierda - 在左边\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "derecha",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "右边",
+      "originalForm": "derecha",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Gira a la derecha.",
+          "zh": "向右转。"
+        }
+      ],
+      "notes": "【主题】交通\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】a la derecha - 在右边\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la música",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "音乐",
+      "originalForm": "la música",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Escucho música todos los días.",
+          "zh": "我每天听音乐。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】escuchar música - 听音乐\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el deporte",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "运动",
+      "originalForm": "el deporte",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hago deporte tres veces por semana.",
+          "zh": "我每周运动三次。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer deporte - 运动\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el fútbol",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "足球",
+      "originalForm": "el fútbol",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Juego al fútbol con mis amigos.",
+          "zh": "我和朋友踢足球。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】jugar al fútbol - 踢足球\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el baloncesto",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "篮球",
+      "originalForm": "el baloncesto",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi hermano juega al baloncesto.",
+          "zh": "我弟弟打篮球。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】jugar al baloncesto - 打篮球\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el yoga",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "瑜伽",
+      "originalForm": "el yoga",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hago yoga por la mañana.",
+          "zh": "我早上做瑜伽。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer yoga - 做瑜伽\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la lectura",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "阅读",
+      "originalForm": "la lectura",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo afición por la lectura.",
+          "zh": "我喜欢阅读。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】afición a la lectura - 阅读爱好\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el libro",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "书",
+      "originalForm": "el libro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Leo un libro antes de dormir.",
+          "zh": "我睡前读书。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】leer un libro - 读书\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la película",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "电影",
+      "originalForm": "la película",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Vemos una película esta noche.",
+          "zh": "我们今晚看电影。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】ver una película - 看电影\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el juego",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "游戏",
+      "originalForm": "el juego",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta jugar videojuegos.",
+          "zh": "我喜欢玩电子游戏。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】jugar un juego - 玩游戏\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el viaje",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "旅行",
+      "originalForm": "el viaje",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta viajar mucho.",
+          "zh": "我很喜欢旅行。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】viajar mucho - 经常旅行\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la fotografía",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "摄影",
+      "originalForm": "la fotografía",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me gusta hacer fotos de paisajes.",
+          "zh": "我喜欢拍风景照。"
+        }
+      ],
+      "notes": "【主题】兴趣\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer fotos - 拍照\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la cabeza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "头",
+      "originalForm": "la cabeza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo dolor de cabeza.",
+          "zh": "我头疼。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】dolor de cabeza - 头痛\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la cara",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "脸",
+      "originalForm": "la cara",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me lavo la cara por la mañana.",
+          "zh": "我早上洗脸。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse la cara - 洗脸\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el ojo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "眼睛",
+      "originalForm": "el ojo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Cierra los ojos, por favor.",
+          "zh": "请闭上眼睛。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】cerrar los ojos - 闭眼\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la nariz",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "鼻子",
+      "originalForm": "la nariz",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo la nariz roja por el frío.",
+          "zh": "我的鼻子因为冷变红。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tener la nariz roja - 鼻子红\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la boca",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "嘴",
+      "originalForm": "la boca",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Abre la boca, por favor.",
+          "zh": "请张嘴。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】abrir la boca - 张嘴\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el oído",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "耳朵",
+      "originalForm": "el oído",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo dolor de oído.",
+          "zh": "我耳朵疼。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】dolor de oído - 耳痛\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el pelo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "头发",
+      "originalForm": "el pelo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me lavo el pelo cada dos días.",
+          "zh": "我两天洗一次头。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse el pelo - 洗头\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la mano",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "手",
+      "originalForm": "la mano",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Lávate las manos antes de comer.",
+          "zh": "吃饭前洗手。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse las manos - 洗手\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el brazo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "手臂",
+      "originalForm": "el brazo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Levanta el brazo.",
+          "zh": "举起手臂。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】levantar el brazo - 举手\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la pierna",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "腿",
+      "originalForm": "la pierna",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me duele la pierna.",
+          "zh": "我腿疼。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】dolor de pierna - 腿疼\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el pie",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "脚",
+      "originalForm": "el pie",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Me lavo los pies antes de dormir.",
+          "zh": "睡前洗脚。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】lavarse los pies - 洗脚\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el corazón",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "心脏",
+      "originalForm": "el corazón",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tiene un buen corazón.",
+          "zh": "他很善良。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】tener buen corazón - 善良\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el estómago",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "胃",
+      "originalForm": "el estómago",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo dolor de estómago.",
+          "zh": "我胃疼。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】dolor de estómago - 胃疼\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la espalda",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "背",
+      "originalForm": "la espalda",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo dolor de espalda.",
+          "zh": "我背疼。"
+        }
+      ],
+      "notes": "【主题】身体\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】dolor de espalda - 背疼\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el teléfono",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "电话、手机",
+      "originalForm": "el teléfono",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Te llamo por teléfono.",
+          "zh": "我给你打电话。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】llamar por teléfono - 打电话\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el móvil",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "手机",
+      "originalForm": "el móvil",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Uso mucho el móvil.",
+          "zh": "我经常用手机。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】usar el móvil - 使用手机\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la tableta",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "平板电脑",
+      "originalForm": "la tableta",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mi hijo usa una tableta.",
+          "zh": "我儿子使用平板。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】usar una tableta - 使用平板\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "el ordenador",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "电脑",
+      "originalForm": "el ordenador",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Trabajo con el ordenador.",
+          "zh": "我用电脑工作。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】usar el ordenador - 使用电脑\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la cámara",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "相机",
+      "originalForm": "la cámara",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Hago fotos con mi cámara.",
+          "zh": "我用相机拍照。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】hacer fotos con cámara - 用相机拍照\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la batería",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "电池",
+      "originalForm": "la batería",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Tengo que cargar la batería.",
+          "zh": "我需要充电。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】cargar la batería - 充电\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "el teclado",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "键盘",
+      "originalForm": "el teclado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El teclado no funciona.",
+          "zh": "键盘坏了。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】usar el teclado - 使用键盘\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★"
+    },
+    {
+      "word": "la pantalla",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "屏幕",
+      "originalForm": "la pantalla",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Mira la pantalla, por favor.",
+          "zh": "请看屏幕。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】mirar la pantalla - 看屏幕\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "internet",
+      "partOfSpeech": "vocabulario",
+      "chineseMeaning": "互联网",
+      "originalForm": "internet",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "No puedo conectarme a internet.",
+          "zh": "我无法连接网络。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】其他\n【变位/形式】根据词性补充常用变化\n【搭配】conectarse a internet - 连接网络\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    },
+    {
+      "word": "la contraseña",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "密码",
+      "originalForm": "la contraseña",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Necesito cambiar mi contraseña.",
+          "zh": "我需要修改密码。"
+        }
+      ],
+      "notes": "【主题】数码\n【词性】名词\n【变位/形式】阴性/阳性形式补充（el/la）；复数形式补充\n【搭配】poner una contraseña - 设置密码\n【语法】根据词性补充：高频搭配、语法规则、实际使用场景\n【常用度】★★★★★"
+    }
+  ]
+}

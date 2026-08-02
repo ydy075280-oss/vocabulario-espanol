@@ -216,4 +216,136 @@ export const memorizeAPI = {
     api.post('/memorize/toggle', { moduleId, taskId }),
 };
 
+// ------ Chat API (SSE streaming, uses native fetch) ------
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export interface ChatWord {
+  word: string;
+  translation: string;
+}
+
+export interface ChatGreeting {
+  text: string;
+  audioUrl: string;
+}
+
+export interface SSEChatEvent {
+  event: string;
+  data: any;
+}
+
+/**
+ * 获取开场白 + 语音
+ */
+export async function getChatGreeting(params: {
+  scenario: string;
+  scenarioLabel: string;
+  difficulty: string;
+  wordbookWords?: ChatWord[];
+}): Promise<ChatGreeting> {
+  const token = localStorage.getItem('accessToken');
+  const res = await fetch(`${API_BASE_URL}/chat/greet`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      scenario: params.scenario,
+      scenarioLabel: params.scenarioLabel,
+      difficulty: params.difficulty,
+      wordbookWords: params.wordbookWords ? JSON.stringify(params.wordbookWords) : undefined,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: '开场白请求失败' }));
+    throw new Error(err.error || '开场白请求失败');
+  }
+  return res.json();
+}
+
+/**
+ * 发送用户语音，SSE 流式接收 AI 回复
+ * 返回 ReadableStream，需要手动解析 SSE
+ */
+export async function chatSpeak(audioBlob: Blob, params: {
+  scenario: string;
+  scenarioLabel: string;
+  difficulty: string;
+  wordbookWords?: ChatWord[];
+  chatHistory?: ChatMessage[];
+}): Promise<ReadableStream<Uint8Array>> {
+  const token = localStorage.getItem('accessToken');
+  const formData = new FormData();
+  formData.append('audio', audioBlob, 'recording.webm');
+  formData.append('scenario', params.scenario);
+  formData.append('scenarioLabel', params.scenarioLabel);
+  formData.append('difficulty', params.difficulty);
+  if (params.wordbookWords?.length) formData.append('wordbookWords', JSON.stringify(params.wordbookWords));
+  if (params.chatHistory?.length) formData.append('chatHistory', JSON.stringify(params.chatHistory));
+
+  const res = await fetch(`${API_BASE_URL}/chat/speak`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: '对话请求失败' }));
+    throw new Error(err.error || '对话请求失败');
+  }
+
+  if (!res.body) throw new Error('服务器未返回流式数据');
+  return res.body;
+}
+
+/**
+ * 解析 SSE 流
+ */
+export async function* parseSSEStream(stream: ReadableStream<Uint8Array>): AsyncGenerator<SSEChatEvent> {
+  const reader = stream.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      let eventType = '';
+      let eventData = '';
+
+      for (const line of lines) {
+        if (line.startsWith('event: ')) {
+          eventType = line.slice(7).trim();
+        } else if (line.startsWith('data: ')) {
+          eventData = line.slice(6);
+        } else if (line.trim() === '') {
+          // 空行 = 事件结束
+          if (eventType && eventData) {
+            try {
+              yield { event: eventType, data: JSON.parse(eventData) };
+            } catch {
+              // 忽略解析失败的数据
+            }
+            eventType = '';
+            eventData = '';
+          }
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
+
 export default api;
