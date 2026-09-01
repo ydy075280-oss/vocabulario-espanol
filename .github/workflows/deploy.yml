@@ -61,19 +61,25 @@ jobs:
             -e "ssh -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no" \
             ./ "$ECS_USER@$ECS_HOST:/opt/vocabulario-espanol/"
 
-      - name: Configure & start on ECS
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.ECS_HOST }}
-          username: ${{ secrets.ECS_USERNAME }}
-          key_path: ~/.ssh/ecs_key
-          script: |
-            set -e
-            cd /opt/vocabulario-espanol
-            # 注入生产环境变量（来自仓库 Secret ENV_FILE_CONTENT）
-            printf '%s' "${{ secrets.ENV_FILE_CONTENT }}" > server/.env
+      - name: Copy .env to ECS
+        env:
+          ECS_HOST: ${{ secrets.ECS_HOST }}
+          ECS_USER: ${{ secrets.ECS_USERNAME }}
+        run: |
+          printf '%s' "${{ secrets.ENV_FILE_CONTENT }}" > /tmp/server.env
+          scp -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no \
+            /tmp/server.env "$ECS_USER@$ECS_HOST:/opt/vocabulario-espanol/server/.env"
+          rm -f /tmp/server.env
 
-            cd server
+      - name: Start services on ECS
+        env:
+          ECS_HOST: ${{ secrets.ECS_HOST }}
+          ECS_USER: ${{ secrets.ECS_USERNAME }}
+        run: |
+          ssh -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no "$ECS_USER@$ECS_HOST" << 'EOF'
+            set -e
+            cd /opt/vocabulario-espanol/server
             pm2 delete vocabulario-server 2>/dev/null || true
             pm2 start dist/index.js --name vocabulario-server
             pm2 save
+          EOF
