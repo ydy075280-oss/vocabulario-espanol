@@ -17,11 +17,12 @@ jobs:
         with:
           node-version: 20
 
-      # 在 GitHub Runner 上构建（Runner 能访问 GitHub/npm，ECS 不能）
-      - name: Build client & server
+      # 在 GitHub Runner 上只构建 client（纯前端产物跨平台可用）
+      # server 不在这里构建：better-sqlite3 是原生模块，Runner 的 glibc 版本
+      # 比服务器高，编译后的二进制在服务器上会报 GLIBC_2.38 not found
+      - name: Build client
         run: |
           cd client && npm ci && npm run build && cd ..
-          cd server && npm ci && npm run build && cd ..
 
       # 调试：确认网络可达性
       - name: Debug SSH connectivity
@@ -45,7 +46,7 @@ jobs:
           chmod 600 ~/.ssh/ecs_key
           ssh-keyscan -H "$ECS_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
 
-      # 把代码 + 构建产物 + node_modules 推到 ECS（ECS 不访问 GitHub）
+      # 把代码推到 ECS（server 的依赖和构建产物在服务器本地重新安装/编译）
       - name: Sync files to ECS via rsync
         env:
           ECS_HOST: ${{ secrets.ECS_HOST }}
@@ -54,6 +55,8 @@ jobs:
           rsync -az --delete \
             --exclude='.git' \
             --exclude='client/node_modules' \
+            --exclude='server/node_modules' \
+            --exclude='server/dist' \
             --exclude='server/.env' \
             --exclude='server/uploads' \
             --exclude='server/data' \
@@ -71,7 +74,7 @@ jobs:
             /tmp/server.env "$ECS_USER@$ECS_HOST:/opt/vocabulario-espanol/server/.env"
           rm -f /tmp/server.env
 
-      - name: Start services on ECS
+      - name: Build & start services on ECS
         env:
           ECS_HOST: ${{ secrets.ECS_HOST }}
           ECS_USER: ${{ secrets.ECS_USERNAME }}
@@ -79,6 +82,8 @@ jobs:
           ssh -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no "$ECS_USER@$ECS_HOST" << 'EOF'
             set -e
             cd /opt/vocabulario-espanol/server
+            npm ci --no-audit --no-fund
+            npm run build
             pm2 delete vocabulario-server 2>/dev/null || true
             pm2 start dist/index.js --name vocabulario-server
             pm2 save
