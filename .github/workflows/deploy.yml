@@ -82,9 +82,18 @@ jobs:
           ssh -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no "$ECS_USER@$ECS_HOST" << 'EOF'
             set -e
             cd /opt/vocabulario-espanol/server
+            echo "=== cleaning old node_modules ==="
+            rm -rf node_modules dist
+            echo "=== npm ci ==="
             npm ci --no-audit --no-fund
+            echo "=== rebuild better-sqlite3 from source ==="
+            npx node-gyp rebuild -C node_modules/better-sqlite3 || npm rebuild better-sqlite3
+            echo "=== npm run build ==="
             npm run build
+            echo "=== starting pm2 ==="
             pm2 delete vocabulario-server 2>/dev/null || true
             pm2 start dist/index.js --name vocabulario-server
             pm2 save
+            echo "=== pm2 status ==="
+            pm2 list
           EOF
