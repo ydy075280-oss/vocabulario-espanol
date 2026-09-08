@@ -8,8 +8,10 @@ import { textToSpeech } from '../services/qwenClient';
 const router = Router();
 
 /** 根据 text+voice+speed 生成唯一 MD5 文件名，支持去重缓存 */
+// TTS_ENGINE 参与哈希：切换音色模型（如 Cherry→sambert-camila-v1）后旧缓存自动失效
+const TTS_ENGINE = 'sambert-camila-v1';
 function fileNameFromText(text: string, voice: string, speed: number): string {
-  const hash = crypto.createHash('md5').update(`${text}|${voice}|${speed}`).digest('hex');
+  const hash = crypto.createHash('md5').update(`${text}|${voice}|${speed}|${TTS_ENGINE}`).digest('hex');
   return `tts_${hash}.mp3`;
 }
 

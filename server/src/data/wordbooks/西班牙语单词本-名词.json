@@ -14,8 +14,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La montaña guarda siglos de memoria en sus rocas.",
-          "zh": "他山将几个世纪的记忆藏于岩石。"
+          "es": "La montana guarda la memoria de siglosen sus rocas; el bosque la escribe en anillos de arboles; la playa la borra cada dia con las olas.",
+          "zh": "山将几个世纪的记忆藏于岩石;森林将其镌刻在树木的年轮里;海滩则每天用海浪将其抹"
         }
       ],
       "notes": "阴性名词；复数montañas；搭配：subir una montaña爬山"
@@ -28,8 +28,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El bosque cuenta historias de las estaciones con su susurro.",
-          "zh": "他森林用沙沙声讲述着四季的故事。"
+          "es": "La montana guarda la memoria de siglosen sus rocas; el bosque la escribe en anillos de arboles; la playa la borra cada dia con las olas.",
+          "zh": "山将几个世纪的记忆藏于岩石;森林将其镌刻在树木的年轮里;海滩则每天用海浪将其抹"
         }
       ],
       "notes": "阳性名词；复数bosques；搭配：entrar en el bosque进入森林"
@@ -42,22 +42,22 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La playa guarda la ternura de cada ola.",
-          "zh": "他海滩收藏着每一朵浪花的温柔。"
+          "es": "La montana guarda la memoria de siglosen sus rocas; el bosque la escribe en anillos de arboles; la playa la borra cada dia con las olas.",
+          "zh": "山将几个世纪的记忆藏于岩石;森林将其镌刻在树木的年轮里;海滩则每天用海浪将其抹"
         }
       ],
       "notes": "阴性名词；复数playas；搭配：ir a la playa去海滩"
     },
     {
-      "word": "Pais",
+      "word": "país",
       "partOfSpeech": "sustantivo",
       "chineseMeaning": "国家",
-      "originalForm": "Pais",
+      "originalForm": "país",
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En tiempos de crisis, el pais depende de la solidaridad entre estados.",
-          "zh": "他在危机时期，国家依赖州与州之间的团结。"
+          "es": "En tiempos de crisis, el pais depende de la solidaridad entre estados y del compromiso de cada grupo,demostrando que la fuerza reside en la cooperacion.",
+          "zh": "在危机时期，国家依赖州与州之间的团结，以及每个群体的承诺，显示出力量源于合作。"
         }
       ],
       "notes": "阳性名词；复数países；搭配：viajar por el país周游全国"
@@ -70,8 +70,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la solidaridad entre estados.",
-          "zh": "他国家依赖州与州之间的团结。"
+          "es": "En tiempos de crisis, el pais depende de la solidaridad entre estados y del compromiso de cada grupo,demostrando que la fuerza reside en la cooperacion.",
+          "zh": "在危机时期，国家依赖州与州之间的团结，以及每个群体的承诺，显示出力量源于合作。"
         }
       ],
       "notes": "阳性名词；复数estados；多义词：州/状态/国家"
@@ -84,8 +84,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y del compromiso de cada grupo.",
-          "zh": "他以及每个群体的承诺。"
+          "es": "En tiempos de crisis, el pais depende de la solidaridad entre estados y del compromiso de cada grupo,demostrando que la fuerza reside en la cooperacion.",
+          "zh": "在危机时期，国家依赖州与州之间的团结，以及每个群体的承诺，显示出力量源于合作。"
         }
       ],
       "notes": "阳性名词；复数grupos；搭配：un grupo de一群"
@@ -98,11 +98,11 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y el trabajo transforma cada minuto en melodía.",
-          "zh": "他而工作把每一分钟都转化为旋律。"
+          "es": "El mejor trabajo es aquel que nace de lo que amas y utiliza lo que la educación te dio;asi ,el amor y el conocimiento se funden en accion.",
+          "zh": "最好的工作，源于你所爱，并运用教育所予；如此，爱与知识便融汇于行动。"
         }
       ],
-      "notes": "阳性名词；复数trabajos；搭配：ir al trabajo去上班"
+      "notes": "阳性名词；复数trabajos；搭配：el trabajo工作"
     },
     {
       "word": "Lugar",
@@ -112,8 +112,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Cada lugar tiene un ritmo propio.",
-          "zh": "他每个地方都有其独特的节奏。"
+          "es": "Cada lugar tiene un ritmo propio, y el trabajo transforma cada minuto en melodía, en danza sutil entre las manos y la mente.",
+          "zh": "每个地方都有其独特的节奏，而工作把每一分钟都转化为旋律，在手与心之间展开细腻的舞蹈。"
         }
       ],
       "notes": "阳性名词；复数lugares；搭配：en cualquier lugar在任何地方"
@@ -126,8 +126,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y el trabajo transforma cada minuto en melodía.",
-          "zh": "他而工作把每一分钟都转化为旋律。"
+          "es": "Cada lugar tiene un ritmo propio, y el trabajo transforma cada minuto en melodía, en danza sutil entre las manos y la mente.",
+          "zh": "每个地方都有其独特的节奏，而工作把每一分钟都转化为旋律，在手与心之间展开细腻的舞蹈。"
         }
       ],
       "notes": "阳性名词；复数minutos；搭配：cada minuto每分钟"
@@ -140,8 +140,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Una mujer que observa con ojo perspicaz el pueblo.",
-          "zh": "他一个以敏锐目光注视着小镇的女人。"
+          "es": "Una mujer que observa con ojo perspicaz el pueblo comprende que cada gesto, cada mirada y cada puerta cerrada contiene un relato de vida.",
+          "zh": "一个以敏锐目光注视着小镇的女人明白，每一个动作、每一次目光、每一扇紧闭的门，都蕴藏着一段人生的故事。"
         }
       ],
       "notes": "阴性名词；复数mujeres；搭配：una mujer joven年轻女性"
@@ -154,8 +154,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él observa con ojo perspicaz el pueblo.",
-          "zh": "他注视着小镇的女人。"
+          "es": "Una mujer que observa con ojo perspicaz el pueblo comprende que cada gesto, cada mirada y cada puerta cerrada contiene un relato de vida.",
+          "zh": "一个以敏锐目光注视着小镇的女人明白，每一个动作、每一次目光、每一扇紧闭的门，都蕴藏着一段人生的故事。"
         }
       ],
       "notes": "阳性名词；复数pueblos；搭配：un pueblo pequeño小村庄"
@@ -168,8 +168,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Una mujer que observa con ojo perspicaz el pueblo.",
-          "zh": "他一个以敏锐目光注视着小镇的女人。"
+          "es": "Una mujer que observa con ojo perspicaz el pueblo comprende que cada gesto, cada mirada y cada puerta cerrada contiene un relato de vida.",
+          "zh": "一个以敏锐目光注视着小镇的女人明白，每一个动作、每一次目光、每一扇紧闭的门，都蕴藏着一段人生的故事。"
         }
       ],
       "notes": "阳性名词；复数ojos；搭配：con los ojos abiertos睁着眼睛"
@@ -182,8 +182,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él deja una huella invisible en su vida.",
-          "zh": "在他生命中留下无形且不可磨灭的印记。"
+          "es": "La mano que acaricia al niño deja una huella invisible en su vida, indeleble como un tatuaje del alma, capaz de modelar su carácter y su capacidad de amar en los años venideros.",
+          "zh": "那只抚摸孩子的手，在他生命中留下无形且不可磨灭的印记，如同灵魂的纹身，能塑造他未来岁月中的性格与爱的能力。"
         }
       ],
       "notes": "阴性名词；复数vidas；搭配：toda la vida一生"
@@ -196,8 +196,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La mano que acaricia al nifno.",
-          "zh": "他那只抚摸孩子的手。"
+          "es": "La mano que acaricia al niño deja una huella invisible en su vida, indeleble como un tatuaje del alma, capaz de modelar su carácter y su capacidad de amar en los años venideros.",
+          "zh": "那只抚摸孩子的手，在他生命中留下无形且不可磨灭的印记，如同灵魂的纹身，能塑造他未来岁月中的性格与爱的能力。"
         }
       ],
       "notes": "阴性名词；复数manos；搭配：con las manos en el bolsillo双手插兜"
@@ -210,8 +210,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La mano que acaricia al nifno.",
-          "zh": "他那只抚摸孩子的手。"
+          "es": "La mano que acaricia al niño deja una huella invisible en su vida, indeleble como un tatuaje del alma, capaz de modelar su carácter y su capacidad de amar en los años venideros.",
+          "zh": "那只抚摸孩子的手，在他生命中留下无形且不可磨灭的印记，如同灵魂的纹身，能塑造他未来岁月中的性格与爱的能力。"
         }
       ],
       "notes": "阳性名词；复数niños；搭配：un niño pequeño小孩子"
@@ -224,8 +224,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él los anos corren sin aviso.",
-          "zh": "他岁月在不经意间流逝。"
+          "es": "El mundo gira sin detenerse, los años corren sin aviso, y cada día nos recuerda que todo cambia, incluso nosotros.",
+          "zh": "世界不停地旋转，岁月在不经意间流逝，而每一天都提醒着我们：一切都在改变，连我们自己也不例外。"
         }
       ],
       "notes": "阳性名词；复数años；搭配：cada año每年"
@@ -238,8 +238,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y cada día nos recuerda que todo cambia.",
-          "zh": "而每一天都提醒着我们。"
+          "es": "El mundo gira sin detenerse, los años corren sin aviso, y cada día nos recuerda que todo cambia, incluso nosotros.",
+          "zh": "世界不停地旋转，岁月在不经意间流逝，而每一天都提醒着我们：一切都在改变，连我们自己也不例外。"
         }
       ],
       "notes": "阳性名词；复数días；搭配：todos los días每天"
@@ -252,8 +252,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El mundo gira sin detenerse.",
-          "zh": "他世界不停地旋转。"
+          "es": "El mundo gira sin detenerse, los años corren sin aviso, y cada día nos recuerda que todo cambia, incluso nosotros.",
+          "zh": "世界不停地旋转，岁月在不经意间流逝，而每一天都提醒着我们：一切都在改变，连我们自己也不例外。"
         }
       ],
       "notes": "阳性名词；复数mundos；搭配：en todo el mundo全世界"
@@ -266,8 +266,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En una casa donde el tiempo parece detenerse.",
-          "zh": "在一座时间仿佛静止的房子里。"
+          "es": "En una casa donde el tiempo parece detenerse, el hombre aprende que la verdadera riqueza no está en las paredes, sino en los recuerdos que las habitan.",
+          "zh": "在一座时间仿佛静止的房子里，人明白真正的财富不在墙壁之间，而在那些居住其中的回忆里。"
         }
       ],
       "notes": "阴性名词；复数casas；搭配：en casa在家"
@@ -280,8 +280,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En una casa donde el tiempo parece detenerse.",
-          "zh": "在一座时间仿佛静止的房子里。"
+          "es": "En una casa donde el tiempo parece detenerse, el hombre aprende que la verdadera riqueza no está en las paredes, sino en los recuerdos que las habitan.",
+          "zh": "在一座时间仿佛静止的房子里，人明白真正的财富不在墙壁之间，而在那些居住其中的回忆里。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：perder el tiempo浪费时间"
@@ -294,8 +294,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El hombre aprende que la verdadera riqueza no está en las paredes.",
-          "zh": "他人明白真正的财富不在墙壁之间。"
+          "es": "En una casa donde el tiempo parece detenerse, el hombre aprende que la verdadera riqueza no está en las paredes, sino en los recuerdos que las habitan.",
+          "zh": "在一座时间仿佛静止的房子里，人明白真正的财富不在墙壁之间，而在那些居住其中的回忆里。"
         }
       ],
       "notes": "阳性名词；复数hombres；搭配：un hombre de negocios商人"
@@ -308,8 +308,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Un buen jefe es como una universidad ambulante.",
-          "zh": "他一位好的上司就像一所流动的大学。"
+          "es": "Un buen jefe es como una universidad ambulante, y cada proyecto es una clase donde todos somos estudiantes.",
+          "zh": "一位好的上司就像一所流动的大学，而每个项目都是一堂课，在那里我们每个人都是学生。"
         }
       ],
       "notes": "阳性名词；复数jefes；搭配：el jefe de departamento部门主管"
@@ -322,8 +322,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y cada proyecto es una clase donde todos somos estudiantes.",
-          "zh": "而每个项目都是一堂课，在那里我们每个人都是学生。"
+          "es": "Un buen jefe es como una universidad ambulante, y cada proyecto es una clase donde todos somos estudiantes.",
+          "zh": "一位好的上司就像一所流动的大学，而每个项目都是一堂课，在那里我们每个人都是学生。"
         }
       ],
       "notes": "阳性/阴性名词；复数estudiantes；搭配：un estudiante de universidad大学生"
@@ -336,8 +336,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Un buen jefe es como una universidad ambulante.",
-          "zh": "他一位好的上司就像一所流动的大学。"
+          "es": "Un buen jefe es como una universidad ambulante, y cada proyecto es una clase donde todos somos estudiantes.",
+          "zh": "一位好的上司就像一所流动的大学，而每个项目都是一堂课，在那里我们每个人都是学生。"
         }
       ],
       "notes": "阴性名词；复数universidades；搭配：ir a la universidad上大学"
@@ -350,8 +350,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Mi padre nunca me contó su historia.",
-          "zh": "我的父亲从未向我讲述他的故事。"
+          "es": "Mi padre nunca me contó su historia, pero la aprendí en cada curva de su espalda y en el camino que me enseñó a caminar.",
+          "zh": "我的父亲从未向我讲述他的故事，但我从他弯下的脊背和教会我行走的道路上读懂了它。"
         }
       ],
       "notes": "阳性名词；复数padres；搭配：mi padre我的父亲"
@@ -364,8 +364,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él pero la aprendí en cada curva de su espalda y en el camino que me enseno a caminar.",
-          "zh": "但我从他弯下的脊背和教会我行走的道路上读懂了它。"
+          "es": "Mi padre nunca me contó su historia, pero la aprendí en cada curva de su espalda y en el camino que me enseñó a caminar.",
+          "zh": "我的父亲从未向我讲述他的故事，但我从他弯下的脊背和教会我行走的道路上读懂了它。"
         }
       ],
       "notes": "阳性名词；复数caminos；搭配：en el camino在路上"
@@ -378,8 +378,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Mi padre nunca me contó su historia.",
-          "zh": "我的父亲从未向我讲述他的故事。"
+          "es": "Mi padre nunca me contó su historia, pero la aprendí en cada curva de su espalda y en el camino que me enseñó a caminar.",
+          "zh": "我的父亲从未向我讲述他的故事，但我从他弯下的脊背和教会我行走的道路上读懂了它。"
         }
       ],
       "notes": "阴性名词；复数historias；搭配：contar una historia讲故事"
@@ -392,8 +392,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En el silencioso sistema de la noche.",
-          "zh": "他在夜晚寂静的星系里。"
+          "es": "En el silencioso sistema de la noche, un amigo es la constelación que guía mi camino, y el eco de mi madre es la luna que me abraza sin palabras.",
+          "zh": "在夜晚寂静的星系里，一位朋友是指引我前行的星辰，而母亲的回声，是无言拥抱我的月光。"
         }
       ],
       "notes": "阳性名词；复数sistemas；搭配：un sistema operativo操作系统"
@@ -406,8 +406,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él un amigo es la constelación que guía mi camino.",
-          "zh": "一位朋友是指引我前行的星辰。"
+          "es": "En el silencioso sistema de la noche, un amigo es la constelación que guía mi camino, y el eco de mi madre es la luna que me abraza sin palabras.",
+          "zh": "在夜晚寂静的星系里，一位朋友是指引我前行的星辰，而母亲的回声，是无言拥抱我的月光。"
         }
       ],
       "notes": "阳性名词；复数amigos；搭配：un amigo cercano亲密的朋友"
@@ -420,8 +420,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y el eco de mi madre es la luna que me abraza sin palabras.",
-          "zh": "而母亲的回声，是无言拥抱我的月光。"
+          "es": "En el silencioso sistema de la noche, un amigo es la constelación que guía mi camino, y el eco de mi madre es la luna que me abraza sin palabras.",
+          "zh": "在夜晚寂静的星系里，一位朋友是指引我前行的星辰，而母亲的回声，是无言拥抱我的月光。"
         }
       ],
       "notes": "阴性名词；复数madres；搭配：mi madre我的母亲"
@@ -434,8 +434,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El dolor no era un final, sino El punto donde todo recomienza.",
-          "zh": "这具身体是我能称之为\"我\"的宇宙唯一之点。"
+          "es": "Llegó un momento en que todo mi cuerpo comprendió la verdad: el dolor no era un final, sino el punto donde todo comienza.",
+          "zh": "这具身体是我能称之为“我”的宇宙唯一之处；而在这觉醒的时刻，整个宇宙都在我体内显现。"
         }
       ],
       "notes": "阳性名词；复数puntos；搭配：un punto de vista观点"
@@ -448,8 +448,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Llegó un momento en que todo mi cuerpo comprendió la verdad.",
-          "zh": "这具身体是我能称之为\"我\"的宇宙唯一之点。"
+          "es": "Llegó un momento en que todo mi cuerpo comprendió la verdad: el dolor no era un final, sino el punto donde todo comienza.",
+          "zh": "这具身体是我能称之为“我”的宇宙唯一之处；而在这觉醒的时刻，整个宇宙都在我体内显现。"
         }
       ],
       "notes": "阳性名词；复数cuerpos；搭配：el cuerpo humano人体"
@@ -462,8 +462,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Llegó un momento en que todo mi cuerpo comprendió la verdad.",
-          "zh": "而在这觉醒的时刻，整个宇宙都在我体内显现。"
+          "es": "Llegó un momento en que todo mi cuerpo comprendió la verdad: el dolor no era un final, sino el punto donde todo comienza.",
+          "zh": "这具身体是我能称之为“我”的宇宙唯一之处；而在这觉醒的时刻，整个宇宙都在我体内显现。"
         }
       ],
       "notes": "阳性名词；复数momentos；搭配：en este momento此刻"
@@ -476,8 +476,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En caso de conflicto.",
-          "zh": "他在冲突的情况下。"
+          "es": "En caso de conflicto, la forma de comunicarnos con nuestra familia puede transformar un momento de tensión en una oportunidad de comprensión y crecimiento.",
+          "zh": "在冲突的情况下，与家人沟通的方式，可以将紧张时刻转化为理解与成长的机会。"
         }
       ],
       "notes": "阳性名词；复数casos；搭配：en caso de如果"
@@ -490,8 +490,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la forma de comunicarnos con nuestra familia.",
-          "zh": "他与家人沟通的方式。"
+          "es": "En caso de conflicto, la forma de comunicarnos con nuestra familia puede transformar un momento de tensión en una oportunidad de comprensión y crecimiento.",
+          "zh": "在冲突的情况下，与家人沟通的方式，可以将紧张时刻转化为理解与成长的机会。"
         }
       ],
       "notes": "阴性名词；复数formas；搭配：de esta forma用这种方式"
@@ -504,8 +504,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la forma de comunicarnos con nuestra familia.",
-          "zh": "他与家人沟通的方式。"
+          "es": "En caso de conflicto, la forma de comunicarnos con nuestra familia puede transformar un momento de tensión en una oportunidad de comprensión y crecimiento.",
+          "zh": "在冲突的情况下，与家人沟通的方式，可以将紧张时刻转化为理解与成长的机会。"
         }
       ],
       "notes": "阴性名词；复数familias；搭配：mi familia我的家庭"
@@ -518,8 +518,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la vida está hecha de pequenas partes y cosas simples.",
-          "zh": "生活由小小的部分和简单的事物组成。"
+          "es": "Cada mes nos recuerda que la vida está hecha de pequeñas partes y cosas simples que juntas crean un todo lleno de sentido.",
+          "zh": "每个月都提醒我们，生活由小小的部分和简单的事物组成，它们汇聚在一起，创造出充满意义的整体。"
         }
       ],
       "notes": "阴性名词；复数partes；搭配：una parte de一部分"
@@ -532,8 +532,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la vida está hecha de pequenas partes y cosas simples.",
-          "zh": "生活由小小的部分和简单的事物组成。"
+          "es": "Cada mes nos recuerda que la vida está hecha de pequeñas partes y cosas simples que juntas crean un todo lleno de sentido.",
+          "zh": "每个月都提醒我们，生活由小小的部分和简单的事物组成，它们汇聚在一起，创造出充满意义的整体。"
         }
       ],
       "notes": "阴性名词；复数cosas；搭配：cosas simples简单的事物"
@@ -546,8 +546,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Cada mes nos recuerda que.",
-          "zh": "每个月都提醒我们。"
+          "es": "Cada amanecer que regala el sol marca el inicio de una nueva semana de posibilidades,y al final de cada mes,miramos atras para medir el crecimiento de nuestra luz interior.",
+          "zh": "太阳赐予的每一个黎明，都标志着一个充满可能的新星期的开始；而在每个月的末尾，我们回望过去，衡量自身内在光芒的增长。"
         }
       ],
       "notes": "阳性名词；复数meses；搭配：cada mes每个月"
@@ -560,8 +560,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Tocar la tierra con reverencia.",
-          "zh": "他怀着敬畏触摸土地。"
+          "es": "Tocar la tierra con reverencia puede ser una forma de sentir a dios, y en esa conexión humilde, muchas personas encuentran el sentido de pertenencia al universo.",
+          "zh": "怀着敬畏触摸土地，或许是感受神的一种方式；在这谦卑的连接中，许多人找到了归属于宇宙的意义。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la tierra地球/土地"
@@ -574,8 +574,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él puede ser una forma de sentir a dios.",
-          "zh": "他或许是感受神的一种方式。"
+          "es": "Tocar la tierra con reverencia puede ser una forma de sentir a dios, y en esa conexión humilde, muchas personas encuentran el sentido de pertenencia al universo.",
+          "zh": "怀着敬畏触摸土地，或许是感受神的一种方式；在这谦卑的连接中，许多人找到了归属于宇宙的意义。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：Dios上帝"
@@ -588,8 +588,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él muchas personas encuentran el sentido_de pertenencia al universo.",
-          "zh": "他许多人找到了归属于宇宙的意义。"
+          "es": "Tocar la tierra con reverencia puede ser una forma de sentir a dios, y en esa conexión humilde, muchas personas encuentran el sentido de pertenencia al universo.",
+          "zh": "怀着敬畏触摸土地，或许是感受神的一种方式；在这谦卑的连接中，许多人找到了归属于宇宙的意义。"
         }
       ],
       "notes": "阳性名词；复数sentidos；搭配：el sentido de la vida生命的意义"
@@ -602,8 +602,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El arbol crece entre el cemento, testigo de cómo la ciudad enciende sus luces.",
-          "zh": "他树木在水泥丛中生长，见证着城市如何点亮灯火。"
+          "es": "El árbol crece entre el cemento, testigo de cómo la ciudad enciende sus luces contra el manto de la noche.",
+          "zh": "树木在水泥丛生长，见证着城市如何点亮灯火，对抗夜晚的帷幕。"
         }
       ],
       "notes": "阴性名词；复数ciudades；搭配：la ciudad城市"
@@ -616,8 +616,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El arbol crece entre el cemento.",
-          "zh": "他树木在水泥丛中生长。"
+          "es": "El árbol crece entre el cemento, testigo de cómo la ciudad enciende sus luces contra el manto de la noche.",
+          "zh": "树木在水泥丛生长，见证着城市如何点亮灯火，对抗夜晚的帷幕。"
         }
       ],
       "notes": "阳性名词；复数árboles；搭配：un árbol de manzana苹果树"
@@ -630,8 +630,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él contra el manto de la noche.",
-          "zh": "他对抗夜晚的帷幕。"
+          "es": "El árbol crece entre el cemento, testigo de cómo la ciudad enciende sus luces contra el manto de la noche.",
+          "zh": "树木在水泥丛生长，见证着城市如何点亮灯火，对抗夜晚的帷幕。"
         }
       ],
       "notes": "阴性名词；复数noches；搭配：de noche在晚上"
@@ -644,8 +644,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Con mi nacimiento, recibi dos regalos.",
-          "zh": "随着我的诞生，我收到了两份礼物。"
+          "es": "Con mi nacimiento, recibí dos regalos: el cielo con su primera estrella y un perro fiel que me enseñó sobre el amor incondicional.",
+          "zh": "随着我的诞生，我收到了两份礼物：拥有第一颗星星的天空，和一只教会我何为无条件的爱的忠犬。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：el nacimiento de un bebé婴儿的出生"
@@ -658,8 +658,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El ciElo con su primera estrElla.",
-          "zh": "他拥有第一颗星星的天空。"
+          "es": "Con mi nacimiento, recibí dos regalos: el cielo con su primera estrella y un perro fiel que me enseñó sobre el amor incondicional.",
+          "zh": "随着我的诞生，我收到了两份礼物：拥有第一颗星星的天空，和一只教会我何为无条件的爱的忠犬。"
         }
       ],
       "notes": "阴性名词；复数estrellas；搭配：las estrellas星星"
@@ -672,8 +672,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él un perro fiel que me ensenó sobre el amor incondicional.",
-          "zh": "一只教会我何为无条件的爱的忠犬。"
+          "es": "Con mi nacimiento, recibí dos regalos: el cielo con su primera estrella y un perro fiel que me enseñó sobre el amor incondicional.",
+          "zh": "随着我的诞生，我收到了两份礼物：拥有第一颗星星的天空，和一只教会我何为无条件的爱的忠犬。"
         }
       ],
       "notes": "阳性名词；复数perros；搭配：un perro fiel忠实的狗"
@@ -686,8 +686,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Cada nombre que olvidamos es una piedra que se hunde en el rio del olvido.",
-          "zh": "每一个被我们遗忘的名字，都是一颗沉入遗忘之河的石头。"
+          "es": "Cada nombre que olvidamos es una piedra que se hunde en el rio del olvido,Ilevandose consigo la historia de innumerables personas.",
+          "zh": "每一个被我们遗忘的名字，都是一颗沉入遗忘之河的石头，带走了无数人们的故事。"
         }
       ],
       "notes": "阳性名词；复数ríos；搭配：el río河流"
@@ -700,8 +700,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él llevándose consigo la historia de innumerables personas.",
-          "zh": "带走了无数人们的故事。"
+          "es": "Cada nombre que olvidamos es una piedra que se hunde en el rio del olvido,Ilevandose consigo la historia de innumerables personas.",
+          "zh": "每一个被我们遗忘的名字，都是一颗沉入遗忘之河的石头，带走了无数人们的故事。"
         }
       ],
       "notes": "阴性名词；复数personas；搭配：muchas personas很多人"
@@ -714,8 +714,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Cada nombre que olvidamos.",
-          "zh": "每一个被我们遗忘的名字。"
+          "es": "Cada nombre que olvidamos es una piedra que se hunde en el rio del olvido,Ilevandose consigo la historia de innumerables personas.",
+          "zh": "每一个被我们遗忘的名字，都是一颗沉入遗忘之河的石头，带走了无数人们的故事。"
         }
       ],
       "notes": "阳性名词；复数nombres；搭配：mi nombre我的名字"
@@ -728,8 +728,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él impulsando la economia que el gobierno busca administrar.",
-          "zh": "他推动着政府试图管理的经济。"
+          "es": "Una compania visionaria es como un rio que fluye hacia el mar,Impulsando la economia que el gobierno busca administrar.",
+          "zh": "一家有远见的公司如同奔流向海的江河，推动着政府试图管理的经济。"
         }
       ],
       "notes": "阳性名词；复数gobiernos；搭配：el gobierno政府"
@@ -742,8 +742,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Una companía visionaria es como un rio que fluye hacia el mar.",
-          "zh": "他一家有远见的公司如同奔流向海的江河。"
+          "es": "Una compania visionaria es como un rio que fluye hacia el mar,Impulsando la economia que el gobierno busca administrar.",
+          "zh": "一家有远见的公司如同奔流向海的江河，推动着政府试图管理的经济。"
         }
       ],
       "notes": "阴性名词；复数compañías；搭配：una empresa公司"
@@ -756,8 +756,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Una companía visionaria es como un rio que fluye hacia el mar.",
-          "zh": "他一家有远见的公司如同奔流向海的江河。"
+          "es": "Una compania visionaria es como un rio que fluye hacia el mar,Impulsando la economia que el gobierno busca administrar.",
+          "zh": "一家有远见的公司如同奔流向海的江河，推动着政府试图管理的经济。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：el mar海洋"
@@ -770,8 +770,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El sudor dEl trabajador_que no conoce El fin de su lucha.",
-          "zh": "它的基石不是法律，而是那些不知斗争何时是终点的劳动者的汗水。"
+          "es": "El estado olvida que sus cimientos no son leyes,sino el sudor del trabajador que no conoce el fin de su lucha.",
+          "zh": "国家常常忘记，它的基石不是法律，而是那些不知斗争何时是终点的劳动者的汗水。"
         }
       ],
       "notes": "阳性名词；复数fines；搭配：el fin de la lucha斗争的终点"
@@ -784,8 +784,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El sudor dEl trabajador_que no conoce El fin de su lucha.",
-          "zh": "他而是那些不知斗争何时是终点的劳动者的汗水。"
+          "es": "El estado olvida que sus cimientos no son leyes,sino el sudor del trabajador que no conoce el fin de su lucha.",
+          "zh": "国家常常忘记，它的基石不是法律，而是那些不知斗争何时是终点的劳动者的汗水。"
         }
       ],
       "notes": "阳性名词；复数trabajadores；搭配：un trabajador工人"
@@ -798,8 +798,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Entre el proyecto sonado y la realidad lograda.",
-          "zh": "他在梦想的蓝图与达成的现实之间。"
+          "es": "Entre el proyecto sonado y la realidad lograda,hay un puente que solo la gente puede construir con su esfuerzo y esperanza.",
+          "zh": "在梦想的蓝图与达成的现实之间，有一座唯有人们能用自己的努力与希望建造的桥梁。"
         }
       ],
       "notes": "阳性名词；复数proyectos；搭配：un proyecto项目"
@@ -812,8 +812,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él hay un puente que solo la gente puede construir con su esfuerzo y esperanza.",
-          "zh": "有一座唯有人们能用自己的努力与希望建造的桥梁。"
+          "es": "Entre el proyecto sonado y la realidad lograda,hay un puente que solo la gente puede construir con su esfuerzo y esperanza.",
+          "zh": "在梦想的蓝图与达成的现实之间，有一座唯有人们能用自己的努力与希望建造的桥梁。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la gente人们"
@@ -826,8 +826,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Entre el proyecto sonado y la realidad lograda.",
-          "zh": "他在梦想的蓝图与达成的现实之间。"
+          "es": "Entre el proyecto sonado y la realidad lograda,hay un puente que solo la gente puede construir con su esfuerzo y esperanza.",
+          "zh": "在梦想的蓝图与达成的现实之间，有一座唯有人们能用自己的努力与希望建造的桥梁。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la realidad现实"
@@ -840,8 +840,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la cabeza en las estrellas.",
-          "zh": "他头脑置于星空。"
+          "es": "Con los pies en la tierra y la cabeza en las estrellas,el area entre ambos es donde se desarrolla toda una vida de busqueda y asombro.",
+          "zh": "双脚踏于实地，头脑置于星空，两者之间的这片空间，正是整个充满追寻与惊叹的生命展开之处。"
         }
       ],
       "notes": "阴性名词；复数cabezas；搭配：la cabeza头"
@@ -854,8 +854,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Con los pies en la tierra.",
-          "zh": "他双脚踏于实地。"
+          "es": "Con los pies en la tierra y la cabeza en las estrellas,el area entre ambos es donde se desarrolla toda una vida de busqueda y asombro.",
+          "zh": "双脚踏于实地，头脑置于星空，两者之间的这片空间，正是整个充满追寻与惊叹的生命展开之处。"
         }
       ],
       "notes": "阳性名词；复数pies；搭配：los pies脚"
@@ -868,8 +868,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El área entre ambos.",
-          "zh": "他两者之间的这片空间。"
+          "es": "Con los pies en la tierra y la cabeza en las estrellas,el area entre ambos es donde se desarrolla toda una vida de busqueda y asombro.",
+          "zh": "双脚踏于实地，头脑置于星空，两者之间的这片空间，正是整个充满追寻与惊叹的生命展开之处。"
         }
       ],
       "notes": "阴性名词；复数áreas；搭配：un área区域"
@@ -882,8 +882,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El verdadero titulo que anhelo no está en mi tarjeta de presentación, sino en ser el arquitecto de mi hogar.",
-          "zh": "我渴望的真正头衔不在我的名片上，而在于成为我家的建筑师。"
+          "es": "El verdadero titulo que anhelo no esta en mi tarjeta de presentacion, sino en ser el arquitecto de mi",
+          "zh": "我渴望的真正头衔不在我的名片上，而在于成为我家的建筑师，以及一段充满爱的家族历史的创造者。"
         }
       ],
       "notes": "阳性名词；复数hogares；搭配：mi hogar我的家"
@@ -896,8 +896,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la creación de una historia familiar llena de amor.",
-          "zh": "他以及一段充满爱的家族历史的创造者。"
+          "es": "El verdadero titulo que anhelo no esta en mi tarjeta de presentacion, sino en ser el arquitecto de mi",
+          "zh": "我渴望的真正头衔不在我的名片上，而在于成为我家的建筑师，以及一段充满爱的家族历史的创造者。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la creación创造"
@@ -910,8 +910,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El verdadero titulo que anhelo no está en mi tarjeta de presentación.",
-          "zh": "我渴望的真正头衔不在我的名片上。"
+          "es": "El verdadero titulo que anhelo no esta en mi tarjeta de presentacion, sino en ser el arquitecto de mi",
+          "zh": "我渴望的真正头衔不在我的名片上，而在于成为我家的建筑师，以及一段充满爱的家族历史的创造者。"
         }
       ],
       "notes": "阳性名词；复数títulos；搭配：un título头衔"
@@ -924,8 +924,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Cada amanecer que regala el sol.",
-          "zh": "他太阳赐予的每一个黎明。"
+          "es": "Cada amanecer que regala el sol marca el inicio de una nueva semana de posibilidades,y al final de cada mes,miramos atras para medir el crecimiento de nuestra luz interior.",
+          "zh": "太阳赐予的每一个黎明，都标志着一个充满可能的新星期的开始；而在每个月的末尾，我们回望过去，衡量自身内在光芒的增长。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：el sol太阳"
@@ -938,25 +938,11 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él marca el inicio de una nueva semana de posibilidades.",
-          "zh": "他都标志着一个充满可能的新星期的开始。"
+          "es": "Cada amanecer que regala el sol marca el inicio de una nueva semana de posibilidades,y al final de cada mes,miramos atras para medir el crecimiento de nuestra luz interior.",
+          "zh": "太阳赐予的每一个黎明，都标志着一个充满可能的新星期的开始；而在每个月的末尾，我们回望过去，衡量自身内在光芒的增长。"
         }
       ],
       "notes": "阴性名词；复数semanas；搭配：cada semana每个星期"
-    },
-    {
-      "word": "Mes",
-      "partOfSpeech": "sustantivo",
-      "chineseMeaning": "月份",
-      "originalForm": "Mes",
-      "conjugation": {},
-      "sentences": [
-        {
-          "es": "Él al final de cada mes.",
-          "zh": "他而在每个月的末尾。"
-        }
-      ],
-      "notes": "阳性名词；复数meses；搭配：cada mes每个月"
     },
     {
       "word": "Luna",
@@ -966,8 +952,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él como la luna ensena a las mareas su eterno ritmo.",
-          "zh": "如同月亮教会潮汐它永恒的节奏。"
+          "es": "Le enseno a mi hijo a navegar este mundo como la luna ensena a las mareas su eterno ritmo",
+          "zh": "我教会儿子如何在这个世界航行，如同月亮教会潮汐它永恒的节奏"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la luna月亮"
@@ -980,8 +966,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él Le enseno a mi hijo a navegar este mundo.",
-          "zh": "我教会儿子如何在这个世界航行。"
+          "es": "Le enseno a mi hijo a navegar este mundo como la luna ensena a las mareas su eterno ritmo",
+          "zh": "我教会儿子如何在这个世界航行，如同月亮教会潮汐它永恒的节奏"
         }
       ],
       "notes": "阳性名词；复数hijos；搭配：mi hijo我的儿子"
@@ -994,8 +980,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En la estación de la historia, la politica sube y baja del poder como pasajeros apresurados.",
-          "zh": "他在历史的车站里，政治如匆忙旅客般上下权力列车。"
+          "es": "En la estacion de la historia,la politica sube y baja del poder como pasajeros apresurados, mientras la iglesia permanece como la boveda antigua que observa los trenes partir.",
+          "zh": "在历史的车站里，政治如匆忙旅客般上下权力列车，而教堂仍是凝视火车离去的古老穹顶。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la política政治"
@@ -1008,8 +994,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En la estación de la historia.",
-          "zh": "他在历史的车站里。"
+          "es": "En la estacion de la historia,la politica sube y baja del poder como pasajeros apresurados, mientras la iglesia permanece como la boveda antigua que observa los trenes partir.",
+          "zh": "在历史的车站里，政治如匆忙旅客般上下权力列车，而教堂仍是凝视火车离去的古老穹顶。"
         }
       ],
       "notes": "阴性名词；复数estaciones；搭配：la estación de tren火车站"
@@ -1022,17 +1008,17 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él mientras la iglesia permanece como la boveda antigua que observa los trenes partir.",
-          "zh": "他而教堂仍是凝视火车离去的古老穹顶。"
+          "es": "En la estacion de la historia,la politica sube y baja del poder como pasajeros apresurados, mientras la iglesia permanece como la boveda antigua que observa los trenes partir.",
+          "zh": "在历史的车站里，政治如匆忙旅客般上下权力列车，而教堂仍是凝视火车离去的古老穹顶。"
         }
       ],
       "notes": "阴性名词；复数iglesias；搭配：la iglesia教堂"
     },
     {
-      "word": "Sueno",
+      "word": "sueño",
       "partOfSpeech": "sustantivo",
       "chineseMeaning": "梦想",
-      "originalForm": "Sueno",
+      "originalForm": "sueño",
       "conjugation": {},
       "sentences": [
         {
@@ -1050,8 +1036,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La economía mide el precio de las cosas.",
-          "zh": "经济衡量万物的价格。"
+          "es": "La economía mide el precio de las cosas, la literatura explora su valor, y en esa brecha habita el sueno humano de una vida con sentido.",
+          "zh": "经济衡量万物的价格，文学探索其价值，而人类的梦想便栖息于此间的裂隙。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la economía经济"
@@ -1064,8 +1050,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él la literatura explora su valor.",
-          "zh": "他文学探索其价值。"
+          "es": "La economía mide el precio de las cosas, la literatura explora su valor, y en esa brecha habita el sueno humano de una vida con sentido.",
+          "zh": "经济衡量万物的价格，文学探索其价值，而人类的梦想便栖息于此间的裂隙。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la literatura文学"
@@ -1078,8 +1064,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El cielo testigo como el cabello se tine de plata y la cara se pinta de arrugas.",
-          "zh": "他天空见证着青丝如何染上银霜，脸庞如何刻上皱纹。"
+          "es": "El cielo testigo como el cabello se tine de plata y la cara se pinta de arrugas,contando historias de una vida bien vivida.",
+          "zh": "他天空见证着青丝如何染上银霜，脸庞如何刻上皱纹，诉说着一段丰盛生命的故事。"
         }
       ],
       "notes": "阴性名词；复数caras；搭配：la cara脸"
@@ -1092,8 +1078,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El cielo testigo como el cabello se tine de plata.",
-          "zh": "他天空见证着青丝如何染上银霜。"
+          "es": "El cielo testigo como el cabello se tine de plata y la cara se pinta de arrugas,contando historias de una vida bien vivida.",
+          "zh": "他天空见证着青丝如何染上银霜，脸庞如何刻上皱纹，诉说着一段丰盛生命的故事。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：el cabello头发"
@@ -1106,8 +1092,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él contando historias de una vida bien vivida.",
-          "zh": "他诉说着一段丰盛生命的故事。"
+          "es": "El cielo testigo como el cabello se tine de plata y la cara se pinta de arrugas,contando historias de una vida bien vivida.",
+          "zh": "他天空见证着青丝如何染上银霜，脸庞如何刻上皱纹，诉说着一段丰盛生命的故事。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：el cielo天空"
@@ -1120,8 +1106,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él no preguntaran qué llevaste en el bolsillo, sino qué paisajes guardaste en tu vista.",
-          "zh": "没人会问你口袋里曾装着什么，只会问你视野中珍藏了怎样的风景。"
+          "es": "Al final del camino,no preguntaran qué llevaste en el bolsillo, sino qué paisajes guardaste en tu vista y qué amor en tu corazón.",
+          "zh": "在路的尽头，没人会问你口袋里曾装着什么，只会问你视野中珍藏了怎样的风景，以及心中存留着怎样的爱。"
         }
       ],
       "notes": "阴性名词；复数vistas；搭配：la vista视野"
@@ -1134,8 +1120,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él no preguntaran qué llevaste en el bolsillo.",
-          "zh": "没人会问你口袋里曾装着什么。"
+          "es": "Al final del camino,no preguntaran qué llevaste en el bolsillo, sino qué paisajes guardaste en tu vista y qué amor en tu corazón.",
+          "zh": "在路的尽头，没人会问你口袋里曾装着什么，只会问你视野中珍藏了怎样的风景，以及心中存留着怎样的爱。"
         }
       ],
       "notes": "阳性名词；复数bolsillos；搭配：el bolsillo口袋"
@@ -1148,8 +1134,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él y qué amor en tu corazón.",
-          "zh": "他以及心中存留着怎样的爱。"
+          "es": "Al final del camino,no preguntaran qué llevaste en el bolsillo, sino qué paisajes guardaste en tu vista y qué amor en tu corazón.",
+          "zh": "在路的尽头，没人会问你口袋里曾装着什么，只会问你视野中珍藏了怎样的风景，以及心中存留着怎样的爱。"
         }
       ],
       "notes": "阳性名词；复数corazones；搭配：el corazón心"
@@ -1176,8 +1162,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La justicia no es solo un veredicto.",
-          "zh": "他正义不只是一纸判决。"
+          "es": "La justicia no es solo un veredicto, es un estilo de vida que se practica en cada conversación cotidiana con los demas.",
+          "zh": "正义不只是一纸判决，更是一种体现在每日与他人交谈中的生活方式。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la justicia正义"
@@ -1190,8 +1176,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él es un estilo de vida que se practica en cada conversación cotidiana con los demas.",
-          "zh": "更是一种体现在每日与他人交谈中的生活方式。"
+          "es": "La justicia no es solo un veredicto, es un estilo de vida que se practica en cada conversación cotidiana con los demas.",
+          "zh": "正义不只是一纸判决，更是一种体现在每日与他人交谈中的生活方式。"
         }
       ],
       "notes": "阴性名词；复数conversaciones；搭配：una conversación对话"
@@ -1204,8 +1190,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La historia nos muestra mil maneras de hacer la guerra, y apenas unas pocas de construir la paz.",
-          "zh": "历史向我们展示了千百种发动战争的方式，却只给出了寥寥几种构建和平的途径。"
+          "es": "La historia nos muestra mil maneras de hacer la guerra, y apenas unas pocas de construir la paz;por eso esta ultima es el arte mas valioso.",
+          "zh": "历史向我们展示了千百种发动战争的方式，却只给出了寥寥几种构建和平的途径；因此后者才是最为珍贵的艺术"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la paz和平"
@@ -1218,8 +1204,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La historia nos muestra mil maneras de hacer la guerra.",
-          "zh": "历史向我们展示了千百种发动战争的方式。"
+          "es": "La historia nos muestra mil maneras de hacer la guerra, y apenas unas pocas de construir la paz;por eso esta ultima es el arte mas valioso.",
+          "zh": "历史向我们展示了千百种发动战争的方式，却只给出了寥寥几种构建和平的途径；因此后者才是最为珍贵的艺术"
         }
       ],
       "notes": "阴性名词；复数guerras；搭配：la guerra战争"
@@ -1232,8 +1218,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "La historia nos muestra mil maneras de hacer la guerra.",
-          "zh": "历史向我们展示了千百种发动战争的方式。"
+          "es": "La historia nos muestra mil maneras de hacer la guerra, y apenas unas pocas de construir la paz;por eso esta ultima es el arte mas valioso.",
+          "zh": "历史向我们展示了千百种发动战争的方式，却只给出了寥寥几种构建和平的途径；因此后者才是最为珍贵的艺术"
         }
       ],
       "notes": "阴性名词；复数maneras；搭配：de esta manera用这种方式"
@@ -1246,8 +1232,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El mejor trabajo es aquel que nace de lo que amas y utiliza lo que la educación te dio.",
-          "zh": "最好的工作，源于你所爱，并运用教育所予。"
+          "es": "El mejor trabajo es aquel que nace de lo que amas y utiliza lo que la educación te dio;asi ,el amor y el conocimiento se funden en accion.",
+          "zh": "最好的工作，源于你所爱，并运用教育所予；如此，爱与知识便融汇于行动。"
         }
       ],
       "notes": "阴性名词；不可数；搭配：la educación教育"
@@ -1260,25 +1246,11 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El mejor trabajo es aquel que nace de lo que amas.",
-          "zh": "最好的工作，源于你所爱。"
+          "es": "El mejor trabajo es aquel que nace de lo que amas y utiliza lo que la educación te dio;asi ,el amor y el conocimiento se funden en accion.",
+          "zh": "最好的工作，源于你所爱，并运用教育所予；如此，爱与知识便融汇于行动。"
         }
       ],
       "notes": "阳性名词；不可数；搭配：el amor爱"
-    },
-    {
-      "word": "Trabajo",
-      "partOfSpeech": "sustantivo",
-      "chineseMeaning": "工作",
-      "originalForm": "Trabajo",
-      "conjugation": {},
-      "sentences": [
-        {
-          "es": "El mejor trabajo es aquel que nace de lo que amas.",
-          "zh": "最好的工作，源于你所爱。"
-        }
-      ],
-      "notes": "阳性名词；复数trabajos；搭配：el trabajo工作"
     },
     {
       "word": "Dólar",
@@ -1288,8 +1260,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En el centro de la ciudad, el rascacielos del programa financiero late al ritmo del dólar.",
-          "zh": "他在城市中心，金融项目的摩天大楼随着美元的节奏跳动。"
+          "es": "En el centro de la ciudad,el rascacielos del programa financiero late al ritmo del dolar, bombeando capital por las venas urbanas.",
+          "zh": "在冲突的情况下，与家人沟通的方式，可以将紧张时刻转化为理解与成长的机会。"
         }
       ],
       "notes": "阳性名词；复数dólares；搭配：el dólar美元"
@@ -1302,8 +1274,8 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "Él En el centro de la ciudad.",
-          "zh": "他在城市中心。"
+          "es": "En el centro de la ciudad,el rascacielos del programa financiero late al ritmo del dolar, bombeando capital por las venas urbanas.",
+          "zh": "在冲突的情况下，与家人沟通的方式，可以将紧张时刻转化为理解与成长的机会。"
         }
       ],
       "notes": "阳性名词；复数centros；搭配：el centro中心"
@@ -1316,11 +1288,529 @@
       "conjugation": {},
       "sentences": [
         {
-          "es": "El rascaciElos dEl programa financiero late al ritmo dEl dólar.",
-          "zh": "他金融项目的摩天大楼随着美元的节奏跳动。"
+          "es": "En el centro de la ciudad,el rascacielos del programa financiero late al ritmo del dolar, bombeando capital por las venas urbanas.",
+          "zh": "在冲突的情况下，与家人沟通的方式，可以将紧张时刻转化为理解与成长的机会。"
         }
       ],
       "notes": "阳性名词；复数programas；搭配：un programa计划"
+    },
+    {
+      "word": "Reunion",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "会议",
+      "originalForm": "Reunion",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un minuto de silencio en una reunion. observando los rostros,puede decir mas que mil palabras sobre lo que realmente esta pasando.",
+          "zh": "会议中一分钟的沉默，通过观察在座者的脸庞，比千言万语更能说明真实的状况。"
+        }
+      ],
+      "notes": "名词；常见搭配：tener/usar/buscar reunion"
+    },
+    {
+      "word": "Rostro",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "脸庞",
+      "originalForm": "Rostro",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Un minuto de silencio en una reunion. observando los rostros,puede decir mas que mil palabras sobre lo que realmente esta pasando.",
+          "zh": "会议中一分钟的沉默，通过观察在座者的脸庞，比千言万语更能说明真实的状况。"
+        }
+      ],
+      "notes": "名词；常见搭配：tener/usar/buscar rostro"
+    },
+    {
+      "word": "informacion",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "信息",
+      "originalForm": "informacion",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El tema central de nuestra era no es la acumulacion de informacion,sino el sabio uso de ella para navegar entre la claridad y el caos.",
+          "zh": "我们时代的核心议题并非信息的积累，而是如何智慧地利用它，在清明与混沌间航行。"
+        }
+      ],
+      "notes": "名词；常见搭配：tener/usar/buscar informacion"
+    },
+    {
+      "word": "tema",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "主题",
+      "originalForm": "tema",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El tema central de nuestra era no es la acumulacion de informacion,sino el sabio uso de ella para navegar entre la claridad y el caos.",
+          "zh": "我们时代的核心议题并非信息的积累，而是如何智慧地利用它，在清明与混沌间航行。"
+        }
+      ],
+      "notes": "名词；常见搭配：tener/usar/buscar tema"
+    },
+    {
+      "word": "Médico",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "医生",
+      "originalForm": "Médico",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El primer médico que conoces es tu madre cuando te cura un rasguño. El primer profesor es tu padre cuando te enseña a caminar. El primer abogado eres tú cuando defiendes lo que amas.",
+          "zh": "你认识的第一位医生是为你处理伤口的母亲。第一位老师是教你走路的父亲。第一位律师是你为所爱之物辩护的你自己。"
+        }
+      ],
+      "notes": "搭配： médico de cabecera (家庭医生), consultar al médico (看医生)"
+    },
+    {
+      "word": "Profesor",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "老师",
+      "originalForm": "Profesor",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El primer médico que conoces es tu madre cuando te cura un rasguño. El primer profesor es tu padre cuando te enseña a caminar. El primer abogado eres tú cuando defiendes lo que amas.",
+          "zh": "你认识的第一位医生是为你处理伤口的母亲。第一位老师是教你走路的父亲。第一位律师是你为所爱之物辩护的你自己。"
+        }
+      ],
+      "notes": "搭配： profesor de lengua (语文老师), ejercer de profesor (执教)"
+    },
+    {
+      "word": "Abogado",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "律师",
+      "originalForm": "Abogado",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El primer médico que conoces es tu madre cuando te cura un rasguño. El primer profesor es tu padre cuando te enseña a caminar. El primer abogado eres tú cuando defiendes lo que amas.",
+          "zh": "你认识的第一位医生是为你处理伤口的母亲。第一位老师是教你走路的父亲。第一位律师是你为所爱之物辩护的你自己。"
+        }
+      ],
+      "notes": "搭配： abogado defensor (辩护律师), estudiar derecho (学法律)"
+    },
+    {
+      "word": "Noticia",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "消息",
+      "originalForm": "Noticia",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La noticia de tu regreso llegó por la prensa local. Pero lo que el teléfono me hizo llorar: tu voz diciendo \"llegué\".",
+          "zh": "你归来的消息是从当地报刊上看到的。但让我落泪的是电话里你的声音说“我到了”。"
+        }
+      ],
+      "notes": "搭配： dar una noticia (告知一个消息), escuchar las noticias (听新闻)"
+    },
+    {
+      "word": "Prensa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "报刊",
+      "originalForm": "Prensa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "...llegó por la prensa local.",
+          "zh": "你归来的消息是从当地报刊上看到的。"
+        }
+      ],
+      "notes": "搭配： prensa escrita (平面媒体), rueda de prensa (新闻发布会)"
+    },
+    {
+      "word": "Teléfono",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "电话",
+      "originalForm": "Teléfono",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Pero lo que el teléfono me hizo llorar: tu voz diciendo \"llegué\".",
+          "zh": "但让我落泪的是电话里你的声音说“我到了”。"
+        }
+      ],
+      "notes": "搭配： teléfono móvil (手机), llamar por teléfono (打电话)"
+    },
+    {
+      "word": "Esperanza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "希望",
+      "originalForm": "Esperanza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llevas esperanza en la mochila para seguir. Llevas miedo en el bolsillo para protegerte. Llevas alegría en el pecho para compartir.",
+          "zh": "你把希望放在背包里，为了继续前行。你把恐惧放在口袋里，为了自我保护。你把喜悦放在胸口，为了与人分享。"
+        }
+      ],
+      "notes": "搭配： tener esperanza (有希望), perder la esperanza (失去希望)"
+    },
+    {
+      "word": "Miedo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "恐惧",
+      "originalForm": "Miedo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llevas miedo en el bolsillo para protegerte.",
+          "zh": "你把恐惧放在口袋里，为了自我保护。"
+        }
+      ],
+      "notes": "搭配： tener miedo a (害怕...), dar miedo (令人害怕)"
+    },
+    {
+      "word": "Alegría",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "喜悦",
+      "originalForm": "Alegría",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Llevas alegría en el pecho para compartir.",
+          "zh": "你把喜悦放在胸口，为了与人分享。"
+        }
+      ],
+      "notes": "搭配： dar alegría (带来快乐), alegría de vivir (生的乐趣)"
+    },
+    {
+      "word": "Verdad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "真相",
+      "originalForm": "Verdad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La verdad pesa al principio, pero con el tiempo se vuelve ligera. La mentira es liviana al principio, pero con los años se vuelve insoportable. La fe pesa lo justo para no caerte.",
+          "zh": "真相起初沉重，但随时间推移变得轻盈。谎言起初轻巧，但年深日久变得无法承受。信念有着刚好让你不会跌倒的重量。"
+        }
+      ],
+      "notes": "搭配： decir la verdad (说真话), en verdad (的确/确实)"
+    },
+    {
+      "word": "Mentira",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "谎言",
+      "originalForm": "Mentira",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La mentira es liviana al principio, pero con los años se vuelve insoportable.",
+          "zh": "谎言起初轻巧，但年深日久变得无法承受。"
+        }
+      ],
+      "notes": "搭配： decir mentiras (说谎), mentira piadosa (善意的谎言)"
+    },
+    {
+      "word": "Fe",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "信念，信仰",
+      "originalForm": "Fe",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La fe pesa lo justo para no caerte.",
+          "zh": "信念有着刚好让你不会跌倒的重量。"
+        }
+      ],
+      "notes": "搭配： tener fe en (对...有信心), fe ciega (盲信)"
+    },
+    {
+      "word": "Clase",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "类型，种类",
+      "originalForm": "Clase",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Los libros tienen clases: poesía, historia, ciencia. Se ordenan por categorías en los estantes. La razón para leerlos es tan amplia como los lectores.",
+          "zh": "书籍有不同的类型：诗歌、历史、科学。它们在书架上按类别排列。而阅读它们的理由，和读者一样多样。"
+        }
+      ],
+      "notes": "搭配： todo tipo de clases (各类), clase social (社会阶层)"
+    },
+    {
+      "word": "Categoría",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "类别",
+      "originalForm": "Categoría",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Se ordenan por categorías en los estantes.",
+          "zh": "它们在书架上按类别排列。"
+        }
+      ],
+      "notes": "搭配： categoría profesional (职业类别/等级), de primera categoría (一流的)"
+    },
+    {
+      "word": "Razón",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "理由，原因",
+      "originalForm": "Razón",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La razón para leerlos es tan amplia como los lectores.",
+          "zh": "而阅读它们的理由，和读者一样多样。"
+        }
+      ],
+      "notes": "搭配： tener razón (有道理/说得对), la razón de ser (存在的理由)"
+    },
+    {
+      "word": "Calidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "质量",
+      "originalForm": "Calidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La cantidad de árboles no hace un bosque si no hay calidad de vida en ellos. El nivel de un ecosistema está en su diversidad.",
+          "zh": "如果树没有高质量的生命力，光有数量也成不了森林。一个生态系统的水平在于它的多样性。"
+        }
+      ],
+      "notes": "搭配： buena calidad (高质量), calidad de vida (生活质量)"
+    },
+    {
+      "word": "Cantidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "数量",
+      "originalForm": "Cantidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La cantidad de árboles no hace un bosque...",
+          "zh": "如果树没有高质量的生命力，光有数量也成不了森林。"
+        }
+      ],
+      "notes": "搭配： en gran cantidad (大量地), la cantidad exacta (确切的量)"
+    },
+    {
+      "word": "Nivel",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "水平，等级",
+      "originalForm": "Nivel",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El nivel de un ecosistema está en su diversidad.",
+          "zh": "一个生态系统的水平在于它的多样性。"
+        }
+      ],
+      "notes": "搭配： nivel de vida (生活水平), subir de nivel (升级/提升水平)"
+    },
+    {
+      "word": "Posibilidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "可能性",
+      "originalForm": "Posibilidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una tormenta cierra muchas posibilidades, pero abre otras. Una tormenta esconde oportunidades para quienes saben mirar. Y la capacidad es el puerto donde te refugias mientras pasa.",
+          "zh": "一场风暴会关闭许多可能性，但也会打开新的。风暴中藏着机会，给那些懂得去看的人。而能力，就是风暴过境时你栖身的港湾。"
+        }
+      ],
+      "notes": "搭配： tener la posibilidad de (有...的可能), posibilidades reales (真实的可能性)"
+    },
+    {
+      "word": "Oportunidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "机会",
+      "originalForm": "Oportunidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Una tormenta esconde oportunidades para quienes saben mirar.",
+          "zh": "风暴中藏着机会，给那些懂得去看的人。"
+        }
+      ],
+      "notes": "搭配： aprovechar la oportunidad (抓住机会), perder una oportunidad (错失机会)"
+    },
+    {
+      "word": "Capacidad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "能力",
+      "originalForm": "Capacidad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "Y la capacidad es el puerto donde te refugias mientras pasa.",
+          "zh": "而能力，就是风暴过境时你栖身的港湾。"
+        }
+      ],
+      "notes": "搭配： tener capacidad para (有做...的能力), capacidad mental (心智能力)"
+    },
+    {
+      "word": "Pensamiento",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "思想",
+      "originalForm": "Pensamiento",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El pensamiento llega sin avisar; la opinión espera ser compartida; la decisión exige ser tomada. Las tres habitan tu cabeza, pero cada una tiene su tiempo.",
+          "zh": "思想不请自来；意见等待被分享；决定要求被做出。三者都栖居在你的头脑中，但各有其时。"
+        }
+      ],
+      "notes": "搭配： tener un pensamiento (有个想法), pensamiento positivo (积极的思想)"
+    },
+    {
+      "word": "Opinión",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "意见",
+      "originalForm": "Opinión",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la opinión espera ser compartida...",
+          "zh": "意见等待被分享。"
+        }
+      ],
+      "notes": "搭配： dar una opinión (给意见), en mi opinión (依我看/在我看来)"
+    },
+    {
+      "word": "Decisión",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "决定",
+      "originalForm": "Decisión",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "la decisión exige ser tomada.",
+          "zh": "决定要求被做出。"
+        }
+      ],
+      "notes": "搭配： tomar una decisión (做出决定), decisión importante (重大决定)"
+    },
+    {
+      "word": "Bebida",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "饮品",
+      "originalForm": "Bebida",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La bebida deja un círculo en la mesa. El pan deja migas que los niños recogen. La mesa guarda en sus rayones la memoria de todas las comidas.",
+          "zh": "饮品在桌上留下一个水渍的圆圈。面包落下孩子们捡起来吃的碎屑。桌子在它的划痕里，收藏着所有餐食的记忆。"
+        }
+      ],
+      "notes": "搭配： bebida alcohólica (酒精饮料), bebida fría (冷饮)"
+    },
+    {
+      "word": "Pan",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "面包",
+      "originalForm": "Pan",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El pan deja migas que los niños recogen.",
+          "zh": "面包落下孩子们捡起来吃的碎屑。"
+        }
+      ],
+      "notes": "搭配： pan de molde (切片面包), pan integral (全麦面包)"
+    },
+    {
+      "word": "Mesa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "桌子",
+      "originalForm": "Mesa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La mesa guarda en sus rayones la memoria de todas las comidas.",
+          "zh": "桌子在它的划痕里，收藏着所有餐食的记忆。"
+        }
+      ],
+      "notes": "搭配： mesa de comedor (餐桌), poner la mesa (摆餐具)"
+    },
+    {
+      "word": "Soledad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "孤独",
+      "originalForm": "Soledad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La soledad del café de las seis de la mañana es un lujo que no todos entienden. La libertad es tomarlo sin prisa. La comida es el pan caliente que calma el estómago antes de que el día empiece.",
+          "zh": "早上六点钟咖啡馆的孤独，是一种并非所有人都能理解的奢侈。自由，就是能从容不迫地喝这杯咖啡。早餐，是开始新的一天之前能安抚肠胃的热面包。"
+        }
+      ],
+      "notes": "搭配： sentirse en soledad (感到孤独), la soledad de la montaña (山中的孤寂)"
+    },
+    {
+      "word": "Libertad",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "自由",
+      "originalForm": "Libertad",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La libertad es tomarlo sin prisa.",
+          "zh": "自由，就是能从容不迫地喝这杯咖啡。"
+        }
+      ],
+      "notes": "搭配： libertad de expresión (言论自由), tomarse libertades (肆意妄为)"
+    },
+    {
+      "word": "Comida",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "食物，正餐",
+      "originalForm": "Comida",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La comida es el pan caliente que calma el estómago antes de que el día empiece.",
+          "zh": "早餐，是开始新的一天之前能安抚肠胃的热面包。"
+        }
+      ],
+      "notes": "搭配： hacer la comida (做中饭), comida chatarra (垃圾食品)"
+    },
+    {
+      "word": "Tristeza",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "悲伤",
+      "originalForm": "Tristeza",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La tristeza de la lluvia es que moja sin avisar. El enojo es el paraguas que se da vuelta con el viento. La sorpresa es el arcoíris que aparece cuando ya habías dejado de mirar.",
+          "zh": "悲伤是那场不期而至的雨，把你淋湿。愤怒是那把被风掀翻的伞。惊讶是你已经不再看天空时，出现的彩虹。"
+        }
+      ],
+      "notes": "搭配： sentir tristeza (感到悲伤), día de tristeza (悲伤的一天)"
+    },
+    {
+      "word": "Enojo",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "愤怒",
+      "originalForm": "Enojo",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "El enojo es el paraguas que se da vuelta con el viento.",
+          "zh": "愤怒是那把被风掀翻的伞。"
+        }
+      ],
+      "notes": "搭配： tener enojo con (对...生气), causar enojo (引起愤怒)"
+    },
+    {
+      "word": "Sorpresa",
+      "partOfSpeech": "sustantivo",
+      "chineseMeaning": "惊讶",
+      "originalForm": "Sorpresa",
+      "conjugation": {},
+      "sentences": [
+        {
+          "es": "La sorpresa es el arcoíris que aparece cuando ya habías dejado de mirar.",
+          "zh": "惊讶是你已经不再看天空时，出现的彩虹。"
+        }
+      ],
+      "notes": "搭配： llevarse una sorpresa (感到惊讶), de sorpresa (突然地)"
     }
   ]
 }

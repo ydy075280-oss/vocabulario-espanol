@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { getChatGreeting, chatSpeak, parseSSEStream } from '../api';
+import { getChatGreeting, chatSpeak, chatTranslate, parseSSEStream } from '../api';
 import type { ChatMessage, ChatWord } from '../api';
 import { wordbookAPI, cardAPI } from '../api';
 
@@ -33,6 +33,11 @@ interface UIMessage {
   audioUrl?: string;
   corrections?: Array<{ original: string; corrected: string; explanation: string }>;
   showCorrections?: boolean;
+  // 中文翻译（仅 AI 消息）
+  translation?: string;
+  showTranslation?: boolean;
+  translating?: boolean;
+  translationError?: string;
 }
 
 interface Config {
@@ -82,6 +87,7 @@ export default function ChatPage() {
   const streamRef = useRef<MediaStream | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const isRecordingRef = useRef(false);
+  const handleSendAudioRef = useRef<((blob: Blob) => Promise<void>) | null>(null);
 
   // 自动滚动
   useEffect(() => {
@@ -148,93 +154,119 @@ export default function ChatPage() {
 
   // ========== 录音 ==========
   const startRecording = useCallback(async () => {
-    try {
-      setError('');
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          sampleRate: 16000,
-          channelCount: 1,
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        },
-      });
+    setError('');
 
-      // 检查麦克风是否真的在采集数据
-      const audioTrack = stream.getAudioTracks()[0];
-      if (!audioTrack || audioTrack.muted) {
-        setError('麦克风被静音，请检查设备');
-        return;
-      }
-      streamRef.current = stream;
-
-      const preferredMime = 'audio/webm;codecs=opus';
-      const fallbackMime = 'audio/webm';
-      let mimeType = MediaRecorder.isTypeSupported(preferredMime) ? preferredMime : fallbackMime;
-      if (!MediaRecorder.isTypeSupported(mimeType)) {
-        // 最后尝试 mp4
-        mimeType = MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' : '';
-      }
-      if (!mimeType) {
-        setError('当前浏览器不支持录音，请换 Chrome/Edge 试试');
-        return;
-      }
-
-      const recorder = new MediaRecorder(stream, { mimeType });
-      mediaRecorderRef.current = recorder;
-      chunksRef.current = [];
-      let hasData = false;
-
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          chunksRef.current.push(e.data);
-          hasData = true;
-        }
-      };
-
-      recorder.onstop = async () => {
-        if (!isRecordingRef.current) return;
-        isRecordingRef.current = false;
-        setIsRecording(false);
-
-        const blobType = mimeType === 'audio/mp4' ? 'audio/mp4' : 'audio/webm';
-        const blob = new Blob(chunksRef.current, { type: blobType });
-
-        if (!hasData || blob.size < 1024) {
-          setError('录音太短或未采集到声音，请按住多录一点');
-          return;
-        }
-        await handleSendAudio(blob);
-      };
-
-      recorder.onerror = () => {
-        isRecordingRef.current = false;
-        setIsRecording(false);
-        setError('录音失败，请重试');
-      };
-
-      // 使用 timeslice 确保数据分段写入，避免某些浏览器为空
-      recorder.start(200);
-      isRecordingRef.current = true;
-      setIsRecording(true);
-    } catch (err: any) {
-      if (err.name === 'NotAllowedError') {
-        setError('没有麦克风权限，请在浏览器设置中允许');
-      } else if (err.name === 'NotFoundError') {
-        setError('未找到麦克风设备');
-      } else {
-        setError('无法访问麦克风: ' + err.message);
-      }
+    // 1) 环境检测：getUserMedia 仅在安全上下文（HTTPS / localhost）可用，
+    //    手机通过 http://局域网IP 访问时 navigator.mediaDevices 为 undefined
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setError('当前环境无法访问麦克风：请通过 https:// 或 http://localhost 访问（浏览器禁止在普通 http / 局域网 IP 下使用麦克风）');
+      return;
     }
+
+    // 2) 获取麦克风流：先用增强约束，设备不支持则降级为裸约束（避免 OverconstrainedError）
+    let stream: MediaStream;
+    try {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          },
+        });
+      } catch (err: any) {
+        if (err?.name === 'OverconstrainedError' || err?.name === 'ConstraintNotSatisfiedError') {
+          stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        } else {
+          throw err;
+        }
+      }
+    } catch (err: any) {
+      if (err?.name === 'NotAllowedError' || err?.name === 'PermissionDeniedError') {
+        setError('没有麦克风权限：请在浏览器地址栏的麦克风图标中允许访问后重试');
+      } else if (err?.name === 'NotFoundError' || err?.name === 'DevicesNotFoundError') {
+        setError('未找到麦克风设备，请检查系统是否接入并启用麦克风');
+      } else if (err?.name === 'NotReadableError') {
+        setError('麦克风被其他应用占用，请关闭占用程序后重试');
+      } else if (err?.name === 'SecurityError') {
+        setError('浏览器安全策略阻止访问麦克风，请使用 https:// 或 localhost 访问');
+      } else {
+        setError('无法访问麦克风: ' + (err?.message || err?.name || '未知错误'));
+      }
+      return;
+    }
+
+    // 检查麦克风是否真的在采集数据
+    const audioTrack = stream.getAudioTracks()[0];
+    if (!audioTrack || audioTrack.muted) {
+      setError('麦克风被静音，请检查设备');
+      stream.getTracks().forEach(t => t.stop());
+      return;
+    }
+    streamRef.current = stream;
+
+    const preferredMime = 'audio/webm;codecs=opus';
+    const fallbackMime = 'audio/webm';
+    let mimeType = MediaRecorder.isTypeSupported(preferredMime) ? preferredMime : fallbackMime;
+    if (!MediaRecorder.isTypeSupported(mimeType)) {
+      // 最后尝试 mp4
+      mimeType = MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' : '';
+    }
+    if (!mimeType) {
+      setError('当前浏览器不支持录音，请换 Chrome/Edge 试试');
+      stream.getTracks().forEach(t => t.stop());
+      return;
+    }
+
+    const recorder = new MediaRecorder(stream, { mimeType });
+    mediaRecorderRef.current = recorder;
+    chunksRef.current = [];
+    let hasData = false;
+
+    recorder.ondataavailable = (e) => {
+      if (e.data.size > 0) {
+        chunksRef.current.push(e.data);
+        hasData = true;
+      }
+    };
+
+    recorder.onstop = async () => {
+      if (!isRecordingRef.current) return;
+      isRecordingRef.current = false;
+      setIsRecording(false);
+
+      // 录音结束统一释放麦克风（不要在 stop() 后立刻停轨道，避免丢数据）
+      streamRef.current?.getTracks().forEach(t => t.stop());
+      streamRef.current = null;
+
+      const blobType = mimeType === 'audio/mp4' ? 'audio/mp4' : 'audio/webm';
+      const blob = new Blob(chunksRef.current, { type: blobType });
+
+      if (!hasData || blob.size < 1024) {
+        setError('录音太短或未采集到声音，请按住多录一点');
+        return;
+      }
+      // 通过 ref 调用最新的 handleSendAudio，避免过期闭包导致聊天历史丢失
+      await handleSendAudioRef.current?.(blob);
+    };
+
+    recorder.onerror = () => {
+      isRecordingRef.current = false;
+      setIsRecording(false);
+      setError('录音失败，请重试');
+    };
+
+    // 使用 timeslice 确保数据分段写入，避免某些浏览器为空
+    recorder.start(200);
+    isRecordingRef.current = true;
+    setIsRecording(true);
   }, []);
 
   const stopRecording = useCallback(() => {
     if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
       mediaRecorderRef.current.stop();
+      // 轨道统一在 onstop 回调里释放，保证录音数据完整写入
     }
-    // 释放麦克风
-    streamRef.current?.getTracks().forEach(t => t.stop());
-    streamRef.current = null;
   }, []);
 
   // ========== 发送音频 + 处理 SSE 流 ==========
@@ -332,6 +364,41 @@ export default function ChatPage() {
       setError(err.message || '网络错误，请重试');
       setStatus('');
       setStreamingText('');
+    }
+  };
+
+  // 保持 ref 指向最新的 handleSendAudio（供录音 onstop 回调使用，避免过期闭包）
+  useEffect(() => {
+    handleSendAudioRef.current = handleSendAudio;
+  });
+
+  // ========== 翻译 AI 消息为中文 ==========
+  const handleToggleTranslation = async (msg: UIMessage) => {
+    if (msg.translating || msg.role !== 'assistant') return;
+
+    // 已有译文 → 切换展开/收起（避免重复请求浪费 token）
+    if (msg.translation) {
+      setMessages(prev => prev.map(m =>
+        m.id === msg.id ? { ...m, showTranslation: !m.showTranslation } : m
+      ));
+      return;
+    }
+
+    if (!msg.content.trim()) return;
+
+    setMessages(prev => prev.map(m =>
+      m.id === msg.id ? { ...m, translating: true, translationError: '' } : m
+    ));
+
+    try {
+      const translation = await chatTranslate(msg.content);
+      setMessages(prev => prev.map(m =>
+        m.id === msg.id ? { ...m, translating: false, translation, showTranslation: true } : m
+      ));
+    } catch (err: any) {
+      setMessages(prev => prev.map(m =>
+        m.id === msg.id ? { ...m, translating: false, translationError: err.message || '翻译失败，请重试' } : m
+      ));
     }
   };
 
@@ -508,6 +575,7 @@ export default function ChatPage() {
             key={msg.id}
             msg={msg}
             onPlay={playAudio}
+            onTranslate={handleToggleTranslation}
             onToggleCorrections={() => {
               setMessages(prev => prev.map(m =>
                 m.id === msg.id ? { ...m, showCorrections: !m.showCorrections } : m
@@ -588,17 +656,20 @@ export default function ChatPage() {
 function MessageBubble({
   msg,
   onPlay,
+  onTranslate,
   onToggleCorrections,
   isStreaming,
 }: {
   msg: UIMessage;
   onPlay: (url: string) => void;
+  onTranslate: (msg: UIMessage) => void;
   onToggleCorrections: () => void;
   isStreaming: boolean;
 }) {
   const isUser = msg.role === 'user';
   const hasCorrections = msg.corrections && msg.corrections.length > 0;
   const hasAudio = !!msg.audioUrl;
+  const showTranslateBtn = !isUser && !!msg.content.trim() && !isStreaming;
 
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
@@ -611,13 +682,40 @@ function MessageBubble({
               : 'bg-white border border-hairline-soft text-ink rounded-bl-md shadow-sm'
           }`}
         >
-          <p className={`text-sm leading-relaxed whitespace-pre-wrap ${isStreaming ? 'after:content-["▊"] after:animate-pulse after:ml-0.5' : ''}`}>
+          <p className={`text-sm leading-relaxed whitespace-pre-wrap break-words [overflow-wrap:anywhere] ${isStreaming ? 'after:content-["▊"] after:animate-pulse after:ml-0.5' : ''}`}>
             {msg.content || (isStreaming ? '' : '...')}
           </p>
 
+          {/* 翻译失败提示 */}
+          {!isUser && msg.translationError && (
+            <p className="mt-2 text-xs text-red-500">{msg.translationError}</p>
+          )}
+
+          {/* 中文译文 */}
+          {!isUser && msg.translation && msg.showTranslation && (
+            <div className="mt-2 pt-2 border-t border-hairline-soft/60">
+              <p className="text-[13px] leading-relaxed text-typo-muted whitespace-pre-wrap break-words [overflow-wrap:anywhere]">
+                {msg.translation}
+              </p>
+            </div>
+          )}
+
           {/* Actions row */}
-          {(hasAudio || hasCorrections) && !isStreaming && (
-            <div className="flex items-center gap-2 mt-2 pt-1.5 border-t border-hairline-soft/50">
+          {(hasAudio || hasCorrections || showTranslateBtn) && !isStreaming && (
+            <div className="flex items-center gap-2 flex-wrap mt-2 pt-1.5 border-t border-hairline-soft/50">
+              {showTranslateBtn && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onTranslate(msg); }}
+                  disabled={msg.translating}
+                  title="将这条 AI 消息翻译成中文"
+                  className="flex items-center gap-1 text-[11px] text-sky-600 hover:text-sky-700 transition-colors disabled:opacity-60"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016 5m-3.9 9.5h9M13 13l4 8 4-8m1.5-4.5h-1" />
+                  </svg>
+                  {msg.translating ? '翻译中…' : msg.translation ? (msg.showTranslation ? '收起译文' : '显示译文') : '中文翻译'}
+                </button>
+              )}
               {hasAudio && (
                 <button
                   onClick={(e) => { e.stopPropagation(); onPlay(msg.audioUrl!); }}

@@ -2,13 +2,13 @@ import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import { sambertSynthesizeToFile } from './sambertTTS';
 
 // ============================================================
 // AI 对话服务 — 语音实时对话 MVP
 // 包含：ASR 语音识别、LLM 流式对话、TTS 语音合成
 // ============================================================
 const BASE_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1';
-const DASHSCOPE_API_BASE = 'https://dashscope.aliyuncs.com/api/v1';
 
 const openai = new OpenAI({
   apiKey: process.env.DASHSCOPE_API_KEY || '',
@@ -87,7 +87,7 @@ export async function transcribeAudioFile(audioFilePath: string): Promise<string
   return transcript.trim();
 }
 
-// =========== TTS 文本转语音 ===========
+// =========== TTS 文本转语音（sambert-camila-v1 西语女声） ===========
 async function generateSpeech(text: string): Promise<string> {
   const filename = `chat-${uuidv4()}.mp3`;
   const outputDir = path.join(__dirname, '..', '..', 'uploads', 'chat');
@@ -96,34 +96,10 @@ async function generateSpeech(text: string): Promise<string> {
 
   console.log(`[ChatTTS] 合成中: "${text.slice(0, 50)}..."`);
 
-  const res = await fetch(
-    `${DASHSCOPE_API_BASE}/services/aigc/multimodal-generation/generation`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'qwen3-tts-instruct-flash',
-        input: { text, voice: 'Cherry', language_type: 'Spanish' },
-      }),
-    }
-  );
+  await sambertSynthesizeToFile(text, outputPath);
 
-  const data = (await res.json()) as any;
-  if (!res.ok || data.code) {
-    throw new Error('TTS 失败: ' + (data.message || data.code || res.status));
-  }
-
-  const audioUrl: string = data.output?.audio?.url || '';
-  if (!audioUrl) throw new Error('TTS 响应缺少音频 URL');
-
-  const audioRes = await fetch(audioUrl);
-  const buffer = Buffer.from(await audioRes.arrayBuffer());
-  fs.writeFileSync(outputPath, buffer);
-
-  console.log(`[ChatTTS] 已保存: ${(buffer.length / 1024).toFixed(1)}KB`);
+  const sizeKB = (fs.statSync(outputPath).size / 1024).toFixed(1);
+  console.log(`[ChatTTS] 已保存: ${sizeKB}KB`);
   return `/uploads/chat/${filename}`;
 }
 
@@ -250,4 +226,27 @@ export async function streamChatResponse(params: StreamChatParams): Promise<Stre
   const audioUrl = await generateSpeech(cleanResponse);
 
   return { fullResponse: cleanResponse, corrections, audioUrl };
+}
+
+// =========== 西语 → 中文翻译 ===========
+export async function translateToChinese(text: string): Promise<string> {
+  const trimmed = (text || '').trim();
+  if (!trimmed) return '';
+
+  const response = await openai.chat.completions.create({
+    model: 'qwen-plus-latest',
+    messages: [
+      {
+        role: 'system',
+        content: '你是一位西语-中文翻译。将用户提供的西班牙语翻译成简体中文，直接输出译文，不要任何解释、前后缀或引号。若原文已经是中文，则原样返回。',
+      },
+      { role: 'user', content: trimmed },
+    ],
+    temperature: 0.1,
+    max_tokens: 500,
+  });
+
+  const translation = response.choices[0]?.message?.content?.trim() || '';
+  console.log(`[ChatTranslate] "${trimmed.slice(0, 40)}..." → "${translation.slice(0, 40)}..."`);
+  return translation;
 }

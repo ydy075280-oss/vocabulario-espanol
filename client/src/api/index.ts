@@ -305,6 +305,27 @@ export async function chatSpeak(audioBlob: Blob, params: {
 }
 
 /**
+ * 将西班牙语文本翻译成简体中文（对话中的 AI 消息）
+ */
+export async function chatTranslate(text: string): Promise<string> {
+  const token = localStorage.getItem('accessToken');
+  const res = await fetch(`${API_BASE_URL}/chat/translate`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ text }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: '翻译请求失败' }));
+    throw new Error(err.error || '翻译请求失败');
+  }
+  const data = await res.json();
+  return data.translation || '';
+}
+
+/**
  * 解析 SSE 流
  */
 export async function* parseSSEStream(stream: ReadableStream<Uint8Array>): AsyncGenerator<SSEChatEvent> {

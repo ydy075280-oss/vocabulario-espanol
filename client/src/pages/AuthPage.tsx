@@ -153,8 +153,18 @@ export default function AuthPage() {
         </form>
       </div>
 
-      <p className="text-center text-xs text-typo-muted pb-8 safe-area-inset-bottom">
+      <p className="text-center text-xs text-typo-muted pt-1">
         {mode === 'register' ? '注册即代表同意服务条款和隐私政策' : '西语词汇学习平台 © 2026'}
+      </p>
+      <p className="text-center text-xs text-typo-muted pb-8 safe-area-inset-bottom">
+        <a
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          桂ICP备2026010760号-2
+        </a>
       </p>
     </div>
   );

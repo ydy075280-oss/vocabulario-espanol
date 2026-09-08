@@ -1371,7 +1371,7 @@ export default function ModuleDetailPage() {
           <span className="text-xs text-accent/70">{kw.translation}</span>
         </div>
 
-        <div className="text-xs text-typo-secondary leading-relaxed mb-1">
+        <div className="text-xs text-typo-secondary leading-relaxed mb-1 break-words [overflow-wrap:anywhere]">
           <span className="text-accent/50">📖 </span>
           {kw.exampleSentence}
         </div>

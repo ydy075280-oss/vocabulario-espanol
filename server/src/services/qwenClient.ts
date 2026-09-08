@@ -3,12 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import pdfParse from 'pdf-parse';
 import mammoth from 'mammoth';
+import { sambertSynthesizeToFile } from './sambertTTS';
 
 // ============================================================
 // 统一配置
 // ============================================================
 const BASE_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1';
-const DASHSCOPE_API_BASE = 'https://dashscope.aliyuncs.com/api/v1';
 
 const openai = new OpenAI({
   apiKey: process.env.DASHSCOPE_API_KEY || '',
@@ -42,9 +42,9 @@ export interface ImageExtractionResult {
 
 // ============================================================
 // 📷 模型1：图片 OCR 提取单词
-// 模型：qwen3-vl-flash
+// 模型：qwen3.7-flash（多模态视觉语言模型，支持图像输入）
 // 方式：OpenAI 兼容 SDK
-// 价格：输入 0.15 / 输出 1.5 元/百万Token（0-32K范围）
+// 价格：输入 0.2 / 输出 0.8 元/百万Token（0-32K范围）
 // ============================================================
 export async function extractWordsFromImage(
   imageFilePath: string
@@ -75,7 +75,7 @@ export async function extractWordsFromImage(
   console.log(`[OCR] 开始提取图片: ${imageFilePath}, 大小: ${(imageBuffer.length / 1024).toFixed(1)}KB`);
 
   const response = await openai.chat.completions.create({
-    model: 'qwen3-vl-flash',
+    model: 'qwen3.7-flash',
     messages: [
       {
         role: 'user',
@@ -520,81 +520,35 @@ export async function extractWordsFromDocx(
 }
 
 // ============================================================
-// ✍️ 模型4：文本转语音（同步模式）
-// 模型：qwen3-tts-instruct-flash
-// 方式：DashScope 同步 HTTP API（Qwen-TTS 不支持异步轮询）
-// 价格：0.8 元/万字符（输出不计费）
-// 音色：Cherry 女声
+// ✍️ 模型4：文本转语音（西班牙语）
+// 模型：sambert-camila-v1（西班牙语女声 Camila）
+// 方式：DashScope WebSocket 流式合成
+// 免费额度：每月 3 万字符（长期，按月发放）；超出后 1 元/万字符
+// 音色：Camila 固定西语母语女声（voice 参数已废弃，仅作缓存兼容保留）
 // ============================================================
 export interface TTSOptions {
   text: string;
-  voice?: string;     // 默认 'Cherry'，DashScope 官方音色
-  speed?: number;     // 0.5 ~ 2.0
+  voice?: string;     // 已废弃：Camila 为固定音色，忽略该参数
+  speed?: number;     // 0.5 ~ 2.0（语速，映射为 Sambert rate）
 }
 
 export async function textToSpeech(
   options: TTSOptions,
   outputPath: string
 ): Promise<string> {
-  const { text, voice = 'Cherry', speed = 1.0 } = options;
+  const { text, speed = 1.0 } = options;
 
-  // Qwen-TTS 同步 API：所有参数放在 input 内，不带 X-DashScope-Async
-  const requestBody: Record<string, any> = {
-    model: 'qwen3-tts-instruct-flash',
-    input: {
-      text,
-      voice,
-      language_type: 'Spanish',  // 西班牙语发音
-    },
-  };
-  if (speed !== 1.0) {
-    requestBody.input.speech_rate = speed;
+  if (!text || !text.trim()) {
+    throw new Error('TTS 文本不能为空');
   }
 
-  console.log(`[TTS] 同步请求, model=qwen3-tts-instruct-flash, voice=${voice}, text="${text.slice(0, 40)}..."`);
+  const t0 = Date.now();
+  console.log(`[TTS] sambert-camila-v1 合成, rate=${speed}, text="${text.slice(0, 40)}..."`);
 
-  // 一次同步 POST，响应中直接包含 output.audio.url
-  const res = await fetch(
-    `${DASHSCOPE_API_BASE}/services/aigc/multimodal-generation/generation`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.DASHSCOPE_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    }
-  );
+  await sambertSynthesizeToFile(text, outputPath, { rate: speed });
 
-  const data = (await res.json()) as any;
-  console.log(`[TTS] HTTP ${res.status}, code=${data.code}`);
-
-  if (!res.ok || data.code) {
-    const errDetail = JSON.stringify(data).slice(0, 500);
-    console.error(`[TTS] ❌ API 失败: ${errDetail}`);
-    throw new Error('TTS API 返回错误: ' + (data.message || data.code || errDetail));
-  }
-
-  // 提取音频 URL
-  const audioUrl: string =
-    data.output?.audio?.url || '';
-  if (!audioUrl) {
-    console.error(`[TTS] ❌ 响应中无 audio.url: ${JSON.stringify(data).slice(0, 500)}`);
-    throw new Error('TTS 响应缺少音频 URL');
-  }
-
-  console.log(`[TTS] ✅ 获取到 audioUrl: ${audioUrl.slice(0, 80)}...`);
-
-  // 下载音频文件
-  const audioRes = await fetch(audioUrl);
-  if (!audioRes.ok) {
-    throw new Error(`下载音频失败: HTTP ${audioRes.status}`);
-  }
-  const buffer = Buffer.from(await audioRes.arrayBuffer());
-  const dir = path.dirname(outputPath);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(outputPath, buffer);
-  console.log(`[TTS] ✅ 文件已保存: ${outputPath} (${(buffer.length / 1024).toFixed(1)}KB)`);
+  const sizeKB = (fs.statSync(outputPath).size / 1024).toFixed(1);
+  console.log(`[TTS] ✅ 文件已保存: ${outputPath} (${sizeKB}KB, 耗时 ${Date.now() - t0}ms)`);
 
   return outputPath;
 }

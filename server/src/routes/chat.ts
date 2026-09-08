@@ -3,7 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
-import { generateGreeting, streamChatResponse, transcribeAudioFile } from '../services/chatAI';
+import { generateGreeting, streamChatResponse, transcribeAudioFile, translateToChinese } from '../services/chatAI';
 
 const router = Router();
 
@@ -39,6 +39,24 @@ router.post('/greet', authMiddleware, async (req: AuthRequest, res: Response) =>
     res.json(result);
   } catch (err: any) {
     console.error('[Chat Greet] 错误:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ============================================================
+// POST /api/chat/translate — 将 AI 的西语对话翻译成简体中文
+// ============================================================
+router.post('/translate', authMiddleware, async (req: AuthRequest, res: Response) => {
+  try {
+    const { text } = req.body;
+    if (!text || !String(text).trim()) {
+      res.status(400).json({ error: '缺少待翻译文本' });
+      return;
+    }
+    const translation = await translateToChinese(String(text));
+    res.json({ translation });
+  } catch (err: any) {
+    console.error('[Chat Translate] 错误:', err.message);
     res.status(500).json({ error: err.message });
   }
 });

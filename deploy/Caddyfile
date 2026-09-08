@@ -1,0 +1,40 @@
+# ============================================================
+# Vocabulario - 生产环境 HTTPS 反向代理（Caddy）
+#
+# Caddy 会自动申请并续期 Let's Encrypt 证书，无需手动管理证书。
+# 当前配置域名: youngyy.me（如需更换，替换下面这行并重启 caddy 即可）
+#
+# 使用方法（服务器上一键执行，默认域名 youngyy.me）：
+#   sudo bash deploy/install-caddy.sh
+# 或手动把本文件内容写入 /etc/caddy/Caddyfile 后执行：
+#   sudo systemctl restart caddy
+#
+# 前提：
+#   1. 域名 youngyy.me 的 A 记录已解析到 ECS 公网 IP
+#   2. ECS 安全组已放行 80 (HTTP) 与 443 (HTTPS) 端口
+# ============================================================
+
+youngyy.me {
+    # 启用压缩
+    encode zstd gzip
+
+    # 反向代理到 PM2 托管的 Node 服务（3001 端口）
+    reverse_proxy 127.0.0.1:3001
+
+    # 安全响应头
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "no-referrer"
+    }
+
+    # 生产环境日志
+    log {
+        output file /var/log/caddy/vocabulario.log {
+            roll_size 10MiB
+            roll_keep 5
+            roll_keep_for 720h
+        }
+    }
+}

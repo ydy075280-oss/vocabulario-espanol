@@ -2,13 +2,17 @@ import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const SPEED_OPTIONS = [
-  { value: 0.5,  label: '0.5x', desc: '很慢' },
-  { value: 0.75, label: '0.75x', desc: '较慢' },
-  { value: 1.0,  label: '1.0x', desc: '正常' },
+import type { PlayRate } from '../hooks/useTTS';
+
+const SPEED_OPTIONS: { value: PlayRate; label: string; desc: string }[] = [
+  { value: 0.1,  label: '0.1x',  desc: '极慢' },
+  { value: 0.25, label: '0.25x', desc: '很慢' },
+  { value: 0.5,  label: '0.5x',  desc: '较慢' },
+  { value: 0.75, label: '0.75x', desc: '稍慢' },
+  { value: 1.0,  label: '1.0x',  desc: '正常' },
   { value: 1.25, label: '1.25x', desc: '较快' },
-  { value: 1.5,  label: '1.5x', desc: '快速' },
-] as const;
+  { value: 1.5,  label: '1.5x',  desc: '快速' },
+];
 
 export default function ProfilePage() {
   const { user, logout, updateProfile } = useAuth();

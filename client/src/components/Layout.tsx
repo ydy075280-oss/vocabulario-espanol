@@ -105,6 +105,15 @@ export default function Layout({ children }: { children: ReactNode }) {
                 style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
             v1.0
           </span>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-[10px] text-typo-muted mt-1 truncate hover:underline"
+            style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}
+          >
+            桂ICP备2026010760号-2
+          </a>
         </div>
       </aside>
 

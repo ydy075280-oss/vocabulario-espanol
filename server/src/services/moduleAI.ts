@@ -2,7 +2,7 @@
  * 大模块 AI 服务
  * 根据用户上传的课后作业，自动识别语种、提炼知识点、拆分任务类型，
  * 生成符合学习规律的3-7天学习计划。
- * 模型：qwen3-max（通义千问3-Max，速度快、JSON 稳定）
+ * 模型：qwen3.7-flash（速度快、JSON 稳定）
  */
 import OpenAI from 'openai';
 
@@ -121,11 +121,11 @@ export async function generateModulePlan(homeworkText: string): Promise<AIModule
   const apiKey = process.env.DASHSCOPE_API_KEY;
   if (!apiKey) throw new Error('百炼 API Key 未配置');
 
-  console.log(`[ModuleAI] 分析作业 (${homeworkText.length} 字符) → qwen3-max`);
+  console.log(`[ModuleAI] 分析作业 (${homeworkText.length} 字符) → qwen3.7-flash`);
 
   const t0 = Date.now();
   const response = await openai.chat.completions.create({
-    model: 'qwen3-max',
+    model: 'qwen3.7-flash',
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: buildUserPrompt(homeworkText) },

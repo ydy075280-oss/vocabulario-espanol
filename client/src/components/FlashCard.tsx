@@ -171,10 +171,10 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
                 </p>
                 {card.sentences.map((s, idx) => (
                   <div key={s.id || idx} className="mb-3 last:mb-0">
-                    <p className="text-sm text-ink leading-relaxed">
+                    <p className="text-sm text-ink leading-relaxed break-words [overflow-wrap:anywhere]">
                       {s.sentence_es}
                     </p>
-                    <p className="text-xs text-typo-muted mt-0.5 leading-relaxed">
+                    <p className="text-xs text-typo-muted mt-0.5 leading-relaxed break-words [overflow-wrap:anywhere]">
                       {s.sentence_zh}
                     </p>
                     <button
@@ -208,16 +208,16 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
       </div>
 
       {/* Rate control */}
-      <div className="flex items-center justify-center gap-2 mt-4 mb-2">
+      <div className="flex items-center justify-center gap-1.5 mt-4 mb-2 flex-wrap px-2">
         <span className="text-eyebrow uppercase text-typo-muted"
               style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}>
           语速
         </span>
-        {([0.5, 0.75, 1, 1.25, 1.5] as const).map((r) => (
+        {([0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5] as const).map((r) => (
           <button
             key={r}
             onClick={() => setRate(r)}
-            className={`px-2 py-0.5 text-xs rounded-pill font-medium transition-all duration-200 ${
+            className={`px-1.5 py-0.5 text-[11px] rounded-pill font-medium transition-all duration-200 ${
               rate === r
                 ? 'bg-brand text-white'
                 : 'text-typo-secondary hover:text-ink hover:bg-surface'
