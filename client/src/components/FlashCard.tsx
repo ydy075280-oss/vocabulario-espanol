@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTTS } from '../hooks/useTTS';
 
 interface CardData {
@@ -24,7 +24,24 @@ interface Props {
 
 export default function FlashCard({ card, onScore, showScore = true }: Props) {
   const [flipped, setFlipped] = useState(false);
-  const { speakOrPlay, speaking, ttsLoading, rate, setRate } = useTTS();
+  const [playNotice, setPlayNotice] = useState('');
+  const noticeTimerRef = useRef<number | null>(null);
+  const { speakOrPlay, speaking, ttsLoading, rate, setRate, error } = useTTS();
+
+  // 发音失败时给出可见提示（3 秒后消失），避免“点了没声音也没任何反馈”
+  useEffect(() => {
+    if (error) {
+      setPlayNotice('发音失败，请稍后重试');
+      if (noticeTimerRef.current) clearTimeout(noticeTimerRef.current);
+      noticeTimerRef.current = window.setTimeout(() => setPlayNotice(''), 3200);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    return () => {
+      if (noticeTimerRef.current) clearTimeout(noticeTimerRef.current);
+    };
+  }, []);
 
   const posLabel: Record<string, string> = {
     sustantivo: '名词',
@@ -111,7 +128,11 @@ export default function FlashCard({ card, onScore, showScore = true }: Props) {
               )}
             </button>
 
-            <p className="text-xs text-typo-muted mt-4">点击翻转查看释义</p>
+            {playNotice ? (
+              <p className="text-xs text-danger font-medium mt-4 animate-notice-in">{playNotice}</p>
+            ) : (
+              <p className="text-xs text-typo-muted mt-4">点击翻转查看释义</p>
+            )}
           </div>
 
           {/* Back */}

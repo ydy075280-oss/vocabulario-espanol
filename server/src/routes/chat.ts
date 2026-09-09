@@ -2,8 +2,10 @@ import { Router, Response } from 'express';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import { randomUUID } from 'crypto';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
 import { generateGreeting, streamChatResponse, transcribeAudioFile, translateToChinese } from '../services/chatAI';
+import { convertToAsrMp3 } from '../services/audioService';
 
 const router = Router();
 
@@ -13,9 +15,12 @@ if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
 const upload = multer({
   dest: uploadDir,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
   fileFilter: (_req, file, cb) => {
-    const allowed = ['audio/webm', 'audio/mp3', 'audio/wav', 'audio/m4a', 'audio/ogg', 'audio/mp4'];
+    const allowed = [
+      'audio/webm', 'audio/mp3', 'audio/mpeg', 'audio/wav', 'audio/x-wav',
+      'audio/m4a', 'audio/x-m4a', 'audio/ogg', 'audio/mp4',
+    ];
     cb(null, allowed.includes(file.mimetype));
   },
 });
@@ -92,6 +97,19 @@ router.post('/speak', authMiddleware, upload.single('audio'), async (req: AuthRe
     };
 
     audioFilePath = req.file.path;
+
+    // Step 0: 统一转码为 16kHz 单声道 mp3
+    // 手机浏览器录音容器五花八门（iOS=m4a/aac、安卓=webm/opus、部分=ogg），
+    // 且 multer 落盘无扩展名会导致 ASR 格式识别错误 → 识别不出语音。
+    // 先转成标准 mp3 再交给 ASR，兼容所有来源。
+    try {
+      const convertedPath = path.join(uploadDir, `asr_${randomUUID()}.mp3`);
+      await convertToAsrMp3(audioFilePath, convertedPath);
+      try { fs.unlinkSync(audioFilePath); } catch { /* ignore */ }
+      audioFilePath = convertedPath;
+    } catch (convErr: any) {
+      console.warn(`[Chat] 录音转码失败，将尝试直接识别原文件: ${convErr?.message || convErr}`);
+    }
 
     // Step 1: ASR 语音识别
     send('status', { message: '正在识别语音...' });

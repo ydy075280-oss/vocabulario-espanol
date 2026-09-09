@@ -282,7 +282,17 @@ export async function chatSpeak(audioBlob: Blob, params: {
 }): Promise<ReadableStream<Uint8Array>> {
   const token = localStorage.getItem('accessToken');
   const formData = new FormData();
-  formData.append('audio', audioBlob, 'recording.webm');
+  // 文件名扩展名跟随真实录音格式（iOS=mp4/aac，安卓=webm/opus），供服务端参考
+  const extMap: Record<string, string> = {
+    'audio/webm': '.webm',
+    'audio/mp4': '.mp4',
+    'audio/x-m4a': '.m4a',
+    'audio/ogg': '.ogg',
+    'audio/mpeg': '.mp3',
+    'audio/wav': '.wav',
+  };
+  const ext = extMap[audioBlob.type] || '.webm';
+  formData.append('audio', audioBlob, `recording${ext}`);
   formData.append('scenario', params.scenario);
   formData.append('scenarioLabel', params.scenarioLabel);
   formData.append('difficulty', params.difficulty);

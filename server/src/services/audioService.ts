@@ -48,6 +48,35 @@ export function extractAudioFromVideo(videoPath: string, outputName: string): Pr
   });
 }
 
+// ============================================================
+// 🎙️ 任意录音 → ASR 标准化音频（16kHz 单声道 mp3）
+// 手机浏览器 MediaRecorder 会产出 webm(opus) / mp4(aac) / ogg 等
+// 不同容器编码差异大，统一转码后再交给 ASR，避免“识别不出语音”
+// ============================================================
+export function convertToAsrMp3(inputPath: string, outputPath: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    console.log(`[Audio] ASR 转码: ${path.basename(inputPath)} → ${path.basename(outputPath)}`);
+
+    Ffmpeg(inputPath)
+      .noVideo()
+      .audioCodec('libmp3lame')
+      .audioBitrate('128k')
+      .audioFrequency(16000)
+      .audioChannels(1)
+      .output(outputPath)
+      .on('end', () => {
+        const size = fs.existsSync(outputPath) ? (fs.statSync(outputPath).size / 1024).toFixed(1) : '0';
+        console.log(`[Audio] ASR 转码完成: ${path.basename(outputPath)} (${size}KB)`);
+        resolve(outputPath);
+      })
+      .on('error', (err) => {
+        console.error('[Audio] ASR 转码失败:', err.message);
+        reject(new Error('音频转码失败: ' + err.message));
+      })
+      .run();
+  });
+}
+
 /**
  * 获取音频时长（秒），失败返回 60
  */

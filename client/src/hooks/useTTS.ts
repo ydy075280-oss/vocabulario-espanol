@@ -51,7 +51,7 @@ export function useTTS() {
    * 播放音频 URL，按 userRate 调整 playbackRate
    * 即使 audioUrl 是后端生成的固定语速，也可以通过 playbackRate 减速
    */
-  const playAudioUrl = useCallback((audioUrl: string, userRate: PlayRate = rate) => {
+  const playAudioUrl = useCallback((audioUrl: string, userRate: PlayRate = rate, onError?: () => void) => {
     const { clientRate } = getServerAndClientRate(userRate);
 
     // 停止当前音频
@@ -60,13 +60,18 @@ export function useTTS() {
       audioElRef.current = null;
     }
     const audio = new Audio(audioUrl);
+    audio.preload = 'auto';
     audio.preservesPitch = true;  // 保持音调不变（避免变调成怪兽声）
     audio.playbackRate = clientRate;
     audioElRef.current = audio;
     audio.onplay = () => setSpeaking(true);
     audio.onended = () => { setSpeaking(false); if (audioElRef.current === audio) audioElRef.current = null; };
-    audio.onerror = () => { setSpeaking(false); if (audioElRef.current === audio) audioElRef.current = null; };
-    audio.play().catch(() => setSpeaking(false));
+    audio.onerror = () => {
+      setSpeaking(false);
+      if (audioElRef.current === audio) audioElRef.current = null;
+      onError?.();
+    };
+    audio.play().catch(() => { setSpeaking(false); onError?.(); });
   }, [rate]);
 
   /**
@@ -148,7 +153,14 @@ export function useTTS() {
     async (text: string, audioUrl?: string, wordRate?: PlayRate) => {
       const userRate = wordRate || rate;
       if (audioUrl) {
-        playAudioUrl(audioUrl, userRate);
+        let fallbackTried = false;
+        // 本地/卡片自带音频无法播放（文件缺失、404 等）时自动回退在线 TTS
+        playAudioUrl(audioUrl, userRate, () => {
+          if (!fallbackTried) {
+            fallbackTried = true;
+            void callTTSApi(text, wordRate);
+          }
+        });
         return;
       }
       await callTTSApi(text, wordRate);

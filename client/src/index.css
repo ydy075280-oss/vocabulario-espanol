@@ -230,3 +230,24 @@ a, button {
   from { width: 100%; }
   to   { width: 0%; }
 }
+
+/* 录音时麦克风按钮内的声波动画 */
+@keyframes rec-bar-bounce {
+  0%, 100% { height: 6px; }
+  50%      { height: 20px; }
+}
+
+.rec-bar {
+  height: 8px;
+  animation: rec-bar-bounce 0.9s ease-in-out infinite;
+}
+
+/* 语音识别错误等提示条入场 */
+@keyframes notice-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-notice-in {
+  animation: notice-in 0.2s ease-out;
+}
