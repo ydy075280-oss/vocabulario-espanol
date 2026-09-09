@@ -4,7 +4,7 @@
 # ============================================================
 
 # ---- 阶段 1: 构建 ----
-FROM node:20-slim AS builder
+FROM node:22-slim AS builder
 
 # Install build tools required by node-gyp (for better-sqlite3 native compilation)
 RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ && rm -rf /var/lib/apt/lists/*
@@ -28,7 +28,7 @@ RUN cd client && npm run build && cd ..
 RUN cd server && npm run build && cd ..
 
 # ---- 阶段 2: 运行 ----
-FROM node:20-slim
+FROM node:22-slim
 
 # 安装 ffmpeg（最多重试 3 次应对网络波动）
 # CACHE_BUST: 修改此值强制重建缓存层

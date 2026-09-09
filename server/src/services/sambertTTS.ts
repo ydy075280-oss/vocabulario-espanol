@@ -8,6 +8,8 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+// 兜底 WebSocket 客户端：Node >= 22 全局内置；Node 18/20（如线上 node:20 镜像）用 npm ws 包
+import WebSocketImpl from 'ws';
 
 const WS_URL = 'wss://dashscope.aliyuncs.com/api-ws/v1/inference';
 export const SAMBERT_CAMILA = 'sambert-camila-v1';
@@ -49,11 +51,12 @@ export async function sambertSynthesizeBuffer(
   const taskId = crypto.randomUUID().replace(/-/g, '');
   const audioChunks: Buffer[] = [];
 
-  // Node >= 22 内置 WebSocket
-  const WS: any = (globalThis as any).WebSocket;
-  if (typeof WS !== 'function') {
-    throw new Error('当前 Node 版本不支持内置 WebSocket，请升级到 Node 22+');
-  }
+  // 优先使用 Node 22+ 全局内置 WebSocket，低版本自动回退到 npm ws 包，
+  // 避免线上环境（如 node:20）因缺少全局 WebSocket 导致 TTS 全部失败
+  const WS: any =
+    typeof (globalThis as any).WebSocket === 'function'
+      ? (globalThis as any).WebSocket
+      : WebSocketImpl;
 
   return new Promise<Buffer>((resolve, reject) => {
     let settled = false;

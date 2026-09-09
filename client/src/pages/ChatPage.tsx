@@ -68,6 +68,12 @@ const DEFAULT_GREETINGS: Record<string, string> = {
 const MAX_RECORD_SECONDS = 60;      // 单次最长录音（秒），到点自动发送
 const SLIDE_CANCEL_DISTANCE = 70;   // 上滑取消阈值（px）
 
+// 移除 AI 回复中的语法纠错标记段（<!--ANALYSIS-->...<!--END_ANALYSIS-->）。
+// 后端在流式过程中会逐段下发原始文本（含该标记），若不过滤，
+// 气泡里会闪现一长串纠错 JSON 分析数据，故在前端渲染时就剔除。
+const stripAnalysisMarkers = (text: string) =>
+  text.replace(/<!--ANALYSIS-->[\s\S]*?<!--END_ANALYSIS-->/g, '');
+
 // ============================================================
 // ChatPage 组件
 // ============================================================
@@ -479,19 +485,23 @@ export default function ChatPage() {
 
           case 'ai_text_delta':
             fullResponse += data.delta || '';
-            setStreamingText(fullResponse);
-            // 第一条 delta 到来时创建 AI 消息占位
-            if (!aiMsgAdded) {
-              aiMsgAdded = true;
-              aiMsgId = `ai-${Date.now()}`;
-              setMessages(prev => [...prev, {
-                id: aiMsgId, role: 'assistant', content: '',
-              }]);
+            {
+              // 过滤掉 ANALYSIS 纠错标记段，避免流式期间闪现原始 JSON
+              const visibleText = stripAnalysisMarkers(fullResponse);
+              setStreamingText(visibleText);
+              // 第一条 delta 到来时创建 AI 消息占位
+              if (!aiMsgAdded) {
+                aiMsgAdded = true;
+                aiMsgId = `ai-${Date.now()}`;
+                setMessages(prev => [...prev, {
+                  id: aiMsgId, role: 'assistant', content: '',
+                }]);
+              }
+              // 流式更新最后一条 AI 消息
+              setMessages(prev => prev.map(m =>
+                m.id === aiMsgId ? { ...m, content: visibleText } : m
+              ));
             }
-            // 流式更新最后一条 AI 消息
-            setMessages(prev => prev.map(m =>
-              m.id === aiMsgId ? { ...m, content: fullResponse } : m
-            ));
             break;
 
           case 'ai_audio':
@@ -507,7 +517,7 @@ export default function ChatPage() {
 
           case 'done':
             corrections = data.corrections || [];
-            fullResponse = data.fullResponse || fullResponse;
+            fullResponse = stripAnalysisMarkers(data.fullResponse || fullResponse).trim();
             setMessages(prev => prev.map(m =>
               m.id === aiMsgId
                 ? { ...m, content: fullResponse, corrections, audioUrl: audioUrl || m.audioUrl }
