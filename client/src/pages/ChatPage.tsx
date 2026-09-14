@@ -363,8 +363,14 @@ export default function ChatPage() {
         type: recordingMimeRef.current || 'audio/webm',
       });
 
+      // 时长 + 大小双重校验：快速点按会攒下几 KB 有效数据，但太短云端会判为无声
+      const elapsedMs = recordingStartedAtRef.current ? Date.now() - recordingStartedAtRef.current : 0;
       if (!hasData || blob.size < 1024) {
         setError('录音太短或未采集到声音，请按住多说几句再松开');
+        return;
+      }
+      if (elapsedMs < 800) {
+        setError('说话时间太短，请按住按钮说完整一句话再松开');
         return;
       }
       // 通过 ref 调用最新的 handleSendAudio，避免过期闭包导致聊天历史丢失

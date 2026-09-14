@@ -265,11 +265,10 @@ export async function transcribeVideoAudio(
         ],
       },
     ],
-    extra_body: {
-      asr_options: {
-        language: 'es',
-        enable_itn: false,
-      },
+    // Node 版 openai SDK 没有 extra_body，asr_options 需作为顶层参数透传
+    asr_options: {
+      language: 'es',
+      enable_itn: false,
     },
     stream: false,
   } as any);

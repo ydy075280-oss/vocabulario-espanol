@@ -62,28 +62,38 @@ export async function transcribeAudioFile(audioFilePath: string): Promise<string
     '.webm': 'audio/webm', '.mp3': 'audio/mpeg', '.wav': 'audio/wav',
     '.m4a': 'audio/mp4', '.ogg': 'audio/ogg', '.mp4': 'audio/mp4',
   };
+  // DashScope input_audio.format 支持值（webm 容器不在其中，按其编码归到 opus/aac）
+  const formatMap: Record<string, string> = {
+    '.mp3': 'mp3', '.wav': 'wav', '.m4a': 'm4a', '.mp4': 'm4a',
+    '.ogg': 'ogg', '.webm': 'opus',
+  };
   const mimeType = mimeMap[ext] || 'audio/webm';
+  const audioFormat = formatMap[ext] || 'mp3';
   const base64Audio = audioBuffer.toString('base64');
   const dataUrl = `data:${mimeType};base64,${base64Audio}`;
 
-  console.log(`[ChatASR] 转写中, 大小=${(audioBuffer.length / 1024).toFixed(1)}KB`);
+  console.log(`[ChatASR] 转写中, 格式=${ext || '未知'}, 大小=${(audioBuffer.length / 1024).toFixed(1)}KB`);
 
   const response = await openai.chat.completions.create({
     model: 'qwen3-asr-flash',
     messages: [{
       role: 'user',
       content: [
-        { type: 'input_audio' as any, input_audio: { data: dataUrl } } as any,
+        { type: 'input_audio' as any, input_audio: { data: dataUrl, format: audioFormat } } as any,
       ],
     }],
-    extra_body: { asr_options: { language: 'es', enable_itn: false } },
+    // 注意：Node 版 openai SDK 没有 extra_body（那是 Python SDK 的用法），
+    // asr_options 必须作为顶层参数才会被透传，否则 language 不生效 → 语言被自动检测误判
+    asr_options: { language: 'es', enable_itn: false },
     stream: false,
   } as any);
 
   const transcript = response.choices[0]?.message?.content || '';
   console.log(`[ChatASR] 结果: "${transcript.slice(0, 80)}"`);
 
-  if (!transcript.trim()) throw new Error('未识别到语音内容，请重试');
+  if (!transcript.trim()) {
+    throw new Error('未识别到语音内容：可能是说话太短、声音太小或环境嘈杂，请靠近手机、放慢语速再试一次');
+  }
   return transcript.trim();
 }
 

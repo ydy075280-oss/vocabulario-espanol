@@ -13,8 +13,18 @@ const router = Router();
 const uploadDir = path.join(__dirname, '..', '..', 'uploads', 'chat');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
+// 保留原始扩展名落盘（iOS=mp4/m4a、安卓=webm 等），
+// 这样 ffmpeg 转码失败降级用原文件时，服务端才能正确推断 mime，避免 ASR 按错误格式解码
+const storage = multer.diskStorage({
+  destination: uploadDir,
+  filename: (_req, file, cb) => {
+    const ext = (path.extname(file.originalname) || '').toLowerCase();
+    cb(null, `${randomUUID()}${ext || '.webm'}`);
+  },
+});
+
 const upload = multer({
-  dest: uploadDir,
+  storage,
   limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
   fileFilter: (_req, file, cb) => {
     const allowed = [
