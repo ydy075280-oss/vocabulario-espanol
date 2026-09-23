@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { sambertSynthesizeToFile } from './sambertTTS';
+import { logLine } from '../utils/fileLogger';
 
 // ============================================================
 // AI 对话服务 — 语音实时对话 MVP
@@ -72,7 +73,12 @@ export async function transcribeAudioFile(audioFilePath: string): Promise<string
   const base64Audio = audioBuffer.toString('base64');
   const dataUrl = `data:${mimeType};base64,${base64Audio}`;
 
-  console.log(`[ChatASR] 转写中, 格式=${ext || '未知'}, 大小=${(audioBuffer.length / 1024).toFixed(1)}KB`);
+  logLine(
+    'ChatASR',
+    `转写中: 文件=${path.basename(audioFilePath)}, 格式=${ext || '未知'}(→${audioFormat}), ` +
+    `大小=${(audioBuffer.length / 1024).toFixed(1)}KB, 时长≈${(audioBuffer.length / 1024 / 16).toFixed(1)}s(按128kbps估), ` +
+    `asr_options=${JSON.stringify({ language: 'es', enable_itn: false })}`
+  );
 
   const response = await openai.chat.completions.create({
     model: 'qwen3-asr-flash',
@@ -89,7 +95,7 @@ export async function transcribeAudioFile(audioFilePath: string): Promise<string
   } as any);
 
   const transcript = response.choices[0]?.message?.content || '';
-  console.log(`[ChatASR] 结果: "${transcript.slice(0, 80)}"`);
+  logLine('ChatASR', `结果: "${transcript.slice(0, 80)}"`);
 
   if (!transcript.trim()) {
     throw new Error('未识别到语音内容：可能是说话太短、声音太小或环境嘈杂，请靠近手机、放慢语速再试一次');

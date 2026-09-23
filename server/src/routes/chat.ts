@@ -6,6 +6,7 @@ import { randomUUID } from 'crypto';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
 import { generateGreeting, streamChatResponse, transcribeAudioFile, translateToChinese } from '../services/chatAI';
 import { convertToAsrMp3 } from '../services/audioService';
+import { logLine } from '../utils/fileLogger';
 
 const router = Router();
 
@@ -107,6 +108,10 @@ router.post('/speak', authMiddleware, upload.single('audio'), async (req: AuthRe
     };
 
     audioFilePath = req.file.path;
+    logLine(
+      'Chat',
+      `收到录音: name=${req.file.originalname}, mime=${req.file.mimetype}, size=${(req.file.size / 1024).toFixed(1)}KB`
+    );
 
     // Step 0: 统一转码为 16kHz 单声道 mp3
     // 手机浏览器录音容器五花八门（iOS=m4a/aac、安卓=webm/opus、部分=ogg），
@@ -115,15 +120,18 @@ router.post('/speak', authMiddleware, upload.single('audio'), async (req: AuthRe
     try {
       const convertedPath = path.join(uploadDir, `asr_${randomUUID()}.mp3`);
       await convertToAsrMp3(audioFilePath, convertedPath);
+      const convertedKB = (fs.statSync(convertedPath).size / 1024).toFixed(1);
       try { fs.unlinkSync(audioFilePath); } catch { /* ignore */ }
       audioFilePath = convertedPath;
+      logLine('Chat', `转码成功 → 16kHz 单声道 mp3, ${convertedKB}KB（128kbps 下约 ${(Number(convertedKB) / 16).toFixed(1)}s，静音会远小于此值）`);
     } catch (convErr: any) {
-      console.warn(`[Chat] 录音转码失败，将尝试直接识别原文件: ${convErr?.message || convErr}`);
+      logLine('Chat', `⚠️ 转码失败，将尝试直接识别原文件: ${convErr?.message || convErr}`);
     }
 
     // Step 1: ASR 语音识别
     send('status', { message: '正在识别语音...' });
     const transcript = await transcribeAudioFile(audioFilePath);
+    logLine('ChatASR', transcript.trim() ? `识别结果: "${transcript.slice(0, 80)}"` : '⚠️ 识别结果为空（音频可能是静音/格式未被正确解码）');
     send('transcript', { text: transcript });
 
     // 清理临时音频文件

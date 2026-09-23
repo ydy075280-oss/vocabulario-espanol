@@ -238,6 +238,13 @@ export default function ChatPage() {
     setCancelArmed(false);
     cancelRef.current = false;
 
+    // 录音前先暂停 AI 语音播放：手机是外放，麦克风会把 AI 的声音一起收进去，
+    // 导致本轮识别串进上一轮的回复内容。
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
     // 1) 环境检测：getUserMedia 仅在安全上下文（HTTPS / localhost）可用。
     //    手机通过 http://局域网IP 访问时 navigator.mediaDevices 为 undefined
     if (!navigator.mediaDevices?.getUserMedia) {
@@ -248,13 +255,17 @@ export default function ChatPage() {
     }
 
     // 2) 获取麦克风流：先用增强约束，设备不支持则降级为裸约束（避免 OverconstrainedError）
+    //    注意：echoCancellation 必须关掉。安卓上它会强制走 VOICE_COMMUNICATION
+    //    采集链路（AEC+NS+AGC+非线性处理），各机型 HAL 实现差异极大，常见把人声
+    //    当成回声/噪声门掉，只剩开头一两个词被识别。录音前已暂停 TTS（见下），
+    //    没有回声可消，因此关掉 AEC 反而能拿到干净的原始人声。
     let stream: MediaStream;
     try {
       try {
         stream = await navigator.mediaDevices.getUserMedia({
           audio: {
-            echoCancellation: true,
-            noiseSuppression: true,
+            echoCancellation: false,
+            noiseSuppression: false,
             autoGainControl: true,
           },
         });
@@ -314,7 +325,9 @@ export default function ChatPage() {
 
     let recorder: MediaRecorder;
     try {
-      recorder = new MediaRecorder(stream, { mimeType: cfg.mime });
+      // 显式指定码率：移动端默认码率可能低至 24~32kbps，西语的 r/rr、s/z/c 等
+      // 高频细节会被压没，ASR 只能听出零星几个词。
+      recorder = new MediaRecorder(stream, { mimeType: cfg.mime, audioBitsPerSecond: 128000 });
     } catch {
       try {
         recorder = new MediaRecorder(stream);
@@ -385,8 +398,15 @@ export default function ChatPage() {
       setError('录音失败，请重试');
     };
 
-    // 4) 使用 timeslice 确保数据分段写入，避免某些浏览器为空
-    recorder.start(200);
+    // 4) 分片写入可避免部分浏览器产出空 blob，但 iOS 的 mp4 每个分片都是独立的
+    //    fMP4 片段（各自带 moov），拼接后 ffmpeg/ASR 常常只能解出第一个片段，
+    //    表现为"只识别出单个词"。因此 mp4 容器不使用 timeslice，在 stop 时一次性产出。
+    const isMp4 = recordingExtRef.current === '.mp4' || (recorder.mimeType || '').includes('mp4');
+    if (isMp4) {
+      recorder.start();
+    } else {
+      recorder.start(200);
+    }
     isRecordingRef.current = true;
     setIsRecording(true);
 
