@@ -60,6 +60,7 @@ jobs:
             --exclude='server/.env' \
             --exclude='server/uploads' \
             --exclude='server/data' \
+            --exclude='server/logs' \
             --exclude='*.log' \
             -e "ssh -i ~/.ssh/ecs_key -o StrictHostKeyChecking=no" \
             ./ "$ECS_USER@$ECS_HOST:/opt/vocabulario-espanol/"
